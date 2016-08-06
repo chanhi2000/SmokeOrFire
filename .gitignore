@@ -1,0 +1,7 @@
+# Mac OS X
+*.DS_Store
+
+# Xcode
+SmokeOrFire/*.xcuserstate
+SmokeOrFire/SmokeOrFire.xcodeproj/xcuserdata
+SmokeOrFire/SmokeOrFire.xcodeproj/project.xcworkspace
