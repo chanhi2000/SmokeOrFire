@@ -12,6 +12,8 @@
 		743924DD1D569C0000F1A17D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743924DB1D569C0000F1A17D /* Main.storyboard */; };
 		743924DF1D569C0000F1A17D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 743924DE1D569C0000F1A17D /* Assets.xcassets */; };
 		743924E21D569C0000F1A17D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743924E01D569C0000F1A17D /* LaunchScreen.storyboard */; };
+		B517B2CE1D56A95100455B4F /* card.png in Resources */ = {isa = PBXBuildFile; fileRef = B517B2CC1D56A95100455B4F /* card.png */; };
+		B517B2CF1D56A95100455B4F /* suit.png in Resources */ = {isa = PBXBuildFile; fileRef = B517B2CD1D56A95100455B4F /* suit.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		743924DE1D569C0000F1A17D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		743924E11D569C0000F1A17D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		743924E31D569C0000F1A17D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B517B2CC1D56A95100455B4F /* card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card.png; sourceTree = "<group>"; };
+		B517B2CD1D56A95100455B4F /* suit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = suit.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 		743924D61D569C0000F1A17D /* SmokeOrFire */ = {
 			isa = PBXGroup;
 			children = (
+				B517B2CB1D56A6D500455B4F /* images */,
 				743924D71D569C0000F1A17D /* AppDelegate.swift */,
 				743924D91D569C0000F1A17D /* ViewController.swift */,
 				743924DB1D569C0000F1A17D /* Main.storyboard */,
@@ -62,6 +67,15 @@
 				743924E31D569C0000F1A17D /* Info.plist */,
 			);
 			path = SmokeOrFire;
+			sourceTree = "<group>";
+		};
+		B517B2CB1D56A6D500455B4F /* images */ = {
+			isa = PBXGroup;
+			children = (
+				B517B2CC1D56A95100455B4F /* card.png */,
+				B517B2CD1D56A95100455B4F /* suit.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +137,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				743924E21D569C0000F1A17D /* LaunchScreen.storyboard in Resources */,
+				B517B2CF1D56A95100455B4F /* suit.png in Resources */,
+				B517B2CE1D56A95100455B4F /* card.png in Resources */,
 				743924DF1D569C0000F1A17D /* Assets.xcassets in Resources */,
 				743924DD1D569C0000F1A17D /* Main.storyboard in Resources */,
 			);
@@ -288,6 +304,7 @@
 				743924E81D569C0000F1A17D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
