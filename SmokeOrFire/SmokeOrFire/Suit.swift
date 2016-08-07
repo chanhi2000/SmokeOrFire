@@ -13,10 +13,10 @@ enum Suit: UInt8 {
 
     func describe() -> String {
         switch self {
-        case .SPADE: return "spade";
-        case .HEART: return "heart";
-        case .DIAMOND: return "diamond";
-        case .CLUB: return "club";
+        case .SPADE: return "spades";
+        case .HEART: return "hearts";
+        case .DIAMOND: return "diamonds";
+        case .CLUB: return "clubs";
         default: return "";
         }
     }
