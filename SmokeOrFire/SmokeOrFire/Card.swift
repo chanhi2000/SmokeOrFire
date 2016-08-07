@@ -13,4 +13,6 @@ struct Card {
     func describe() -> String {
         return "The \(rank.describe()) of \(suit.describe())"
     }
+    
 }
+
