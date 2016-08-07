@@ -9,7 +9,8 @@
 import Foundation
 
 struct Pyramid {
-    var rounds: [PyramidRound]
+    var rounds = [PyramidRound]()
+
 }
 
 struct PyramidRound {

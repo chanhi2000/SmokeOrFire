@@ -54,8 +54,6 @@ struct Round {
                     return true
                 }
             case .SUIT:
-                print("card: \(card.suit.rawValue)")
-                print("hand: \(player.choice!.rawValue)")
                 return (card.suit.rawValue != player.choice!.rawValue)
             case .POKER:
                 print("POKER Under Construction")
