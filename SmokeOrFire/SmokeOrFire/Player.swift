@@ -42,3 +42,17 @@ enum PlayerChoices: UInt8 {
     // Misc choice
     case SAME
 }
+
+enum ChoicesText: String {
+    case HEART = "HEART"
+    case CLUB = "CLUB"
+    case DIAMOND = "DIAMOND"
+    case SPADE = "SPADE"
+    case RED = "FIRE"
+    case BLACK = "SMOKE"
+    case HIGHER = "HIGHER"
+    case LOWER = "LOWER"
+    case INSIDE = "INSIDE"
+    case OUTSIDE = "OUTSIDE"
+    case SAME = "SAME"
+}

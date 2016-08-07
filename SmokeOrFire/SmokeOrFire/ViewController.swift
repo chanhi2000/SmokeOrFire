@@ -10,14 +10,14 @@ import Foundation
 import UIKit
 
 class ViewController: UIViewController, QuestionsViewControllerDelegate {
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "questionsSegue" {
             let qvc = segue.destinationViewController as! QuestionsViewController
             qvc.delegate = self
         }
     }
-
+    
     func qvDidFinish(controller: QuestionsViewController, text: String) {
         controller.navigationController?.popViewControllerAnimated(true)
     }

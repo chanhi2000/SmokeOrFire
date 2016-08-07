@@ -17,8 +17,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpB-vi-bkN">
+                                <rect key="frame" x="230" y="177" width="141" height="71"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Choice 1"/>
+                                <connections>
+                                    <action selector="choiceTapped:" destination="FjY-IN-4cs" eventType="touchUpInside" id="PRd-8P-VxT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fc-nD-oou">
+                                <rect key="frame" x="230" y="256" width="141" height="73"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Choice 2"/>
+                                <connections>
+                                    <action selector="choiceTapped:" destination="FjY-IN-4cs" eventType="touchUpInside" id="8JJ-vI-K7a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="um2-TH-mI4">
+                                <rect key="frame" x="230" y="342" width="141" height="80"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Choice 3"/>
+                                <connections>
+                                    <action selector="choiceTapped:" destination="FjY-IN-4cs" eventType="touchUpInside" id="q0W-bB-juR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wpT-he-gaK">
+                                <rect key="frame" x="230" y="430" width="141" height="85"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Choice 4"/>
+                                <connections>
+                                    <action selector="choiceTapped:" destination="FjY-IN-4cs" eventType="touchUpInside" id="pYX-k7-NFs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okn-Y3-ds4">
+                                <rect key="frame" x="309" y="103" width="46" height="30"/>
+                                <state key="normal" title="Hand"/>
+                                <connections>
+                                    <action selector="handTapped:" destination="FjY-IN-4cs" eventType="touchUpInside" id="y9F-5U-Blw"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oYh-Je-Dts">
-                                <rect key="frame" x="264" y="245" width="164" height="124"/>
+                                <rect key="frame" x="114" y="79" width="104" height="78"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Pyramid"/>
                                 <connections>
@@ -30,6 +69,12 @@
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="firstChoice" destination="cpB-vi-bkN" id="g0D-iC-hQp"/>
+                        <outlet property="fourthChoice" destination="wpT-he-gaK" id="BRN-Ev-Hj0"/>
+                        <outlet property="secondChoice" destination="9fc-nD-oou" id="RGN-pw-MDw"/>
+                        <outlet property="thirdChoice" destination="um2-TH-mI4" id="NbE-Z8-D9C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOz-jM-OdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
