@@ -12,6 +12,7 @@ import UIKit
 class ViewController: UIViewController {
     var numPlayer = 2
     var choices = [PlayerChoices.RED, PlayerChoices.HIGHER, PlayerChoices.OUTSIDE, PlayerChoices.DIAMOND];
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -98,19 +99,3 @@ class ViewController: UIViewController {
         }
     }
 }
-//
-//enum PlayerChoices: UInt8 {
-//        // Suit?
-//        case HEART = 1, CLUB, DIAMOND, SPADE
-//        // Smoke or fire?
-//        case RED
-//        case BLACK
-//        // Higher or lower?
-//        case HIGHER
-//        case LOWER
-//        // Inside or outside?
-//        case INSIDE
-//        case OUTSIDE
-//        // Misc choice
-//        case SAME
-//}
