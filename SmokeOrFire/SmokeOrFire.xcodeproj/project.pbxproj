@@ -12,12 +12,23 @@
 		743924DD1D569C0000F1A17D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743924DB1D569C0000F1A17D /* Main.storyboard */; };
 		743924DF1D569C0000F1A17D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 743924DE1D569C0000F1A17D /* Assets.xcassets */; };
 		743924E21D569C0000F1A17D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743924E01D569C0000F1A17D /* LaunchScreen.storyboard */; };
+		743924FC1D56D9D500F1A17D /* CardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743924FB1D56D9D500F1A17D /* CardTests.swift */; };
 		B517B2CE1D56A95100455B4F /* card.png in Resources */ = {isa = PBXBuildFile; fileRef = B517B2CC1D56A95100455B4F /* card.png */; };
 		B517B2CF1D56A95100455B4F /* suit.png in Resources */ = {isa = PBXBuildFile; fileRef = B517B2CD1D56A95100455B4F /* suit.png */; };
 		B517B2D11D56ABB600455B4F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B517B2D01D56ABB600455B4F /* Card.swift */; };
 		B517B2D31D56AE3E00455B4F /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B517B2D21D56AE3E00455B4F /* Suit.swift */; };
 		B517B2D51D56D42C00455B4F /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = B517B2D41D56D42C00455B4F /* Rank.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		743924F61D56D98A00F1A17D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 743924CC1D569C0000F1A17D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 743924D31D569C0000F1A17D;
+			remoteInfo = SmokeOrFire;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		743924D41D569C0000F1A17D /* SmokeOrFire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmokeOrFire.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -27,6 +38,9 @@
 		743924DE1D569C0000F1A17D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		743924E11D569C0000F1A17D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		743924E31D569C0000F1A17D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		743924F11D56D98A00F1A17D /* SmokeOrFireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmokeOrFireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		743924F51D56D98A00F1A17D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		743924FB1D56D9D500F1A17D /* CardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTests.swift; sourceTree = "<group>"; };
 		B517B2CC1D56A95100455B4F /* card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card.png; sourceTree = "<group>"; };
 		B517B2CD1D56A95100455B4F /* suit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = suit.png; sourceTree = "<group>"; };
 		B517B2D01D56ABB600455B4F /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -42,6 +56,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		743924EE1D56D98A00F1A17D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -49,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				743924D61D569C0000F1A17D /* SmokeOrFire */,
+				743924F21D56D98A00F1A17D /* SmokeOrFireTests */,
 				743924D51D569C0000F1A17D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				743924D41D569C0000F1A17D /* SmokeOrFire.app */,
+				743924F11D56D98A00F1A17D /* SmokeOrFireTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,6 +99,15 @@
 				B517B2D41D56D42C00455B4F /* Rank.swift */,
 			);
 			path = SmokeOrFire;
+			sourceTree = "<group>";
+		};
+		743924F21D56D98A00F1A17D /* SmokeOrFireTests */ = {
+			isa = PBXGroup;
+			children = (
+				743924F51D56D98A00F1A17D /* Info.plist */,
+				743924FB1D56D9D500F1A17D /* CardTests.swift */,
+			);
+			path = SmokeOrFireTests;
 			sourceTree = "<group>";
 		};
 		B517B2CB1D56A6D500455B4F /* images */ = {
@@ -107,6 +139,24 @@
 			productReference = 743924D41D569C0000F1A17D /* SmokeOrFire.app */;
 			productType = "com.apple.product-type.application";
 		};
+		743924F01D56D98A00F1A17D /* SmokeOrFireTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 743924F81D56D98A00F1A17D /* Build configuration list for PBXNativeTarget "SmokeOrFireTests" */;
+			buildPhases = (
+				743924ED1D56D98A00F1A17D /* Sources */,
+				743924EE1D56D98A00F1A17D /* Frameworks */,
+				743924EF1D56D98A00F1A17D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				743924F71D56D98A00F1A17D /* PBXTargetDependency */,
+			);
+			name = SmokeOrFireTests;
+			productName = SmokeOrFireTests;
+			productReference = 743924F11D56D98A00F1A17D /* SmokeOrFireTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -119,6 +169,10 @@
 				TargetAttributes = {
 					743924D31D569C0000F1A17D = {
 						CreatedOnToolsVersion = 7.3.1;
+					};
+					743924F01D56D98A00F1A17D = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 743924D31D569C0000F1A17D;
 					};
 				};
 			};
@@ -136,6 +190,7 @@
 			projectRoot = "";
 			targets = (
 				743924D31D569C0000F1A17D /* SmokeOrFire */,
+				743924F01D56D98A00F1A17D /* SmokeOrFireTests */,
 			);
 		};
 /* End PBXProject section */
@@ -150,6 +205,13 @@
 				B517B2CE1D56A95100455B4F /* card.png in Resources */,
 				743924DF1D569C0000F1A17D /* Assets.xcassets in Resources */,
 				743924DD1D569C0000F1A17D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		743924EF1D56D98A00F1A17D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,7 +230,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		743924ED1D56D98A00F1A17D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				743924FC1D56D9D500F1A17D /* CardTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		743924F71D56D98A00F1A17D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 743924D31D569C0000F1A17D /* SmokeOrFire */;
+			targetProxy = 743924F61D56D98A00F1A17D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		743924DB1D569C0000F1A17D /* Main.storyboard */ = {
@@ -297,6 +375,30 @@
 			};
 			name = Release;
 		};
+		743924F91D56D98A00F1A17D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SmokeOrFireTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.justinhester.SmokeOrFireTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmokeOrFire.app/SmokeOrFire";
+			};
+			name = Debug;
+		};
+		743924FA1D56D98A00F1A17D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SmokeOrFireTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.justinhester.SmokeOrFireTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmokeOrFire.app/SmokeOrFire";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -317,6 +419,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		743924F81D56D98A00F1A17D /* Build configuration list for PBXNativeTarget "SmokeOrFireTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				743924F91D56D98A00F1A17D /* Debug */,
+				743924FA1D56D98A00F1A17D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
