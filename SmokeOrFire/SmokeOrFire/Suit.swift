@@ -6,9 +6,9 @@
 //  Copyright © 2016 Justin Lawrence Hester. All rights reserved.
 //
 
-enum Suit {
-    case HEART, SPADE, CLUB, DIAMOND, __EXHAUST
-    
+enum Suit: UInt8 {
+    case HEART = 1, SPADE, CLUB, DIAMOND, __EXHAUST
+
     static let allValues = [SPADE, HEART, DIAMOND, CLUB]
 
     func describe() -> String {
