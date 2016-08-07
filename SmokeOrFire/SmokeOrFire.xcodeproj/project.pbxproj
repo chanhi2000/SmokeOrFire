@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		741668D51D571A090013437D /* RoundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741668D41D571A090013437D /* RoundTests.swift */; };
 		743924D81D569C0000F1A17D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743924D71D569C0000F1A17D /* AppDelegate.swift */; };
 		743924DA1D569C0000F1A17D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743924D91D569C0000F1A17D /* ViewController.swift */; };
 		743924DD1D569C0000F1A17D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743924DB1D569C0000F1A17D /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		741668D41D571A090013437D /* RoundTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTests.swift; sourceTree = "<group>"; };
 		743924D41D569C0000F1A17D /* SmokeOrFire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmokeOrFire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		743924D71D569C0000F1A17D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		743924D91D569C0000F1A17D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				743924FB1D56D9D500F1A17D /* CardTests.swift */,
 				B5644F991D56EB1800FB48BA /* PlayerTests.swift */,
 				7439250D1D56F95500F1A17D /* DeckTests.swift */,
+				741668D41D571A090013437D /* RoundTests.swift */,
 			);
 			path = SmokeOrFireTests;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			files = (
 				B5644F9A1D56EB1800FB48BA /* PlayerTests.swift in Sources */,
 				7439250E1D56F95500F1A17D /* DeckTests.swift in Sources */,
+				741668D51D571A090013437D /* RoundTests.swift in Sources */,
 				743924FC1D56D9D500F1A17D /* CardTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
