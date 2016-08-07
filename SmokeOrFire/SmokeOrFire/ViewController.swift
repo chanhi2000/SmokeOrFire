@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, PyramidViewControllerDelegate {
     var numPlayer = 2
     var choices = [PlayerChoices.RED, PlayerChoices.HIGHER, PlayerChoices.OUTSIDE, PlayerChoices.DIAMOND];
     
@@ -56,17 +56,6 @@ class ViewController: UIViewController {
         }
         print("GAME OVER")
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-//    func input() -> String {
-//        var keyboard = NSFileHandle.fileHandleWithStandardInput()
-//        var inputData = keyboard.availableData
-//        return NSString(data: inputData, encoding: NSUTF8StringEncoding) as! String
-//    }
     
     func input() -> PlayerChoices {
         
@@ -98,4 +87,16 @@ class ViewController: UIViewController {
         default:   return input()
         }
     }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "pyramidSegue"{
+            let pvc = segue.destinationViewController as! PyramidViewController
+            pvc.delegate = self
+        }
+    }
+    
+    func pvDidFinish(controller: PyramidViewController, text: String) {
+        controller.navigationController?.popViewControllerAnimated(true)
+    }
+
 }
