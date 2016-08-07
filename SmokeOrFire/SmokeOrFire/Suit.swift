@@ -7,7 +7,7 @@
 //
 
 enum Suit: UInt8 {
-    case HEART = 1, SPADE, CLUB, DIAMOND, __EXHAUST
+    case HEART = 1, CLUB, DIAMOND, SPADE, __EXHAUST
 
     static let allValues = [SPADE, HEART, DIAMOND, CLUB]
 
