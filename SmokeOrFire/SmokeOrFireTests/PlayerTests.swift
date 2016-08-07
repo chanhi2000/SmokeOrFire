@@ -30,8 +30,4 @@ class PlayerTests: XCTestCase {
         XCTAssertEqual(player.hand[0].suit, card.suit)
     }
     
-    func testPerformanceExample() {
-        
-    }
-    
 }
