@@ -43,7 +43,7 @@ struct Round {
                         card.rank.rawValue < sortedCards[1].rank.rawValue)) {
                     return false
                 } else if (player.choice == PlayerChoices.OUTSIDE &&
-                        (card.rank.rawValue < sortedCards[0].rank.rawValue &&
+                        (card.rank.rawValue < sortedCards[0].rank.rawValue ||
                         card.rank.rawValue > sortedCards[1].rank.rawValue)) {
                     return false
                 } else if (player.choice == PlayerChoices.SAME &&
@@ -54,7 +54,9 @@ struct Round {
                     return true
                 }
             case .SUIT:
-                return (card.suit.rawValue == player.choice!.rawValue)
+                print("card: \(card.suit.rawValue)")
+                print("hand: \(player.choice!.rawValue)")
+                return (card.suit.rawValue != player.choice!.rawValue)
             case .POKER:
                 print("POKER Under Construction")
                 return true
