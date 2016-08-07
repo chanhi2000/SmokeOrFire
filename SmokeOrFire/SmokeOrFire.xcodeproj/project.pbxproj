@@ -16,6 +16,7 @@
 		B517B2CF1D56A95100455B4F /* suit.png in Resources */ = {isa = PBXBuildFile; fileRef = B517B2CD1D56A95100455B4F /* suit.png */; };
 		B517B2D11D56ABB600455B4F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B517B2D01D56ABB600455B4F /* Card.swift */; };
 		B517B2D31D56AE3E00455B4F /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B517B2D21D56AE3E00455B4F /* Suit.swift */; };
+		B517B2D51D56D42C00455B4F /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = B517B2D41D56D42C00455B4F /* Rank.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		B517B2CD1D56A95100455B4F /* suit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = suit.png; sourceTree = "<group>"; };
 		B517B2D01D56ABB600455B4F /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		B517B2D21D56AE3E00455B4F /* Suit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suit.swift; sourceTree = "<group>"; };
+		B517B2D41D56D42C00455B4F /* Rank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				743924E31D569C0000F1A17D /* Info.plist */,
 				B517B2D01D56ABB600455B4F /* Card.swift */,
 				B517B2D21D56AE3E00455B4F /* Suit.swift */,
+				B517B2D41D56D42C00455B4F /* Rank.swift */,
 			);
 			path = SmokeOrFire;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 				B517B2D11D56ABB600455B4F /* Card.swift in Sources */,
 				743924DA1D569C0000F1A17D /* ViewController.swift in Sources */,
 				B517B2D31D56AE3E00455B4F /* Suit.swift in Sources */,
+				B517B2D51D56D42C00455B4F /* Rank.swift in Sources */,
 				743924D81D569C0000F1A17D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

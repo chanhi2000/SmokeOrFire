@@ -7,21 +7,13 @@
 //
 
 import UIKit
-import Foundation
 
-class Card: NSObject {
+struct Card {
     // properties
-    var value: UInt16
+    var rank: Rank
     var suit: Suit
     
-    // initialize
-    init(value: UInt16, suit: Suit) {
-        self.value = value
-        self.suit = suit
-    }
-    
     // methods
-    func getValue() -> UInt16 {  return self.value  }
-    
+    func getRank() -> Rank {  return self.rank  }
     func getSuit() -> Suit {  return self.suit  }
 }

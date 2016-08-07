@@ -6,4 +6,4 @@
 //  Copyright © 2016 Justin Lawrence Hester. All rights reserved.
 //
 
-enum Suit { case HEART, SPADE, CLUB, DIAMOND  };
+enum Suit {  case HEART, SPADE, CLUB, DIAMOND  };
