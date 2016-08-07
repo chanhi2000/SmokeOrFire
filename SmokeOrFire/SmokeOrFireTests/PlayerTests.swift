@@ -10,7 +10,7 @@
 import XCTest
 
 class PlayerTests: XCTestCase {
-    let player = Player()
+    let player = Player(number: 1)
     
     override func setUp() {
         super.setUp()
@@ -29,5 +29,11 @@ class PlayerTests: XCTestCase {
         XCTAssertEqual(player.hand[0].rank, card.rank)
         XCTAssertEqual(player.hand[0].suit, card.suit)
     }
-    
+
+    func testSetChoice() {
+        XCTAssertEqual(player.choice, nil)
+        player.setChoice(.HEART)
+        XCTAssertEqual(player.choice!, PlayerChoices.HEART)
+    }
+
 }
