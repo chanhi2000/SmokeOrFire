@@ -21,5 +21,13 @@ class Card: NSObject {
         return "The \(rank.describe()) of \(suit.describe())"
     }
     
+    func getRank() -> Rank {  return self.rank;  }
+    
+    func getSuit() -> Suit {  return self.suit;  }
+    
+    func isRed() -> Bool {  return (suit == Suit.HEART || suit == Suit.DIAMOND)  }
+    
+    func isBlack() -> Bool {  return (suit == Suit.CLUB || suit == Suit.SPADE)  }
+    
 }
 
