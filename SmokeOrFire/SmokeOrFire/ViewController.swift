@@ -45,14 +45,6 @@ class ViewController: UIViewController, PyramidViewControllerDelegate {
                 }
             }
             
-            print("Current cards holding:")
-            for j in 0..<self.numPlayer {
-                print("Player \(j): ")
-                for card in p[j].hand {
-                    print(card.describe())
-                }
-            }
-            
         }
         print("GAME OVER")
     }
@@ -98,5 +90,4 @@ class ViewController: UIViewController, PyramidViewControllerDelegate {
     func pvDidFinish(controller: PyramidViewController, text: String) {
         controller.navigationController?.popViewControllerAnimated(true)
     }
-
 }
