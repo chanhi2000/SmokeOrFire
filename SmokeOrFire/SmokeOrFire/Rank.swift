@@ -8,6 +8,15 @@
 
 enum Rank: UInt8 {
     case ACE = 1
-    case TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN
-    case JACK, QUEEN, KING
+    case TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, __EXHAUST
+    
+    func describe() -> String {
+        switch self {
+        case .ACE: return "ace";
+        case .JACK: return "jack";
+        case .QUEEN: return "queen";
+        case .KING: return "king";
+        default: return String(self.rawValue)
+        }
+    }
 }
