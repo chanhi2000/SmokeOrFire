@@ -9,6 +9,8 @@
 enum Suit {
     case HEART, SPADE, CLUB, DIAMOND, __EXHAUST
     
+    static let allValues = [SPADE, HEART, DIAMOND, CLUB]
+
     func describe() -> String {
         switch self {
         case .SPADE: return "spade";

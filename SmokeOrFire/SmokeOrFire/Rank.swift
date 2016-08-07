@@ -7,9 +7,10 @@
 //
 
 enum Rank: UInt8 {
-    case ACE = 1
-    case TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, __EXHAUST
-    
+    case ACE = 1, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, __EXHAUST
+
+    static let allValues = [ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING]
+
     func describe() -> String {
         switch self {
         case .ACE: return "ace";

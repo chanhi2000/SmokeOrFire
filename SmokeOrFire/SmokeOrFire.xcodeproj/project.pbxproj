@@ -15,6 +15,8 @@
 		743924FC1D56D9D500F1A17D /* CardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743924FB1D56D9D500F1A17D /* CardTests.swift */; };
 		743925051D56DF2E00F1A17D /* Rank+exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743925031D56DF2E00F1A17D /* Rank+exts.swift */; };
 		743925061D56DF2E00F1A17D /* Suit+exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743925041D56DF2E00F1A17D /* Suit+exts.swift */; };
+		743925081D56E26A00F1A17D /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743925071D56E26A00F1A17D /* Deck.swift */; };
+		7439250E1D56F95500F1A17D /* DeckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7439250D1D56F95500F1A17D /* DeckTests.swift */; };
 		B517B2CE1D56A95100455B4F /* card.png in Resources */ = {isa = PBXBuildFile; fileRef = B517B2CC1D56A95100455B4F /* card.png */; };
 		B517B2CF1D56A95100455B4F /* suit.png in Resources */ = {isa = PBXBuildFile; fileRef = B517B2CD1D56A95100455B4F /* suit.png */; };
 		B517B2D11D56ABB600455B4F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B517B2D01D56ABB600455B4F /* Card.swift */; };
@@ -47,6 +49,8 @@
 		743924FB1D56D9D500F1A17D /* CardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTests.swift; sourceTree = "<group>"; };
 		743925031D56DF2E00F1A17D /* Rank+exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rank+exts.swift"; sourceTree = "<group>"; };
 		743925041D56DF2E00F1A17D /* Suit+exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Suit+exts.swift"; sourceTree = "<group>"; };
+		743925071D56E26A00F1A17D /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		7439250D1D56F95500F1A17D /* DeckTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckTests.swift; sourceTree = "<group>"; };
 		B517B2CC1D56A95100455B4F /* card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card.png; sourceTree = "<group>"; };
 		B517B2CD1D56A95100455B4F /* suit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = suit.png; sourceTree = "<group>"; };
 		B517B2D01D56ABB600455B4F /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 				B517B2D21D56AE3E00455B4F /* Suit.swift */,
 				B517B2D41D56D42C00455B4F /* Rank.swift */,
 				B5644F971D56E28D00FB48BA /* Player.swift */,
+				743925071D56E26A00F1A17D /* Deck.swift */,
 			);
 			path = SmokeOrFire;
 			sourceTree = "<group>";
@@ -117,6 +122,7 @@
 				743924F51D56D98A00F1A17D /* Info.plist */,
 				743924FB1D56D9D500F1A17D /* CardTests.swift */,
 				B5644F991D56EB1800FB48BA /* PlayerTests.swift */,
+				7439250D1D56F95500F1A17D /* DeckTests.swift */,
 			);
 			path = SmokeOrFireTests;
 			sourceTree = "<group>";
@@ -247,6 +253,7 @@
 				743924DA1D569C0000F1A17D /* ViewController.swift in Sources */,
 				743925061D56DF2E00F1A17D /* Suit+exts.swift in Sources */,
 				B5644F981D56E28D00FB48BA /* Player.swift in Sources */,
+				743925081D56E26A00F1A17D /* Deck.swift in Sources */,
 				B517B2D31D56AE3E00455B4F /* Suit.swift in Sources */,
 				B517B2D51D56D42C00455B4F /* Rank.swift in Sources */,
 				743924D81D569C0000F1A17D /* AppDelegate.swift in Sources */,
@@ -258,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5644F9A1D56EB1800FB48BA /* PlayerTests.swift in Sources */,
+				7439250E1D56F95500F1A17D /* DeckTests.swift in Sources */,
 				743924FC1D56D9D500F1A17D /* CardTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
