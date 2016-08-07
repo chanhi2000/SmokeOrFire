@@ -58,6 +58,33 @@ class RoundTests: XCTestCase {
 
         round.card = Card(rank: .QUEEN, suit: .DIAMOND)
         XCTAssertTrue(round.isDrinking(player))
+        
+        // INSIDE or OUTSIDE?
+        player.hand = [Card(rank: .TWO, suit: .CLUB), Card(rank: .QUEEN, suit: .DIAMOND)]
+        player.setChoice(.INSIDE)
+        round = Round(card: Card(rank: .JACK, suit: .HEART), rule: .IN_OUT)
+        XCTAssertFalse(round.isDrinking(player))
+        
+        round.card = Card(rank: .ACE, suit:.DIAMOND)
+        XCTAssertTrue(round.isDrinking(player))
+        
+        player.setChoice(.OUTSIDE)
+        round.card = Card(rank: .THREE, suit:.DIAMOND)
+        XCTAssertTrue(round.isDrinking(player))
+        
+        round.card = Card(rank: .TWO, suit: .SPADE)
+        XCTAssertTrue(round.isDrinking(player))
+        
+        player.setChoice(.SAME)
+        XCTAssertFalse(round.isDrinking(player))
+        
+        // SUIT?
+        player.setChoice(.DIAMOND)
+        round = Round(card: Card(rank: .TWO, suit: .DIAMOND), rule: .SUIT)
+        XCTAssertFalse(round.isDrinking(player))
+        
+        player.setChoice(.CLUB)
+        XCTAssertTrue(round.isDrinking(player))
     }
 
 }
