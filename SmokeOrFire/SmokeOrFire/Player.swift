@@ -9,5 +9,9 @@
 import UIKit
 
 class Player: NSObject {
-
+    var hand: [Card] = [];
+    
+    func addCard(card: Card) {
+        hand.append(card)
+    }
 }

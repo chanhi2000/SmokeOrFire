@@ -6,9 +6,11 @@
 //  Copyright © 2016 Justin Lawrence Hester. All rights reserved.
 //
 
+@testable import SmokeOrFire
 import XCTest
 
 class PlayerTests: XCTestCase {
+    let player = Player()
     
     override func setUp() {
         super.setUp()
@@ -20,16 +22,16 @@ class PlayerTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testAddCard() {
+        let card = Card(rank: .KING, suit: .HEART)
+        player.addCard(card)
+        XCTAssertEqual(player.hand.count, 1)
+        XCTAssertEqual(player.hand[0].rank, card.rank)
+        XCTAssertEqual(player.hand[0].suit, card.suit)
     }
     
     func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
+        
     }
     
 }
