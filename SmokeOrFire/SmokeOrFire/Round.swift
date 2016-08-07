@@ -7,3 +7,63 @@
 //
 
 import Foundation
+
+struct Round {
+    var card: Card
+    var rule: Rule
+
+    func isDrinking(player: Player) -> Bool {
+        switch (rule) {
+            case .COLOR:
+                if (player.choice! == PlayerChoices.RED && card.isRed()) {
+                    return false
+                } else if (player.choice! == PlayerChoices.BLACK && card.isBlack()) {
+                    return false
+                } else {
+                    return true
+                }
+            case .UP_DOWN:
+                if (player.choice! == PlayerChoices.HIGHER &&
+                        (card.rank.rawValue > player.hand[0].rank.rawValue)) {
+                    return false
+                } else if (player.choice! == PlayerChoices.LOWER &&
+                        (card.rank.rawValue < player.hand[0].rank.rawValue)) {
+                    return false
+                } else if (player.choice! == PlayerChoices.SAME &&
+                        (card.rank.rawValue == player.hand[0].rank.rawValue)) {
+                    return false
+                } else {
+                    return true
+                }
+            case .IN_OUT:
+                var sortedCards = player.hand
+                sortedCards.sortInPlace({ $0.rank.rawValue < $1.rank.rawValue })
+                if (player.choice == PlayerChoices.INSIDE &&
+                        (card.rank.rawValue > sortedCards[0].rank.rawValue &&
+                        card.rank.rawValue < sortedCards[1].rank.rawValue)) {
+                    return false
+                } else if (player.choice == PlayerChoices.OUTSIDE &&
+                        (card.rank.rawValue < sortedCards[0].rank.rawValue &&
+                        card.rank.rawValue > sortedCards[1].rank.rawValue)) {
+                    return false
+                } else if (player.choice == PlayerChoices.SAME &&
+                        (card.rank.rawValue == sortedCards[0].rank.rawValue ||
+                        card.rank.rawValue == sortedCards[1].rank.rawValue)) {
+                    return false
+                } else {
+                    return true
+                }
+            case .SUIT:
+                return (card.suit.rawValue == player.choice!.rawValue)
+            case .POKER:
+                print("POKER Under Construction")
+                return true
+            case .GIVE:
+                print("GIVE Under Construction")
+                return true
+            case .TAKE:
+                print("TAKE Under Construction")
+                return true
+        }
+    }
+}

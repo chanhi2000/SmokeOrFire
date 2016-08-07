@@ -8,6 +8,12 @@
 
 import UIKit
 
-class Rule: NSObject {
-
+enum Rule {
+    case COLOR
+    case UP_DOWN
+    case IN_OUT
+    case SUIT
+    case POKER
+    case GIVE
+    case TAKE
 }

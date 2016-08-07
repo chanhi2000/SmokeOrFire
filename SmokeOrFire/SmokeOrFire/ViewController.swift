@@ -13,6 +13,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+//        let deck = Deck()
+        let player = Player(number: 1)
+        player.setChoice(.RED)
+        
+        let card = Card(rank: .KING, suit: .HEART)
+        let round = Round(card: card, rule: .COLOR)
+
+        print(round.isDrinking(player))
     }
 
     override func didReceiveMemoryWarning() {
