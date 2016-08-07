@@ -24,6 +24,7 @@
 		B517B2D51D56D42C00455B4F /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = B517B2D41D56D42C00455B4F /* Rank.swift */; };
 		B5644F981D56E28D00FB48BA /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5644F971D56E28D00FB48BA /* Player.swift */; };
 		B5644F9A1D56EB1800FB48BA /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5644F991D56EB1800FB48BA /* PlayerTests.swift */; };
+		B5644F9C1D56F36400FB48BA /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5644F9B1D56F36400FB48BA /* Rule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		B517B2D41D56D42C00455B4F /* Rank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 		B5644F971D56E28D00FB48BA /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		B5644F991D56EB1800FB48BA /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
+		B5644F9B1D56F36400FB48BA /* Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				B517B2D41D56D42C00455B4F /* Rank.swift */,
 				B5644F971D56E28D00FB48BA /* Player.swift */,
 				743925071D56E26A00F1A17D /* Deck.swift */,
+				B5644F9B1D56F36400FB48BA /* Rule.swift */,
 			);
 			path = SmokeOrFire;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				B517B2D11D56ABB600455B4F /* Card.swift in Sources */,
 				743925051D56DF2E00F1A17D /* Rank+exts.swift in Sources */,
 				743924DA1D569C0000F1A17D /* ViewController.swift in Sources */,
+				B5644F9C1D56F36400FB48BA /* Rule.swift in Sources */,
 				743925061D56DF2E00F1A17D /* Suit+exts.swift in Sources */,
 				B5644F981D56E28D00FB48BA /* Player.swift in Sources */,
 				743925081D56E26A00F1A17D /* Deck.swift in Sources */,
