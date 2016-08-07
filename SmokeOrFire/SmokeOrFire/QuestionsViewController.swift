@@ -134,10 +134,10 @@ class QuestionsViewController: UIViewController, PyramidViewControllerDelegate {
                 (round.isDrinking(player!) ? "DRINK" : "YOU WIN THIS TIME")
             let ac = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
             ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: nil))
-            presentViewController(ac, animated: true, completion: nil)
-
-            player!.hand.append(round.card)
-            playerIndex += 1
+            presentViewController(ac, animated: true, completion: { [unowned self] in
+                self.player!.hand.append(self.round.card)
+                self.playerIndex += 1
+            })
         }
     }
 
@@ -164,9 +164,15 @@ class QuestionsViewController: UIViewController, PyramidViewControllerDelegate {
 
     func nextRound() {
         if let card = deck.draw() {
-            let rule = rules.removeFirst()
-            round = Round(card: card, rule: rule)
-            setChoices(round)
+            if rules.count > 0 {
+                let rule = rules.removeFirst()
+                round = Round(card: card, rule: rule)
+                setChoices(round)
+            } else {
+                dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+                    self.performSegueWithIdentifier("pyramidSegue", sender: nil)
+                }
+            }
         } else {
             gameOver()
         }
@@ -247,6 +253,7 @@ class QuestionsViewController: UIViewController, PyramidViewControllerDelegate {
         if segue.identifier == "pyramidSegue" {
             let pvc = segue.destinationViewController as! PyramidViewController
             pvc.delegate = self
+            pvc.createPyramid(deck, levels: [1, 2, 3, 3, 4, 4])
         }
     }
 

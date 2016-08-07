@@ -22,6 +22,7 @@
 		749D20741D57349900083E52 /* Pyramid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D20731D57349900083E52 /* Pyramid.swift */; };
 		749D20781D5748CA00083E52 /* PyramidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D20771D5748CA00083E52 /* PyramidViewController.swift */; };
 		749D207A1D575A6100083E52 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D20791D575A6100083E52 /* QuestionsViewController.swift */; };
+		749D207E1D57D65C00083E52 /* PyramidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D207D1D57D65C00083E52 /* PyramidCell.swift */; };
 		B517B2CE1D56A95100455B4F /* card.png in Resources */ = {isa = PBXBuildFile; fileRef = B517B2CC1D56A95100455B4F /* card.png */; };
 		B517B2CF1D56A95100455B4F /* suit.png in Resources */ = {isa = PBXBuildFile; fileRef = B517B2CD1D56A95100455B4F /* suit.png */; };
 		B517B2D11D56ABB600455B4F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B517B2D01D56ABB600455B4F /* Card.swift */; };
@@ -62,6 +63,7 @@
 		749D20731D57349900083E52 /* Pyramid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pyramid.swift; sourceTree = "<group>"; };
 		749D20771D5748CA00083E52 /* PyramidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PyramidViewController.swift; sourceTree = "<group>"; };
 		749D20791D575A6100083E52 /* QuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
+		749D207D1D57D65C00083E52 /* PyramidCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PyramidCell.swift; sourceTree = "<group>"; };
 		B517B2CC1D56A95100455B4F /* card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card.png; sourceTree = "<group>"; };
 		B517B2CD1D56A95100455B4F /* suit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = suit.png; sourceTree = "<group>"; };
 		B517B2D01D56ABB600455B4F /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				749D20731D57349900083E52 /* Pyramid.swift */,
 				749D20771D5748CA00083E52 /* PyramidViewController.swift */,
 				749D20791D575A6100083E52 /* QuestionsViewController.swift */,
+				749D207D1D57D65C00083E52 /* PyramidCell.swift */,
 			);
 			path = SmokeOrFire;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				749D20781D5748CA00083E52 /* PyramidViewController.swift in Sources */,
 				743925101D57012000F1A17D /* Round.swift in Sources */,
 				B5644F9C1D56F36400FB48BA /* Rule.swift in Sources */,
+				749D207E1D57D65C00083E52 /* PyramidCell.swift in Sources */,
 				743925061D56DF2E00F1A17D /* Suit+exts.swift in Sources */,
 				749D207A1D575A6100083E52 /* QuestionsViewController.swift in Sources */,
 				B5644F981D56E28D00FB48BA /* Player.swift in Sources */,
