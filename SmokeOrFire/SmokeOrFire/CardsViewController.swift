@@ -45,7 +45,7 @@ class CardsViewController: UIViewController {
     }
 
     func cardTapped() {
-        delegate.cardTapped(self)
+//        delegate.cardTapped(self)
     }
     
     func wasTapped() {

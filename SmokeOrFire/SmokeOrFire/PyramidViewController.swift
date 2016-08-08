@@ -29,10 +29,14 @@ class PyramidViewController: UIViewController, UICollectionViewDataSource, UICol
 
     @IBOutlet weak var collectionView: UICollectionView!
 
+    var cell: PyramidCell!
+    var round: PyramidRound!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         print("hello")
+        collectionView.allowsSelection = true
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -61,9 +65,10 @@ class PyramidViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Card", forIndexPath: indexPath) as! PyramidCell
-
-        cell.imageView.image = UIImage(named: "cardCircle")
+        cell = collectionView.dequeueReusableCellWithReuseIdentifier("Card", forIndexPath: indexPath) as! PyramidCell
+        let i = levels![0 ..< indexPath.section].reduce(0, combine: +) + indexPath.item
+        round = pyramid!.rounds[i]
+        cell.imageView.image = round.isClicked ? round.card.frontTexture : round.card.backTexture
 
         cell.imageView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).CGColor
         cell.imageView.layer.borderWidth = 2
@@ -74,9 +79,18 @@ class PyramidViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let card = pyramid!.rounds[indexPath.item].card
-        let ac = UIAlertController(title: "Round \(indexPath.item)",
-            message: "\(card.describe())", preferredStyle: .Alert)
+//        let card = pyramid!.rounds[indexPath.item].card
+        cell = collectionView.dequeueReusableCellWithReuseIdentifier("Card", forIndexPath: indexPath) as! PyramidCell
+        let i = levels![0 ..< indexPath.section].reduce(0, combine: +) + indexPath.item
+        pyramid!.rounds[i].isClicked = true
+        round = pyramid!.rounds[i]
+
+        dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+            self.collectionView.reloadData()
+        }
+
+        let ac = UIAlertController(title: "Round \(i)",
+                                   message: "\(round.card.describe())", preferredStyle: .Alert)
         ac.addAction(UIAlertAction(title: "Continue", style: .Cancel, handler: nil))
         
         presentViewController(ac, animated: true, completion: nil)
@@ -95,7 +109,7 @@ class PyramidViewController: UIViewController, UICollectionViewDataSource, UICol
         for i in 0 ..< levels.count {
             for _ in 0 ..< levels[i] {
                 if let card = deck.draw() {
-                    let pr = PyramidRound(level: levels[i], card: card, rule: ((pyramid!.rounds.count + seed) % 2) == 0 ? .GIVE : .TAKE)
+                    let pr = PyramidRound(level: levels[i], card: card, rule: ((pyramid!.rounds.count + seed) % 2) == 0 ? .GIVE : .TAKE, isClicked: false)
                     pyramid!.rounds.append(pr)
                 } else {
                     print("No more cards in deck to build pyramid.")
