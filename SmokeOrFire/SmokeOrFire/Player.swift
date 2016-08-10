@@ -10,11 +10,16 @@ import UIKit
 
 class Player: NSObject {
     var number: Int
-    var hand: [Card] = [];
-    var choice: PlayerChoices? = nil
+    var hand: [Card]
+    var choice: PlayerChoices!
     
     init(number: Int) {
         self.number = number
+        self.hand = [Card]()
+    }
+
+    func getNumber() -> Int {
+        return self.number
     }
 
     func addCard(card: Card) {

@@ -10,18 +10,17 @@
 import XCTest
 
 class PlayerTests: XCTestCase {
-    let player = Player(number: 1)
-    
+    var player: Player!
+
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        player = Player(number: 1)
     }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+
+    func testGetNumber() {
+        XCTAssertEqual(player.getNumber(), 1)
     }
-    
+
     func testAddCard() {
         let card = Card(rank: .KING, suit: .HEART)
         player.addCard(card)
@@ -33,7 +32,27 @@ class PlayerTests: XCTestCase {
     func testSetChoice() {
         XCTAssertEqual(player.choice, nil)
         player.setChoice(.HEART)
-        XCTAssertEqual(player.choice!, PlayerChoices.HEART)
+        XCTAssertEqual(player.choice, PlayerChoices.HEART)
     }
 
+    func testPlayerChoices() {
+        XCTAssertEqual(PlayerChoices.CLUB.rawValue, 1)
+        XCTAssertEqual(PlayerChoices.DIAMOND.rawValue, 2)
+        XCTAssertEqual(PlayerChoices.HEART.rawValue, 3)
+        XCTAssertEqual(PlayerChoices.SPADE.rawValue, 4)
+    }
+
+    func testChoicesText() {
+        XCTAssertEqual(ChoicesText.HEART.rawValue, "HEART")
+        XCTAssertEqual(ChoicesText.CLUB.rawValue, "CLUB")
+        XCTAssertEqual(ChoicesText.DIAMOND.rawValue, "DIAMOND")
+        XCTAssertEqual(ChoicesText.SPADE.rawValue, "SPADE")
+        XCTAssertEqual(ChoicesText.RED.rawValue, "FIRE")
+        XCTAssertEqual(ChoicesText.BLACK.rawValue, "SMOKE")
+        XCTAssertEqual(ChoicesText.HIGHER.rawValue, "HIGHER")
+        XCTAssertEqual(ChoicesText.LOWER.rawValue, "LOWER")
+        XCTAssertEqual(ChoicesText.INSIDE.rawValue, "INSIDE")
+        XCTAssertEqual(ChoicesText.OUTSIDE.rawValue, "OUTSIDE")
+        XCTAssertEqual(ChoicesText.SAME.rawValue, "SAME")
+    }
 }

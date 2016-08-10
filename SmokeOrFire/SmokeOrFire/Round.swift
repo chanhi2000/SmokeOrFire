@@ -15,21 +15,21 @@ struct Round {
     func isDrinking(player: Player) -> Bool {
         switch (rule) {
             case .COLOR:
-                if (player.choice! == PlayerChoices.RED && card.isRed()) {
+                if (player.choice == PlayerChoices.RED && card.isRed()) {
                     return false
-                } else if (player.choice! == PlayerChoices.BLACK && card.isBlack()) {
+                } else if (player.choice == PlayerChoices.BLACK && card.isBlack()) {
                     return false
                 } else {
                     return true
                 }
             case .UP_DOWN:
-                if (player.choice! == PlayerChoices.HIGHER &&
+                if (player.choice == PlayerChoices.HIGHER &&
                         (card.rank.rawValue > player.hand[0].rank.rawValue)) {
                     return false
-                } else if (player.choice! == PlayerChoices.LOWER &&
+                } else if (player.choice == PlayerChoices.LOWER &&
                         (card.rank.rawValue < player.hand[0].rank.rawValue)) {
                     return false
-                } else if (player.choice! == PlayerChoices.SAME &&
+                } else if (player.choice == PlayerChoices.SAME &&
                         (card.rank.rawValue == player.hand[0].rank.rawValue)) {
                     return false
                 } else {
@@ -54,7 +54,7 @@ struct Round {
                     return true
                 }
             case .SUIT:
-                return (card.suit.rawValue != player.choice!.rawValue)
+                return (card.suit.rawValue != player.choice.rawValue)
             case .POKER:
                 print("POKER Under Construction")
                 return true
