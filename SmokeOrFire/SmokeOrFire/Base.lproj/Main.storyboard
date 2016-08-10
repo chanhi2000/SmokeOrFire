@@ -17,8 +17,48 @@
                     <view key="view" contentMode="scaleToFill" id="rdS-xm-bkD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mg-B7-BlQ">
+                                <rect key="frame" x="119" y="192" width="94" height="87"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="1"/>
+                                <connections>
+                                    <action selector="choiceTapped:" destination="I2v-EI-8Bd" eventType="touchUpInside" id="ub3-UF-Yko"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DiY-KU-NVB">
+                                <rect key="frame" x="306" y="192" width="92" height="86"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="2"/>
+                                <connections>
+                                    <action selector="choiceTapped:" destination="I2v-EI-8Bd" eventType="touchUpInside" id="o0s-9S-2kj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mU2-PI-w3K">
+                                <rect key="frame" x="124" y="318" width="113" height="93"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="3"/>
+                                <connections>
+                                    <action selector="choiceTapped:" destination="I2v-EI-8Bd" eventType="touchUpInside" id="EHl-oY-ZrH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Vx-Jz-Hvt">
+                                <rect key="frame" x="316" y="327" width="101" height="109"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="4"/>
+                                <connections>
+                                    <action selector="choiceTapped:" destination="I2v-EI-8Bd" eventType="touchUpInside" id="VpC-iR-pVI"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="firstChoice" destination="6mg-B7-BlQ" id="CLs-6y-KkQ"/>
+                        <outlet property="fourthChoice" destination="9Vx-Jz-Hvt" id="G6u-2t-Uwd"/>
+                        <outlet property="secondChoice" destination="DiY-KU-NVB" id="h4m-vI-lxV"/>
+                        <outlet property="thirdChoice" destination="mU2-PI-w3K" id="Zz7-Xs-jCw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AqW-o6-tbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -54,7 +94,6 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="printTotalPlayers:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gtf-hs-sFC"/>
                                     <segue destination="I2v-EI-8Bd" kind="show" identifier="questionSegue" id="ZEr-4D-y6A"/>
                                 </connections>
                             </button>

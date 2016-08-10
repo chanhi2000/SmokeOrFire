@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ViewController: UIViewController, OptionsViewControllerDelegate {
+class ViewController: UIViewController , OptionsViewControllerDelegate {
 
     var totalPlayers = 2
 
@@ -23,9 +23,5 @@ class ViewController: UIViewController, OptionsViewControllerDelegate {
 
     func optionsViewUpdateTotalPlayers(count: Int) {
         totalPlayers = count
-    }
-    
-    @IBAction func printTotalPlayers(sender: AnyObject) {
-        print("totalPlayers: \(totalPlayers)")
     }
 }
