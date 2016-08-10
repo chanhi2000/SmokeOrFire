@@ -5,84 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Questions View Controller-->
-        <scene sceneID="tOF-6J-7zH">
-            <objects>
-                <viewController id="FjY-IN-4cs" customClass="QuestionsViewController" customModule="SmokeOrFire" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9TQ-ys-phB"/>
-                        <viewControllerLayoutGuide type="bottom" id="WTF-lf-Ldq"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qX9-nx-Bls">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpB-vi-bkN">
-                                <rect key="frame" x="230" y="177" width="141" height="71"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Choice 1"/>
-                                <connections>
-                                    <action selector="choiceTapped:" destination="FjY-IN-4cs" eventType="touchUpInside" id="PRd-8P-VxT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fc-nD-oou">
-                                <rect key="frame" x="230" y="256" width="141" height="73"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Choice 2"/>
-                                <connections>
-                                    <action selector="choiceTapped:" destination="FjY-IN-4cs" eventType="touchUpInside" id="8JJ-vI-K7a"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="um2-TH-mI4">
-                                <rect key="frame" x="230" y="342" width="141" height="80"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Choice 3"/>
-                                <connections>
-                                    <action selector="choiceTapped:" destination="FjY-IN-4cs" eventType="touchUpInside" id="q0W-bB-juR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wpT-he-gaK">
-                                <rect key="frame" x="230" y="430" width="141" height="85"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Choice 4"/>
-                                <connections>
-                                    <action selector="choiceTapped:" destination="FjY-IN-4cs" eventType="touchUpInside" id="pYX-k7-NFs"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okn-Y3-ds4">
-                                <rect key="frame" x="309" y="103" width="46" height="30"/>
-                                <state key="normal" title="Hand"/>
-                                <connections>
-                                    <action selector="handTapped:" destination="FjY-IN-4cs" eventType="touchUpInside" id="y9F-5U-Blw"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oYh-Je-Dts">
-                                <rect key="frame" x="114" y="79" width="104" height="78"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Pyramid"/>
-                                <connections>
-                                    <segue destination="Ho4-GP-JUC" kind="show" identifier="pyramidSegue" id="fYf-gJ-bEr"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="firstChoice" destination="cpB-vi-bkN" id="g0D-iC-hQp"/>
-                        <outlet property="fourthChoice" destination="wpT-he-gaK" id="BRN-Ev-Hj0"/>
-                        <outlet property="secondChoice" destination="9fc-nD-oou" id="RGN-pw-MDw"/>
-                        <outlet property="thirdChoice" destination="um2-TH-mI4" id="NbE-Z8-D9C"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zOz-jM-OdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2209" y="-546"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SmokeOrFire" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -92,82 +18,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="siG-yq-Smg">
-                                <rect key="frame" x="233" y="206" width="146" height="117"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smoke or Fire" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8K-8L-S4w">
+                                <rect key="frame" x="122" y="99" width="357" height="212"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFO-iS-itl">
+                                <rect key="frame" x="129" y="297" width="350" height="100"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Play"/>
-                                <connections>
-                                    <segue destination="FjY-IN-4cs" kind="show" identifier="questionsSegue" id="nnV-EX-fJM"/>
-                                </connections>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="0X1-Oh-cVG"/>
+                                    <constraint firstAttribute="height" constant="100" id="bI0-Z0-9PE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <state key="normal" title="play">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFf-D3-3hA">
+                                <rect key="frame" x="129" y="450" width="350" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <state key="normal" title="options">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BFO-iS-itl" firstAttribute="top" secondItem="D8K-8L-S4w" secondAttribute="bottom" constant="-14" id="Db4-0o-3hJ"/>
+                            <constraint firstItem="YFf-D3-3hA" firstAttribute="width" secondItem="BFO-iS-itl" secondAttribute="width" id="JQe-Dc-FA5"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="lessThanOrEqual" secondItem="YFf-D3-3hA" secondAttribute="bottom" constant="50" id="OOY-cb-eAD"/>
+                            <constraint firstItem="YFf-D3-3hA" firstAttribute="top" secondItem="BFO-iS-itl" secondAttribute="bottom" constant="53" id="RKW-Wk-v6B"/>
+                            <constraint firstItem="D8K-8L-S4w" firstAttribute="top" relation="lessThanOrEqual" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="35" id="lQt-ot-1Vb"/>
+                            <constraint firstItem="YFf-D3-3hA" firstAttribute="centerX" secondItem="BFO-iS-itl" secondAttribute="centerX" id="pbE-E8-Npr"/>
+                            <constraint firstItem="D8K-8L-S4w" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q5Q-YG-oPg"/>
+                            <constraint firstItem="BFO-iS-itl" firstAttribute="centerX" secondItem="D8K-8L-S4w" secondAttribute="centerX" constant="3.5" id="tIC-bq-iPs"/>
+                            <constraint firstItem="YFf-D3-3hA" firstAttribute="height" secondItem="BFO-iS-itl" secondAttribute="height" id="w0L-ZO-I8s"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="R54-lV-iDI"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1025" y="110"/>
-        </scene>
-        <!--Pyramid View Controller-->
-        <scene sceneID="mvN-KJ-7CH">
-            <objects>
-                <viewController id="Ho4-GP-JUC" customClass="PyramidViewController" customModule="SmokeOrFire" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="aew-RT-TQV"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ogh-hU-13b"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="wIP-F9-9av">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lMn-3J-2TT">
-                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="23L-Uy-DF7">
-                                    <size key="itemSize" width="50" height="80"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Card" id="rYR-f2-Pz4" customClass="PyramidCell" customModule="SmokeOrFire" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="74" width="50" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="80"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IP9-RZ-sU5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="80"/>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <outlet property="imageView" destination="IP9-RZ-sU5" id="Hb5-uz-nzg"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="Ho4-GP-JUC" id="MPs-0J-M6S"/>
-                                    <outlet property="delegate" destination="Ho4-GP-JUC" id="pvm-wN-yPf"/>
-                                </connections>
-                            </collectionView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="collectionView" destination="lMn-3J-2TT" id="lET-AQ-Y8c"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fyu-WK-vXP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2175" y="645"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fxK-Z9-R6a">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GkF-ik-RrK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oAv-oj-fxN" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="l8o-Nm-noV">
@@ -179,7 +78,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ODn-99-I0r"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GkF-ik-RrK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="213" y="110"/>
         </scene>
