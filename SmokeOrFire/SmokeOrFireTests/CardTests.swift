@@ -21,14 +21,29 @@ class CardTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-    func testRank() {
+
+    func testDescribe() {
+        XCTAssertEqual(card.describe(), "The ace of spades")
+    }
+
+    func testGetImageName() {
+        XCTAssertEqual(card.getImageName(), "ace_of_spades")
+    }
+
+    func testGetRank() {
         XCTAssertEqual(card.rank, Rank.ACE)
     }
     
-    func testSuit() {
+    func testGetSuit() {
         XCTAssertEqual(card.suit, Suit.SPADE)
     }
-    
-    
+
+    func testIsRed() {
+        XCTAssertFalse(card.isRed())
+    }
+
+    func testIsBlack() {
+        XCTAssertTrue(card.isBlack())
+    }
+
 }
