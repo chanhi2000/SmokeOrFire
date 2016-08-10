@@ -13,10 +13,10 @@ enum Rank: UInt8 {
 
     func describe() -> String {
         switch self {
-        case .ACE: return "ace";
-        case .JACK: return "jack";
-        case .QUEEN: return "queen";
-        case .KING: return "king";
+        case .ACE: return "ace"
+        case .JACK: return "jack"
+        case .QUEEN: return "queen"
+        case .KING: return "king"
         default: return String(self.rawValue)
         }
     }

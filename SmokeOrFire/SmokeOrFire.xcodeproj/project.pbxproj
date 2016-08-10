@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		740755A51D5ACB3C007F8225 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740755A41D5ACB3C007F8225 /* OptionsViewController.swift */; };
 		740755AB1D5B31A6007F8225 /* SuitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740755AA1D5B31A6007F8225 /* SuitTests.swift */; };
+		740755AD1D5B39DA007F8225 /* RankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740755AC1D5B39DA007F8225 /* RankTests.swift */; };
 		741668D51D571A090013437D /* RoundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741668D41D571A090013437D /* RoundTests.swift */; };
 		743924D81D569C0000F1A17D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743924D71D569C0000F1A17D /* AppDelegate.swift */; };
 		743924DA1D569C0000F1A17D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743924D91D569C0000F1A17D /* ViewController.swift */; };
@@ -105,6 +106,7 @@
 /* Begin PBXFileReference section */
 		740755A41D5ACB3C007F8225 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		740755AA1D5B31A6007F8225 /* SuitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuitTests.swift; sourceTree = "<group>"; };
+		740755AC1D5B39DA007F8225 /* RankTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankTests.swift; sourceTree = "<group>"; };
 		741668D41D571A090013437D /* RoundTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTests.swift; sourceTree = "<group>"; };
 		743924D41D569C0000F1A17D /* SmokeOrFire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmokeOrFire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		743924D71D569C0000F1A17D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				7439250D1D56F95500F1A17D /* DeckTests.swift */,
 				741668D41D571A090013437D /* RoundTests.swift */,
 				740755AA1D5B31A6007F8225 /* SuitTests.swift */,
+				740755AC1D5B39DA007F8225 /* RankTests.swift */,
 			);
 			path = SmokeOrFireTests;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				740755AB1D5B31A6007F8225 /* SuitTests.swift in Sources */,
 				741668D51D571A090013437D /* RoundTests.swift in Sources */,
 				743924FC1D56D9D500F1A17D /* CardTests.swift in Sources */,
+				740755AD1D5B39DA007F8225 /* RankTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
