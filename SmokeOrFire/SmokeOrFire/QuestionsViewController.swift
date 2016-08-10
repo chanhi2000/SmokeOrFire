@@ -205,9 +205,9 @@ class QuestionsViewController: UIViewController, PyramidViewControllerDelegate {
                 fourthChoice.hidden = true
                 break
             case .SUIT:
-                firstChoice.setTitle(ChoicesText.HEART.rawValue, forState: .Normal)
-                secondChoice.setTitle(ChoicesText.CLUB.rawValue, forState: .Normal)
-                thirdChoice.setTitle(ChoicesText.DIAMOND.rawValue, forState: .Normal)
+                firstChoice.setTitle(ChoicesText.CLUB.rawValue, forState: .Normal)
+                secondChoice.setTitle(ChoicesText.DIAMOND.rawValue, forState: .Normal)
+                thirdChoice.setTitle(ChoicesText.HEART.rawValue, forState: .Normal)
                 fourthChoice.setTitle(ChoicesText.SPADE.rawValue, forState: .Normal)
             case .POKER:
                 break

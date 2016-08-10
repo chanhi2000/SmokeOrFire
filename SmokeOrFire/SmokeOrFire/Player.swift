@@ -29,7 +29,7 @@ class Player: NSObject {
 
 enum PlayerChoices: UInt8 {
     // Suit?
-    case HEART = 1, CLUB, DIAMOND, SPADE
+    case CLUB = 1, DIAMOND, HEART, SPADE
     // Smoke or fire?
     case RED
     case BLACK
