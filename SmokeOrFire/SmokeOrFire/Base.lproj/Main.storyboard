@@ -35,6 +35,9 @@
                                 <state key="normal" title="play">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="printTotalPlayers:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gtf-hs-sFC"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFf-D3-3hA">
                                 <rect key="frame" x="129" y="450" width="350" height="100"/>
@@ -43,6 +46,9 @@
                                 <state key="normal" title="options">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="FW5-6p-WHT" kind="show" identifier="optionSegue" id="m3l-93-NVd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -62,6 +68,45 @@
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1025" y="110"/>
+        </scene>
+        <!--Options View Controller-->
+        <scene sceneID="gCb-j8-uB1">
+            <objects>
+                <viewController id="FW5-6p-WHT" customClass="OptionsViewController" customModule="SmokeOrFire" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xst-UN-u58"/>
+                        <viewControllerLayoutGuide type="bottom" id="LXh-OG-2Bu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mpd-kQ-ke8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Players: 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmY-ds-lIh">
+                                <rect key="frame" x="70" y="107" width="195" height="80"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="2" maxValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="S0I-Rg-9iw">
+                                <rect key="frame" x="284" y="137" width="276" height="31"/>
+                                <connections>
+                                    <action selector="updatePlayerCount:" destination="FW5-6p-WHT" eventType="valueChanged" id="qMz-Eo-2If"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
+                    <connections>
+                        <outlet property="playerLabel" destination="SmY-ds-lIh" id="f6c-68-CK6"/>
+                        <outlet property="playerSlider" destination="S0I-Rg-9iw" id="7Xc-TU-1rS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g11-2O-G0O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1719" y="713"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fxK-Z9-R6a">

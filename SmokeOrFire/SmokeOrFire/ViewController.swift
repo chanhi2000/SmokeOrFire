@@ -9,16 +9,23 @@
 import Foundation
 import UIKit
 
-class ViewController: UIViewController, QuestionsViewControllerDelegate {
-    
+class ViewController: UIViewController, OptionsViewControllerDelegate {
+
+    var totalPlayers = 2
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if segue.identifier == "questionsSegue" {
-            let qvc = segue.destinationViewController as! QuestionsViewController
-            qvc.delegate = self
+        if  segue.identifier == "optionSegue" {
+            let ovc = segue.destinationViewController as! OptionsViewController
+            ovc.delegate = self
+            ovc.totalPlayers = totalPlayers
         }
     }
+
+    func optionsViewUpdateTotalPlayers(count: Int) {
+        totalPlayers = count
+    }
     
-    func qvDidFinish(controller: QuestionsViewController, text: String) {
-        controller.navigationController?.popViewControllerAnimated(true)
+    @IBAction func printTotalPlayers(sender: AnyObject) {
+        print("totalPlayers: \(totalPlayers)")
     }
 }

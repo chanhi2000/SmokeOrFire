@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		740755A51D5ACB3C007F8225 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740755A41D5ACB3C007F8225 /* OptionsViewController.swift */; };
 		741668D51D571A090013437D /* RoundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741668D41D571A090013437D /* RoundTests.swift */; };
 		743924D81D569C0000F1A17D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743924D71D569C0000F1A17D /* AppDelegate.swift */; };
 		743924DA1D569C0000F1A17D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743924D91D569C0000F1A17D /* ViewController.swift */; };
@@ -101,6 +102,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		740755A41D5ACB3C007F8225 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		741668D41D571A090013437D /* RoundTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTests.swift; sourceTree = "<group>"; };
 		743924D41D569C0000F1A17D /* SmokeOrFire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmokeOrFire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		743924D71D569C0000F1A17D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				749D20771D5748CA00083E52 /* PyramidViewController.swift */,
 				749D20791D575A6100083E52 /* QuestionsViewController.swift */,
 				749D207D1D57D65C00083E52 /* PyramidCell.swift */,
+				740755A41D5ACB3C007F8225 /* OptionsViewController.swift */,
 			);
 			path = SmokeOrFire;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				749D20741D57349900083E52 /* Pyramid.swift in Sources */,
 				743924DA1D569C0000F1A17D /* ViewController.swift in Sources */,
 				749D20781D5748CA00083E52 /* PyramidViewController.swift in Sources */,
+				740755A51D5ACB3C007F8225 /* OptionsViewController.swift in Sources */,
 				743925101D57012000F1A17D /* Round.swift in Sources */,
 				B5644F9C1D56F36400FB48BA /* Rule.swift in Sources */,
 				749D207E1D57D65C00083E52 /* PyramidCell.swift in Sources */,
