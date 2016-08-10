@@ -7,17 +7,16 @@
 //
 
 enum Suit: UInt8 {
-    case HEART = 1, CLUB, DIAMOND, SPADE, __EXHAUST
+    case HEART = 1, CLUB, DIAMOND, SPADE
 
-    static let allValues = [SPADE, HEART, DIAMOND, CLUB]
+    static let allValues = [HEART, CLUB, DIAMOND, SPADE]
 
     func describe() -> String {
         switch self {
-        case .SPADE: return "spades";
-        case .HEART: return "hearts";
-        case .DIAMOND: return "diamonds";
-        case .CLUB: return "clubs";
-        default: return "";
+        case .HEART: return "hearts"
+        case .CLUB: return "clubs"
+        case .DIAMOND: return "diamonds"
+        case .SPADE: return "spades"
         }
     }
 };
