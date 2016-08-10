@@ -68,7 +68,7 @@ class PyramidViewController: UIViewController, UICollectionViewDataSource, UICol
         cell = collectionView.dequeueReusableCellWithReuseIdentifier("Card", forIndexPath: indexPath) as! PyramidCell
         let i = levels![0 ..< indexPath.section].reduce(0, combine: +) + indexPath.item
         round = pyramid!.rounds[i]
-        cell.imageView.image = round.isClicked ? round.card.frontTexture : round.card.backTexture
+        cell.imageView.image = round.isClicked ? round.card.frontImage : round.card.backImage
 
         cell.imageView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).CGColor
         cell.imageView.layer.borderWidth = 2

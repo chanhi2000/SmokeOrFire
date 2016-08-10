@@ -19,8 +19,8 @@ class CardsViewController: UIViewController {
         super.viewDidLoad()
         
         let card = Card(rank: .KING, suit: .CLUB)
-        front = UIImageView(image: card.frontTexture)
-        back = UIImageView(image: card.backTexture)
+        front = UIImageView(image: card.frontImage)
+        back = UIImageView(image: card.backImage)
         
         view.addSubview(front)
         view.addSubview(back)
