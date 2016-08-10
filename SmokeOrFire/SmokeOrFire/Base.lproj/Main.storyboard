@@ -6,10 +6,27 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Questions View Controller-->
+        <scene sceneID="ybn-NH-uOY">
+            <objects>
+                <viewController id="I2v-EI-8Bd" customClass="QuestionsViewController" customModule="SmokeOrFire" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="va0-ve-KGo"/>
+                        <viewControllerLayoutGuide type="bottom" id="BWJ-7V-qNp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rdS-xm-bkD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AqW-o6-tbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1771" y="-742"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SmokeOrFire" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -38,6 +55,7 @@
                                 </state>
                                 <connections>
                                     <action selector="printTotalPlayers:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gtf-hs-sFC"/>
+                                    <segue destination="I2v-EI-8Bd" kind="show" identifier="questionSegue" id="ZEr-4D-y6A"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFf-D3-3hA">
@@ -67,6 +85,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="R54-lV-iDI"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1025" y="110"/>
         </scene>
@@ -121,7 +140,6 @@
         <!--Navigation Controller-->
         <scene sceneID="fxK-Z9-R6a">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GkF-ik-RrK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oAv-oj-fxN" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="l8o-Nm-noV">
@@ -133,6 +151,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ODn-99-I0r"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GkF-ik-RrK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="213" y="110"/>
         </scene>
