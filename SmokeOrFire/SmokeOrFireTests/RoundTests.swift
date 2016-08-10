@@ -10,20 +10,25 @@
 import XCTest
 
 class RoundTests: XCTestCase {
-    var player = Player(number: 1)
+    var player: Player!
+    var round: Round!
 
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        player = Player(number: 1)
+        round = Round(card: Card(rank: .ACE, suit: .DIAMOND), rule: .COLOR)
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+    func testCard() {
+        XCTAssertEqual(round.card.rank.rawValue, Rank.ACE.rawValue)
+        XCTAssertEqual(round.card.suit.rawValue, Suit.DIAMOND.rawValue)
+    }
+
+    func testRule() {
+        XCTAssertEqual(round.rule, Rule.COLOR)
     }
 
     func testIsDrinking() {
-        var round = Round(card: Card(rank: .ACE, suit: .DIAMOND), rule: .COLOR)
 
         // Smoke or fire?
         player.setChoice(.RED)
