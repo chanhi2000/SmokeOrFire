@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -81,21 +82,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Players: 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmY-ds-lIh">
-                                <rect key="frame" x="70" y="107" width="195" height="80"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="2" maxValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="S0I-Rg-9iw">
-                                <rect key="frame" x="284" y="137" width="276" height="31"/>
+                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="2" maxValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="S0I-Rg-9iw">
+                                <rect key="frame" x="68" y="215" width="434" height="31"/>
                                 <connections>
                                     <action selector="updatePlayerCount:" destination="FW5-6p-WHT" eventType="valueChanged" id="qMz-Eo-2If"/>
                                 </connections>
                             </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Players: 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmY-ds-lIh">
+                                <rect key="frame" x="70" y="107" width="195" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="195" id="LYG-NN-GdE"/>
+                                    <constraint firstAttribute="height" constant="80" id="vq2-lr-XCe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="S0I-Rg-9iw" firstAttribute="leading" secondItem="SmY-ds-lIh" secondAttribute="leading" id="OSD-ap-5BQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="S0I-Rg-9iw" secondAttribute="trailing" constant="80" id="Pmy-6t-K5M"/>
+                            <constraint firstItem="S0I-Rg-9iw" firstAttribute="top" secondItem="SmY-ds-lIh" secondAttribute="bottom" constant="28" id="ilr-Yk-vsD"/>
+                        </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
