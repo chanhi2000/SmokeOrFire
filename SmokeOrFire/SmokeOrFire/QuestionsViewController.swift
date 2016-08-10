@@ -79,9 +79,7 @@ class QuestionsViewController: UIViewController { //, PyramidViewControllerDeleg
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if (players != nil) {
-            startGame()
-        }
+        startGame()
     }
 
     // MARK: - IBAction

@@ -13,13 +13,20 @@ class ViewController: UIViewController , OptionsViewControllerDelegate {
 
     var totalPlayers = 2
 
+    // MARK: - Segue
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if  segue.identifier == "optionSegue" {
+        if segue.identifier == "optionSegue" {
             let ovc = segue.destinationViewController as! OptionsViewController
             ovc.delegate = self
             ovc.totalPlayers = totalPlayers
+        } else if segue.identifier == "questionSegue" {
+            let qvc = segue.destinationViewController as! QuestionsViewController
+            qvc.totalPlayers = totalPlayers
         }
     }
+
+    // MARK: - Options View Controller
 
     func optionsViewUpdateTotalPlayers(count: Int) {
         totalPlayers = count
