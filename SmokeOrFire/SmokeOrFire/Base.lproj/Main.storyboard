@@ -18,46 +18,124 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mg-B7-BlQ">
-                                <rect key="frame" x="119" y="192" width="94" height="87"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="1"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Round: 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5g-hS-gH7">
+                                <rect key="frame" x="20" y="64" width="560" height="130"/>
+                                <color key="backgroundColor" red="0.1902497148" green="0.62180097970000003" blue="0.70760389400000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="2xt-G9-tLC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smoke or Fire?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d78-If-AST">
+                                <rect key="frame" x="20" y="194" width="560" height="151"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="gC0-YJ-ILS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rYD-9k-JNK">
+                                <rect key="frame" x="20" y="520" width="560" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="m9D-CF-7ZJ"/>
+                                </constraints>
                                 <connections>
-                                    <action selector="choiceTapped:" destination="I2v-EI-8Bd" eventType="touchUpInside" id="ub3-UF-Yko"/>
+                                    <outlet property="delegate" destination="I2v-EI-8Bd" id="tGK-9D-ZKz"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DiY-KU-NVB">
-                                <rect key="frame" x="306" y="192" width="92" height="86"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="2"/>
+                            </adBannerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qt7-xk-4CN" customClass="ButtonContainer" customModule="SmokeOrFire" customModuleProvider="target">
+                                <rect key="frame" x="20" y="326" width="560" height="219"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8AV-RK-Fbo">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="219"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="choiceTapped:" destination="qt7-xk-4CN" eventType="touchUpInside" id="0aR-uP-zx6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9QB-8m-lNy">
+                                        <rect key="frame" x="-20" y="-326" width="46" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="choiceTapped:" destination="qt7-xk-4CN" eventType="touchUpInside" id="XwB-k4-Txa"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0u-fj-Z9Q">
+                                        <rect key="frame" x="-20" y="-326" width="46" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="choiceTapped:" destination="qt7-xk-4CN" eventType="touchDragInside" id="9iq-Cs-edw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4d4-pt-IJS">
+                                        <rect key="frame" x="280" y="0.0" width="280" height="219"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="choiceTapped:" destination="qt7-xk-4CN" eventType="touchUpInside" id="Kvq-4B-TmR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="8AV-RK-Fbo" firstAttribute="leading" secondItem="qt7-xk-4CN" secondAttribute="leading" id="0ui-f4-Tix"/>
+                                    <constraint firstItem="4d4-pt-IJS" firstAttribute="leading" secondItem="8AV-RK-Fbo" secondAttribute="trailing" id="PT6-rL-sve"/>
+                                    <constraint firstItem="8AV-RK-Fbo" firstAttribute="top" secondItem="qt7-xk-4CN" secondAttribute="top" id="QJ3-lu-Uuh"/>
+                                    <constraint firstAttribute="bottom" secondItem="4d4-pt-IJS" secondAttribute="bottom" id="TBL-KD-QAA"/>
+                                    <constraint firstItem="4d4-pt-IJS" firstAttribute="height" secondItem="8AV-RK-Fbo" secondAttribute="height" id="YNt-D8-7LD"/>
+                                    <constraint firstItem="4d4-pt-IJS" firstAttribute="width" secondItem="8AV-RK-Fbo" secondAttribute="width" id="hRe-M7-GKR"/>
+                                    <constraint firstItem="4d4-pt-IJS" firstAttribute="top" secondItem="qt7-xk-4CN" secondAttribute="top" id="mhZ-ie-3cH"/>
+                                    <constraint firstAttribute="trailing" secondItem="4d4-pt-IJS" secondAttribute="trailing" id="oSg-6s-lWm"/>
+                                    <constraint firstAttribute="bottom" secondItem="8AV-RK-Fbo" secondAttribute="bottom" id="tdz-5f-zdx"/>
+                                </constraints>
                                 <connections>
-                                    <action selector="choiceTapped:" destination="I2v-EI-8Bd" eventType="touchUpInside" id="o0s-9S-2kj"/>
+                                    <outlet property="firstChoiceButton" destination="8AV-RK-Fbo" id="m98-I4-Qk9"/>
+                                    <outlet property="fourthChoiceButton" destination="D0u-fj-Z9Q" id="yJr-WD-dun"/>
+                                    <outlet property="secondChoiceButton" destination="4d4-pt-IJS" id="qR1-47-dXO"/>
+                                    <outlet property="thirdChoiceButton" destination="9QB-8m-lNy" id="B3r-SJ-Jgz"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mU2-PI-w3K">
-                                <rect key="frame" x="124" y="318" width="113" height="93"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="3"/>
-                                <connections>
-                                    <action selector="choiceTapped:" destination="I2v-EI-8Bd" eventType="touchUpInside" id="EHl-oY-ZrH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Vx-Jz-Hvt">
-                                <rect key="frame" x="316" y="327" width="101" height="109"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="4"/>
-                                <connections>
-                                    <action selector="choiceTapped:" destination="I2v-EI-8Bd" eventType="touchUpInside" id="VpC-iR-pVI"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="v5g-hS-gH7" firstAttribute="trailing" secondItem="rdS-xm-bkD" secondAttribute="trailingMargin" id="53d-w2-CRq"/>
+                            <constraint firstItem="d78-If-AST" firstAttribute="top" secondItem="v5g-hS-gH7" secondAttribute="bottom" id="93J-Kn-TL6"/>
+                            <constraint firstItem="rYD-9k-JNK" firstAttribute="leading" secondItem="rdS-xm-bkD" secondAttribute="leadingMargin" id="DHb-Sa-zw6"/>
+                            <constraint firstItem="v5g-hS-gH7" firstAttribute="top" secondItem="va0-ve-KGo" secondAttribute="bottom" id="DdI-fP-ybp"/>
+                            <constraint firstItem="qt7-xk-4CN" firstAttribute="trailing" secondItem="d78-If-AST" secondAttribute="trailing" id="GfE-wD-A9N"/>
+                            <constraint firstItem="BWJ-7V-qNp" firstAttribute="top" secondItem="qt7-xk-4CN" secondAttribute="bottom" constant="55" id="HsI-lD-TNv"/>
+                            <constraint firstItem="qt7-xk-4CN" firstAttribute="top" secondItem="d78-If-AST" secondAttribute="bottom" constant="-19" id="RRc-go-SFE"/>
+                            <constraint firstItem="d78-If-AST" firstAttribute="leading" secondItem="v5g-hS-gH7" secondAttribute="leading" id="U7J-Bk-xNa"/>
+                            <constraint firstItem="v5g-hS-gH7" firstAttribute="leading" secondItem="rdS-xm-bkD" secondAttribute="leadingMargin" id="UvE-GX-br4"/>
+                            <constraint firstItem="rYD-9k-JNK" firstAttribute="leading" secondItem="v5g-hS-gH7" secondAttribute="leading" id="Xec-9q-VU9"/>
+                            <constraint firstItem="d78-If-AST" firstAttribute="leading" secondItem="rdS-xm-bkD" secondAttribute="leadingMargin" id="gf9-14-yig"/>
+                            <constraint firstItem="d78-If-AST" firstAttribute="trailing" secondItem="rdS-xm-bkD" secondAttribute="trailingMargin" id="hMF-Oh-q10"/>
+                            <constraint firstItem="qt7-xk-4CN" firstAttribute="top" secondItem="rdS-xm-bkD" secondAttribute="top" constant="326" id="q2S-BA-r0j"/>
+                            <constraint firstItem="rYD-9k-JNK" firstAttribute="trailing" secondItem="rdS-xm-bkD" secondAttribute="trailingMargin" id="x6C-Ga-ynj"/>
+                            <constraint firstItem="qt7-xk-4CN" firstAttribute="leading" secondItem="rYD-9k-JNK" secondAttribute="leading" id="xHt-M9-jq6"/>
+                            <constraint firstItem="BWJ-7V-qNp" firstAttribute="top" secondItem="rYD-9k-JNK" secondAttribute="bottom" id="y16-Eh-kHo"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="firstChoice" destination="6mg-B7-BlQ" id="CLs-6y-KkQ"/>
-                        <outlet property="fourthChoice" destination="9Vx-Jz-Hvt" id="G6u-2t-Uwd"/>
-                        <outlet property="secondChoice" destination="DiY-KU-NVB" id="h4m-vI-lxV"/>
-                        <outlet property="thirdChoice" destination="mU2-PI-w3K" id="Zz7-Xs-jCw"/>
+                        <outlet property="bannerView" destination="rYD-9k-JNK" id="Chy-1b-1IB"/>
+                        <outlet property="buttonContainer" destination="qt7-xk-4CN" id="zVg-ST-PA9"/>
+                        <outlet property="questionLabel" destination="d78-If-AST" id="C3f-o8-RrV"/>
+                        <outlet property="statusLabel" destination="v5g-hS-gH7" id="0Yp-TP-N8n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AqW-o6-tbA" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -6,32 +6,43 @@
 //  Copyright © 2016 Justin Lawrence Hester. All rights reserved.
 //
 
+import iAd
 import UIKit
 
-protocol QuestionsViewControllerDelegate {
-    func qvDidFinish(controller: QuestionsViewController, text: String)
-}
+class QuestionsViewController: UIViewController, ADBannerViewDelegate, ButtonContainerDelegate { //, PyramidViewControllerDelegate {
 
-class QuestionsViewController: UIViewController { //, PyramidViewControllerDelegate {
+    // MARK: - UI variables
 
-    // MARK: - IBOutlet variables
-
-    @IBOutlet weak var firstChoice: UIButton!
-    @IBOutlet weak var secondChoice: UIButton!
-    @IBOutlet weak var thirdChoice: UIButton!
-    @IBOutlet weak var fourthChoice: UIButton!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var buttonContainer: ButtonContainer!
+    @IBOutlet weak var bannerView: ADBannerView!
 
     // MARK: - Constant variables
 
-    static let SCREEN_WIDTH = UIScreen.mainScreen().bounds.width
-    static let SCREEN_HEIGHT = UIScreen.mainScreen().bounds.height
+    let SCREEN_WIDTH = UIScreen.mainScreen().bounds.width
+    let SCREEN_HEIGHT = UIScreen.mainScreen().bounds.height
 
     // MARK: - Instance variables
 
-    var delegate: QuestionsViewControllerDelegate!
+    var viewsDictionary: [String: AnyObject]! // Used to design Visual Format constraints.
+
     var players: [Player]!
-    var round: Round!
+
+    var round: Round! {
+        didSet {
+            buttonContainer.setButtonsFor(round)
+        }
+    }
+
+    var roundIndex: Int = 0 {
+        didSet {
+            statusLabel.text = "Round: \(roundIndex + 1)"
+        }
+    }
+
     var deck: Deck = Deck()
+
     var rules = [Rule.COLOR, Rule.UP_DOWN, Rule.IN_OUT, Rule.SUIT]
 
     // MARK: - Property inspectors
@@ -48,19 +59,25 @@ class QuestionsViewController: UIViewController { //, PyramidViewControllerDeleg
                 // All the players have played in the round.
                 playerIndex = 0
                 player = players[playerIndex]
+                roundIndex += 1
                 nextRound()
             } else {
                 // Update everything for next player.
                 player = players[playerIndex]
                 if let card = deck.draw() {
                     // Update round user interface.
-                    round.card = card
-                    setChoices()
+                    round = Round(card: card, rule: round.rule)
                 } else {
                     // Deck ran out of cards.
                     gameOver()
                 }
             }
+        }
+    }
+
+    var rule: Rule! {
+        didSet {
+            questionLabel.text = rule.title()
         }
     }
 
@@ -76,18 +93,44 @@ class QuestionsViewController: UIViewController { //, PyramidViewControllerDeleg
     }
 
     // MARK: - View Controller
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        buttonContainer.delegate = self
         startGame()
     }
 
-    // MARK: - IBAction
+    // MARK: - Segue
 
-    @IBAction func choiceTapped(sender: UIButton) {
-        if let text = sender.titleLabel!.text {
-            
-            switch (text) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "pyramidSegue" {
+//            let pvc = segue.destinationViewController as! PyramidViewController
+//            pvc.delegate = self
+//            pvc.createPyramid(deck, levels: [1, 2, 3, 3, 4, 4])
+        }
+    }
+
+    // MARK: - Banner View
+
+    func bannerViewDidLoadAd(banner: ADBannerView!) {
+        bannerView.hidden = false
+        /*
+        Note:
+        If you're using a table view, a scroll view, a collection view, a text view
+        or something else that scrolls, you should set its contentInset and scrollIndicatorInset
+        properties so that it doesn't scrolle under the advert when it's visible.
+        */
+    }
+
+    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
+        bannerView.hidden = false
+    }
+
+    // MARK: - Button Container
+
+    func buttonContainerUpdatePlayerChoice(text: String?) {
+        if let choiceText = text {
+            switch (choiceText) {
             case ChoicesText.RED.rawValue:
                 player.choice = PlayerChoices.RED
                 break
@@ -129,22 +172,15 @@ class QuestionsViewController: UIViewController { //, PyramidViewControllerDeleg
             let msg = (round.card.describe() + "\n") +
                 (round.isDrinking(player) ? "DRINK" : "YOU WIN THIS TIME")
             let ac = UIAlertController(title: self.title, message: msg, preferredStyle: .Alert)
+            let action = UIAlertAction(title: "", style: .Default, handler: nil)
+            action.setValue(round.card.frontImage, forKey: "image")
+            ac.addAction(action)
             ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: nil))
             presentViewController(ac, animated: true, completion: { [unowned self] in
                 // Update player variables before next round.
                 self.player.hand.append(self.round.card)
                 self.playerIndex += 1
             })
-        }
-    }
-
-    // MARK: - Segue
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if segue.identifier == "pyramidSegue" {
-//            let pvc = segue.destinationViewController as! PyramidViewController
-//            pvc.delegate = self
-//            pvc.createPyramid(deck, levels: [1, 2, 3, 3, 4, 4])
         }
     }
 
@@ -165,8 +201,8 @@ class QuestionsViewController: UIViewController { //, PyramidViewControllerDeleg
         if let card = deck.draw() {
             if rules.count > 0 {
                 // Update gui buttons for next question.
-                round = Round(card: card, rule: rules.removeFirst())
-                setChoices()
+                rule = rules.removeFirst()
+                round = Round(card: card, rule: rule)
             } else {
                 // Continue to pyramid rounds.
 //                dispatch_async(dispatch_get_main_queue()) { [unowned self] in
@@ -176,55 +212,6 @@ class QuestionsViewController: UIViewController { //, PyramidViewControllerDeleg
         } else {
             // Deck ran out of cards.
             gameOver()
-        }
-    }
-
-    func setChoices() {
-        dispatch_async(dispatch_get_main_queue()) { [unowned self] in
-
-            // Make all buttons visible.
-            self.firstChoice.hidden = false
-            self.secondChoice.hidden = false
-            self.thirdChoice.hidden = false
-            self.fourthChoice.hidden = false
-
-            // Set button titles based on round rule.
-            switch (self.round.rule) {
-                case .COLOR:
-                    // "Smoke or Fire?" choices: Black, Red
-                    self.firstChoice.setTitle(ChoicesText.BLACK.rawValue, forState: .Normal)
-                    self.secondChoice.setTitle(ChoicesText.RED.rawValue, forState: .Normal)
-                    self.thirdChoice.hidden = true
-                    self.fourthChoice.hidden = true
-                    break
-                case .UP_DOWN:
-                    // "Higher or lower?" choices: Higher, Same, Lower
-                    self.firstChoice.setTitle(ChoicesText.HIGHER.rawValue, forState: .Normal)
-                    self.secondChoice.setTitle(ChoicesText.SAME.rawValue, forState: .Normal)
-                    self.thirdChoice.setTitle(ChoicesText.LOWER.rawValue, forState: .Normal)
-                    self.fourthChoice.hidden = true
-                    break
-                case .IN_OUT:
-                    // "Inside or outside?" choices: Inside, Same, Outside
-                    self.firstChoice.setTitle(ChoicesText.INSIDE.rawValue, forState: .Normal)
-                    self.secondChoice.setTitle(ChoicesText.OUTSIDE.rawValue, forState: .Normal)
-                    self.thirdChoice.setTitle(ChoicesText.SAME.rawValue, forState: .Normal)
-                    self.fourthChoice.hidden = true
-                    break
-                case .SUIT:
-                    // "Which suit?" choices: Club, Diamond, Heart, Spade
-                    self.firstChoice.setTitle(ChoicesText.CLUB.rawValue, forState: .Normal)
-                    self.secondChoice.setTitle(ChoicesText.DIAMOND.rawValue, forState: .Normal)
-                    self.thirdChoice.setTitle(ChoicesText.HEART.rawValue, forState: .Normal)
-                    self.fourthChoice.setTitle(ChoicesText.SPADE.rawValue, forState: .Normal)
-                case .POKER:
-                    // TODO - develop poker hand evaluator and poker results user interface.
-                    break
-                case .GIVE:
-                    break
-                case .TAKE:
-                    break
-            }
         }
     }
 
