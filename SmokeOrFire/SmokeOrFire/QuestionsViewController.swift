@@ -171,17 +171,47 @@ class QuestionsViewController: UIViewController, ADBannerViewDelegate, ButtonCon
             // Display player results.
             let msg = (round.card.describe() + "\n") +
                 (round.isDrinking(player) ? "DRINK" : "YOU WIN THIS TIME")
-            let ac = UIAlertController(title: self.title, message: msg, preferredStyle: .Alert)
-            let action = UIAlertAction(title: "", style: .Default, handler: nil)
-            action.setValue(round.card.frontImage, forKey: "image")
-            ac.addAction(action)
-            ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: nil))
+            let ac = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+//            ac.view.removeConstraints(ac.view.constraints)
+            ac.view.layer.frame = CGRect(origin: ac.view.frame.origin, size: round.card.frontImage.size)
+//            ac.view.layer.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 0, height: 0))
+//            ac.view.alpha = 0.0
+ 
+            ac.view.addConstraint(NSLayoutConstraint(item: ac.view, attribute: .Height,
+                relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
+                multiplier: 1.0, constant: round.card.frontImage.size.height))
+//            ac.view.addConstraint(NSLayoutConstraint(item: ac.view, attribute: .Width,
+//                relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
+//                multiplier: 1.25, constant: round.card.frontImage.size.width))
+
+//            let imageView = UIImageView(image: round.card.frontImage)
+//            imageView.contentMode = .ScaleAspectFill //[.ScaleAspectFit, .Center]
+//            imageView.backgroundColor = .whiteColor()
+//            ac.view.addSubview(imageView)
+
+//            let action = UIAlertAction(title: "", style: .Default, handler: nil)
+//            action.setValue(round.card.frontImage, forKey: "image")
+//            ac.addAction(action)
+
+            let buttonView = UIButton(frame: ac.view.frame)
+            buttonView.setImage(round.card.frontImage, forState: .Normal)
+            buttonView.addTarget(self, action: #selector(closeButton), forControlEvents: .TouchUpInside)
+            ac.view.addSubview(buttonView)
+//            ac.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[buttonView]|", options: [], metrics: nil, views: ["buttonView": buttonView]))
+
+//            buttonView.center = CGPointMake(CGRectGetMidX(buttonView.superview!.bounds), CGRectGetMidY(buttonView.superview!.bounds))
+
+//            ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: nil))
             presentViewController(ac, animated: true, completion: { [unowned self] in
                 // Update player variables before next round.
                 self.player.hand.append(self.round.card)
                 self.playerIndex += 1
             })
         }
+    }
+
+    func closeButton(button: UIButton) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
     // MARK: - Pyramid View Controller
