@@ -21,8 +21,6 @@ class ButtonContainer: UIView {
     @IBOutlet weak var thirdChoiceButton: UIButton!
     @IBOutlet weak var fourthChoiceButton: UIButton!
 
-//    var buttons: [UIButton]!
-
     // MARK: - Instance variables
 
     var delegate: ButtonContainerDelegate!
@@ -33,7 +31,6 @@ class ButtonContainer: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        buttons = [firstChoiceButton, secondChoiceButton, thirdChoiceButton, fourthChoiceButton]
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -57,12 +54,7 @@ class ButtonContainer: UIView {
             self.thirdChoiceButton.hidden = false
             self.fourthChoiceButton.hidden = false
 
-//            self.firstChoiceButton.removeConstraints(self.firstChoiceButton.constraints)
-//            self.secondChoiceButton.removeConstraints(self.secondChoiceButton.constraints)
-//            self.thirdChoiceButton.removeConstraints(self.thirdChoiceButton.constraints)
-//            self.fourthChoiceButton.removeConstraints(self.fourthChoiceButton.constraints)
-
-            // DEBUG
+            // Set Autoresize on.
             self.firstChoiceButton.translatesAutoresizingMaskIntoConstraints = true
             self.secondChoiceButton.translatesAutoresizingMaskIntoConstraints = true
             self.thirdChoiceButton.translatesAutoresizingMaskIntoConstraints = true
