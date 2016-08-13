@@ -30,6 +30,15 @@ class Player: NSObject {
         self.choice = choice
     }
 
+    func hasCard(card: Card) -> Bool {
+        for handCard in hand {
+            if handCard.rank == card.rank {
+                return true
+            }
+        }
+        return false
+    }
+
 }
 
 enum PlayerChoices: UInt8 {
@@ -46,6 +55,8 @@ enum PlayerChoices: UInt8 {
     case OUTSIDE
     // Misc choice
     case SAME
+    // Pyramid, no actual choice.
+    case PYRAMID
 }
 
 enum ChoicesText: String {
@@ -60,4 +71,5 @@ enum ChoicesText: String {
     case INSIDE = "INSIDE"
     case OUTSIDE = "OUTSIDE"
     case SAME = "SAME"
+    case PYRAMID = "?"
 }

@@ -130,9 +130,16 @@ class ButtonContainer: UIView {
             case .POKER:
                 // TODO - develop poker hand evaluator and poker results user interface.
                 break
-            case .GIVE:
-                break
-            case .TAKE:
+            case .GIVE, .TAKE:
+                // "Smoke or Fire?" choices: Black, Red
+                strongSelf.firstChoiceButton.setTitle(ChoicesText.PYRAMID.rawValue, forState: .Normal)
+                strongSelf.secondChoiceButton.hidden = true
+                strongSelf.thirdChoiceButton.hidden = true
+                strongSelf.fourthChoiceButton.hidden = true
+
+                // Fit one button.
+                strongSelf.firstChoiceButton.layer.frame = CGRect(x: 0.0, y: 0.0,
+                    width: strongSelf.frame.width, height: strongSelf.frame.height)
                 break
             }
         }

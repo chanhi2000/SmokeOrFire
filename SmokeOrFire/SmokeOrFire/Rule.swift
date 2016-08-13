@@ -16,7 +16,7 @@ enum Rule {
     case POKER
     case GIVE
     case TAKE
-    
+
     func title() -> String {
         switch self {
         case .COLOR:   return "Smoke or Fire?"

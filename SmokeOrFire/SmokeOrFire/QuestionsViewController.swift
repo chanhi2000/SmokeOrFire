@@ -7,6 +7,7 @@
 //
 
 import iAd
+import GameplayKit
 import UIKit
 
 class QuestionsViewController: UIViewController {
@@ -23,11 +24,15 @@ class QuestionsViewController: UIViewController {
     private let SCREEN_HEIGHT_UNITS = 35.0 // Number of height units in design.
 
     // MARK: - Instance variables
-    var statusContainer: StatusContainer!
-    var players: [Player]!
     var deck: Deck = Deck()
+    // TODO: Add option to adjust these card counts per level.
+    var levels: [Int] = [4, 4, 3, 3, 2, 1]
+    var pyramid: Pyramid!
+    var players: [Player]!
+    var pyramidRoundIndex = 0
     var roundIndex = 0
     var rules = [Rule.COLOR, Rule.UP_DOWN, Rule.IN_OUT, Rule.SUIT]
+    var statusContainer: StatusContainer!
     var viewsDictionary: [String: AnyObject]! // Used to design Visual Format constraints.
 
     // MARK: - Property inspectors
@@ -46,6 +51,8 @@ class QuestionsViewController: UIViewController {
                 playerIndex = 0
                 player = players[playerIndex]
                 roundIndex += 1
+                pyramidRoundIndex = (round.rule == .GIVE || round.rule == .TAKE) ?
+                    pyramidRoundIndex + 1 : pyramidRoundIndex
                 nextRound()
             } else {
                 // Update everything for next player.
@@ -56,6 +63,13 @@ class QuestionsViewController: UIViewController {
                 } else {
                     // Deck ran out of cards.
                     gameOver()
+                    let ac = UIAlertController(title: "Game Over", message: "Player: 1 wins!", preferredStyle: .Alert)
+                    ac.addAction(UIAlertAction(title: "Continue", style: .Cancel, handler: nil))
+                    presentViewController(ac, animated: true, completion: { [weak self] in
+                        guard let strongSelf = self else { return }
+                        strongSelf.dismissViewControllerAnimated(true, completion: nil)
+                    })
+
                 }
             }
         }
@@ -69,8 +83,17 @@ class QuestionsViewController: UIViewController {
 
     var rule: Rule! {
         didSet {
-            questionLabel.text = rule.title()
             statusContainer.statusLabel.text = rule.title()
+            switch (rule as Rule) {
+                case .GIVE, .TAKE:
+                    // Set give and take based on pyramid level.
+                    statusContainer.statusLabel.text = "Give " +
+                        "\(pyramid.rounds[pyramidRoundIndex].level) if you have..."
+                    break
+                default:
+                    // Set text for a question round.
+                    questionLabel.text = rule.title()
+            }
         }
     }
 
@@ -101,10 +124,33 @@ class QuestionsViewController: UIViewController {
             height: CGFloat(8.0 / SCREEN_HEIGHT_UNITS) * view.frame.height))
         view.addSubview(statusContainer)
 
+        createPyramid()
+
         startGame()
     }
 
     // MARK: - Custom
+
+    func createPyramid() {
+        pyramid = Pyramid()
+        // This seed ensures give-take pattern doesn't always start on give.
+        let seed = GKRandomSource.sharedRandom().nextIntWithUpperBound(2)
+        for i in 0.stride(to: levels.count, by: 1) {
+            for _ in 0.stride(to: levels[i], by: 1) {
+                if let card = deck.draw() {
+                    let pyramidRule = ((pyramid.rounds.count +
+                        seed % 2) == 0) ? Rule.GIVE : Rule.TAKE
+                    rules.append(pyramidRule)
+                    let pr = PyramidRound(level: levels[i], card: card,
+                        rule: pyramidRule, isClicked: false)
+                    pyramid.rounds.append(pr)
+                } else {
+                    print("No more cards in deck to build pyramid.")
+                    return
+                }
+            }
+        }
+    }
 
     func startGame() {
         deck.shuffle()
@@ -113,14 +159,9 @@ class QuestionsViewController: UIViewController {
 
     func nextRound() {
         if let card = deck.draw() {
-            if rules.count > 0 {
-                // Update gui buttons for next question.
-                rule = rules.removeFirst()
-                round = Round(card: card, rule: rule)
-            } else {
-                print("Pyramid")
-                // TODO: Design pyramid rounds.
-            }
+            // Update gui buttons for next question.
+            rule = rules.removeFirst()
+            round = Round(card: card, rule: rule)
         } else {
             // Deck ran out of cards.
             gameOver()
@@ -191,28 +232,43 @@ extension QuestionsViewController: ButtonContainerDelegate {
             case ChoicesText.SPADE.rawValue:
                 player.choice = PlayerChoices.SPADE
                 break
+            case ChoicesText.PYRAMID.rawValue:
+                player.choice = PlayerChoices.PYRAMID
+                break
             default:
                 player.choice = PlayerChoices.SAME
             }
 
-            // Display player results.
-            // TODO: Move this chunk into a UIAlertConroller subclass.
-            let msg = (round.card.describe() + "\n") +
-                (round.isDrinking(player) ? "DRINK" : "YOU WIN THIS TIME")
-            let ac = UIAlertController(title: "", message: msg, preferredStyle: .Alert)
-            ac.view.layer.frame = CGRect(origin: ac.view.frame.origin, size: round.card.frontImage.size)
-            ac.view.addConstraint(NSLayoutConstraint(item: ac.view, attribute: .Height,
-                relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
-                multiplier: 1.0, constant: round.card.frontImage.size.height))
-            let buttonView = UIButton(frame: ac.view.frame)
-            buttonView.setImage(round.card.frontImage, forState: .Normal)
-            buttonView.addTarget(self, action: #selector(closeButton), forControlEvents: .TouchUpInside)
-            ac.view.addSubview(buttonView)
-            presentViewController(ac, animated: true, completion: { [unowned self] in
-                // Update player variables before next round.
-                self.player.hand.append(self.round.card)
-                self.playerIndex += 1
-            })
+            if (player.choice == .PYRAMID) {
+                let ac = UIAlertController(title: "Pyramid Round",
+                    message: "\(round.card.describe())", preferredStyle: .Alert)
+                for p in players {
+                    if p.hasCard(round.card) {
+                        ac.addAction(UIAlertAction(title: "Player \(p.number): \(p.hand)", style: .Default, handler: nil))
+                    }
+                }
+                ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: nil))
+                presentViewController(ac, animated: true, completion: nil)
+            } else {
+                // Display player results.
+                // TODO: Move this chunk into a UIAlertConroller subclass.
+                let msg = (round.card.describe() + "\n") +
+                    (round.isDrinking(player) ? "DRINK" : "YOU WIN THIS TIME")
+                let ac = UIAlertController(title: "", message: msg, preferredStyle: .Alert)
+                ac.view.layer.frame = CGRect(origin: ac.view.frame.origin, size: round.card.frontImage.size)
+                ac.view.addConstraint(NSLayoutConstraint(item: ac.view, attribute: .Height,
+                    relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
+                    multiplier: 1.0, constant: round.card.frontImage.size.height))
+                let buttonView = UIButton(frame: ac.view.frame)
+                buttonView.setImage(round.card.frontImage, forState: .Normal)
+                buttonView.addTarget(self, action: #selector(closeButton), forControlEvents: .TouchUpInside)
+                ac.view.addSubview(buttonView)
+                presentViewController(ac, animated: true, completion: { [unowned self] in
+                    // Update player variables before next round.
+                    self.player.hand.append(self.round.card)
+                    self.playerIndex += 1
+                })
+            }
         }
     }
 
