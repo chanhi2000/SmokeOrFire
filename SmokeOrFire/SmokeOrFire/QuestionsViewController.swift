@@ -9,47 +9,33 @@
 import iAd
 import UIKit
 
-class QuestionsViewController: UIViewController, ADBannerViewDelegate, ButtonContainerDelegate { //, PyramidViewControllerDelegate {
+class QuestionsViewController: UIViewController {
 
     // MARK: - UI variables
-
-    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var buttonContainer: ButtonContainer!
     @IBOutlet weak var bannerView: ADBannerView!
 
     // MARK: - Constant variables
-
-    let SCREEN_WIDTH = UIScreen.mainScreen().bounds.width
-    let SCREEN_HEIGHT = UIScreen.mainScreen().bounds.height
+    private let SCREEN_WIDTH = UIScreen.mainScreen().bounds.width
+    private let SCREEN_HEIGHT = UIScreen.mainScreen().bounds.height
+    private let SCREEN_WIDTH_UNITS = 20.0 // Number of width units in design.
+    private let SCREEN_HEIGHT_UNITS = 35.0 // Number of height units in design.
 
     // MARK: - Instance variables
-
-    var viewsDictionary: [String: AnyObject]! // Used to design Visual Format constraints.
-
+    var statusContainer: StatusContainer!
     var players: [Player]!
-
-    var round: Round! {
-        didSet {
-            buttonContainer.setButtonsFor(round)
-        }
-    }
-
-    var roundIndex: Int = 0 {
-        didSet {
-            statusLabel.text = "Round: \(roundIndex + 1)"
-        }
-    }
-
     var deck: Deck = Deck()
-
+    var roundIndex = 0
     var rules = [Rule.COLOR, Rule.UP_DOWN, Rule.IN_OUT, Rule.SUIT]
+    var viewsDictionary: [String: AnyObject]! // Used to design Visual Format constraints.
 
     // MARK: - Property inspectors
 
     var player: Player! {
         didSet {
-            title = "Player \(playerIndex + 1)"
+            statusContainer?.statusButton.setTitle("P\(playerIndex + 1)", forState: .Normal)
+            // TODO: Display hand for new player.
         }
     }
 
@@ -75,9 +61,16 @@ class QuestionsViewController: UIViewController, ADBannerViewDelegate, ButtonCon
         }
     }
 
+    var round: Round! {
+        didSet {
+            buttonContainer.setButtonsFor(round)
+        }
+    }
+
     var rule: Rule! {
         didSet {
             questionLabel.text = rule.title()
+            statusContainer.statusLabel.text = rule.title()
         }
     }
 
@@ -85,48 +78,82 @@ class QuestionsViewController: UIViewController, ADBannerViewDelegate, ButtonCon
         didSet {
             // Initialize players.
             players = [Player]()
-            for i in 1 ... totalPlayers {
-                players.append(Player(number: i))
+            for i in 0.stride(to: totalPlayers, by: 1) {
+                players.append(Player(number: i + 1))
             }
             player = players[0]
         }
     }
 
     // MARK: - View Controller
-
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        title = "Smoke or Fire"
+
         buttonContainer.delegate = self
+
+        // Setup status container.
+        statusContainer = StatusContainer(frame: CGRect(
+            x: CGFloat(1.0 / SCREEN_WIDTH_UNITS) * view.frame.width,
+            y: CGFloat(1.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
+            width: CGFloat(18.0 / SCREEN_WIDTH_UNITS) * view.frame.width,
+            height: CGFloat(8.0 / SCREEN_HEIGHT_UNITS) * view.frame.height))
+        view.addSubview(statusContainer)
+
         startGame()
     }
 
-    // MARK: - Segue
+    // MARK: - Custom
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if segue.identifier == "pyramidSegue" {
-//            let pvc = segue.destinationViewController as! PyramidViewController
-//            pvc.delegate = self
-//            pvc.createPyramid(deck, levels: [1, 2, 3, 3, 4, 4])
+    func startGame() {
+        deck.shuffle()
+        nextRound()
+    }
+
+    func nextRound() {
+        if let card = deck.draw() {
+            if rules.count > 0 {
+                // Update gui buttons for next question.
+                rule = rules.removeFirst()
+                round = Round(card: card, rule: rule)
+            } else {
+                print("Pyramid")
+                // TODO: Design pyramid rounds.
+            }
+        } else {
+            // Deck ran out of cards.
+            gameOver()
         }
     }
 
-    // MARK: - Banner View
+    func gameOver() {
+        print("Game over")
+        // TODO: Design game over that displays results.
+    }
+}
+
+// MARK: - ADBannerViewDelegate
+extension QuestionsViewController: ADBannerViewDelegate {
 
     func bannerViewDidLoadAd(banner: ADBannerView!) {
         bannerView.hidden = false
         /*
-        Note:
-        If you're using a table view, a scroll view, a collection view, a text view
-        or something else that scrolls, you should set its contentInset and scrollIndicatorInset
-        properties so that it doesn't scrolle under the advert when it's visible.
-        */
+         Note:
+         If you're using a table view, a scroll view, a collection view, a text view
+         or something else that scrolls, you should set its contentInset and scrollIndicatorInset
+         properties so that it doesn't scrolle under the advert when it's visible.
+         */
     }
 
     func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
         bannerView.hidden = false
     }
 
-    // MARK: - Button Container
+}
+
+// MARK: - ButtonContainerDelegate
+extension QuestionsViewController: ButtonContainerDelegate {
 
     func buttonContainerUpdatePlayerChoice(text: String?) {
         if let choiceText = text {
@@ -169,39 +196,18 @@ class QuestionsViewController: UIViewController, ADBannerViewDelegate, ButtonCon
             }
 
             // Display player results.
+            // TODO: Move this chunk into a UIAlertConroller subclass.
             let msg = (round.card.describe() + "\n") +
                 (round.isDrinking(player) ? "DRINK" : "YOU WIN THIS TIME")
-            let ac = UIAlertController(title: "", message: "", preferredStyle: .Alert)
-//            ac.view.removeConstraints(ac.view.constraints)
+            let ac = UIAlertController(title: "", message: msg, preferredStyle: .Alert)
             ac.view.layer.frame = CGRect(origin: ac.view.frame.origin, size: round.card.frontImage.size)
-//            ac.view.layer.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 0, height: 0))
-//            ac.view.alpha = 0.0
- 
             ac.view.addConstraint(NSLayoutConstraint(item: ac.view, attribute: .Height,
                 relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
                 multiplier: 1.0, constant: round.card.frontImage.size.height))
-//            ac.view.addConstraint(NSLayoutConstraint(item: ac.view, attribute: .Width,
-//                relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
-//                multiplier: 1.25, constant: round.card.frontImage.size.width))
-
-//            let imageView = UIImageView(image: round.card.frontImage)
-//            imageView.contentMode = .ScaleAspectFill //[.ScaleAspectFit, .Center]
-//            imageView.backgroundColor = .whiteColor()
-//            ac.view.addSubview(imageView)
-
-//            let action = UIAlertAction(title: "", style: .Default, handler: nil)
-//            action.setValue(round.card.frontImage, forKey: "image")
-//            ac.addAction(action)
-
             let buttonView = UIButton(frame: ac.view.frame)
             buttonView.setImage(round.card.frontImage, forState: .Normal)
             buttonView.addTarget(self, action: #selector(closeButton), forControlEvents: .TouchUpInside)
             ac.view.addSubview(buttonView)
-//            ac.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[buttonView]|", options: [], metrics: nil, views: ["buttonView": buttonView]))
-
-//            buttonView.center = CGPointMake(CGRectGetMidX(buttonView.superview!.bounds), CGRectGetMidY(buttonView.superview!.bounds))
-
-//            ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: nil))
             presentViewController(ac, animated: true, completion: { [unowned self] in
                 // Update player variables before next round.
                 self.player.hand.append(self.round.card)
@@ -210,42 +216,9 @@ class QuestionsViewController: UIViewController, ADBannerViewDelegate, ButtonCon
         }
     }
 
+    // MARK: - Selectors
+
     func closeButton(button: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)
-    }
-
-    // MARK: - Pyramid View Controller
-
-    func pvDidFinish(controller: PyramidViewController, text: String) {
-        controller.navigationController?.popViewControllerAnimated(true)
-    }
-
-    // MARK: - Custom
-
-    func startGame() {
-        deck.shuffle()
-        nextRound()
-    }
-
-    func nextRound() {
-        if let card = deck.draw() {
-            if rules.count > 0 {
-                // Update gui buttons for next question.
-                rule = rules.removeFirst()
-                round = Round(card: card, rule: rule)
-            } else {
-                // Continue to pyramid rounds.
-//                dispatch_async(dispatch_get_main_queue()) { [unowned self] in
-//                    self.performSegueWithIdentifier("pyramidSegue", sender: nil)
-//                }
-            }
-        } else {
-            // Deck ran out of cards.
-            gameOver()
-        }
-    }
-
-    func gameOver() {
-        print("Game over")
     }
 }

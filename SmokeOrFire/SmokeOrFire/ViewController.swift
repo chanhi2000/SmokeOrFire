@@ -9,12 +9,11 @@
 import Foundation
 import UIKit
 
-class ViewController: UIViewController, OptionsViewControllerDelegate {
+class ViewController: UIViewController {
 
     var totalPlayers = 2
 
     // MARK: - Segue
-
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "optionSegue" {
             let ovc = segue.destinationViewController as! OptionsViewController
@@ -25,9 +24,10 @@ class ViewController: UIViewController, OptionsViewControllerDelegate {
             qvc.totalPlayers = totalPlayers
         }
     }
+}
 
-    // MARK: - Options View Controller
-
+// MARK: - OptionsViewControllerDelegate
+extension ViewController: OptionsViewControllerDelegate {
     func optionsViewUpdateTotalPlayers(count: Int) {
         totalPlayers = count
     }

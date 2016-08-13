@@ -18,17 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Round: 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5g-hS-gH7">
-                                <rect key="frame" x="20" y="64" width="560" height="130"/>
-                                <color key="backgroundColor" red="0.1902497148" green="0.62180097970000003" blue="0.70760389400000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="2xt-G9-tLC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smoke or Fire?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d78-If-AST">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Smoke or Fire?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d78-If-AST">
                                 <rect key="frame" x="20" y="194" width="560" height="151"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -54,7 +44,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="219"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Button">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="choiceTapped:" destination="qt7-xk-4CN" eventType="touchUpInside" id="0aR-uP-zx6"/>
@@ -64,7 +54,7 @@
                                         <rect key="frame" x="-20" y="-326" width="46" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Button">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="choiceTapped:" destination="qt7-xk-4CN" eventType="touchUpInside" id="XwB-k4-Txa"/>
@@ -74,7 +64,7 @@
                                         <rect key="frame" x="-20" y="-326" width="46" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Button">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="choiceTapped:" destination="qt7-xk-4CN" eventType="touchDragInside" id="9iq-Cs-edw"/>
@@ -84,7 +74,7 @@
                                         <rect key="frame" x="280" y="0.0" width="280" height="219"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Button">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="choiceTapped:" destination="qt7-xk-4CN" eventType="touchUpInside" id="Kvq-4B-TmR"/>
@@ -113,16 +103,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="v5g-hS-gH7" firstAttribute="trailing" secondItem="rdS-xm-bkD" secondAttribute="trailingMargin" id="53d-w2-CRq"/>
-                            <constraint firstItem="d78-If-AST" firstAttribute="top" secondItem="v5g-hS-gH7" secondAttribute="bottom" id="93J-Kn-TL6"/>
                             <constraint firstItem="rYD-9k-JNK" firstAttribute="leading" secondItem="rdS-xm-bkD" secondAttribute="leadingMargin" id="DHb-Sa-zw6"/>
-                            <constraint firstItem="v5g-hS-gH7" firstAttribute="top" secondItem="va0-ve-KGo" secondAttribute="bottom" id="DdI-fP-ybp"/>
                             <constraint firstItem="qt7-xk-4CN" firstAttribute="trailing" secondItem="d78-If-AST" secondAttribute="trailing" id="GfE-wD-A9N"/>
                             <constraint firstItem="BWJ-7V-qNp" firstAttribute="top" secondItem="qt7-xk-4CN" secondAttribute="bottom" constant="55" id="HsI-lD-TNv"/>
                             <constraint firstItem="qt7-xk-4CN" firstAttribute="top" secondItem="d78-If-AST" secondAttribute="bottom" constant="-19" id="RRc-go-SFE"/>
-                            <constraint firstItem="d78-If-AST" firstAttribute="leading" secondItem="v5g-hS-gH7" secondAttribute="leading" id="U7J-Bk-xNa"/>
-                            <constraint firstItem="v5g-hS-gH7" firstAttribute="leading" secondItem="rdS-xm-bkD" secondAttribute="leadingMargin" id="UvE-GX-br4"/>
-                            <constraint firstItem="rYD-9k-JNK" firstAttribute="leading" secondItem="v5g-hS-gH7" secondAttribute="leading" id="Xec-9q-VU9"/>
                             <constraint firstItem="d78-If-AST" firstAttribute="leading" secondItem="rdS-xm-bkD" secondAttribute="leadingMargin" id="gf9-14-yig"/>
                             <constraint firstItem="d78-If-AST" firstAttribute="trailing" secondItem="rdS-xm-bkD" secondAttribute="trailingMargin" id="hMF-Oh-q10"/>
                             <constraint firstItem="qt7-xk-4CN" firstAttribute="top" secondItem="rdS-xm-bkD" secondAttribute="top" constant="326" id="q2S-BA-r0j"/>
@@ -135,7 +119,6 @@
                         <outlet property="bannerView" destination="rYD-9k-JNK" id="Chy-1b-1IB"/>
                         <outlet property="buttonContainer" destination="qt7-xk-4CN" id="zVg-ST-PA9"/>
                         <outlet property="questionLabel" destination="d78-If-AST" id="C3f-o8-RrV"/>
-                        <outlet property="statusLabel" destination="v5g-hS-gH7" id="0Yp-TP-N8n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AqW-o6-tbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -157,7 +140,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smoke or Fire" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8K-8L-S4w">
                                 <rect key="frame" x="122" y="99" width="357" height="212"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFO-iS-itl">
@@ -231,7 +214,7 @@
                                     <constraint firstAttribute="height" constant="80" id="vq2-lr-XCe"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
