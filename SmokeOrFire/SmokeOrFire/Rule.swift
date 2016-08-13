@@ -24,8 +24,8 @@ enum Rule {
         case .IN_OUT:  return "INSIDE or OUTSIDE?"
         case .SUIT:    return "What's the SUIT?"
         case .POKER:   return "Texax Hold'em!"
-        case .GIVE:    return ""
-        case .TAKE:    return ""
+        case .GIVE:    return "Give"
+        case .TAKE:    return "Take"
         }
     }
 }

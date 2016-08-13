@@ -39,6 +39,16 @@ class Player: NSObject {
         return false
     }
 
+    func displayHand() -> String {
+        var ans = ""
+        for (index, card) in hand.enumerate() {
+            let cardRank = card.rank.describe()
+            let cardSuit = card.suit.describe()
+            ans += "\(cardRank[0])\(cardSuit[0])"
+            ans += (index < hand.count - 1) ? ", " : ""
+        }
+        return ans
+    }
 }
 
 enum PlayerChoices: UInt8 {

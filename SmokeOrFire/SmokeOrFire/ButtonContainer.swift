@@ -34,6 +34,9 @@ class ButtonContainer: UIView {
 
     // MARK: - Custom
 
+    // TODO: - Figure out how to refactor this method that minimizes redundancy.
+    // One idea is to separate the case code blocks into separate methods
+    // TODO: - Research if attributes can be set for a list of UIButtons.
     func setButtonsFor(round: Round) {
         dispatch_async(dispatch_get_main_queue()) { [weak self] in
             guard let strongSelf = self else { return }

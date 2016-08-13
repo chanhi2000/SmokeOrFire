@@ -29,8 +29,6 @@ class QuestionsViewController: UIViewController {
     var levels: [Int] = [4, 4, 3, 3, 2, 1]
     var pyramid: Pyramid!
     var players: [Player]!
-    var pyramidRoundIndex = 0
-    var roundIndex = 0
     var rules = [Rule.COLOR, Rule.UP_DOWN, Rule.IN_OUT, Rule.SUIT]
     var statusContainer: StatusContainer!
     var viewsDictionary: [String: AnyObject]! // Used to design Visual Format constraints.
@@ -39,7 +37,6 @@ class QuestionsViewController: UIViewController {
 
     var player: Player! {
         didSet {
-            statusContainer?.statusButton.setTitle("P\(playerIndex + 1)", forState: .Normal)
             // TODO: Display hand for new player.
         }
     }
@@ -50,27 +47,32 @@ class QuestionsViewController: UIViewController {
                 // All the players have played in the round.
                 playerIndex = 0
                 player = players[playerIndex]
-                roundIndex += 1
-                pyramidRoundIndex = (round.rule == .GIVE || round.rule == .TAKE) ?
-                    pyramidRoundIndex + 1 : pyramidRoundIndex
+                statusContainer?.statusButton.setTitle(
+                    "P\(playerIndex + 1)", forState: .Normal)
                 nextRound()
             } else {
                 // Update everything for next player.
                 player = players[playerIndex]
+                statusContainer?.statusButton.setTitle(
+                    "P\(playerIndex + 1)", forState: .Normal)
                 if let card = deck.draw() {
                     // Update round user interface.
                     round = Round(card: card, rule: round.rule)
                 } else {
                     // Deck ran out of cards.
                     gameOver()
-                    let ac = UIAlertController(title: "Game Over", message: "Player: 1 wins!", preferredStyle: .Alert)
-                    ac.addAction(UIAlertAction(title: "Continue", style: .Cancel, handler: nil))
-                    presentViewController(ac, animated: true, completion: { [weak self] in
-                        guard let strongSelf = self else { return }
-                        strongSelf.dismissViewControllerAnimated(true, completion: nil)
-                    })
-
                 }
+            }
+        }
+    }
+
+    var pyramidRoundIndex: Int = 0 {
+        didSet {
+            if pyramidRoundIndex < pyramid.rounds.count - 1 {
+                nextRound()
+            } else {
+                // End of last pyramid round.
+                closeButton(statusContainer.statusButton)
             }
         }
     }
@@ -86,8 +88,9 @@ class QuestionsViewController: UIViewController {
             statusContainer.statusLabel.text = rule.title()
             switch (rule as Rule) {
                 case .GIVE, .TAKE:
-                    // Set give and take based on pyramid level.
-                    statusContainer.statusLabel.text = "Give " +
+                    // Set give and take display text.
+                    statusContainer?.statusButton.setTitle("\(rule.title())", forState: .Normal)
+                    statusContainer.statusLabel.text = "\(rule.title()) " +
                         "\(pyramid.rounds[pyramidRoundIndex].level) if you have..."
                     break
                 default:
@@ -141,7 +144,7 @@ class QuestionsViewController: UIViewController {
                     let pyramidRule = ((pyramid.rounds.count +
                         seed % 2) == 0) ? Rule.GIVE : Rule.TAKE
                     rules.append(pyramidRule)
-                    let pr = PyramidRound(level: levels[i], card: card,
+                    let pr = PyramidRound(level: i + 1, card: card,
                         rule: pyramidRule, isClicked: false)
                     pyramid.rounds.append(pr)
                 } else {
@@ -171,6 +174,12 @@ class QuestionsViewController: UIViewController {
     func gameOver() {
         print("Game over")
         // TODO: Design game over that displays results.
+        let ac = UIAlertController(title: "Game Over", message: "Player: 1 wins!", preferredStyle: .Alert)
+        ac.addAction(UIAlertAction(title: "Continue", style: .Cancel, handler: nil))
+        presentViewController(ac, animated: true, completion: { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.dismissViewControllerAnimated(true, completion: nil)
+        })
     }
 }
 
@@ -196,8 +205,67 @@ extension QuestionsViewController: ADBannerViewDelegate {
 // MARK: - ButtonContainerDelegate
 extension QuestionsViewController: ButtonContainerDelegate {
 
+    // MARK: - Custom
+
+    func displayPyramidResults() {
+        let ac = UIAlertController(title: "Pyramid Round \(pyramidRoundIndex + 1)",
+            message: "\(round.card.describe())", preferredStyle: .Alert)
+
+        // Set card image.
+        let buttonView = UIButton(frame: ac.view.frame)
+        buttonView.setImage(round.card.frontImage, forState: .Normal)
+        buttonView.addTarget(self, action: #selector(closeButton), forControlEvents: .TouchUpInside)
+        ac.view.addSubview(buttonView)
+
+        for p in players {
+            if p.hasCard(round.card) {
+                // Add an action column for each losing player.
+                // TODO: Design handler for UIAlertAction to remove itself.
+                ac.addAction(UIAlertAction(
+                    title: "Player \(p.number): \(p.displayHand())",
+                    style: .Default, handler: nil))
+            }
+        }
+        // TODO: Design handler to only dismiss once all players drink.
+        ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: nil))
+        presentViewController(ac, animated: true, completion: { [weak self] in
+            guard let strongSelf = self else { return }
+            // Update pyramid round.
+            strongSelf.pyramidRoundIndex += 1
+            })
+    }
+
+    func displayQuestionResults() {
+
+        let ac = UIAlertController(title: "",
+            message: (round.card.describe() + "\n") +
+                (round.isDrinking(player) ? "DRINK" : "YOU WIN THIS TIME"),
+            preferredStyle: .Alert)
+
+        // Shape the frame to fit behind the card.
+        ac.view.layer.frame = CGRect(origin: ac.view.frame.origin,
+            size: round.card.frontImage.size)
+        ac.view.addConstraint(NSLayoutConstraint(item: ac.view, attribute: .Height,
+            relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
+            multiplier: 1.0, constant: round.card.frontImage.size.height))
+
+        // Set card image.
+        let buttonView = UIButton(frame: ac.view.frame)
+        buttonView.setImage(round.card.frontImage, forState: .Normal)
+        buttonView.addTarget(self, action: #selector(closeButton), forControlEvents: .TouchUpInside)
+        ac.view.addSubview(buttonView)
+
+        presentViewController(ac, animated: true, completion: { [weak self] in
+            guard let strongSelf = self else { return }
+            // Update player variables before next round.
+            strongSelf.player.hand.append(strongSelf.round.card)
+            strongSelf.playerIndex += 1
+        })
+    }
+
     func buttonContainerUpdatePlayerChoice(text: String?) {
         if let choiceText = text {
+            // TODO: Figure out how to shrink this switch-case into something more clever.
             switch (choiceText) {
             case ChoicesText.RED.rawValue:
                 player.choice = PlayerChoices.RED
@@ -240,41 +308,21 @@ extension QuestionsViewController: ButtonContainerDelegate {
             }
 
             if (player.choice == .PYRAMID) {
-                let ac = UIAlertController(title: "Pyramid Round",
-                    message: "\(round.card.describe())", preferredStyle: .Alert)
-                for p in players {
-                    if p.hasCard(round.card) {
-                        ac.addAction(UIAlertAction(title: "Player \(p.number): \(p.hand)", style: .Default, handler: nil))
-                    }
-                }
-                ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: nil))
-                presentViewController(ac, animated: true, completion: nil)
+                // Display pyramid round results.
+                displayPyramidResults()
             } else {
                 // Display player results.
                 // TODO: Move this chunk into a UIAlertConroller subclass.
-                let msg = (round.card.describe() + "\n") +
-                    (round.isDrinking(player) ? "DRINK" : "YOU WIN THIS TIME")
-                let ac = UIAlertController(title: "", message: msg, preferredStyle: .Alert)
-                ac.view.layer.frame = CGRect(origin: ac.view.frame.origin, size: round.card.frontImage.size)
-                ac.view.addConstraint(NSLayoutConstraint(item: ac.view, attribute: .Height,
-                    relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
-                    multiplier: 1.0, constant: round.card.frontImage.size.height))
-                let buttonView = UIButton(frame: ac.view.frame)
-                buttonView.setImage(round.card.frontImage, forState: .Normal)
-                buttonView.addTarget(self, action: #selector(closeButton), forControlEvents: .TouchUpInside)
-                ac.view.addSubview(buttonView)
-                presentViewController(ac, animated: true, completion: { [unowned self] in
-                    // Update player variables before next round.
-                    self.player.hand.append(self.round.card)
-                    self.playerIndex += 1
-                })
+                displayQuestionResults()
             }
+
         }
     }
 
     // MARK: - Selectors
 
     func closeButton(button: UIButton) {
+        // TODO: - Return to root view controller instead of this dismiss.
         dismissViewControllerAnimated(true, completion: nil)
     }
 }

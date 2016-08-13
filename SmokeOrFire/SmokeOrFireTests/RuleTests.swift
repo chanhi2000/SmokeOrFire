@@ -17,8 +17,8 @@ class RuleTests: XCTestCase {
         XCTAssertEqual(Rule.IN_OUT.title(), "INSIDE or OUTSIDE?")
         XCTAssertEqual(Rule.SUIT.title(), "What's the SUIT?")
         XCTAssertEqual(Rule.POKER.title(), "Texax Hold'em!")
-        XCTAssertEqual(Rule.GIVE.title(), "")
-        XCTAssertEqual(Rule.TAKE.title(), "")
+        XCTAssertEqual(Rule.GIVE.title(), "G")
+        XCTAssertEqual(Rule.TAKE.title(), "T")
     }
 
 }

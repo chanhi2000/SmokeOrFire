@@ -67,7 +67,7 @@
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="choiceTapped:" destination="qt7-xk-4CN" eventType="touchDragInside" id="9iq-Cs-edw"/>
+                                            <action selector="choiceTapped:" destination="qt7-xk-4CN" eventType="touchUpInside" id="xZy-V2-WPc"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4d4-pt-IJS">
