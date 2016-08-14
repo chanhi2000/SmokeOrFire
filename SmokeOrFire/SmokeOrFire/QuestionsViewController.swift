@@ -87,7 +87,6 @@ class QuestionsViewController: UIViewController {
 
     var rule: Rule! {
         didSet {
-            statusContainer.statusLabel.text = rule.title()
             switch (rule as Rule) {
                 case .GIVE, .TAKE:
                     // Set give and take display text.
@@ -167,8 +166,8 @@ class QuestionsViewController: UIViewController {
         for i in 0.stride(to: levels.count, by: 1) {
             for _ in 0.stride(to: levels[i], by: 1) {
                 if let card = deck.draw() {
-                    let pyramidRule = ((pyramid.rounds.count +
-                        seed % 2) == 0) ? Rule.GIVE : Rule.TAKE
+                    let pyramidRule = (((pyramid.rounds.count +
+                        seed) % 2) == 0) ? Rule.GIVE : Rule.TAKE
                     rules.append(pyramidRule)
                     let pr = PyramidRound(level: i + 1, card: card,
                         rule: pyramidRule, isClicked: false)
