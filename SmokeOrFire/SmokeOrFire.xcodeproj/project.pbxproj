@@ -21,6 +21,7 @@
 		74175B601D612750006A9AC7 /* ChoicesText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B5F1D612750006A9AC7 /* ChoicesText.swift */; };
 		74175B621D61284C006A9AC7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B611D61284C006A9AC7 /* GameViewController.swift */; };
 		74175B6A1D612A1A006A9AC7 /* Suit+successor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B691D612A1A006A9AC7 /* Suit+successor.swift */; };
+		74175B6C1D612ABA006A9AC7 /* PyramidRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B6B1D612ABA006A9AC7 /* PyramidRound.swift */; };
 		743924D81D569C0000F1A17D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743924D71D569C0000F1A17D /* AppDelegate.swift */; };
 		743924DA1D569C0000F1A17D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743924D91D569C0000F1A17D /* ViewController.swift */; };
 		743924DD1D569C0000F1A17D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743924DB1D569C0000F1A17D /* Main.storyboard */; };
@@ -67,6 +68,7 @@
 		74175B5F1D612750006A9AC7 /* ChoicesText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoicesText.swift; sourceTree = "<group>"; };
 		74175B611D61284C006A9AC7 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		74175B691D612A1A006A9AC7 /* Suit+successor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Suit+successor.swift"; sourceTree = "<group>"; };
+		74175B6B1D612ABA006A9AC7 /* PyramidRound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PyramidRound.swift; sourceTree = "<group>"; };
 		743924D41D569C0000F1A17D /* SmokeOrFire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmokeOrFire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		743924D71D569C0000F1A17D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		743924D91D569C0000F1A17D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -145,10 +147,11 @@
 			isa = PBXGroup;
 			children = (
 				B517B2D01D56ABB600455B4F /* Card.swift */,
-				B5644F971D56E28D00FB48BA /* Player.swift */,
 				743925071D56E26A00F1A17D /* Deck.swift */,
-				7439250F1D57012000F1A17D /* Round.swift */,
+				B5644F971D56E28D00FB48BA /* Player.swift */,
 				749D20731D57349900083E52 /* Pyramid.swift */,
+				7439250F1D57012000F1A17D /* Round.swift */,
+				74175B6B1D612ABA006A9AC7 /* PyramidRound.swift */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				B5644F981D56E28D00FB48BA /* Player.swift in Sources */,
 				743925081D56E26A00F1A17D /* Deck.swift in Sources */,
 				B517B2D31D56AE3E00455B4F /* Suit.swift in Sources */,
+				74175B6C1D612ABA006A9AC7 /* PyramidRound.swift in Sources */,
 				74175B5E1D612701006A9AC7 /* PlayerChoices.swift in Sources */,
 				B517B2D51D56D42C00455B4F /* Rank.swift in Sources */,
 				743924D81D569C0000F1A17D /* AppDelegate.swift in Sources */,

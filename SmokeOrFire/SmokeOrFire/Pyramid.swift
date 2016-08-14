@@ -9,10 +9,3 @@
 struct Pyramid {
     var rounds = [PyramidRound]()
 }
-
-struct PyramidRound {
-    var level: Int
-    var card: Card
-    var rule: Rule
-    var isClicked = false
-}
