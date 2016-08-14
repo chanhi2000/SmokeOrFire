@@ -12,8 +12,8 @@ class Card: NSObject {
     var rank: Rank
     var suit: Suit
     var imageName: String
-    let frontImage: UIImage
-    let backImage: UIImage
+    var frontImage: UIImage
+    var backImage: UIImage
 
     init(rank: Rank, suit: Suit) {
         self.rank = rank
@@ -21,6 +21,10 @@ class Card: NSObject {
         self.imageName = "\(rank.describe())_of_\(suit.describe())"
         backImage = UIImage(named: "back")!
         frontImage = UIImage(named: imageName)!
+
+        let newSize = CGSize(width: 180, height: 250)
+        backImage = backImage.scaledToSize(newSize)
+        frontImage = frontImage.scaledToSize(newSize)
     }
 
     func describe() -> String {

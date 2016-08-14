@@ -14,8 +14,9 @@ class GameScene: SKScene {
     var card: SKSpriteNode!
 
     override func didMoveToView(view: SKView) {
-        card = SKSpriteNode(imageNamed: "ace_of_spades")
+        card = SKSpriteNode(texture: SKTexture(imageNamed: "ace_of_spades"), color: .whiteColor(), size: size)
         card.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        card.size = CGSize(width: 180, height: 250)
         addChild(card)
     }
 }
