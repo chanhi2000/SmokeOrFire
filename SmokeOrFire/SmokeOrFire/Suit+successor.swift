@@ -2,7 +2,7 @@
 //  Suit+successor.swift
 //  SmokeOrFire
 //
-//  Created by LeeChan on 8/6/16.
+//  Created by Justin Lawrence Hester on 8/14/16.
 //  Copyright © 2016 Justin Lawrence Hester. All rights reserved.
 //
 
