@@ -51,24 +51,6 @@ class Player: NSObject {
     }
 }
 
-enum PlayerChoices: UInt8 {
-    // Suit?
-    case CLUB = 1, DIAMOND, HEART, SPADE
-    // Smoke or fire?
-    case RED
-    case BLACK
-    // Higher or lower?
-    case HIGHER
-    case LOWER
-    // Inside or outside?
-    case INSIDE
-    case OUTSIDE
-    // Misc choice
-    case SAME
-    // Pyramid, no actual choice.
-    case PYRAMID
-}
-
 enum ChoicesText: String {
     case HEART = "HEART"
     case CLUB = "CLUB"
