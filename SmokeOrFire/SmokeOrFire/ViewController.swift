@@ -19,9 +19,9 @@ class ViewController: UIViewController {
             let ovc = segue.destinationViewController as! OptionsViewController
             ovc.delegate = self
             ovc.totalPlayers = totalPlayers
-        } else if segue.identifier == "questionSegue" {
-            let qvc = segue.destinationViewController as! QuestionsViewController
-            qvc.totalPlayers = totalPlayers
+        } else if segue.identifier == "gameSegue" {
+            let gvc = segue.destinationViewController as! GameViewController
+            gvc.totalPlayers = totalPlayers
         }
     }
 }

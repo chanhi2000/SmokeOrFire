@@ -1,5 +1,5 @@
 //
-//  QuestionsViewController.swift
+//  GameViewController.swift
 //  SmokeOrFire
 //
 //  Created by Justin Lawrence Hester on 8/7/16.
@@ -11,7 +11,7 @@ import GameplayKit
 import SpriteKit
 import UIKit
 
-class QuestionsViewController: UIViewController {
+class GameViewController: UIViewController {
 
     // UI variables
     @IBOutlet weak var bannerView: ADBannerView!
@@ -209,7 +209,7 @@ class QuestionsViewController: UIViewController {
 }
 
 // MARK: - ADBannerViewDelegate
-extension QuestionsViewController: ADBannerViewDelegate {
+extension GameViewController: ADBannerViewDelegate {
 
     func bannerViewDidLoadAd(banner: ADBannerView!) {
         bannerView.hidden = false
@@ -228,7 +228,7 @@ extension QuestionsViewController: ADBannerViewDelegate {
 }
 
 // MARK: - buttonViewDelegate
-extension QuestionsViewController: ButtonViewDelegate {
+extension GameViewController: ButtonViewDelegate {
 
     // Custom
 

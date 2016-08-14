@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Questions View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="ybn-NH-uOY">
             <objects>
-                <viewController id="I2v-EI-8Bd" customClass="QuestionsViewController" customModule="SmokeOrFire" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="I2v-EI-8Bd" customClass="GameViewController" customModule="SmokeOrFire" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="va0-ve-KGo"/>
                         <viewControllerLayoutGuide type="bottom" id="BWJ-7V-qNp"/>
@@ -133,7 +133,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="I2v-EI-8Bd" kind="show" identifier="questionSegue" id="ZEr-4D-y6A"/>
+                                    <segue destination="I2v-EI-8Bd" kind="show" identifier="gameSegue" id="ZEr-4D-y6A"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFf-D3-3hA">

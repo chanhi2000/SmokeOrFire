@@ -19,6 +19,8 @@
 		74175B5C1D612597006A9AC7 /* Rank+successor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B5B1D612597006A9AC7 /* Rank+successor.swift */; };
 		74175B5E1D612701006A9AC7 /* PlayerChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B5D1D612701006A9AC7 /* PlayerChoices.swift */; };
 		74175B601D612750006A9AC7 /* ChoicesText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B5F1D612750006A9AC7 /* ChoicesText.swift */; };
+		74175B621D61284C006A9AC7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B611D61284C006A9AC7 /* GameViewController.swift */; };
+		74175B6A1D612A1A006A9AC7 /* Suit+successor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B691D612A1A006A9AC7 /* Suit+successor.swift */; };
 		743924D81D569C0000F1A17D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743924D71D569C0000F1A17D /* AppDelegate.swift */; };
 		743924DA1D569C0000F1A17D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743924D91D569C0000F1A17D /* ViewController.swift */; };
 		743924DD1D569C0000F1A17D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743924DB1D569C0000F1A17D /* Main.storyboard */; };
@@ -30,7 +32,6 @@
 		743925101D57012000F1A17D /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7439250F1D57012000F1A17D /* Round.swift */; };
 		74626A6A1D5FB6D6006DADFA /* String+subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74626A691D5FB6D6006DADFA /* String+subscript.swift */; };
 		749D20741D57349900083E52 /* Pyramid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D20731D57349900083E52 /* Pyramid.swift */; };
-		749D207A1D575A6100083E52 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D20791D575A6100083E52 /* QuestionsViewController.swift */; };
 		74ADE9221D5FFBB700D7658B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ADE9211D5FFBB700D7658B /* GameScene.swift */; };
 		74ADE9241D5FFF1B00D7658B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 74ADE9231D5FFF1B00D7658B /* GameScene.sks */; };
 		B517B2D11D56ABB600455B4F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B517B2D01D56ABB600455B4F /* Card.swift */; };
@@ -64,6 +65,8 @@
 		74175B5B1D612597006A9AC7 /* Rank+successor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rank+successor.swift"; sourceTree = "<group>"; };
 		74175B5D1D612701006A9AC7 /* PlayerChoices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerChoices.swift; sourceTree = "<group>"; };
 		74175B5F1D612750006A9AC7 /* ChoicesText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoicesText.swift; sourceTree = "<group>"; };
+		74175B611D61284C006A9AC7 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		74175B691D612A1A006A9AC7 /* Suit+successor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Suit+successor.swift"; sourceTree = "<group>"; };
 		743924D41D569C0000F1A17D /* SmokeOrFire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmokeOrFire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		743924D71D569C0000F1A17D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		743924D91D569C0000F1A17D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,7 +82,6 @@
 		7439250F1D57012000F1A17D /* Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		74626A691D5FB6D6006DADFA /* String+subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+subscript.swift"; sourceTree = "<group>"; };
 		749D20731D57349900083E52 /* Pyramid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pyramid.swift; sourceTree = "<group>"; };
-		749D20791D575A6100083E52 /* QuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
 		74ADE9211D5FFBB700D7658B /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		74ADE9231D5FFF1B00D7658B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		B517B2D01D56ABB600455B4F /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -108,6 +110,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		74175B641D6128B4006A9AC7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				74175B611D61284C006A9AC7 /* GameViewController.swift */,
+				740755A41D5ACB3C007F8225 /* OptionsViewController.swift */,
+				743924D91D569C0000F1A17D /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		74175B651D6128EC006A9AC7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				74175B571D61167E006A9AC7 /* ButtonView.swift */,
+				74175B591D6122BD006A9AC7 /* StatusView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		74175B661D61293A006A9AC7 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				74175B5F1D612750006A9AC7 /* ChoicesText.swift */,
+				74175B5D1D612701006A9AC7 /* PlayerChoices.swift */,
+				B517B2D41D56D42C00455B4F /* Rank.swift */,
+				B5644F9B1D56F36400FB48BA /* Rule.swift */,
+				B517B2D21D56AE3E00455B4F /* Suit.swift */,
+			);
+			name = Enums;
+			sourceTree = "<group>";
+		};
+		74175B671D612986006A9AC7 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				B517B2D01D56ABB600455B4F /* Card.swift */,
+				B5644F971D56E28D00FB48BA /* Player.swift */,
+				743925071D56E26A00F1A17D /* Deck.swift */,
+				7439250F1D57012000F1A17D /* Round.swift */,
+				749D20731D57349900083E52 /* Pyramid.swift */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		74175B681D61299E006A9AC7 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				74ADE9211D5FFBB700D7658B /* GameScene.swift */,
+				74ADE9231D5FFF1B00D7658B /* GameScene.sks */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
 		743924CB1D569C0000F1A17D = {
 			isa = PBXGroup;
 			children = (
@@ -129,29 +183,17 @@
 		743924D61D569C0000F1A17D /* SmokeOrFire */ = {
 			isa = PBXGroup;
 			children = (
-				743925021D56DE8700F1A17D /* Extensions */,
-				743924D71D569C0000F1A17D /* AppDelegate.swift */,
-				743924D91D569C0000F1A17D /* ViewController.swift */,
-				743924DB1D569C0000F1A17D /* Main.storyboard */,
-				743924DE1D569C0000F1A17D /* Assets.xcassets */,
-				743924E01D569C0000F1A17D /* LaunchScreen.storyboard */,
 				743924E31D569C0000F1A17D /* Info.plist */,
-				74175B571D61167E006A9AC7 /* ButtonView.swift */,
-				B517B2D01D56ABB600455B4F /* Card.swift */,
-				74175B591D6122BD006A9AC7 /* StatusView.swift */,
-				B517B2D21D56AE3E00455B4F /* Suit.swift */,
-				B517B2D41D56D42C00455B4F /* Rank.swift */,
-				B5644F971D56E28D00FB48BA /* Player.swift */,
-				743925071D56E26A00F1A17D /* Deck.swift */,
-				B5644F9B1D56F36400FB48BA /* Rule.swift */,
-				7439250F1D57012000F1A17D /* Round.swift */,
-				749D20731D57349900083E52 /* Pyramid.swift */,
-				749D20791D575A6100083E52 /* QuestionsViewController.swift */,
-				740755A41D5ACB3C007F8225 /* OptionsViewController.swift */,
-				74ADE9211D5FFBB700D7658B /* GameScene.swift */,
-				74ADE9231D5FFF1B00D7658B /* GameScene.sks */,
-				74175B5D1D612701006A9AC7 /* PlayerChoices.swift */,
-				74175B5F1D612750006A9AC7 /* ChoicesText.swift */,
+				743924D71D569C0000F1A17D /* AppDelegate.swift */,
+				743924DE1D569C0000F1A17D /* Assets.xcassets */,
+				74175B641D6128B4006A9AC7 /* Controllers */,
+				74175B661D61293A006A9AC7 /* Enums */,
+				743925021D56DE8700F1A17D /* Extensions */,
+				743924E01D569C0000F1A17D /* LaunchScreen.storyboard */,
+				743924DB1D569C0000F1A17D /* Main.storyboard */,
+				74175B671D612986006A9AC7 /* Objects */,
+				74175B681D61299E006A9AC7 /* Scenes */,
+				74175B651D6128EC006A9AC7 /* Views */,
 			);
 			path = SmokeOrFire;
 			sourceTree = "<group>";
@@ -161,13 +203,13 @@
 			children = (
 				743924F51D56D98A00F1A17D /* Info.plist */,
 				743924FB1D56D9D500F1A17D /* CardTests.swift */,
-				B5644F991D56EB1800FB48BA /* PlayerTests.swift */,
 				7439250D1D56F95500F1A17D /* DeckTests.swift */,
-				741668D41D571A090013437D /* RoundTests.swift */,
-				740755AA1D5B31A6007F8225 /* SuitTests.swift */,
-				740755AC1D5B39DA007F8225 /* RankTests.swift */,
-				740755AE1D5B40FE007F8225 /* RuleTests.swift */,
+				B5644F991D56EB1800FB48BA /* PlayerTests.swift */,
 				740755B01D5B4380007F8225 /* PyramidTests.swift */,
+				740755AC1D5B39DA007F8225 /* RankTests.swift */,
+				741668D41D571A090013437D /* RoundTests.swift */,
+				740755AE1D5B40FE007F8225 /* RuleTests.swift */,
+				740755AA1D5B31A6007F8225 /* SuitTests.swift */,
 			);
 			path = SmokeOrFireTests;
 			sourceTree = "<group>";
@@ -177,6 +219,7 @@
 			children = (
 				74175B5B1D612597006A9AC7 /* Rank+successor.swift */,
 				74626A691D5FB6D6006DADFA /* String+subscript.swift */,
+				74175B691D612A1A006A9AC7 /* Suit+successor.swift */,
 				74175B551D605E90006A9AC7 /* UIImage+scaledToSize.swift */,
 			);
 			name = Extensions;
@@ -284,6 +327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74175B621D61284C006A9AC7 /* GameViewController.swift in Sources */,
 				B517B2D11D56ABB600455B4F /* Card.swift in Sources */,
 				749D20741D57349900083E52 /* Pyramid.swift in Sources */,
 				743924DA1D569C0000F1A17D /* ViewController.swift in Sources */,
@@ -296,7 +340,7 @@
 				74175B5A1D6122BD006A9AC7 /* StatusView.swift in Sources */,
 				74ADE9221D5FFBB700D7658B /* GameScene.swift in Sources */,
 				74175B601D612750006A9AC7 /* ChoicesText.swift in Sources */,
-				749D207A1D575A6100083E52 /* QuestionsViewController.swift in Sources */,
+				74175B6A1D612A1A006A9AC7 /* Suit+successor.swift in Sources */,
 				B5644F981D56E28D00FB48BA /* Player.swift in Sources */,
 				743925081D56E26A00F1A17D /* Deck.swift in Sources */,
 				B517B2D31D56AE3E00455B4F /* Suit.swift in Sources */,
