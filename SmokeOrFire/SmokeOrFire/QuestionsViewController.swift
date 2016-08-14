@@ -13,18 +13,18 @@ import UIKit
 
 class QuestionsViewController: UIViewController {
 
-    // MARK: - UI variables
+    // UI variables
     @IBOutlet weak var buttonContainer: ButtonContainer!
     @IBOutlet weak var bannerView: ADBannerView!
     @IBOutlet weak var skView: SKView!
 
-    // MARK: - Constant variables
+    // Constant variables
     private let SCREEN_WIDTH = UIScreen.mainScreen().bounds.width
     private let SCREEN_HEIGHT = UIScreen.mainScreen().bounds.height
     private let SCREEN_WIDTH_UNITS = 20.0 // Number of width units in design.
     private let SCREEN_HEIGHT_UNITS = 35.0 // Number of height units in design.
 
-    // MARK: - Instance variables
+    // Instance variables
     var deck: Deck = Deck()
     var gameScene: GameScene!
     // TODO: Add option to adjust these card counts per level.
@@ -35,7 +35,7 @@ class QuestionsViewController: UIViewController {
     var statusContainer: StatusContainer!
     var viewsDictionary: [String: AnyObject]! // Used to design Visual Format constraints.
 
-    // MARK: - Property inspectors
+    // Property inspectors
 
     var player: Player! {
         didSet {
@@ -113,7 +113,7 @@ class QuestionsViewController: UIViewController {
         }
     }
 
-    // MARK: - View Controller
+    // View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -158,7 +158,7 @@ class QuestionsViewController: UIViewController {
         startGame()
     }
 
-    // MARK: - Custom
+    // Custom
 
     func createPyramid() {
         pyramid = Pyramid()
@@ -231,7 +231,7 @@ extension QuestionsViewController: ADBannerViewDelegate {
 // MARK: - ButtonContainerDelegate
 extension QuestionsViewController: ButtonContainerDelegate {
 
-    // MARK: - Custom
+    // Custom
 
     func displayPyramidResults() {
         let ac = UIAlertController(title: "Pyramid Round \(pyramidRoundIndex + 1)",
@@ -345,7 +345,7 @@ extension QuestionsViewController: ButtonContainerDelegate {
         }
     }
 
-    // MARK: - Selectors
+    // Selectors
 
     func closeButton(button: UIButton) {
         // TODO: - Return to root view controller instead of this dismiss.
