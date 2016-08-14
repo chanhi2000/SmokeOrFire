@@ -32,7 +32,7 @@ class QuestionsViewController: UIViewController {
     var pyramid: Pyramid!
     var players: [Player]!
     var rules = [Rule.COLOR, Rule.UP_DOWN, Rule.IN_OUT, Rule.SUIT]
-    var statusContainer: StatusContainer!
+    var statusView: StatusView!
     var viewsDictionary: [String: AnyObject]! // Used to design Visual Format constraints.
 
     // Property inspectors
@@ -49,13 +49,13 @@ class QuestionsViewController: UIViewController {
                 // All the players have played in the round.
                 playerIndex = 0
                 player = players[playerIndex]
-                statusContainer?.statusButton.setTitle(
+                statusView?.statusButton.setTitle(
                     "P\(playerIndex + 1)", forState: .Normal)
                 nextRound()
             } else {
                 // Update everything for next player.
                 player = players[playerIndex]
-                statusContainer?.statusButton.setTitle(
+                statusView?.statusButton.setTitle(
                     "P\(playerIndex + 1)", forState: .Normal)
                 if let card = deck.draw() {
                     // Update round user interface.
@@ -74,7 +74,7 @@ class QuestionsViewController: UIViewController {
                 nextRound()
             } else {
                 // End of last pyramid round.
-                closeButton(statusContainer.statusButton)
+                closeButton(statusView.statusButton)
             }
         }
     }
@@ -90,13 +90,13 @@ class QuestionsViewController: UIViewController {
             switch (rule as Rule) {
                 case .GIVE, .TAKE:
                     // Set give and take display text.
-                    statusContainer?.statusButton.setTitle("\(rule.title())", forState: .Normal)
-                    statusContainer.statusLabel.text = "\(rule.title()) " +
+                    statusView?.statusButton.setTitle("\(rule.title())", forState: .Normal)
+                    statusView.statusLabel.text = "\(rule.title()) " +
                         "\(pyramid.rounds[pyramidRoundIndex].level) if you have..."
                     break
                 default:
                     // Set text for a question round.
-                    statusContainer.statusLabel.text = rule.title()
+                    statusView.statusLabel.text = rule.title()
             }
         }
     }
@@ -121,16 +121,16 @@ class QuestionsViewController: UIViewController {
         buttonView.delegate = self
 
         // Setup status container.
-        statusContainer = StatusContainer(frame: CGRect(
+        statusView = StatusView(frame: CGRect(
             x: CGFloat(1.0 / SCREEN_WIDTH_UNITS) * view.frame.width,
             y: CGFloat(2.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
             width: CGFloat(18.0 / SCREEN_WIDTH_UNITS) * view.frame.width,
             height: CGFloat(8.0 / SCREEN_HEIGHT_UNITS) * view.frame.height))
-        view.addSubview(statusContainer)
+        view.addSubview(statusView)
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "H:|[statusContainer]|", options: [], metrics: nil,
-            views: ["statusContainer": statusContainer]))
-        view.addConstraint(NSLayoutConstraint(item: statusContainer,
+            "H:|[statusView]|", options: [], metrics: nil,
+            views: ["statusView": statusView]))
+        view.addConstraint(NSLayoutConstraint(item: statusView,
             attribute: .Leading, relatedBy: .Equal,
             toItem: skView, attribute: .Leading, multiplier: 1.0, constant: 0.0))
 

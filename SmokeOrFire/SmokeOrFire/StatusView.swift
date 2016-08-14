@@ -1,5 +1,5 @@
 //
-//  StatusContainer.swift
+//  StatusView.swift
 //  SmokeOrFire
 //
 //  Created by Justin Lawrence Hester on 8/12/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StatusContainer: UIView {
+class StatusView: UIView {
 
     // MARK: - Constant Variables
 
