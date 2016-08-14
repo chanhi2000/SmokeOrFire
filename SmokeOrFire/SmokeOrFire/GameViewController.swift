@@ -134,23 +134,20 @@ class GameViewController: UIViewController {
             attribute: .Leading, relatedBy: .Equal,
             toItem: skView, attribute: .Leading, multiplier: 1.0, constant: 0.0))
 
-        if let scene = GameScene(fileNamed: "GameScene") {
-            // Setup skView.
-            skView.frame = CGRect(
-                x: CGFloat(10.0 / SCREEN_WIDTH_UNITS) * view.frame.width,
-                y: CGFloat(10.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
-                width: CGFloat(view.frame.width),
-                height: CGFloat(12.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
-            skView.showsFPS = true
-            skView.showsNodeCount = true
-            skView.ignoresSiblingOrder = true // Improves rendering performance
-            scene.scaleMode = .AspectFill // Fits the scene to the view window
-            skView.presentScene(scene)
-            gameScene = scene
-        } else {
-            print("GameScene failed to load")
-            gameOver()
-        }
+        // Setup skView.
+        skView.frame = CGRect(
+            x: CGFloat(10.0 / SCREEN_WIDTH_UNITS) * view.frame.width,
+            y: CGFloat(10.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
+            width: CGFloat(view.frame.width),
+            height: CGFloat(12.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        skView.ignoresSiblingOrder = true // Improves rendering performance
+        // Setup game scene.
+        let scene = GameScene(size: skView.frame.size)
+        scene.scaleMode = .AspectFill // Fits the scene to the view window
+        skView.presentScene(scene)
+        gameScene = scene
 
         createPyramid()
 

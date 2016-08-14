@@ -19,4 +19,8 @@ class GameScene: SKScene {
         card.size = CGSize(width: 180, height: 250)
         addChild(card)
     }
+
+    func displayHand(hand: [Card]) {
+
+    }
 }
