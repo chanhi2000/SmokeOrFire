@@ -18,16 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Smoke or Fire?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d78-If-AST">
-                                <rect key="frame" x="20" y="194" width="560" height="151"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="gC0-YJ-ILS"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rYD-9k-JNK">
                                 <rect key="frame" x="20" y="520" width="560" height="80"/>
                                 <constraints>
@@ -37,10 +27,10 @@
                                     <outlet property="delegate" destination="I2v-EI-8Bd" id="tGK-9D-ZKz"/>
                                 </connections>
                             </adBannerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qt7-xk-4CN" customClass="ButtonContainer" customModule="SmokeOrFire" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qt7-xk-4CN" customClass="ButtonContainer" customModule="SmokeOrFire" customModuleProvider="target">
                                 <rect key="frame" x="20" y="326" width="560" height="219"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8AV-RK-Fbo">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8AV-RK-Fbo">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="219"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Button">
@@ -70,7 +60,7 @@
                                             <action selector="choiceTapped:" destination="qt7-xk-4CN" eventType="touchUpInside" id="xZy-V2-WPc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4d4-pt-IJS">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4d4-pt-IJS">
                                         <rect key="frame" x="280" y="0.0" width="280" height="219"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Button">
@@ -104,11 +94,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="rYD-9k-JNK" firstAttribute="leading" secondItem="rdS-xm-bkD" secondAttribute="leadingMargin" id="DHb-Sa-zw6"/>
-                            <constraint firstItem="qt7-xk-4CN" firstAttribute="trailing" secondItem="d78-If-AST" secondAttribute="trailing" id="GfE-wD-A9N"/>
                             <constraint firstItem="BWJ-7V-qNp" firstAttribute="top" secondItem="qt7-xk-4CN" secondAttribute="bottom" constant="55" id="HsI-lD-TNv"/>
-                            <constraint firstItem="qt7-xk-4CN" firstAttribute="top" secondItem="d78-If-AST" secondAttribute="bottom" constant="-19" id="RRc-go-SFE"/>
-                            <constraint firstItem="d78-If-AST" firstAttribute="leading" secondItem="rdS-xm-bkD" secondAttribute="leadingMargin" id="gf9-14-yig"/>
-                            <constraint firstItem="d78-If-AST" firstAttribute="trailing" secondItem="rdS-xm-bkD" secondAttribute="trailingMargin" id="hMF-Oh-q10"/>
                             <constraint firstItem="qt7-xk-4CN" firstAttribute="top" secondItem="rdS-xm-bkD" secondAttribute="top" constant="326" id="q2S-BA-r0j"/>
                             <constraint firstItem="rYD-9k-JNK" firstAttribute="trailing" secondItem="rdS-xm-bkD" secondAttribute="trailingMargin" id="x6C-Ga-ynj"/>
                             <constraint firstItem="qt7-xk-4CN" firstAttribute="leading" secondItem="rYD-9k-JNK" secondAttribute="leading" id="xHt-M9-jq6"/>
@@ -118,7 +104,6 @@
                     <connections>
                         <outlet property="bannerView" destination="rYD-9k-JNK" id="Chy-1b-1IB"/>
                         <outlet property="buttonContainer" destination="qt7-xk-4CN" id="zVg-ST-PA9"/>
-                        <outlet property="questionLabel" destination="d78-If-AST" id="C3f-o8-RrV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AqW-o6-tbA" userLabel="First Responder" sceneMemberID="firstResponder"/>

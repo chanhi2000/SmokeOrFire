@@ -13,7 +13,6 @@ import UIKit
 class QuestionsViewController: UIViewController {
 
     // MARK: - UI variables
-    @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var buttonContainer: ButtonContainer!
     @IBOutlet weak var bannerView: ADBannerView!
 
@@ -95,7 +94,7 @@ class QuestionsViewController: UIViewController {
                     break
                 default:
                     // Set text for a question round.
-                    questionLabel.text = rule.title()
+                    statusContainer.statusLabel.text = rule.title()
             }
         }
     }
