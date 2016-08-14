@@ -18,6 +18,7 @@
 		74175B5A1D6122BD006A9AC7 /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B591D6122BD006A9AC7 /* StatusView.swift */; };
 		74175B5C1D612597006A9AC7 /* Rank+successor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B5B1D612597006A9AC7 /* Rank+successor.swift */; };
 		74175B5E1D612701006A9AC7 /* PlayerChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B5D1D612701006A9AC7 /* PlayerChoices.swift */; };
+		74175B601D612750006A9AC7 /* ChoicesText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B5F1D612750006A9AC7 /* ChoicesText.swift */; };
 		743924D81D569C0000F1A17D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743924D71D569C0000F1A17D /* AppDelegate.swift */; };
 		743924DA1D569C0000F1A17D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743924D91D569C0000F1A17D /* ViewController.swift */; };
 		743924DD1D569C0000F1A17D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743924DB1D569C0000F1A17D /* Main.storyboard */; };
@@ -62,6 +63,7 @@
 		74175B591D6122BD006A9AC7 /* StatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 		74175B5B1D612597006A9AC7 /* Rank+successor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rank+successor.swift"; sourceTree = "<group>"; };
 		74175B5D1D612701006A9AC7 /* PlayerChoices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerChoices.swift; sourceTree = "<group>"; };
+		74175B5F1D612750006A9AC7 /* ChoicesText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoicesText.swift; sourceTree = "<group>"; };
 		743924D41D569C0000F1A17D /* SmokeOrFire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmokeOrFire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		743924D71D569C0000F1A17D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		743924D91D569C0000F1A17D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				74ADE9211D5FFBB700D7658B /* GameScene.swift */,
 				74ADE9231D5FFF1B00D7658B /* GameScene.sks */,
 				74175B5D1D612701006A9AC7 /* PlayerChoices.swift */,
+				74175B5F1D612750006A9AC7 /* ChoicesText.swift */,
 			);
 			path = SmokeOrFire;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				74175B5C1D612597006A9AC7 /* Rank+successor.swift in Sources */,
 				74175B5A1D6122BD006A9AC7 /* StatusView.swift in Sources */,
 				74ADE9221D5FFBB700D7658B /* GameScene.swift in Sources */,
+				74175B601D612750006A9AC7 /* ChoicesText.swift in Sources */,
 				749D207A1D575A6100083E52 /* QuestionsViewController.swift in Sources */,
 				B5644F981D56E28D00FB48BA /* Player.swift in Sources */,
 				743925081D56E26A00F1A17D /* Deck.swift in Sources */,
