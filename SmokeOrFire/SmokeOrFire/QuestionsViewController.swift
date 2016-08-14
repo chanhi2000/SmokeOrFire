@@ -131,6 +131,9 @@ class QuestionsViewController: UIViewController {
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "H:|[statusContainer]|", options: [], metrics: nil,
             views: ["statusContainer": statusContainer]))
+        view.addConstraint(NSLayoutConstraint(item: statusContainer,
+            attribute: .Leading, relatedBy: .Equal,
+            toItem: skView, attribute: .Leading, multiplier: 1.0, constant: 0.0))
 
         if let scene = GameScene(fileNamed: "GameScene") {
             // Setup skView.
