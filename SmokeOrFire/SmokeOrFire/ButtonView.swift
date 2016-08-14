@@ -1,18 +1,18 @@
 //
-//  ButtonContainer.swift
+//  ButtonView.swift
 //  SmokeOrFire
 //
-//  Created by Justin Lawrence Hester on 8/10/16.
+//  Created by Justin Lawrence Hester on 8/14/16.
 //  Copyright © 2016 Justin Lawrence Hester. All rights reserved.
 //
 
 import UIKit
 
-protocol ButtonContainerDelegate {
-    func buttonContainerUpdatePlayerChoice(text: String?)
+protocol ButtonViewDelegate {
+    func buttonViewUpdatePlayerChoice(text: String?)
 }
 
-class ButtonContainer: UIView {
+class ButtonView: UIView {
 
     // MARK: - IBOutlets
     @IBOutlet weak var firstChoiceButton: UIButton!
@@ -24,12 +24,12 @@ class ButtonContainer: UIView {
     private var viewsDictionary: [String: UIButton]! // Used to design Visual Format constraints.
 
     // MARK: - Instance variables
-    var delegate: ButtonContainerDelegate!
+    var delegate: ButtonViewDelegate!
 
     // MARK: - IBActions
 
     @IBAction func choiceTapped(sender: UIButton) {
-        delegate.buttonContainerUpdatePlayerChoice(sender.titleLabel?.text)
+        delegate.buttonViewUpdatePlayerChoice(sender.titleLabel?.text)
     }
 
     // MARK: - Custom

@@ -14,8 +14,8 @@ import UIKit
 class QuestionsViewController: UIViewController {
 
     // UI variables
-    @IBOutlet weak var buttonContainer: ButtonContainer!
     @IBOutlet weak var bannerView: ADBannerView!
+    @IBOutlet weak var buttonView: ButtonView!
     @IBOutlet weak var skView: SKView!
 
     // Constant variables
@@ -81,7 +81,7 @@ class QuestionsViewController: UIViewController {
 
     var round: Round! {
         didSet {
-            buttonContainer.setButtonsFor(round)
+            buttonView.setButtonsFor(round)
         }
     }
 
@@ -119,7 +119,7 @@ class QuestionsViewController: UIViewController {
 
         title = "Smoke or Fire"
 
-        buttonContainer.delegate = self
+        buttonView.delegate = self
 
         // Setup status container.
         statusContainer = StatusContainer(frame: CGRect(
@@ -228,8 +228,8 @@ extension QuestionsViewController: ADBannerViewDelegate {
 
 }
 
-// MARK: - ButtonContainerDelegate
-extension QuestionsViewController: ButtonContainerDelegate {
+// MARK: - buttonViewDelegate
+extension QuestionsViewController: ButtonViewDelegate {
 
     // Custom
 
@@ -289,7 +289,7 @@ extension QuestionsViewController: ButtonContainerDelegate {
         })
     }
 
-    func buttonContainerUpdatePlayerChoice(text: String?) {
+    func buttonViewUpdatePlayerChoice(text: String?) {
         if let choiceText = text {
             // TODO: Figure out how to shrink this switch-case into something more clever.
             switch (choiceText) {

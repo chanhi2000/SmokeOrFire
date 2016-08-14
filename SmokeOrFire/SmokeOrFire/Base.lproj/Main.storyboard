@@ -22,7 +22,7 @@
                                 <rect key="frame" x="20" y="199" width="560" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qt7-xk-4CN" customClass="ButtonContainer" customModule="SmokeOrFire" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qt7-xk-4CN" customClass="ButtonView" customModule="SmokeOrFire" customModuleProvider="target">
                                 <rect key="frame" x="20" y="326" width="560" height="219"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8AV-RK-Fbo">
@@ -95,7 +95,7 @@
                     </view>
                     <connections>
                         <outlet property="bannerView" destination="rYD-9k-JNK" id="Chy-1b-1IB"/>
-                        <outlet property="buttonContainer" destination="qt7-xk-4CN" id="zVg-ST-PA9"/>
+                        <outlet property="buttonView" destination="qt7-xk-4CN" id="VMD-x9-5FV"/>
                         <outlet property="skView" destination="Wru-pW-iju" id="1Ik-Fh-wrP"/>
                     </connections>
                 </viewController>
