@@ -28,7 +28,6 @@
 		743925101D57012000F1A17D /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7439250F1D57012000F1A17D /* Round.swift */; };
 		74626A6A1D5FB6D6006DADFA /* String+subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74626A691D5FB6D6006DADFA /* String+subscript.swift */; };
 		749D20741D57349900083E52 /* Pyramid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D20731D57349900083E52 /* Pyramid.swift */; };
-		749D20781D5748CA00083E52 /* PyramidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D20771D5748CA00083E52 /* PyramidViewController.swift */; };
 		749D207A1D575A6100083E52 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D20791D575A6100083E52 /* QuestionsViewController.swift */; };
 		749D207E1D57D65C00083E52 /* PyramidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D207D1D57D65C00083E52 /* PyramidCell.swift */; };
 		74ADE9221D5FFBB700D7658B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ADE9211D5FFBB700D7658B /* GameScene.swift */; };
@@ -79,7 +78,6 @@
 		7439250F1D57012000F1A17D /* Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		74626A691D5FB6D6006DADFA /* String+subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+subscript.swift"; sourceTree = "<group>"; };
 		749D20731D57349900083E52 /* Pyramid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pyramid.swift; sourceTree = "<group>"; };
-		749D20771D5748CA00083E52 /* PyramidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PyramidViewController.swift; sourceTree = "<group>"; };
 		749D20791D575A6100083E52 /* QuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
 		749D207D1D57D65C00083E52 /* PyramidCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PyramidCell.swift; sourceTree = "<group>"; };
 		74ADE9211D5FFBB700D7658B /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -149,7 +147,6 @@
 				7439250F1D57012000F1A17D /* Round.swift */,
 				749D20731D57349900083E52 /* Pyramid.swift */,
 				B521B0681D57F9B300AE097F /* CardsViewController.swift */,
-				749D20771D5748CA00083E52 /* PyramidViewController.swift */,
 				749D20791D575A6100083E52 /* QuestionsViewController.swift */,
 				749D207D1D57D65C00083E52 /* PyramidCell.swift */,
 				740755A41D5ACB3C007F8225 /* OptionsViewController.swift */,
@@ -296,7 +293,6 @@
 				749D20741D57349900083E52 /* Pyramid.swift in Sources */,
 				743924DA1D569C0000F1A17D /* ViewController.swift in Sources */,
 				74E6A3081D5EBE11008649A7 /* StatusContainer.swift in Sources */,
-				749D20781D5748CA00083E52 /* PyramidViewController.swift in Sources */,
 				740755A51D5ACB3C007F8225 /* OptionsViewController.swift in Sources */,
 				743925101D57012000F1A17D /* Round.swift in Sources */,
 				74175B561D605E90006A9AC7 /* UIImage+scaledToSize.swift in Sources */,
