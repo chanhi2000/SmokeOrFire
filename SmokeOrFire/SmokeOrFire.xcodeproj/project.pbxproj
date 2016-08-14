@@ -30,6 +30,8 @@
 		749D20781D5748CA00083E52 /* PyramidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D20771D5748CA00083E52 /* PyramidViewController.swift */; };
 		749D207A1D575A6100083E52 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D20791D575A6100083E52 /* QuestionsViewController.swift */; };
 		749D207E1D57D65C00083E52 /* PyramidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D207D1D57D65C00083E52 /* PyramidCell.swift */; };
+		74ADE9221D5FFBB700D7658B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ADE9211D5FFBB700D7658B /* GameScene.swift */; };
+		74ADE9241D5FFF1B00D7658B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 74ADE9231D5FFF1B00D7658B /* GameScene.sks */; };
 		74E6A3081D5EBE11008649A7 /* StatusContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E6A3071D5EBE11008649A7 /* StatusContainer.swift */; };
 		B517B2D11D56ABB600455B4F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B517B2D01D56ABB600455B4F /* Card.swift */; };
 		B517B2D31D56AE3E00455B4F /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B517B2D21D56AE3E00455B4F /* Suit.swift */; };
@@ -136,6 +138,8 @@
 		749D20771D5748CA00083E52 /* PyramidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PyramidViewController.swift; sourceTree = "<group>"; };
 		749D20791D575A6100083E52 /* QuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
 		749D207D1D57D65C00083E52 /* PyramidCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PyramidCell.swift; sourceTree = "<group>"; };
+		74ADE9211D5FFBB700D7658B /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		74ADE9231D5FFF1B00D7658B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		74E6A3071D5EBE11008649A7 /* StatusContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusContainer.swift; sourceTree = "<group>"; };
 		B517B2D01D56ABB600455B4F /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		B517B2D21D56AE3E00455B4F /* Suit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suit.swift; sourceTree = "<group>"; };
@@ -266,6 +270,8 @@
 				740755A41D5ACB3C007F8225 /* OptionsViewController.swift */,
 				74146A3C1D5BD36500764831 /* ButtonContainer.swift */,
 				74E6A3071D5EBE11008649A7 /* StatusContainer.swift */,
+				74ADE9211D5FFBB700D7658B /* GameScene.swift */,
+				74ADE9231D5FFF1B00D7658B /* GameScene.sks */,
 			);
 			path = SmokeOrFire;
 			sourceTree = "<group>";
@@ -504,6 +510,7 @@
 				B521B0C61D57F9C800AE097F /* 9_of_diamonds.png in Resources */,
 				B521B0D21D57F9C800AE097F /* jack_of_clubs.png in Resources */,
 				B521B0A91D57F9C800AE097F /* 2_of_clubs.png in Resources */,
+				74ADE9241D5FFF1B00D7658B /* GameScene.sks in Resources */,
 				B521B0D11D57F9C800AE097F /* black_joker.png in Resources */,
 				B521B0AC1D57F9C800AE097F /* 2_of_spades.png in Resources */,
 				B521B0CC1D57F9C800AE097F /* ace_of_spades.png in Resources */,
@@ -540,6 +547,7 @@
 				B5644F9C1D56F36400FB48BA /* Rule.swift in Sources */,
 				74626A6A1D5FB6D6006DADFA /* String+subscript.swift in Sources */,
 				749D207E1D57D65C00083E52 /* PyramidCell.swift in Sources */,
+				74ADE9221D5FFBB700D7658B /* GameScene.swift in Sources */,
 				743925061D56DF2E00F1A17D /* Suit+exts.swift in Sources */,
 				749D207A1D575A6100083E52 /* QuestionsViewController.swift in Sources */,
 				B5644F981D56E28D00FB48BA /* Player.swift in Sources */,

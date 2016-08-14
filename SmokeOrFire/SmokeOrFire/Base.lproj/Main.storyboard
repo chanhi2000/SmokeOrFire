@@ -14,23 +14,18 @@
                         <viewControllerLayoutGuide type="top" id="va0-ve-KGo"/>
                         <viewControllerLayoutGuide type="bottom" id="BWJ-7V-qNp"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rdS-xm-bkD">
+                    <view key="view" contentMode="scaleAspectFill" id="rdS-xm-bkD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rYD-9k-JNK">
-                                <rect key="frame" x="20" y="520" width="560" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="m9D-CF-7ZJ"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="delegate" destination="I2v-EI-8Bd" id="tGK-9D-ZKz"/>
-                                </connections>
-                            </adBannerView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qt7-xk-4CN" customClass="ButtonContainer" customModule="SmokeOrFire" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wru-pW-iju" customClass="SKView">
+                                <rect key="frame" x="20" y="199" width="560" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qt7-xk-4CN" customClass="ButtonContainer" customModule="SmokeOrFire" customModuleProvider="target">
                                 <rect key="frame" x="20" y="326" width="560" height="219"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8AV-RK-Fbo">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8AV-RK-Fbo">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="219"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Button">
@@ -60,7 +55,7 @@
                                             <action selector="choiceTapped:" destination="qt7-xk-4CN" eventType="touchUpInside" id="xZy-V2-WPc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4d4-pt-IJS">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4d4-pt-IJS">
                                         <rect key="frame" x="280" y="0.0" width="280" height="219"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Button">
@@ -72,17 +67,6 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="8AV-RK-Fbo" firstAttribute="leading" secondItem="qt7-xk-4CN" secondAttribute="leading" id="0ui-f4-Tix"/>
-                                    <constraint firstItem="4d4-pt-IJS" firstAttribute="leading" secondItem="8AV-RK-Fbo" secondAttribute="trailing" id="PT6-rL-sve"/>
-                                    <constraint firstItem="8AV-RK-Fbo" firstAttribute="top" secondItem="qt7-xk-4CN" secondAttribute="top" id="QJ3-lu-Uuh"/>
-                                    <constraint firstAttribute="bottom" secondItem="4d4-pt-IJS" secondAttribute="bottom" id="TBL-KD-QAA"/>
-                                    <constraint firstItem="4d4-pt-IJS" firstAttribute="height" secondItem="8AV-RK-Fbo" secondAttribute="height" id="YNt-D8-7LD"/>
-                                    <constraint firstItem="4d4-pt-IJS" firstAttribute="width" secondItem="8AV-RK-Fbo" secondAttribute="width" id="hRe-M7-GKR"/>
-                                    <constraint firstItem="4d4-pt-IJS" firstAttribute="top" secondItem="qt7-xk-4CN" secondAttribute="top" id="mhZ-ie-3cH"/>
-                                    <constraint firstAttribute="trailing" secondItem="4d4-pt-IJS" secondAttribute="trailing" id="oSg-6s-lWm"/>
-                                    <constraint firstAttribute="bottom" secondItem="8AV-RK-Fbo" secondAttribute="bottom" id="tdz-5f-zdx"/>
-                                </constraints>
                                 <connections>
                                     <outlet property="firstChoiceButton" destination="8AV-RK-Fbo" id="m98-I4-Qk9"/>
                                     <outlet property="fourthChoiceButton" destination="D0u-fj-Z9Q" id="yJr-WD-dun"/>
@@ -90,20 +74,29 @@
                                     <outlet property="thirdChoiceButton" destination="9QB-8m-lNy" id="B3r-SJ-Jgz"/>
                                 </connections>
                             </view>
+                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rYD-9k-JNK">
+                                <rect key="frame" x="20" y="520" width="560" height="66"/>
+                                <connections>
+                                    <outlet property="delegate" destination="I2v-EI-8Bd" id="tGK-9D-ZKz"/>
+                                </connections>
+                            </adBannerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Wru-pW-iju" firstAttribute="trailing" secondItem="rdS-xm-bkD" secondAttribute="trailingMargin" id="BF7-8d-jUk"/>
                             <constraint firstItem="rYD-9k-JNK" firstAttribute="leading" secondItem="rdS-xm-bkD" secondAttribute="leadingMargin" id="DHb-Sa-zw6"/>
-                            <constraint firstItem="BWJ-7V-qNp" firstAttribute="top" secondItem="qt7-xk-4CN" secondAttribute="bottom" constant="55" id="HsI-lD-TNv"/>
-                            <constraint firstItem="qt7-xk-4CN" firstAttribute="top" secondItem="rdS-xm-bkD" secondAttribute="top" constant="326" id="q2S-BA-r0j"/>
+                            <constraint firstItem="qt7-xk-4CN" firstAttribute="leading" secondItem="rdS-xm-bkD" secondAttribute="leadingMargin" id="DWO-8H-iOa"/>
+                            <constraint firstItem="qt7-xk-4CN" firstAttribute="top" secondItem="Wru-pW-iju" secondAttribute="bottom" id="Uul-hm-oHM"/>
+                            <constraint firstItem="qt7-xk-4CN" firstAttribute="trailing" secondItem="rdS-xm-bkD" secondAttribute="trailingMargin" id="boK-IL-t6R"/>
+                            <constraint firstItem="Wru-pW-iju" firstAttribute="leading" secondItem="rdS-xm-bkD" secondAttribute="leadingMargin" id="qjZ-2m-YEg"/>
                             <constraint firstItem="rYD-9k-JNK" firstAttribute="trailing" secondItem="rdS-xm-bkD" secondAttribute="trailingMargin" id="x6C-Ga-ynj"/>
-                            <constraint firstItem="qt7-xk-4CN" firstAttribute="leading" secondItem="rYD-9k-JNK" secondAttribute="leading" id="xHt-M9-jq6"/>
                             <constraint firstItem="BWJ-7V-qNp" firstAttribute="top" secondItem="rYD-9k-JNK" secondAttribute="bottom" id="y16-Eh-kHo"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bannerView" destination="rYD-9k-JNK" id="Chy-1b-1IB"/>
                         <outlet property="buttonContainer" destination="qt7-xk-4CN" id="zVg-ST-PA9"/>
+                        <outlet property="skView" destination="Wru-pW-iju" id="1Ik-Fh-wrP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AqW-o6-tbA" userLabel="First Responder" sceneMemberID="firstResponder"/>

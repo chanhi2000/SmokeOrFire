@@ -8,6 +8,7 @@
 
 import iAd
 import GameplayKit
+import SpriteKit
 import UIKit
 
 class QuestionsViewController: UIViewController {
@@ -15,6 +16,7 @@ class QuestionsViewController: UIViewController {
     // MARK: - UI variables
     @IBOutlet weak var buttonContainer: ButtonContainer!
     @IBOutlet weak var bannerView: ADBannerView!
+    @IBOutlet weak var skView: SKView!
 
     // MARK: - Constant variables
     private let SCREEN_WIDTH = UIScreen.mainScreen().bounds.width
@@ -24,6 +26,7 @@ class QuestionsViewController: UIViewController {
 
     // MARK: - Instance variables
     var deck: Deck = Deck()
+    var gameScene: GameScene!
     // TODO: Add option to adjust these card counts per level.
     var levels: [Int] = [4, 4, 3, 3, 2, 1]
     var pyramid: Pyramid!
@@ -121,10 +124,31 @@ class QuestionsViewController: UIViewController {
         // Setup status container.
         statusContainer = StatusContainer(frame: CGRect(
             x: CGFloat(1.0 / SCREEN_WIDTH_UNITS) * view.frame.width,
-            y: CGFloat(1.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
+            y: CGFloat(2.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
             width: CGFloat(18.0 / SCREEN_WIDTH_UNITS) * view.frame.width,
             height: CGFloat(8.0 / SCREEN_HEIGHT_UNITS) * view.frame.height))
         view.addSubview(statusContainer)
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
+            "H:|[statusContainer]|", options: [], metrics: nil,
+            views: ["statusContainer": statusContainer]))
+
+        if let scene = GameScene(fileNamed: "GameScene") {
+            // Setup skView.
+            skView.frame = CGRect(
+                x: CGFloat(10.0 / SCREEN_WIDTH_UNITS) * view.frame.width,
+                y: CGFloat(10.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
+                width: CGFloat(view.frame.width),
+                height: CGFloat(12.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
+            skView.showsFPS = true
+            skView.showsNodeCount = true
+            skView.ignoresSiblingOrder = true // Improves rendering performance
+            scene.scaleMode = .AspectFill // Fits the scene to the view window
+            skView.presentScene(scene)
+            gameScene = scene
+        } else {
+            print("GameScene failed to load")
+            gameOver()
+        }
 
         createPyramid()
 
