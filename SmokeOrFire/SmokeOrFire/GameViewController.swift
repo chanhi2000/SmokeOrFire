@@ -52,6 +52,8 @@ class GameViewController: UIViewController {
                 player = players[playerIndex]
                 statusView?.statusButton.setTitle(
                     "P\(playerIndex + 1)", forState: .Normal)
+                // Display next player's hand.
+                gameScene.displayHand(player.hand)
                 if let card = deck.draw() {
                     // Update round user interface.
                     round = Round(card: card, rule: round.rule)
@@ -88,6 +90,8 @@ class GameViewController: UIViewController {
                     statusView?.statusButton.setTitle("\(rule.title())", forState: .Normal)
                     statusView.statusLabel.text = "\(rule.title()) " +
                         "\(pyramid.rounds[pyramidRoundIndex].level) if you have..."
+                    // Update game scene.
+                    gameScene.displayPyramid(pyramid.rounds, index: pyramidRoundIndex)
                     break
                 default:
                     // Set text for a question round.
@@ -146,9 +150,8 @@ class GameViewController: UIViewController {
         skView.presentScene(scene)
         gameScene = scene
 
-        createPyramid()
-
         startGame()
+
     }
 
     // Custom
@@ -176,6 +179,7 @@ class GameViewController: UIViewController {
 
     func startGame() {
         deck.shuffle()
+        createPyramid()
         nextRound()
     }
 
@@ -250,8 +254,9 @@ extension GameViewController: ButtonViewDelegate {
         presentViewController(ac, animated: true, completion: { [weak self] in
             guard let strongSelf = self else { return }
             // Update pyramid round.
+            strongSelf.pyramid.rounds[strongSelf.pyramidRoundIndex].isClicked = true
             strongSelf.pyramidRoundIndex += 1
-            })
+        })
     }
 
     func displayQuestionResults() {
