@@ -59,6 +59,7 @@ class GameViewController: UIViewController {
                     round = Round(card: card, rule: round.rule)
                 } else {
                     // Deck ran out of cards.
+                    print("Ran out cards in playerIndex.didSet")
                     gameOver()
                 }
             }
@@ -71,6 +72,7 @@ class GameViewController: UIViewController {
                 nextRound()
             } else {
                 // End of last pyramid round.
+                print ("End of last pyramid round in pyramidRoundIndex.didSet")
                 gameOver()
             }
         }
@@ -154,29 +156,6 @@ class GameViewController: UIViewController {
 
     }
 
-    // Custom
-
-    func createPyramid() {
-        pyramid = Pyramid()
-        // This seed ensures give-take pattern doesn't always start on give.
-        let seed = GKRandomSource.sharedRandom().nextIntWithUpperBound(2)
-        for i in 0.stride(to: levels.count, by: 1) {
-            for _ in 0.stride(to: levels[i], by: 1) {
-                if let card = deck.draw() {
-                    let pyramidRule = (((pyramid.rounds.count +
-                        seed) % 2) == 0) ? Rule.GIVE : Rule.TAKE
-                    rules.append(pyramidRule)
-                    let pr = PyramidRound(level: i + 1, card: card,
-                        rule: pyramidRule, isClicked: false)
-                    pyramid.rounds.append(pr)
-                } else {
-                    print("No more cards in deck to build pyramid.")
-                    return
-                }
-            }
-        }
-    }
-
     func startGame() {
         deck.shuffle()
         createPyramid()
@@ -190,6 +169,7 @@ class GameViewController: UIViewController {
             round = Round(card: card, rule: rule)
         } else {
             // Deck ran out of cards.
+            print("Ran out cards in nextRound()")
             gameOver()
         }
     }
@@ -198,12 +178,14 @@ class GameViewController: UIViewController {
         print("Game over")
         // TODO: Design game over that displays results.
         let ac = UIAlertController(title: "Game Over", message: "Player: 1 wins!", preferredStyle: .Alert)
-        ac.addAction(UIAlertAction(title: "Continue", style: .Cancel, handler: nil))
-        presentViewController(ac, animated: true, completion: { [weak self] in
+        ac.addAction(UIAlertAction(title: "Continue", style: .Cancel, handler: { [weak self] (action: UIAlertAction!) -> Void in
             guard let strongSelf = self else { return }
-            strongSelf.dismissViewControllerAnimated(true, completion: nil)
-        })
+            // Return to main menu.
+            strongSelf.navigationController?.popToRootViewControllerAnimated(true)
+        }))
+        presentViewController(ac, animated: true, completion: nil)
     }
+
 }
 
 // MARK: - ADBannerViewDelegate
@@ -227,60 +209,6 @@ extension GameViewController: ADBannerViewDelegate {
 
 // MARK: - buttonViewDelegate
 extension GameViewController: ButtonViewDelegate {
-
-    // Custom
-
-    func displayPyramidResults() {
-        let ac = UIAlertController(title: "Pyramid Round \(pyramidRoundIndex + 1)",
-            message: "\(round.card.describe())", preferredStyle: .Alert)
-
-        // Set card image.
-        let buttonView = UIButton(frame: ac.view.frame)
-        buttonView.setImage(round.card.frontImage, forState: .Normal)
-        buttonView.addTarget(self, action: #selector(pyramidTapped), forControlEvents: .TouchUpInside)
-        ac.view.addSubview(buttonView)
-
-        for p in players {
-            if p.hasCard(round.card) {
-                // Add an action column for each losing player.
-                // TODO: Design handler for UIAlertAction to remove itself.
-                ac.addAction(UIAlertAction(
-                    title: "Player \(p.number): \(p.displayHand())",
-                    style: .Default, handler: nil))
-            }
-        }
-        // TODO: Design handler to only dismiss once all players drink.
-        ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: nil))
-        presentViewController(ac, animated: true, completion: nil)
-    }
-
-    func displayQuestionResults() {
-
-        let ac = UIAlertController(title: "",
-            message: (round.card.describe() + "\n") +
-                (round.isDrinking(player) ? "DRINK" : "YOU WIN THIS TIME"),
-            preferredStyle: .Alert)
-
-        // Set background color: GREEN to drink, RED to pass
-        let subView: UIView = ac.view.subviews.last! as UIView
-        let acView = subView.subviews.last! as UIView
-        acView.backgroundColor = round.isDrinking(player) ? .greenColor() : .redColor()
-
-        // Shape the frame to fit behind the card.
-        ac.view.layer.frame = CGRect(origin: ac.view.frame.origin,
-            size: round.card.frontImage.size)
-        ac.view.addConstraint(NSLayoutConstraint(item: ac.view, attribute: .Height,
-            relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
-            multiplier: 1.0, constant: round.card.frontImage.size.height))
-
-        // Set card image.
-        let button = UIButton(frame: ac.view.frame)
-        button.setImage(round.card.frontImage, forState: .Normal)
-        button.addTarget(self, action: #selector(questionTapped), forControlEvents: .TouchUpInside)
-        ac.view.addSubview(button)
-
-        presentViewController(ac, animated: true, completion: nil)
-    }
 
     func buttonViewUpdatePlayerChoice(text: String?) {
         if let choiceText = text {
@@ -337,8 +265,95 @@ extension GameViewController: ButtonViewDelegate {
 
         }
     }
+}
 
-    // Selectors
+// MARK: - Pyramid
+extension GameViewController {
+
+    func createPyramid() {
+        pyramid = Pyramid()
+        // This seed ensures give-take pattern doesn't always start on give.
+        let seed = GKRandomSource.sharedRandom().nextIntWithUpperBound(2)
+        for i in 0.stride(to: levels.count, by: 1) {
+            for _ in 0.stride(to: levels[i], by: 1) {
+                if let card = deck.draw() {
+                    let pyramidRule = (((pyramid.rounds.count +
+                        seed) % 2) == 0) ? Rule.GIVE : Rule.TAKE
+                    rules.append(pyramidRule)
+                    let pr = PyramidRound(level: i + 1, card: card,
+                                          rule: pyramidRule, isClicked: false)
+                    pyramid.rounds.append(pr)
+                } else {
+                    print("No more cards in deck to build pyramid.")
+                    return
+                }
+            }
+        }
+    }
+
+}
+
+// MARK: - Results UIAlertController methods
+extension GameViewController {
+
+    func displayPyramidResults() {
+        let ac = UIAlertController(title: "Pyramid Round \(pyramidRoundIndex + 1)",
+            message: "\(round.card.describe())", preferredStyle: .Alert)
+
+        // Shape the frame to fit behind the card.
+        ac.view.layer.frame = CGRect(origin: ac.view.frame.origin,
+            size: round.card.frontImage.size)
+        ac.view.addConstraint(NSLayoutConstraint(item: ac.view, attribute: .Height,
+            relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
+            multiplier: 1.0, constant: round.card.frontImage.size.height))
+
+        // Set card image.
+        let button = UIButton(frame: ac.view.frame)
+        button.setImage(pyramid.rounds[pyramidRoundIndex].card.frontImage, forState: .Normal)
+        button.addTarget(self, action: #selector(pyramidTapped), forControlEvents: .TouchUpInside)
+        ac.view.addSubview(button)
+
+        for p in players {
+            if p.hasCard(round.card) {
+                // Add an action column for each losing player.
+                // TODO: Design handler for UIAlertAction to remove itself.
+                ac.addAction(UIAlertAction(
+                    title: "Player \(p.number): \(p.displayHand())",
+                    style: .Default, handler: nil))
+            }
+        }
+        // TODO: Design handler to only dismiss once all players drink.
+        presentViewController(ac, animated: true, completion: nil)
+    }
+
+    func displayQuestionResults() {
+
+        let ac = UIAlertController(title: "",
+            message: (round.card.describe() + "\n") +
+                (round.isDrinking(player) ? "DRINK" : "YOU WIN THIS TIME"),
+            preferredStyle: .Alert)
+
+        // Set background color: GREEN to drink, RED to pass
+        let subView: UIView = ac.view.subviews.last! as UIView
+        let acView = subView.subviews.last! as UIView
+        acView.backgroundColor = round.isDrinking(player) ? .greenColor() : .redColor()
+
+        // Shape the frame to fit behind the card.
+        ac.view.layer.frame = CGRect(origin: ac.view.frame.origin,
+            size: round.card.frontImage.size)
+        ac.view.addConstraint(NSLayoutConstraint(item: ac.view, attribute: .Height,
+            relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
+            multiplier: 1.0, constant: round.card.frontImage.size.height))
+
+        // Set card image.
+        let button = UIButton(frame: ac.view.frame)
+        button.setImage(round.card.frontImage, forState: .Normal)
+        button.addTarget(self, action: #selector(questionTapped),
+            forControlEvents: .TouchUpInside)
+        ac.view.addSubview(button)
+
+        presentViewController(ac, animated: true, completion: nil)
+    }
 
     func pyramidTapped(button: UIButton) {
         dismissViewControllerAnimated(true, completion: { [weak self] in
@@ -357,4 +372,5 @@ extension GameViewController: ButtonViewDelegate {
             strongSelf.playerIndex += 1
         })
     }
+
 }

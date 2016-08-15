@@ -12,6 +12,7 @@ import UIKit
 class GameScene: SKScene {
 
     var cards = [SKSpriteNode?]() // Keeps track of current cards in scene.
+    var rows: [[PyramidRound]]!
     var rowHeights: [CGFloat]!
 
     override func didMoveToView(view: SKView) {
@@ -55,7 +56,7 @@ class GameScene: SKScene {
     func displayPyramid(rounds: [PyramidRound], index: Int) {
         clearCards()
         // Create a list where each element is a list of pyramid rounds.
-        var rows = [rounds.filter { $0.level == rounds[index].level },
+        rows = [rounds.filter { $0.level == rounds[index].level },
             rounds.filter{ $0.level == (rounds[index].level + 1) }]
         // Iterate through each list of pyramid rounds.
         for i in 0.stride(to: rows.count, by: 1) {
