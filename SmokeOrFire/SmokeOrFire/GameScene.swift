@@ -11,16 +11,37 @@ import UIKit
 
 class GameScene: SKScene {
 
-    var card: SKSpriteNode!
+    var cards = [SKSpriteNode?]() // Keeps track of current cards in scene.
 
-    override func didMoveToView(view: SKView) {
-        card = SKSpriteNode(texture: SKTexture(imageNamed: "ace_of_spades"), color: .whiteColor(), size: size)
-        card.position = CGPoint(x: size.width / 2, y: size.height / 2)
-        card.size = CGSize(width: 180, height: 250)
-        addChild(card)
+    func clearCards() {
+        for i in 0.stride(to: cards.count, by: 1) {
+            cards[i]?.removeFromParent()
+        }
+        cards.removeAll(keepCapacity: true)
     }
 
     func displayHand(hand: [Card]) {
-
+        clearCards()
+        let rowOneY = size.height / 2.0
+        let xUnit = size.width / CGFloat(hand.count + 2) // + 2 includes ends of x-axis
+        for i in 0.stride(to: hand.count + 1, by: 1) {
+            let xPos = CGFloat(i + 1) * xUnit
+            if (i == hand.count) {
+                // Add hidden card.
+                let hiddenCard = SKSpriteNode(texture: SKTexture(imageNamed: "back"),
+                    size: CGSize(width: 80, height: 120))
+                hiddenCard.position = CGPoint(x: xPos, y: rowOneY)
+                hiddenCard.zPosition = CGFloat(i)
+                cards.append(hiddenCard)
+                addChild(hiddenCard)
+            } else {
+                let card = SKSpriteNode(texture: SKTexture(imageNamed: hand[i].imageName),
+                    color: .whiteColor(), size: CGSize(width: 80, height: 120))
+                card.position = CGPoint(x: CGFloat(i + 1) * xUnit, y: rowOneY)
+                card.zPosition = CGFloat(i)
+                cards.append(card)
+                addChild(card)
+            }
+        }
     }
 }

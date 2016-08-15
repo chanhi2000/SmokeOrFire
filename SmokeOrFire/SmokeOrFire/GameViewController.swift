@@ -30,18 +30,13 @@ class GameViewController: UIViewController {
     // TODO: Add option to adjust these card counts per level.
     var levels: [Int] = [4, 4, 3, 3, 2, 1]
     var pyramid: Pyramid!
+    var player: Player!
     var players: [Player]!
     var rules = [Rule.COLOR, Rule.UP_DOWN, Rule.IN_OUT, Rule.SUIT]
     var statusView: StatusView!
     var viewsDictionary: [String: AnyObject]! // Used to design Visual Format constraints.
 
     // Property inspectors
-
-    var player: Player! {
-        didSet {
-            // TODO: Display hand for new player.
-        }
-    }
 
     var playerIndex: Int = 0 {
         didSet {
@@ -97,6 +92,8 @@ class GameViewController: UIViewController {
                 default:
                     // Set text for a question round.
                     statusView.statusLabel.text = rule.title()
+                    // Update game scene.
+                    gameScene.displayHand(player.hand)
             }
         }
     }
