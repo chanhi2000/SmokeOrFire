@@ -71,7 +71,7 @@ class GameViewController: UIViewController {
                 nextRound()
             } else {
                 // End of last pyramid round.
-                closeButton(statusView.statusButton)
+                gameOver()
             }
         }
     }
@@ -237,7 +237,7 @@ extension GameViewController: ButtonViewDelegate {
         // Set card image.
         let buttonView = UIButton(frame: ac.view.frame)
         buttonView.setImage(round.card.frontImage, forState: .Normal)
-        buttonView.addTarget(self, action: #selector(closeButton), forControlEvents: .TouchUpInside)
+        buttonView.addTarget(self, action: #selector(pyramidTapped), forControlEvents: .TouchUpInside)
         ac.view.addSubview(buttonView)
 
         for p in players {
@@ -251,12 +251,7 @@ extension GameViewController: ButtonViewDelegate {
         }
         // TODO: Design handler to only dismiss once all players drink.
         ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: nil))
-        presentViewController(ac, animated: true, completion: { [weak self] in
-            guard let strongSelf = self else { return }
-            // Update pyramid round.
-            strongSelf.pyramid.rounds[strongSelf.pyramidRoundIndex].isClicked = true
-            strongSelf.pyramidRoundIndex += 1
-        })
+        presentViewController(ac, animated: true, completion: nil)
     }
 
     func displayQuestionResults() {
@@ -266,6 +261,11 @@ extension GameViewController: ButtonViewDelegate {
                 (round.isDrinking(player) ? "DRINK" : "YOU WIN THIS TIME"),
             preferredStyle: .Alert)
 
+        // Set background color: GREEN to drink, RED to pass
+        let subView: UIView = ac.view.subviews.last! as UIView
+        let acView = subView.subviews.last! as UIView
+        acView.backgroundColor = round.isDrinking(player) ? .greenColor() : .redColor()
+
         // Shape the frame to fit behind the card.
         ac.view.layer.frame = CGRect(origin: ac.view.frame.origin,
             size: round.card.frontImage.size)
@@ -274,17 +274,12 @@ extension GameViewController: ButtonViewDelegate {
             multiplier: 1.0, constant: round.card.frontImage.size.height))
 
         // Set card image.
-        let buttonView = UIButton(frame: ac.view.frame)
-        buttonView.setImage(round.card.frontImage, forState: .Normal)
-        buttonView.addTarget(self, action: #selector(closeButton), forControlEvents: .TouchUpInside)
-        ac.view.addSubview(buttonView)
+        let button = UIButton(frame: ac.view.frame)
+        button.setImage(round.card.frontImage, forState: .Normal)
+        button.addTarget(self, action: #selector(questionTapped), forControlEvents: .TouchUpInside)
+        ac.view.addSubview(button)
 
-        presentViewController(ac, animated: true, completion: { [weak self] in
-            guard let strongSelf = self else { return }
-            // Update player variables before next round.
-            strongSelf.player.hand.append(strongSelf.round.card)
-            strongSelf.playerIndex += 1
-        })
+        presentViewController(ac, animated: true, completion: nil)
     }
 
     func buttonViewUpdatePlayerChoice(text: String?) {
@@ -345,8 +340,21 @@ extension GameViewController: ButtonViewDelegate {
 
     // Selectors
 
-    func closeButton(button: UIButton) {
-        // TODO: - Return to root view controller instead of this dismiss.
-        dismissViewControllerAnimated(true, completion: nil)
+    func pyramidTapped(button: UIButton) {
+        dismissViewControllerAnimated(true, completion: { [weak self] in
+            guard let strongSelf = self else { return }
+            // Update pyramid round.
+            strongSelf.pyramid.rounds[strongSelf.pyramidRoundIndex].isClicked = true
+            strongSelf.pyramidRoundIndex += 1
+        })
+    }
+
+    func questionTapped(button: UIButton) {
+        dismissViewControllerAnimated(true, completion: { [weak self] in
+            guard let strongSelf = self else { return }
+            // Update player variables before next round.
+            strongSelf.player.hand.append(strongSelf.round.card)
+            strongSelf.playerIndex += 1
+        })
     }
 }
