@@ -63,10 +63,10 @@ class ButtonView: UIView {
                 strongSelf.fourthChoiceButton.hidden = true
 
                 // Fit two buttons.
-                strongSelf.firstChoiceButton.layer.frame = CGRect(x: 0.0, y: 0.0,
-                    width: 0.5 * strongSelf.frame.width, height: strongSelf.frame.height)
-                strongSelf.secondChoiceButton.layer.frame = CGRect(x: strongSelf.frame.width / 2, y: 0.0,
-                    width: strongSelf.frame.width / 2, height: strongSelf.frame.height)
+//                strongSelf.firstChoiceButton.layer.frame = CGRect(x: 0.0, y: 0.0,
+//                    width: 0.5 * strongSelf.frame.width, height: strongSelf.frame.height)
+//                strongSelf.secondChoiceButton.layer.frame = CGRect(x: strongSelf.frame.width / 2, y: 0.0,
+//                    width: strongSelf.frame.width / 2, height: strongSelf.frame.height)
 
                 break
             case .UP_DOWN:
@@ -77,28 +77,28 @@ class ButtonView: UIView {
                 strongSelf.fourthChoiceButton.hidden = true
 
                 // Fit three buttons.
-                strongSelf.firstChoiceButton.layer.frame = CGRect(x: 0.0, y: 0.0,
-                    width: strongSelf.frame.width / 3.0, height: strongSelf.frame.height)
-                strongSelf.secondChoiceButton.layer.frame = CGRect(x: 0.333 * strongSelf.frame.width, y: 0.0,
-                    width: strongSelf.frame.width / 3.0, height: strongSelf.frame.height)
-                strongSelf.thirdChoiceButton.layer.frame = CGRect(x: 0.666 * strongSelf.frame.width, y: 0.0,
-                    width: strongSelf.frame.width / 3.0, height: strongSelf.frame.height)
+//                strongSelf.firstChoiceButton.layer.frame = CGRect(x: 0.0, y: 0.0,
+//                    width: strongSelf.frame.width / 3.0, height: strongSelf.frame.height)
+//                strongSelf.secondChoiceButton.layer.frame = CGRect(x: 0.333 * strongSelf.frame.width, y: 0.0,
+//                    width: strongSelf.frame.width / 3.0, height: strongSelf.frame.height)
+//                strongSelf.thirdChoiceButton.layer.frame = CGRect(x: 0.666 * strongSelf.frame.width, y: 0.0,
+//                    width: strongSelf.frame.width / 3.0, height: strongSelf.frame.height)
 
                 break
             case .IN_OUT:
                 // "Inside or outside?" choices: Inside, Same, Outside
-                strongSelf.firstChoiceButton.setTitle(ChoicesText.INSIDE.rawValue, forState: .Normal)
-                strongSelf.secondChoiceButton.setTitle(ChoicesText.SAME.rawValue, forState: .Normal)
-                strongSelf.thirdChoiceButton.setTitle(ChoicesText.OUTSIDE.rawValue, forState: .Normal)
-                strongSelf.fourthChoiceButton.hidden = true
+//                strongSelf.firstChoiceButton.setTitle(ChoicesText.INSIDE.rawValue, forState: .Normal)
+//                strongSelf.secondChoiceButton.setTitle(ChoicesText.SAME.rawValue, forState: .Normal)
+//                strongSelf.thirdChoiceButton.setTitle(ChoicesText.OUTSIDE.rawValue, forState: .Normal)
+//                strongSelf.fourthChoiceButton.hidden = true
 
                 // Fit three buttons.
-                strongSelf.firstChoiceButton.layer.frame = CGRect(x: 0.0, y: 0.0,
-                    width: strongSelf.frame.width / 3.0, height: strongSelf.frame.height)
-                strongSelf.secondChoiceButton.layer.frame = CGRect(x: 0.333 * strongSelf.frame.width, y: 0.0,
-                    width: strongSelf.frame.width / 3.0, height: strongSelf.frame.height)
-                strongSelf.thirdChoiceButton.layer.frame = CGRect(x: 0.666 * strongSelf.frame.width, y: 0.0,
-                    width: strongSelf.frame.width / 3.0, height: strongSelf.frame.height)
+//                strongSelf.firstChoiceButton.layer.frame = CGRect(x: 0.0, y: 0.0,
+//                    width: strongSelf.frame.width / 3.0, height: strongSelf.frame.height)
+//                strongSelf.secondChoiceButton.layer.frame = CGRect(x: 0.333 * strongSelf.frame.width, y: 0.0,
+//                    width: strongSelf.frame.width / 3.0, height: strongSelf.frame.height)
+//                strongSelf.thirdChoiceButton.layer.frame = CGRect(x: 0.666 * strongSelf.frame.width, y: 0.0,
+//                    width: strongSelf.frame.width / 3.0, height: strongSelf.frame.height)
 
                 break
             case .SUIT:
@@ -109,8 +109,8 @@ class ButtonView: UIView {
                 strongSelf.fourthChoiceButton.setTitle(ChoicesText.SPADE.rawValue, forState: .Normal)
 
                 // Fit four buttons in a grid.
-                let buttonWidth = strongSelf.frame.width / 2.0
-                let buttonHeight = strongSelf.frame.height / 2.0
+//                let buttonWidth = strongSelf.frame.width / 2.0
+//                let buttonHeight = strongSelf.frame.height / 2.0
 
                 /*
                  * SUIT BUTTONS LAYOUT
@@ -120,14 +120,14 @@ class ButtonView: UIView {
                  * 2 | 4
                  *
                 */
-                strongSelf.firstChoiceButton.layer.frame = CGRect(x: 0.0, y: 0.0,
-                    width: buttonWidth, height: buttonHeight)
-                strongSelf.secondChoiceButton.layer.frame = CGRect(x: 0.0, y: strongSelf.frame.height / 2.0,
-                    width: buttonWidth, height: buttonHeight)
-                strongSelf.thirdChoiceButton.layer.frame = CGRect(x: strongSelf.frame.width / 2.0, y: 0.0,
-                    width: buttonWidth, height: buttonHeight)
-                strongSelf.fourthChoiceButton.layer.frame = CGRect(x: strongSelf.frame.width / 2.0, y: strongSelf.frame.height / 2.0,
-                    width: buttonWidth, height: buttonHeight)
+//                strongSelf.firstChoiceButton.layer.frame = CGRect(x: 0.0, y: 0.0,
+//                    width: buttonWidth, height: buttonHeight)
+//                strongSelf.secondChoiceButton.layer.frame = CGRect(x: 0.0, y: strongSelf.frame.height / 2.0,
+//                    width: buttonWidth, height: buttonHeight)
+//                strongSelf.thirdChoiceButton.layer.frame = CGRect(x: strongSelf.frame.width / 2.0, y: 0.0,
+//                    width: buttonWidth, height: buttonHeight)
+//                strongSelf.fourthChoiceButton.layer.frame = CGRect(x: strongSelf.frame.width / 2.0, y: strongSelf.frame.height / 2.0,
+//                    width: buttonWidth, height: buttonHeight)
 
                 break
             case .POKER:
@@ -141,8 +141,8 @@ class ButtonView: UIView {
                 strongSelf.fourthChoiceButton.hidden = true
 
                 // Fit one button.
-                strongSelf.firstChoiceButton.layer.frame = CGRect(x: 0.0, y: 0.0,
-                    width: strongSelf.frame.width, height: strongSelf.frame.height)
+//                strongSelf.firstChoiceButton.layer.frame = CGRect(x: 0.0, y: 0.0,
+//                    width: strongSelf.frame.width, height: strongSelf.frame.height)
                 break
             }
         }

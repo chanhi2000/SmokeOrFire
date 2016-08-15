@@ -297,6 +297,8 @@ extension GameViewController {
 extension GameViewController {
 
     func displayPyramidResults() {
+//        pyramid.rounds[pyramidRoundIndex].isClicked = true
+//        pyramidRoundIndex += 1
         let ac = UIAlertController(title: "Pyramid Round \(pyramidRoundIndex + 1)",
             message: "\(round.card.describe())", preferredStyle: .Alert)
 
@@ -327,32 +329,33 @@ extension GameViewController {
     }
 
     func displayQuestionResults() {
-
-        let ac = UIAlertController(title: "",
-            message: (round.card.describe() + "\n") +
-                (round.isDrinking(player) ? "DRINK" : "YOU WIN THIS TIME"),
-            preferredStyle: .Alert)
-
-        // Set background color: GREEN to drink, RED to pass
-        let subView: UIView = ac.view.subviews.last! as UIView
-        let acView = subView.subviews.last! as UIView
-        acView.backgroundColor = round.isDrinking(player) ? .greenColor() : .redColor()
-
-        // Shape the frame to fit behind the card.
-        ac.view.layer.frame = CGRect(origin: ac.view.frame.origin,
-            size: round.card.frontImage.size)
-        ac.view.addConstraint(NSLayoutConstraint(item: ac.view, attribute: .Height,
-            relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
-            multiplier: 1.0, constant: round.card.frontImage.size.height))
-
-        // Set card image.
-        let button = UIButton(frame: ac.view.frame)
-        button.setImage(round.card.frontImage, forState: .Normal)
-        button.addTarget(self, action: #selector(questionTapped),
-            forControlEvents: .TouchUpInside)
-        ac.view.addSubview(button)
-
-        presentViewController(ac, animated: true, completion: nil)
+        player.hand.append(round.card)
+        playerIndex += 1
+//        let ac = UIAlertController(title: "",
+//            message: (round.card.describe() + "\n") +
+//                (round.isDrinking(player) ? "DRINK" : "YOU WIN THIS TIME"),
+//            preferredStyle: .Alert)
+//
+//        // Set background color: GREEN to drink, RED to pass
+//        let subView: UIView = ac.view.subviews.last! as UIView
+//        let acView = subView.subviews.last! as UIView
+//        acView.backgroundColor = round.isDrinking(player) ? .greenColor() : .redColor()
+//
+//        // Shape the frame to fit behind the card.
+//        ac.view.layer.frame = CGRect(origin: ac.view.frame.origin,
+//            size: round.card.frontImage.size)
+//        ac.view.addConstraint(NSLayoutConstraint(item: ac.view, attribute: .Height,
+//            relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
+//            multiplier: 1.0, constant: round.card.frontImage.size.height))
+//
+//        // Set card image.
+//        let button = UIButton(frame: ac.view.frame)
+//        button.setImage(round.card.frontImage, forState: .Normal)
+//        button.addTarget(self, action: #selector(questionTapped),
+//            forControlEvents: .TouchUpInside)
+//        ac.view.addSubview(button)
+//
+//        presentViewController(ac, animated: true, completion: nil)
     }
 
     func pyramidTapped(button: UIButton) {

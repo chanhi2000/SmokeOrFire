@@ -22,9 +22,9 @@ class Card: NSObject {
         backImage = UIImage(named: "back")!
         frontImage = UIImage(named: imageName)!
 
-        let newSize = CGSize(width: 180, height: 250)
-        backImage = backImage.scaledToSize(newSize)
-        frontImage = frontImage.scaledToSize(newSize)
+//        let newSize = CGSize(width: 180, height: 250)
+//        backImage = backImage.scaledToSize(newSize)
+//        frontImage = frontImage.scaledToSize(newSize)
     }
 
     func describe() -> String {

@@ -6,8 +6,6 @@
 //  Copyright © 2016 Justin Lawrence Hester. All rights reserved.
 //
 
-import Foundation
-
 struct Round {
     var card: Card
     var rule: Rule
