@@ -25,7 +25,7 @@ class GameViewController: UIViewController {
     private let SCREEN_HEIGHT_UNITS = 35.0 // Number of height units in design.
 
     // Instance variables
-    var deck: Deck!// = Deck()
+    var deck: Deck!
     var gameScene: GameScene!
     // TODO: Add option to adjust these card counts per level.
     var levels: [Int] = [4, 4, 3, 3, 2, 1]
@@ -163,10 +163,9 @@ class GameViewController: UIViewController {
     }
 
     func handleTap() {
-        // Prevents any taps while unclicked button view exists.
-//        guard !buttonIsVisible() else { return }
         for subView in view.subviews {
             if let button = subView as? UIButton {
+                // Call unclicked button's selectors.
                 if button.tag == 0 {
                     questionTapped(button)
                 } else if button.tag == 1 {
