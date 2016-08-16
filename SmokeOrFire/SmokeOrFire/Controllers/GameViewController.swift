@@ -158,14 +158,6 @@ class GameViewController: UIViewController {
 
     }
 
-    // MARK: - Segue
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-//        if segue.identifier == "viewSegue" {
-//            let vc = segue.destinationViewController as! ViewController
-//            vc.totalPlayers = 2
-//        }
-//    }
-
     func startGame() {
         deck.shuffle()
         createPyramid()
@@ -186,18 +178,15 @@ class GameViewController: UIViewController {
 
     func gameOver() {
         print("Game over")
-//        performSegueWithIdentifier("viewSegue", sender: self)
-        navigationController?.popToRootViewControllerAnimated(true)
 
-//        // TODO: Design game over that displays results.
-//        let ac = UIAlertController(title: "Game Over", message: "Player: 1 wins!", preferredStyle: .Alert)
-//        ac.addAction(UIAlertAction(title: "Continue", style: .Cancel, handler: { [weak self] (action: UIAlertAction!) -> Void in
-//            guard let strongSelf = self else { return }
-//            // Return to main menu.
-//            strongSelf.navigationController?.popViewControllerAnimated(true)
-//            strongSelf.navigationController?.popToRootViewControllerAnimated(true)
-//        }))
-//        presentViewController(ac, animated: true, completion: nil)
+        // TODO: Design game over that displays results.
+        let ac = UIAlertController(title: "Game Over", message: "Player: 1 wins!", preferredStyle: .Alert)
+        ac.addAction(UIAlertAction(title: "Continue", style: .Cancel, handler: { [weak self] (action: UIAlertAction!) -> Void in
+            guard let strongSelf = self else { return }
+            // Return to main menu.
+            strongSelf.navigationController?.popToRootViewControllerAnimated(true)
+        }))
+        presentViewController(ac, animated: true, completion: nil)
     }
 
 }
