@@ -339,7 +339,6 @@ extension GameViewController {
         // Display updated pyramid.
         pyramid.rounds[pyramidRoundIndex].isClicked = true
         gameScene.displayPyramid(pyramid.rounds, index: pyramidRoundIndex)
-        pyramidRoundIndex += 1
         // Set card image.
         let button = UIButton(frame: CGRect(x: CGFloat(0.25) * view.frame.width,
             y: CGFloat(0.25) * view.frame.height, width: frontImage.size.width, height: frontImage.size.height))
