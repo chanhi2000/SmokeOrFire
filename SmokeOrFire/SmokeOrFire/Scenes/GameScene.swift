@@ -28,29 +28,29 @@ class GameScene: SKScene {
     }
 
     func displayHand(hand: [Card], reveal: Bool) {
-//        clearCards()
-//        let xUnit = size.width / CGFloat(hand.count + (reveal ? 1 : 2)) // include edges of x-axis
-//        // Iterate through card in hand.
-//        for i in 0.stride(to: hand.count + (reveal ? 0 : 1), by: 1) {
-//            let xPos = CGFloat(i + 1) * xUnit
-//            if (i == hand.count) {
-//                // Draw hidden card.
-//                let hiddenCard = SKSpriteNode(texture: SKTexture(imageNamed: "back"),
-//                    size: CGSize(width: 80, height: 120))
-//                hiddenCard.position = CGPoint(x: xPos, y: rowHeights[0])
-//                hiddenCard.zPosition = CGFloat(i)
-//                cards.append(hiddenCard)
-//                addChild(hiddenCard)
-//            } else {
-//                // Draw card in player's hand.
-//                let card = SKSpriteNode(texture: SKTexture(imageNamed: hand[i].imageName),
-//                    color: .whiteColor(), size: CGSize(width: 80, height: 120))
-//                card.position = CGPoint(x: xPos, y: rowHeights[0])
-//                card.zPosition = CGFloat(i)
-//                cards.append(card)
-//                addChild(card)
-//            }
-//        }
+        clearCards()
+        let xUnit = size.width / CGFloat(hand.count + (reveal ? 1 : 2)) // include edges of x-axis
+        // Iterate through card in hand.
+        for i in 0.stride(to: hand.count + (reveal ? 0 : 1), by: 1) {
+            let xPos = CGFloat(i + 1) * xUnit
+            if (i == hand.count) {
+                // Draw hidden card.
+                let hiddenCard = SKSpriteNode(texture: SKTexture(imageNamed: "back"),
+                    size: CGSize(width: 80, height: 120))
+                hiddenCard.position = CGPoint(x: xPos, y: rowHeights[0])
+                hiddenCard.zPosition = CGFloat(i)
+                cards.append(hiddenCard)
+                addChild(hiddenCard)
+            } else {
+                // Draw card in player's hand.
+                let card = SKSpriteNode(texture: SKTexture(imageNamed: hand[i].imageName),
+                    color: .whiteColor(), size: CGSize(width: 80, height: 120))
+                card.position = CGPoint(x: xPos, y: rowHeights[0])
+                card.zPosition = CGFloat(i)
+                cards.append(card)
+                addChild(card)
+            }
+        }
     }
 
     func displayPyramid(rounds: [PyramidRound], index: Int) {
