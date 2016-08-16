@@ -19,9 +19,6 @@ class Deck {
             }
         }
     }
-    deinit {
-        print("Deck being released from memory")
-    }
 
     func shuffle() {
         cards = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(cards) as! [Card]

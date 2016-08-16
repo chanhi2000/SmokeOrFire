@@ -14,9 +14,6 @@ class Round {
         self.card = card
         self.rule = rule
     }
-    deinit {
-        print("Round being released from memory")
-    }
 
     func isDrinking(player: Player) -> Bool {
         switch (rule) {

@@ -18,9 +18,6 @@ class Card: NSObject {
         self.suit = suit
         self.imageName = "\(rank.describe())_of_\(suit.describe())"
     }
-    deinit {
-        print("Card being released from memory")
-    }
 
     func describe() -> String {
         return "The \(rank.describe()) of \(suit.describe())"
