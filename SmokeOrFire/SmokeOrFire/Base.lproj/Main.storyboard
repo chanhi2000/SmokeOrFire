@@ -23,44 +23,84 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qt7-xk-4CN" customClass="ButtonView" customModule="SmokeOrFire" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="326" width="600" height="209"/>
+                                <rect key="frame" x="0.0" y="326" width="600" height="210"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8AV-RK-Fbo">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="209"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8AV-RK-Fbo">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="210"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" priority="999" constant="210" placeholder="YES" id="Zfw-aV-Rzf"/>
+                                            <constraint firstAttribute="width" priority="999" constant="300" placeholder="YES" id="d07-gt-JuC"/>
+                                        </constraints>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Zfw-aV-Rzf"/>
+                                                <exclude reference="d07-gt-JuC"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="choiceTapped:" destination="qt7-xk-4CN" eventType="touchUpInside" id="0aR-uP-zx6"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9QB-8m-lNy">
-                                        <rect key="frame" x="140" y="326" width="46" height="46"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9QB-8m-lNy">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="210"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="999" constant="300" placeholder="YES" id="D79-Yb-WKw"/>
+                                            <constraint firstAttribute="height" priority="999" constant="210" placeholder="YES" id="wvQ-Vj-Dcx"/>
+                                        </constraints>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="D79-Yb-WKw"/>
+                                                <exclude reference="wvQ-Vj-Dcx"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="choiceTapped:" destination="qt7-xk-4CN" eventType="touchUpInside" id="XwB-k4-Txa"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0u-fj-Z9Q">
-                                        <rect key="frame" x="0.0" y="-326" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0u-fj-Z9Q">
+                                        <rect key="frame" x="300" y="0.0" width="300" height="210"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="999" constant="300" placeholder="YES" id="vGl-GH-Ewi"/>
+                                            <constraint firstAttribute="height" priority="999" constant="210" placeholder="YES" id="yz2-4g-kIi"/>
+                                        </constraints>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="vGl-GH-Ewi"/>
+                                                <exclude reference="yz2-4g-kIi"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="choiceTapped:" destination="qt7-xk-4CN" eventType="touchUpInside" id="xZy-V2-WPc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4d4-pt-IJS">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4d4-pt-IJS">
                                         <rect key="frame" x="300" y="0.0" width="300" height="210"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" priority="999" constant="210" placeholder="YES" id="0Um-ip-vNF"/>
+                                            <constraint firstAttribute="width" priority="999" constant="300" placeholder="YES" id="Z8K-H6-yS1"/>
+                                        </constraints>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="0Um-ip-vNF"/>
+                                                <exclude reference="Z8K-H6-yS1"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="choiceTapped:" destination="qt7-xk-4CN" eventType="touchUpInside" id="Kvq-4B-TmR"/>
                                         </connections>
@@ -75,7 +115,7 @@
                                 </connections>
                             </view>
                             <adBannerView autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rYD-9k-JNK">
-                                <rect key="frame" x="140" y="534" width="320" height="50"/>
+                                <rect key="frame" x="140" y="535" width="320" height="50"/>
                                 <color key="backgroundColor" red="0.2688647086" green="0.87874160239999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="I2v-EI-8Bd" id="tGK-9D-ZKz"/>
