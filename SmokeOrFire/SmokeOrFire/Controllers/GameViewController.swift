@@ -129,10 +129,6 @@ class GameViewController: UIViewController {
         backButton.sizeToFit()
         navigationItem.leftBarButtonItem  = UIBarButtonItem(customView: backButton)
 
-//        // Customize navigation bar.
-//        navigationController!.navigationBar.tintColor = .whiteColor()
-//        navigationController!.navigationBar.barTintColor = .blackColor()
-
         // Add tap gesture recognizer.
         let tgr = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         tgr.numberOfTapsRequired = 1
