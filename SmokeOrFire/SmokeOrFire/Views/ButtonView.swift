@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ButtonViewDelegate {
+protocol ButtonViewDelegate: class {
     func buttonViewUpdatePlayerChoice(text: String?)
 }
 
@@ -24,12 +24,12 @@ class ButtonView: UIView {
     private var viewsDictionary: [String: UIButton]! // Used to design Visual Format constraints.
 
     // MARK: - Instance variables
-    var delegate: ButtonViewDelegate!
+    weak var delegate: ButtonViewDelegate?
 
     // MARK: - IBActions
 
     @IBAction func choiceTapped(sender: UIButton) {
-        delegate.buttonViewUpdatePlayerChoice(sender.titleLabel?.text)
+        delegate?.buttonViewUpdatePlayerChoice(sender.titleLabel?.text)
     }
 
     // MARK: - Custom
@@ -71,10 +71,10 @@ class ButtonView: UIView {
                 break
             case .UP_DOWN:
                 // "Higher or lower?" choices: Higher, Same, Lower
-                strongSelf.firstChoiceButton.setTitle(ChoicesText.HIGHER.rawValue, forState: .Normal)
-                strongSelf.secondChoiceButton.setTitle(ChoicesText.SAME.rawValue, forState: .Normal)
-                strongSelf.thirdChoiceButton.setTitle(ChoicesText.LOWER.rawValue, forState: .Normal)
-                strongSelf.fourthChoiceButton.hidden = true
+//                strongSelf.firstChoiceButton.setTitle(ChoicesText.HIGHER.rawValue, forState: .Normal)
+//                strongSelf.secondChoiceButton.setTitle(ChoicesText.SAME.rawValue, forState: .Normal)
+//                strongSelf.thirdChoiceButton.setTitle(ChoicesText.LOWER.rawValue, forState: .Normal)
+//                strongSelf.fourthChoiceButton.hidden = true
 
                 // Fit three buttons.
 //                strongSelf.firstChoiceButton.layer.frame = CGRect(x: 0.0, y: 0.0,
@@ -103,10 +103,10 @@ class ButtonView: UIView {
                 break
             case .SUIT:
                 // "Which suit?" choices: Club, Diamond, Heart, Spade
-                strongSelf.firstChoiceButton.setTitle(ChoicesText.CLUB.rawValue, forState: .Normal)
-                strongSelf.secondChoiceButton.setTitle(ChoicesText.DIAMOND.rawValue, forState: .Normal)
-                strongSelf.thirdChoiceButton.setTitle(ChoicesText.HEART.rawValue, forState: .Normal)
-                strongSelf.fourthChoiceButton.setTitle(ChoicesText.SPADE.rawValue, forState: .Normal)
+//                strongSelf.firstChoiceButton.setTitle(ChoicesText.CLUB.rawValue, forState: .Normal)
+//                strongSelf.secondChoiceButton.setTitle(ChoicesText.DIAMOND.rawValue, forState: .Normal)
+//                strongSelf.thirdChoiceButton.setTitle(ChoicesText.HEART.rawValue, forState: .Normal)
+//                strongSelf.fourthChoiceButton.setTitle(ChoicesText.SPADE.rawValue, forState: .Normal)
 
                 // Fit four buttons in a grid.
 //                let buttonWidth = strongSelf.frame.width / 2.0
@@ -135,10 +135,10 @@ class ButtonView: UIView {
                 break
             case .GIVE, .TAKE:
                 // "Smoke or Fire?" choices: Black, Red
-                strongSelf.firstChoiceButton.setTitle(ChoicesText.PYRAMID.rawValue, forState: .Normal)
-                strongSelf.secondChoiceButton.hidden = true
-                strongSelf.thirdChoiceButton.hidden = true
-                strongSelf.fourthChoiceButton.hidden = true
+//                strongSelf.firstChoiceButton.setTitle(ChoicesText.PYRAMID.rawValue, forState: .Normal)
+//                strongSelf.secondChoiceButton.hidden = true
+//                strongSelf.thirdChoiceButton.hidden = true
+//                strongSelf.fourthChoiceButton.hidden = true
 
                 // Fit one button.
 //                strongSelf.firstChoiceButton.layer.frame = CGRect(x: 0.0, y: 0.0,

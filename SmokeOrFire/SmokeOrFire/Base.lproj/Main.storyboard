@@ -97,6 +97,7 @@
                         <outlet property="bannerView" destination="rYD-9k-JNK" id="Chy-1b-1IB"/>
                         <outlet property="buttonView" destination="qt7-xk-4CN" id="VMD-x9-5FV"/>
                         <outlet property="skView" destination="Wru-pW-iju" id="1Ik-Fh-wrP"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="viewSegue" id="wPd-kD-PcT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AqW-o6-tbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -236,4 +237,7 @@
             <point key="canvasLocation" x="213" y="110"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="wPd-kD-PcT"/>
+    </inferredMetricsTieBreakers>
 </document>

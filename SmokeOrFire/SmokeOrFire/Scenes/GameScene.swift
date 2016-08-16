@@ -21,17 +21,17 @@ class GameScene: SKScene {
     }
 
     func clearCards() {
-        for i in 0.stride(to: cards.filter { $0 != nil}.count, by: 1) {
+        for i in 0.stride(to: cards.filter { $0 != nil }.count, by: 1) {
             cards[i]!.removeFromParent()
         }
         cards.removeAll(keepCapacity: true)
     }
 
-    func displayHand(hand: [Card]) {
+    func displayHand(hand: [Card], reveal: Bool) {
 //        clearCards()
-//        let xUnit = size.width / CGFloat(hand.count + 2) // + 2 includes ends of x-axis
+//        let xUnit = size.width / CGFloat(hand.count + (reveal ? 1 : 2)) // include edges of x-axis
 //        // Iterate through card in hand.
-//        for i in 0.stride(to: hand.count + 1, by: 1) {
+//        for i in 0.stride(to: hand.count + (reveal ? 0 : 1), by: 1) {
 //            let xPos = CGFloat(i + 1) * xUnit
 //            if (i == hand.count) {
 //                // Draw hidden card.

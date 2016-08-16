@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol OptionsViewControllerDelegate {
+protocol OptionsViewControllerDelegate: class {
     func optionsViewUpdateTotalPlayers(count: Int)
 }
 
@@ -17,7 +17,7 @@ class OptionsViewController: UIViewController {
     @IBOutlet weak var playerLabel: UILabel!
     @IBOutlet weak var playerSlider: UISlider!
 
-    var delegate: OptionsViewControllerDelegate?
+    weak var delegate: OptionsViewControllerDelegate?
 
     var totalPlayers: Int = 2 {
         didSet {
