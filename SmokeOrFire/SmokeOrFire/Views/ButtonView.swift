@@ -33,6 +33,16 @@ class ButtonView: UIView {
 
     // Custom
 
+    func customizeButtons() {
+        let buttons = [firstChoiceButton, secondChoiceButton,
+            thirdChoiceButton, fourthChoiceButton]
+        for button in buttons {
+            button.layer.borderWidth = 4
+            button.layer.borderColor = UIColor.whiteColor().CGColor
+            button.layer.cornerRadius = 10
+        }
+    }
+
     // TODO: - Figure out how to refactor this method that minimizes redundancy.
     // One idea is to separate the case code blocks into separate methods
     // TODO: - Research if attributes can be set for a list of UIButtons.

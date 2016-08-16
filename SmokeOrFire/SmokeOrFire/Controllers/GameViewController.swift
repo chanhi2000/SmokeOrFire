@@ -178,6 +178,7 @@ class GameViewController: UIViewController {
         gameScene = scene
 
         // Setup button view.
+        buttonView.customizeButtons()
         buttonView.delegate = self // Notify on button press.
         buttonView.frame = CGRect(
             x: 0, y: CGFloat(32.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
@@ -380,7 +381,8 @@ extension GameViewController {
         // Get pyramid round card.
         let imageName = pyramid.rounds[pyramidRoundIndex].imageName
         let newSize = CGSize(width: 180, height: 250)
-        let frontImage = UIImage(named: imageName)!.scaledToSize(newSize)
+        let frontImage = UIImage(named: imageName)!
+            .scaledToSize(newSize).alpha(0.9)
         // Display updated pyramid.
         pyramid.rounds[pyramidRoundIndex].isClicked = true
         gameScene.displayPyramid(pyramid.rounds, index: pyramidRoundIndex)
@@ -398,7 +400,8 @@ extension GameViewController {
     func displayQuestionResults() {
         // Get round card image.
         let newSize = CGSize(width: 180, height: 250)
-        let frontImage = UIImage(named: round.card.imageName)!.scaledToSize(newSize)
+        let frontImage = UIImage(named: round.card.imageName)!
+            .scaledToSize(newSize).alpha(0.9)
         // Display updated player's hand.
         player.hand.append(round.card)
         gameScene.displayHand(player.hand, reveal: true)

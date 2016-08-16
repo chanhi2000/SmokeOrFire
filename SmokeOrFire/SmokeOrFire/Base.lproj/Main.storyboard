@@ -106,7 +106,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="firstChoiceButton" destination="8AV-RK-Fbo" id="m98-I4-Qk9"/>
                                     <outlet property="fourthChoiceButton" destination="D0u-fj-Z9Q" id="yJr-WD-dun"/>
