@@ -23,6 +23,7 @@ class GameViewController: UIViewController {
     private let SCREEN_HEIGHT = UIScreen.mainScreen().bounds.height
     private let SCREEN_WIDTH_UNITS = 20.0 // Number of width units in design.
     private let SCREEN_HEIGHT_UNITS = 35.0 // Number of height units in design.
+    private let margin = CGFloat(8.0) // Add spacing to see the border.
 
     // Instance variables
     var deck: Deck!
@@ -136,18 +137,22 @@ class GameViewController: UIViewController {
         view.addGestureRecognizer(tgr)
 
         // Setup status view.
+        // TODO: - Clean up these mathematical expressions.
         statusView = StatusView(frame: CGRect(
-            x: 0, y: CGFloat(2.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
-            width: CGFloat(20.0 / SCREEN_WIDTH_UNITS) * view.frame.width,
-            height: CGFloat(8.0 / SCREEN_HEIGHT_UNITS) * view.frame.height))
+            x: margin,
+            y: (navigationController?.navigationBar.frame.height)! +
+                ( CGFloat(1.0 / SCREEN_HEIGHT_UNITS) * view.frame.height ) + margin,
+            width: ( CGFloat(20.0 / SCREEN_WIDTH_UNITS) * SCREEN_WIDTH ) - (2 * margin),
+            height: ( CGFloat(8.0 / SCREEN_HEIGHT_UNITS) * view.frame.height ) - (2 * margin)))
+        statusView.layer.cornerRadius = 8
+        statusView.layer.borderWidth = 4
+        statusView.layer.borderColor = UIColor.whiteColor().CGColor
         view.addSubview(statusView)
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "H:|[statusView]|", options: [], metrics: nil,
-            views: ["statusView": statusView]))
+        // Add status view constraints.
         view.addConstraint(NSLayoutConstraint(item: statusView,
             attribute: .Height, relatedBy: .Equal,
             toItem: nil, attribute: .NotAnAttribute,
-            multiplier: 1.0, constant: CGFloat(8.0 / SCREEN_HEIGHT_UNITS) * view.frame.height))
+            multiplier: 1.0, constant: statusView.frame.height))
 
         // Setup skView.
         skView.frame = CGRect(
