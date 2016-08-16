@@ -12,6 +12,7 @@ class Player: NSObject {
     var number: Int
     var hand: [Card]
     var choice: PlayerChoices!
+    // TODO: - Add instance that keeps track of how many ounces player drinks.
     
     init(number: Int) {
         self.number = number

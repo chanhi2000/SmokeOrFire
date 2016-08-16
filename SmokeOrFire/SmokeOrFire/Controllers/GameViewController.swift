@@ -25,8 +25,7 @@ class GameViewController: UIViewController {
     private let SCREEN_HEIGHT_UNITS = 35.0 // Number of height units in design.
 
     // Instance variables
-    var button: UIButton!
-    var deck: Deck = Deck()
+    var deck: Deck!// = Deck()
     var gameScene: GameScene!
     // TODO: Add option to adjust these card counts per level.
     var levels: [Int] = [4, 4, 3, 3, 2, 1]
@@ -158,6 +157,7 @@ class GameViewController: UIViewController {
     }
 
     func startGame() {
+        deck = Deck()
         deck.shuffle()
         createPyramid()
         nextRound()
@@ -299,85 +299,41 @@ extension GameViewController {
 extension GameViewController {
 
     func displayPyramidResults() {
-        let ac = UIAlertController(title: "Pyramid Round \(pyramidRoundIndex + 1)",
-            message: "\(round.card.describe())", preferredStyle: .Alert)
-
-        // Shape the frame to fit behind the card.
-        ac.view.layer.frame = CGRect(origin: ac.view.frame.origin,
-            size: round.card.frontImage.size)
-        ac.view.addConstraint(NSLayoutConstraint(item: ac.view, attribute: .Height,
-            relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
-            multiplier: 1.0, constant: round.card.frontImage.size.height))
-
+        // Get pyramid round card.
+        unowned let card = pyramid.rounds[pyramidRoundIndex].card
+        let newSize = CGSize(width: 180, height: 250)
+        let frontImage = UIImage(named: card.imageName)!.scaledToSize(newSize)
         // Set card image.
-        button = UIButton(frame: CGRect(x: CGFloat(0.25) * view.frame.width,
-            y: CGFloat(0.25) * view.frame.height,
-            width: round.card.frontImage.size.width,
-            height: round.card.frontImage.size.height))
-        button.setImage(pyramid.rounds[pyramidRoundIndex].card.frontImage, forState: .Normal)
-        button.addTarget(self, action: #selector(pyramidTapped), forControlEvents: .TouchUpInside)
+        let button = UIButton(frame: CGRect(x: CGFloat(0.25) * view.frame.width,
+            y: CGFloat(0.25) * view.frame.height, width: frontImage.size.width, height: frontImage.size.height))
+        button.setImage(frontImage, forState: .Normal)
+        button.addTarget(self, action: #selector(pyramidTapped),
+            forControlEvents: .TouchUpInside)
+        // TODO: - Display player list and give/take distribution UI.
         view.addSubview(button)
-
-        for p in players {
-            if p.hasCard(round.card) {
-                // Add an action column for each losing player.
-                // TODO: Design handler for UIAlertAction to remove itself.
-                ac.addAction(UIAlertAction(
-                    title: "Player \(p.number): \(p.displayHand())",
-                    style: .Default, handler: nil))
-            }
-        }
-        // TODO: Design handler to only dismiss once all players drink.
-        presentViewController(ac, animated: true, completion: nil)
     }
 
     func displayQuestionResults() {
-//        player.hand.append(round.card)
-//        gameScene.displayHand(player.hand, reveal: true)
-//        playerIndex += 1
-
-//        let ac = UIAlertController(title: "",
-//            message: (round.card.describe() + "\n") +
-//                (round.isDrinking(player) ? "DRINK" : "YOU WIN THIS TIME"),
-//            preferredStyle: .Alert)
-
-//        // Set background color: GREEN to drink, RED to pass
-//        let subView: UIView = view.subviews.last! as UIView
-//        let acView = subView.subviews.last! as UIView
-//        acView.backgroundColor = round.isDrinking(player) ? .greenColor() : .redColor()
-
-//        // Shape the frame to fit behind the card.
-//        ac.view.layer.frame = CGRect(origin: ac.view.frame.origin,
-//            size: round.card.frontImage.size)
-//        ac.view.addConstraint(NSLayoutConstraint(item: ac.view, attribute: .Height,
-//            relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
-//            multiplier: 1.0, constant: round.card.frontImage.size.height))
-
-        player.hand.append(round.card)
-        gameScene.displayHand(player.hand, reveal: true)
-        playerIndex += 1
+        // Get round card.
+        unowned let card = pyramid.rounds[pyramidRoundIndex].card
+        let newSize = CGSize(width: 180, height: 250)
+        let frontImage = UIImage(named: card.imageName)!.scaledToSize(newSize)
         // Set card image.
-//        let button = UIButton(frame: view.frame)
-//        button.setImage(round.card.frontImage, forState: .Normal)
-//        button.addTarget(self, action: #selector(questionTapped),
-//            forControlEvents: .TouchUpInside)
-//        view.addSubview(button)
-
-//        presentViewController(ac, animated: true, completion: nil)
+        let button = UIButton(frame: view.frame)
+        button.setImage(frontImage, forState: .Normal)
+        button.addTarget(self, action: #selector(questionTapped),
+            forControlEvents: .TouchUpInside)
+        // TODO: - Display somehow whether player drinks or not.
+        view.addSubview(button)
     }
 
     func pyramidTapped(button: UIButton) {
+        button.removeFromSuperview()
         pyramid.rounds[pyramidRoundIndex].isClicked = true
         pyramidRoundIndex += 1
-        dismissViewControllerAnimated(true, completion: nil)
     }
 
     func questionTapped(button: UIButton) {
-//        dismissViewControllerAnimated(true, completion: { [weak self] in
-//            guard let strongSelf = self else { return }
-//            // Update player variables before next round.
-//            strongSelf.playerIndex += 1
-//        })
         button.removeFromSuperview()
         playerIndex += 1
     }
