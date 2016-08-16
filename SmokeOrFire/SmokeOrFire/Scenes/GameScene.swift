@@ -54,26 +54,26 @@ class GameScene: SKScene {
     }
 
     func displayPyramid(rounds: [PyramidRound], index: Int) {
-//        clearCards()
-//        // Create a list where each element is a list of pyramid rounds.
-//        rows = [rounds.filter { $0.level == rounds[index].level },
-//            rounds.filter{ $0.level == (rounds[index].level + 1) }]
-//        // Iterate through each list of pyramid rounds.
-//        for i in 0.stride(to: rows.count, by: 1) {
-//            let xUnit = size.width / CGFloat(rows[i].count + 2) // + 2 includes ends of x-axis
-//            // Loop through each pyramid round.
-//            for j in 0.stride(to: rows[i].count, by: 1) {
-//                let round = rows[i][j]
-//                let imageName = round.isClicked ? round.card.imageName : "back"
-//                // Draw pyramid card.
-//                let card = SKSpriteNode(texture: SKTexture(imageNamed: imageName),
-//                    color: .whiteColor(), size: CGSize(width: 40, height: 80))
-//                card.position = CGPoint(x: CGFloat(j + 1) * xUnit, y: rowHeights[i])
-//                card.zPosition = CGFloat(i + j) // DEBUG
-//                cards.append(card)
-//                addChild(card)
-//            }
-//        }
+        clearCards()
+        // Create a list where each element is a list of pyramid rounds.
+        rows = [rounds.filter { $0.level == rounds[index].level },
+            rounds.filter{ $0.level == (rounds[index].level + 1) }]
+        // Iterate through each list of pyramid rounds.
+        for i in 0.stride(to: rows.count, by: 1) {
+            let xUnit = size.width / CGFloat(rows[i].count + 2) // + 2 includes ends of x-axis
+            // Loop through each pyramid round.
+            for j in 0.stride(to: rows[i].count, by: 1) {
+                let round = rows[i][j]
+                let imageName = round.isClicked ? round.card.imageName : "back"
+                // Draw pyramid card.
+                let card = SKSpriteNode(texture: SKTexture(imageNamed: imageName),
+                    color: .whiteColor(), size: CGSize(width: 40, height: 80))
+                card.position = CGPoint(x: CGFloat(j + 1) * xUnit, y: rowHeights[i])
+                card.zPosition = CGFloat(i + j) // DEBUG
+                cards.append(card)
+                addChild(card)
+            }
+        }
     }
 
 }
