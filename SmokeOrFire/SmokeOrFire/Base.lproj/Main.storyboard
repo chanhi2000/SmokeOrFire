@@ -97,7 +97,6 @@
                         <outlet property="bannerView" destination="rYD-9k-JNK" id="Chy-1b-1IB"/>
                         <outlet property="buttonView" destination="qt7-xk-4CN" id="VMD-x9-5FV"/>
                         <outlet property="skView" destination="Wru-pW-iju" id="1Ik-Fh-wrP"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="viewSegue" id="wPd-kD-PcT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AqW-o6-tbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -116,7 +115,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smoke or Fire" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8K-8L-S4w">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Smoke or Fire" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8K-8L-S4w">
                                 <rect key="frame" x="122" y="99" width="357" height="212"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -180,13 +179,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="2" maxValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="S0I-Rg-9iw">
+                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="2" maxValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="S0I-Rg-9iw">
                                 <rect key="frame" x="68" y="215" width="434" height="31"/>
                                 <connections>
                                     <action selector="updatePlayerCount:" destination="FW5-6p-WHT" eventType="valueChanged" id="qMz-Eo-2If"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Players: 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmY-ds-lIh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Players: 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmY-ds-lIh">
                                 <rect key="frame" x="70" y="107" width="195" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="195" id="LYG-NN-GdE"/>
@@ -237,7 +236,4 @@
             <point key="canvasLocation" x="213" y="110"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="wPd-kD-PcT"/>
-    </inferredMetricsTieBreakers>
 </document>
