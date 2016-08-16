@@ -127,9 +127,10 @@ class GameViewController: UIViewController {
         tgr.numberOfTouchesRequired = 1
         view.addGestureRecognizer(tgr)
 
+        // Assign delegate to notify GameViewController on button press.
         buttonView.delegate = self
 
-        // Setup status container.
+        // Setup status view.
         statusView = StatusView(frame: CGRect(
             x: CGFloat(1.0 / SCREEN_WIDTH_UNITS) * view.frame.width,
             y: CGFloat(2.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
@@ -187,7 +188,6 @@ class GameViewController: UIViewController {
 
     func startGame() {
         deck = Deck()
-        deck.shuffle()
         createPyramid()
         nextRound()
     }
@@ -207,7 +207,7 @@ class GameViewController: UIViewController {
     func gameOver() {
         // TODO: Design game over that displays results.
         let ac = UIAlertController(title: "Game Over", message: "", preferredStyle: .Alert)
-        ac.addAction(UIAlertAction(title: "Continue", style: .Cancel, handler: { [weak self] (action: UIAlertAction!) -> Void in
+        ac.addAction(UIAlertAction(title: "Continue", style: .Cancel, handler: { [weak self] (_) -> Void in
             guard let strongSelf = self else { return }
             // Return to main menu.
             strongSelf.navigationController?.popToRootViewControllerAnimated(true)
