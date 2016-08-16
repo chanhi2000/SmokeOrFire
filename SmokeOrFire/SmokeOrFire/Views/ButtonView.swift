@@ -88,8 +88,7 @@ class ButtonView: UIView {
             break
         case 4:
             // Fit four buttons.
-            let buttonWidth = (frame.width / 2.0) - (2 * margin)
-            let buttonHeight = (frame.height / 2.0) - (2 * margin)
+            let buttonLength = (frame.height / 2.0) - (2 * margin)
 
             /*
              * SUIT BUTTONS LAYOUT
@@ -100,21 +99,21 @@ class ButtonView: UIView {
              *
              */
             buttons[0].layer.frame = CGRect(
-                x: (frame.width / 4.0) - (buttonHeight / 2.0),
+                x: (frame.width / 4.0) - (buttonLength / 2.0),
                 y: margin,
-                width: buttonHeight, height: buttonHeight)
+                width: buttonLength, height: buttonLength)
             buttons[1].layer.frame = CGRect(
-                x: (frame.width / 4.0) - (buttonHeight / 2.0),
+                x: (frame.width / 4.0) - (buttonLength / 2.0),
                 y: (0.5 * frame.height) + margin,
-                width: buttonHeight, height: buttonHeight)
+                width: buttonLength, height: buttonLength)
             buttons[2].layer.frame = CGRect(
-                x: (0.75 * frame.width) - (buttonHeight / 2.0),
+                x: (0.75 * frame.width) - (buttonLength / 2.0),
                 y: margin,
-                width: buttonHeight, height: buttonHeight)
+                width: buttonLength, height: buttonLength)
             buttons[3].layer.frame = CGRect(
-                x: (0.75 * frame.width) - (buttonHeight / 2.0),
+                x: (0.75 * frame.width) - (buttonLength / 2.0),
                 y: (0.5 * frame.height) + margin,
-                width: buttonHeight, height: buttonHeight)
+                width: buttonLength, height: buttonLength)
             break
         default:
             break
