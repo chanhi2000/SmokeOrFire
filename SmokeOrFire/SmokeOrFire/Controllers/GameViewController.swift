@@ -127,37 +127,65 @@ class GameViewController: UIViewController {
         tgr.numberOfTouchesRequired = 1
         view.addGestureRecognizer(tgr)
 
-        // Assign delegate to notify GameViewController on button press.
-        buttonView.delegate = self
-
         // Setup status view.
         statusView = StatusView(frame: CGRect(
-            x: CGFloat(1.0 / SCREEN_WIDTH_UNITS) * view.frame.width,
-            y: CGFloat(2.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
-            width: CGFloat(18.0 / SCREEN_WIDTH_UNITS) * view.frame.width,
+            x: 0, y: CGFloat(2.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
+            width: CGFloat(20.0 / SCREEN_WIDTH_UNITS) * view.frame.width,
             height: CGFloat(8.0 / SCREEN_HEIGHT_UNITS) * view.frame.height))
         view.addSubview(statusView)
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "H:|[statusView]|", options: [], metrics: nil,
             views: ["statusView": statusView]))
         view.addConstraint(NSLayoutConstraint(item: statusView,
-            attribute: .Leading, relatedBy: .Equal,
-            toItem: skView, attribute: .Leading, multiplier: 1.0, constant: 0.0))
+            attribute: .Height, relatedBy: .Equal,
+            toItem: nil, attribute: .NotAnAttribute,
+            multiplier: 1.0, constant: CGFloat(8.0 / SCREEN_HEIGHT_UNITS) * view.frame.height))
 
         // Setup skView.
         skView.frame = CGRect(
-            x: CGFloat(10.0 / SCREEN_WIDTH_UNITS) * view.frame.width,
-            y: CGFloat(10.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
-            width: CGFloat(view.frame.width),
+            x: 0, y: CGFloat(10.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
+            width: view.frame.width,
             height: CGFloat(12.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true // Improves rendering performance
+        // Add skView constraints.
+        view.addConstraint(NSLayoutConstraint(item: skView,
+            attribute: .Height, relatedBy: .Equal,
+            toItem: nil, attribute: .NotAnAttribute,
+            multiplier: 1.0, constant: CGFloat(12.0 / SCREEN_HEIGHT_UNITS) * view.frame.height))
+        view.addConstraint(NSLayoutConstraint(item: skView,
+            attribute: .Top, relatedBy: .Equal,
+            toItem: statusView, attribute: .Bottom,
+            multiplier: 1.0, constant: 0.0))
+
         // Setup game scene.
         let scene = GameScene(size: skView.frame.size)
         scene.scaleMode = .AspectFill // Fits the scene to the view window
         skView.presentScene(scene)
         gameScene = scene
+
+        // Setup button view.
+        buttonView.delegate = self // Notify on button press.
+        buttonView.frame = CGRect(
+            x: 0, y: CGFloat(32.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
+            width: view.frame.width,
+            height: CGFloat(10.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
+        view.addConstraint(NSLayoutConstraint(item: buttonView,
+            attribute: .Height, relatedBy: .Equal,
+            toItem: nil, attribute: .NotAnAttribute,
+            multiplier: 1.0, constant: CGFloat(10.0 / SCREEN_HEIGHT_UNITS) * view.frame.height))
+
+        // Setup banner view.
+        bannerView.delegate = self
+        bannerView.frame = CGRect(
+            x: 0, y: CGFloat(32.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
+            width: view.frame.width,
+            height: CGFloat(3.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
+        view.addConstraint(NSLayoutConstraint(item: bannerView,
+            attribute: .Height, relatedBy: .Equal,
+            toItem: nil, attribute: .NotAnAttribute,
+            multiplier: 1.0, constant: CGFloat(3.0 / SCREEN_HEIGHT_UNITS) * view.frame.height))
 
         startGame()
 
@@ -189,6 +217,7 @@ class GameViewController: UIViewController {
     func startGame() {
         deck = Deck()
         createPyramid()
+        gameScene.displayHand(player.hand, reveal: false)
         nextRound()
     }
 

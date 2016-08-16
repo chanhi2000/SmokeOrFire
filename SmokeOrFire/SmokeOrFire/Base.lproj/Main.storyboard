@@ -19,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wru-pW-iju" customClass="SKView">
-                                <rect key="frame" x="20" y="199" width="560" height="128"/>
+                                <rect key="frame" x="0.0" y="199" width="600" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qt7-xk-4CN" customClass="ButtonView" customModule="SmokeOrFire" customModuleProvider="target">
-                                <rect key="frame" x="20" y="326" width="560" height="219"/>
+                                <rect key="frame" x="0.0" y="326" width="600" height="209"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8AV-RK-Fbo">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="219"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="209"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -36,7 +36,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9QB-8m-lNy">
-                                        <rect key="frame" x="-20" y="-326" width="46" height="30"/>
+                                        <rect key="frame" x="140" y="326" width="46" height="46"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -46,7 +46,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0u-fj-Z9Q">
-                                        <rect key="frame" x="-20" y="-326" width="46" height="30"/>
+                                        <rect key="frame" x="0.0" y="-326" width="46" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -56,7 +56,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4d4-pt-IJS">
-                                        <rect key="frame" x="280" y="0.0" width="280" height="219"/>
+                                        <rect key="frame" x="300" y="0.0" width="300" height="210"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -74,8 +74,9 @@
                                     <outlet property="thirdChoiceButton" destination="9QB-8m-lNy" id="B3r-SJ-Jgz"/>
                                 </connections>
                             </view>
-                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rYD-9k-JNK">
-                                <rect key="frame" x="20" y="520" width="560" height="66"/>
+                            <adBannerView autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rYD-9k-JNK">
+                                <rect key="frame" x="140" y="534" width="320" height="50"/>
+                                <color key="backgroundColor" red="0.2688647086" green="0.87874160239999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="I2v-EI-8Bd" id="tGK-9D-ZKz"/>
                                 </connections>
@@ -83,14 +84,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Wru-pW-iju" firstAttribute="trailing" secondItem="rdS-xm-bkD" secondAttribute="trailingMargin" id="BF7-8d-jUk"/>
-                            <constraint firstItem="rYD-9k-JNK" firstAttribute="leading" secondItem="rdS-xm-bkD" secondAttribute="leadingMargin" id="DHb-Sa-zw6"/>
-                            <constraint firstItem="qt7-xk-4CN" firstAttribute="leading" secondItem="rdS-xm-bkD" secondAttribute="leadingMargin" id="DWO-8H-iOa"/>
-                            <constraint firstItem="qt7-xk-4CN" firstAttribute="top" secondItem="Wru-pW-iju" secondAttribute="bottom" id="Uul-hm-oHM"/>
-                            <constraint firstItem="qt7-xk-4CN" firstAttribute="trailing" secondItem="rdS-xm-bkD" secondAttribute="trailingMargin" id="boK-IL-t6R"/>
-                            <constraint firstItem="Wru-pW-iju" firstAttribute="leading" secondItem="rdS-xm-bkD" secondAttribute="leadingMargin" id="qjZ-2m-YEg"/>
-                            <constraint firstItem="rYD-9k-JNK" firstAttribute="trailing" secondItem="rdS-xm-bkD" secondAttribute="trailingMargin" id="x6C-Ga-ynj"/>
-                            <constraint firstItem="BWJ-7V-qNp" firstAttribute="top" secondItem="rYD-9k-JNK" secondAttribute="bottom" id="y16-Eh-kHo"/>
+                            <constraint firstItem="Wru-pW-iju" firstAttribute="trailing" secondItem="rdS-xm-bkD" secondAttribute="trailing" id="BF7-8d-jUk"/>
+                            <constraint firstItem="rYD-9k-JNK" firstAttribute="top" secondItem="qt7-xk-4CN" secondAttribute="bottom" id="D9u-So-umj"/>
+                            <constraint firstItem="qt7-xk-4CN" firstAttribute="leading" secondItem="rdS-xm-bkD" secondAttribute="leading" id="DWO-8H-iOa"/>
+                            <constraint firstItem="qt7-xk-4CN" firstAttribute="bottom" secondItem="rYD-9k-JNK" secondAttribute="top" id="GGs-kJ-noR"/>
+                            <constraint firstItem="qt7-xk-4CN" firstAttribute="top" secondItem="Wru-pW-iju" secondAttribute="bottom" id="L64-6y-iov"/>
+                            <constraint firstItem="Wru-pW-iju" firstAttribute="bottom" secondItem="qt7-xk-4CN" secondAttribute="top" id="Omb-ir-fuP"/>
+                            <constraint firstItem="qt7-xk-4CN" firstAttribute="trailing" secondItem="rdS-xm-bkD" secondAttribute="trailing" id="boK-IL-t6R"/>
+                            <constraint firstItem="Wru-pW-iju" firstAttribute="leading" secondItem="rdS-xm-bkD" secondAttribute="leading" id="qjZ-2m-YEg"/>
                         </constraints>
                     </view>
                     <connections>
@@ -101,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AqW-o6-tbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1771" y="-742"/>
+            <point key="canvasLocation" x="1751" y="-751"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
