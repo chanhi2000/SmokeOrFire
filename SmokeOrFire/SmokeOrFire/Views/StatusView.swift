@@ -28,7 +28,7 @@ class StatusView: UIView {
             x: CGFloat(1.0 / WIDTH_UNITS) * frame.width,
             y: CGFloat(1.5 / HEIGHT_UNITS) * frame.height,
             width: CGFloat(5.0 / WIDTH_UNITS) * frame.width,
-            height: CGFloat(5.5 / HEIGHT_UNITS) * frame.height))
+            height: CGFloat(5.0 / WIDTH_UNITS) * frame.width))
         statusButton.enabled = false
         statusButton.layer.cornerRadius = statusButton.frame.width / 2
         statusButton.backgroundColor = .whiteColor()
