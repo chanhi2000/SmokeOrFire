@@ -166,11 +166,6 @@ class GameViewController: UIViewController {
         gameScene = scene
 
         // Setup button view.
-//        // Remove storyboard contraints.
-//        buttonView.firstChoiceButton.removeConstraints(buttonView.firstChoiceButton.constraints)
-//        buttonView.secondChoiceButton.removeConstraints(buttonView.secondChoiceButton.constraints)
-//        buttonView.thirdChoiceButton.removeConstraints(buttonView.thirdChoiceButton.constraints)
-//        buttonView.fourthChoiceButton.removeConstraints(buttonView.fourthChoiceButton.constraints)
         buttonView.delegate = self // Notify on button press.
         buttonView.frame = CGRect(
             x: 0, y: CGFloat(32.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
