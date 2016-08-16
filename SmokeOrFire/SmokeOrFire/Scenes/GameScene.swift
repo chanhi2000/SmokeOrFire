@@ -15,6 +15,7 @@ class GameScene: SKScene {
 
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
+        backgroundColor = .blackColor()
         rowHeights = [size.height / 2.0, size.height / 4.0]
     }
 
