@@ -68,7 +68,7 @@ class GameViewController: UIViewController {
 
     var pyramidRoundIndex: Int = 0 {
         didSet {
-            if pyramidRoundIndex < pyramid.rounds.count - 1 {
+            if pyramidRoundIndex < pyramid.rounds.count {// - 1 {
                 nextRound()
             } else {
                 // End of last pyramid round.
