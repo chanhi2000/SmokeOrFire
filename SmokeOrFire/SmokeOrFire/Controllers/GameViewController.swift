@@ -121,6 +121,12 @@ class GameViewController: UIViewController {
 
         title = "Smoke or Fire"
 
+        // Add tap gesture recognizer.
+        var tgr = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tgr.numberOfTapsRequired = 1
+        tgr.numberOfTouchesRequired = 1
+        view.addGestureRecognizer(tgr)
+
         buttonView.delegate = self
 
         // Setup status container.
@@ -154,6 +160,23 @@ class GameViewController: UIViewController {
 
         startGame()
 
+    }
+
+    func handleTap() {
+        for subView in view.subviews {
+            if let button = subView as? UIButton {
+                if subView.tag == 0 {
+                    // Call selector on unclicked button view.
+                    switch (rule as Rule) {
+                    case .GIVE, .TAKE:
+                        pyramidTapped(button)
+                        break
+                    default:
+                        questionTapped(button)
+                    }
+                }
+            }
+        }
     }
 
     func startGame() {
@@ -298,14 +321,14 @@ extension GameViewController {
 
     func displayPyramidResults() {
         // Get pyramid round card.
-//        let imageName = pyramid.rounds[pyramidRoundIndex].card.imageName
+//        let imageName = pyramid.rounds[pyramidRoundIndex].imageName
 //        let newSize = CGSize(width: 180, height: 250)
 //        let frontImage = UIImage(named: imageName)!.scaledToSize(newSize)
         // Display updated pyramid.
         pyramid.rounds[pyramidRoundIndex].isClicked = true
         gameScene.displayPyramid(pyramid.rounds, index: pyramidRoundIndex)
         pyramidRoundIndex += 1
-//        // Set card image.
+        // Set card image.
 //        let button = UIButton(frame: CGRect(x: CGFloat(0.25) * view.frame.width,
 //            y: CGFloat(0.25) * view.frame.height, width: frontImage.size.width, height: frontImage.size.height))
 //        button.setImage(frontImage, forState: .Normal)
@@ -316,33 +339,30 @@ extension GameViewController {
     }
 
     func displayQuestionResults() {
-        // Get round card.
-//        unowned let card = round.card
-//        let newSize = CGSize(width: 180, height: 250)
-//        let frontImage = UIImage(named: card.imageName)!.scaledToSize(newSize)
-//        // Display updated player's hand.
-        player.hand.append(Card(rank: round.card.rank, suit: round.card.suit))//round.card)//card)
+        // Get round card image.
+        let newSize = CGSize(width: 180, height: 250)
+        let frontImage = UIImage(named: round.card.imageName)!.scaledToSize(newSize)
+        // Display updated player's hand.
+        player.hand.append(round.card)
         gameScene.displayHand(player.hand, reveal: true)
-        playerIndex += 1
-//        // Set card image.
-//        let button = UIButton(frame: view.frame)
-//        button.setImage(frontImage, forState: .Normal)
-//        button.addTarget(self, action: #selector(questionTapped),
-//            forControlEvents: .TouchUpInside)
-//        // TODO: - Display somehow whether player drinks or not.
-//        view.addSubview(button)
+        // Set card image.
+        let button = UIButton(frame: view.frame)
+        button.tag = 0
+        button.setImage(frontImage, forState: .Normal)
+        button.addTarget(self, action: #selector(questionTapped),
+            forControlEvents: .TouchUpInside)
+        // TODO: - Display somehow whether player drinks or not.
+        view.addSubview(button)
     }
 
     func pyramidTapped(button: UIButton) {
         button.removeFromSuperview()
-        button.imageView?.image = nil
         pyramidRoundIndex += 1
     }
 
     func questionTapped(button: UIButton) {
-//        button.removeFromSuperview()
-//        button.imageView?.image = nil
-//        playerIndex += 1
+        button.removeFromSuperview()
+        playerIndex += 1
     }
 
 }
