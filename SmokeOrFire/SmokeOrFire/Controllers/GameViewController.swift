@@ -242,7 +242,6 @@ class GameViewController: UIViewController {
             round = Round(card: card, rule: rule)
         } else {
             // Deck ran out of cards.
-            print("Ran out cards in nextRound()")
             gameOver()
         }
     }
@@ -361,8 +360,8 @@ extension GameViewController {
                         rule: pyramidRule, isClicked: false)
                     pyramid.rounds.append(pr)
                 } else {
-                    print("No more cards in deck to build pyramid.")
-                    return
+                    // Not enough cards to build pyramid.
+                    gameOver()
                 }
             }
         }
