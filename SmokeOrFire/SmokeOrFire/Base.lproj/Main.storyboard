@@ -159,7 +159,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smoke or Fire" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8K-8L-S4w">
                                 <rect key="frame" x="122" y="99" width="357" height="212"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFO-iS-itl">
@@ -189,7 +189,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="BFO-iS-itl" firstAttribute="top" secondItem="D8K-8L-S4w" secondAttribute="bottom" constant="-14" id="Db4-0o-3hJ"/>
                             <constraint firstItem="YFf-D3-3hA" firstAttribute="width" secondItem="BFO-iS-itl" secondAttribute="width" id="JQe-Dc-FA5"/>
@@ -203,6 +203,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="R54-lV-iDI"/>
+                    <connections>
+                        <outlet property="optionButton" destination="YFf-D3-3hA" id="iZ7-ua-K1x"/>
+                        <outlet property="playButton" destination="BFO-iS-itl" id="7rW-UJ-x8h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

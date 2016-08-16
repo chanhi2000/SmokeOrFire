@@ -121,6 +121,18 @@ class GameViewController: UIViewController {
 
         title = "Smoke or Fire"
 
+        // Customize back button.
+        let backButton = UIButton(type: .Custom)
+        backButton.addTarget(self, action: #selector(mainMenu), forControlEvents: .TouchUpInside)
+        backButton.setTitle("Menu", forState: .Normal)
+        backButton.setTitleColor(.whiteColor(), forState: .Normal)
+        backButton.sizeToFit()
+        navigationItem.leftBarButtonItem  = UIBarButtonItem(customView: backButton)
+
+//        // Customize navigation bar.
+//        navigationController!.navigationBar.tintColor = .whiteColor()
+//        navigationController!.navigationBar.barTintColor = .blackColor()
+
         // Add tap gesture recognizer.
         let tgr = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         tgr.numberOfTapsRequired = 1
@@ -204,16 +216,19 @@ class GameViewController: UIViewController {
                 }
             }
         }
-
     }
 
-    func buttonIsVisible() -> Bool {
+    func isButtonVisible() -> Bool {
         for subView in view.subviews {
             if (subView as? UIButton) != nil {
                 return true
             }
         }
         return false
+    }
+
+    func mainMenu() {
+        navigationController!.popToRootViewControllerAnimated(true)
     }
 
     func startGame() {
@@ -241,7 +256,7 @@ class GameViewController: UIViewController {
         ac.addAction(UIAlertAction(title: "Continue", style: .Cancel, handler: { [weak self] (_) -> Void in
             guard let strongSelf = self else { return }
             // Return to main menu.
-            strongSelf.navigationController?.popToRootViewControllerAnimated(true)
+            strongSelf.navigationController!.popToRootViewControllerAnimated(true)
         }))
         presentViewController(ac, animated: true, completion: nil)
     }
@@ -272,7 +287,7 @@ extension GameViewController: ButtonViewDelegate {
 
     func buttonViewUpdatePlayerChoice(text: String?) {
         // Handle unclicked button.
-        if buttonIsVisible() {
+        if isButtonVisible() {
             handleTap()
             return
         }

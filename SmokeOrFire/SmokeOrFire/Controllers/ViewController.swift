@@ -10,7 +10,28 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var optionButton: UIButton!
+
     var totalPlayers = 2
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Customize navigation bar.
+        navigationController!.navigationBar.tintColor = .whiteColor()
+        navigationController!.navigationBar.barTintColor = .blackColor()
+
+        // Customize play button.
+        playButton.layer.borderWidth = 4
+        playButton.layer.borderColor = UIColor.whiteColor().CGColor
+        playButton.layer.cornerRadius = 10
+
+        // Customize option button.
+        optionButton.layer.borderWidth = 4
+        optionButton.layer.borderColor = UIColor.whiteColor().CGColor
+        optionButton.layer.cornerRadius = 10
+    }
 
     // MARK: - Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
