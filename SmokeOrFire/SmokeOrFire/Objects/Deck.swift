@@ -6,7 +6,6 @@
 //  Copyright © 2016 Justin Lawrence Hester. All rights reserved.
 //
 
-import UIKit
 import GameplayKit
 
 class Deck {
@@ -19,6 +18,9 @@ class Deck {
                 cards.append(Card(rank: rank, suit: suit))
             }
         }
+    }
+    deinit {
+        print("Deck being released from memory")
     }
 
     func shuffle() {

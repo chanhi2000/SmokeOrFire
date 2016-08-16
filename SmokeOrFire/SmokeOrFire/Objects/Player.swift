@@ -18,6 +18,9 @@ class Player: NSObject {
         self.number = number
         self.hand = [Card]()
     }
+    deinit {
+        print("Player being released from memory")
+    }
 
     func getNumber() -> Int {
         return self.number

@@ -30,7 +30,7 @@ class GameViewController: UIViewController {
     // TODO: Add option to adjust these card counts per level.
     var levels: [Int] = [4, 4, 3, 3, 2, 1]
     var pyramid: Pyramid!
-    var player: Player!
+    weak var player: Player!
     var players: [Player]!
     var rules = [Rule.COLOR, Rule.UP_DOWN, Rule.IN_OUT, Rule.SUIT]
     var statusView: StatusView!
@@ -68,7 +68,7 @@ class GameViewController: UIViewController {
 
     var pyramidRoundIndex: Int = 0 {
         didSet {
-            if pyramidRoundIndex < pyramid.rounds.count {// - 1 {
+            if pyramidRoundIndex < pyramid.rounds.count {
                 nextRound()
             } else {
                 // End of last pyramid round.
@@ -176,10 +176,8 @@ class GameViewController: UIViewController {
     }
 
     func gameOver() {
-        print("Game over")
-
         // TODO: Design game over that displays results.
-        let ac = UIAlertController(title: "Game Over", message: "Player: 1 wins!", preferredStyle: .Alert)
+        let ac = UIAlertController(title: "Game Over", message: "", preferredStyle: .Alert)
         ac.addAction(UIAlertAction(title: "Continue", style: .Cancel, handler: { [weak self] (action: UIAlertAction!) -> Void in
             guard let strongSelf = self else { return }
             // Return to main menu.
@@ -282,7 +280,7 @@ extension GameViewController {
                     let pyramidRule = (((pyramid.rounds.count +
                         seed) % 2) == 0) ? Rule.GIVE : Rule.TAKE
                     rules.append(pyramidRule)
-                    let pr = PyramidRound(level: i + 1, card: card,
+                    let pr = PyramidRound(level: i + 1, imageName: card.imageName,
                         rule: pyramidRule, isClicked: false)
                     pyramid.rounds.append(pr)
                 } else {
@@ -300,42 +298,51 @@ extension GameViewController {
 
     func displayPyramidResults() {
         // Get pyramid round card.
-        unowned let card = pyramid.rounds[pyramidRoundIndex].card
-        let newSize = CGSize(width: 180, height: 250)
-        let frontImage = UIImage(named: card.imageName)!.scaledToSize(newSize)
-        // Set card image.
-        let button = UIButton(frame: CGRect(x: CGFloat(0.25) * view.frame.width,
-            y: CGFloat(0.25) * view.frame.height, width: frontImage.size.width, height: frontImage.size.height))
-        button.setImage(frontImage, forState: .Normal)
-        button.addTarget(self, action: #selector(pyramidTapped),
-            forControlEvents: .TouchUpInside)
-        // TODO: - Display player list and give/take distribution UI.
-        view.addSubview(button)
+//        let imageName = pyramid.rounds[pyramidRoundIndex].card.imageName
+//        let newSize = CGSize(width: 180, height: 250)
+//        let frontImage = UIImage(named: imageName)!.scaledToSize(newSize)
+        // Display updated pyramid.
+        pyramid.rounds[pyramidRoundIndex].isClicked = true
+        gameScene.displayPyramid(pyramid.rounds, index: pyramidRoundIndex)
+        pyramidRoundIndex += 1
+//        // Set card image.
+//        let button = UIButton(frame: CGRect(x: CGFloat(0.25) * view.frame.width,
+//            y: CGFloat(0.25) * view.frame.height, width: frontImage.size.width, height: frontImage.size.height))
+//        button.setImage(frontImage, forState: .Normal)
+//        button.addTarget(self, action: #selector(pyramidTapped),
+//            forControlEvents: .TouchUpInside)
+//        // TODO: - Display player list and give/take distribution UI.
+//        view.addSubview(button)
     }
 
     func displayQuestionResults() {
         // Get round card.
-        unowned let card = pyramid.rounds[pyramidRoundIndex].card
-        let newSize = CGSize(width: 180, height: 250)
-        let frontImage = UIImage(named: card.imageName)!.scaledToSize(newSize)
-        // Set card image.
-        let button = UIButton(frame: view.frame)
-        button.setImage(frontImage, forState: .Normal)
-        button.addTarget(self, action: #selector(questionTapped),
-            forControlEvents: .TouchUpInside)
-        // TODO: - Display somehow whether player drinks or not.
-        view.addSubview(button)
+//        unowned let card = round.card
+//        let newSize = CGSize(width: 180, height: 250)
+//        let frontImage = UIImage(named: card.imageName)!.scaledToSize(newSize)
+//        // Display updated player's hand.
+        player.hand.append(Card(rank: round.card.rank, suit: round.card.suit))//round.card)//card)
+        gameScene.displayHand(player.hand, reveal: true)
+        playerIndex += 1
+//        // Set card image.
+//        let button = UIButton(frame: view.frame)
+//        button.setImage(frontImage, forState: .Normal)
+//        button.addTarget(self, action: #selector(questionTapped),
+//            forControlEvents: .TouchUpInside)
+//        // TODO: - Display somehow whether player drinks or not.
+//        view.addSubview(button)
     }
 
     func pyramidTapped(button: UIButton) {
         button.removeFromSuperview()
-        pyramid.rounds[pyramidRoundIndex].isClicked = true
+        button.imageView?.image = nil
         pyramidRoundIndex += 1
     }
 
     func questionTapped(button: UIButton) {
-        button.removeFromSuperview()
-        playerIndex += 1
+//        button.removeFromSuperview()
+//        button.imageView?.image = nil
+//        playerIndex += 1
     }
 
 }

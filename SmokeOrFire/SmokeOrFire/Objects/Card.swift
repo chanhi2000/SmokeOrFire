@@ -12,16 +12,14 @@ class Card: NSObject {
     var rank: Rank
     var suit: Suit
     var imageName: String
-//    var frontImage: UIImage
 
     init(rank: Rank, suit: Suit) {
         self.rank = rank
         self.suit = suit
         self.imageName = "\(rank.describe())_of_\(suit.describe())"
-//        frontImage = UIImage(named: imageName)!
-//
-//        let newSize = CGSize(width: 180, height: 250)
-//        frontImage = frontImage.scaledToSize(newSize)
+    }
+    deinit {
+        print("Card being released from memory")
     }
 
     func describe() -> String {

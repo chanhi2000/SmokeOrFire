@@ -8,7 +8,7 @@
 
 struct PyramidRound {
     var level: Int
-    var card: Card
+    var imageName: String
     var rule: Rule
     var isClicked = false
 }

@@ -11,9 +11,11 @@ import UIKit
 
 class GameScene: SKScene {
 
-    var cards = [SKSpriteNode?](count: 52, repeatedValue: nil) // Keeps track of current cards in scene.
-    var rows: [[PyramidRound]]!
     var rowHeights: [CGFloat]!
+
+    deinit {
+        print("GameScene being released from memory")
+    }
 
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
@@ -21,10 +23,9 @@ class GameScene: SKScene {
     }
 
     func clearCards() {
-        for i in 0.stride(to: cards.filter { $0 != nil }.count, by: 1) {
-            cards[i]!.removeFromParent()
+        for node in self.children {
+            node.removeFromParent()
         }
-        cards.removeAll(keepCapacity: true)
     }
 
     func displayHand(hand: [Card], reveal: Bool) {
@@ -39,7 +40,6 @@ class GameScene: SKScene {
                     size: CGSize(width: 80, height: 120))
                 hiddenCard.position = CGPoint(x: xPos, y: rowHeights[0])
                 hiddenCard.zPosition = CGFloat(i)
-                cards.append(hiddenCard)
                 addChild(hiddenCard)
             } else {
                 // Draw card in player's hand.
@@ -47,7 +47,6 @@ class GameScene: SKScene {
                     color: .whiteColor(), size: CGSize(width: 80, height: 120))
                 card.position = CGPoint(x: xPos, y: rowHeights[0])
                 card.zPosition = CGFloat(i)
-                cards.append(card)
                 addChild(card)
             }
         }
@@ -56,7 +55,7 @@ class GameScene: SKScene {
     func displayPyramid(rounds: [PyramidRound], index: Int) {
         clearCards()
         // Create a list where each element is a list of pyramid rounds.
-        rows = [rounds.filter { $0.level == rounds[index].level },
+        let rows = [rounds.filter { $0.level == rounds[index].level },
             rounds.filter{ $0.level == (rounds[index].level + 1) }]
         // Iterate through each list of pyramid rounds.
         for i in 0.stride(to: rows.count, by: 1) {
@@ -64,13 +63,12 @@ class GameScene: SKScene {
             // Loop through each pyramid round.
             for j in 0.stride(to: rows[i].count, by: 1) {
                 let round = rows[i][j]
-                let imageName = round.isClicked ? round.card.imageName : "back"
+                let imageName = round.isClicked ? round.imageName : "back"
                 // Draw pyramid card.
                 let card = SKSpriteNode(texture: SKTexture(imageNamed: imageName),
                     color: .whiteColor(), size: CGSize(width: 40, height: 80))
                 card.position = CGPoint(x: CGFloat(j + 1) * xUnit, y: rowHeights[i])
                 card.zPosition = CGFloat(i + j) // DEBUG
-                cards.append(card)
                 addChild(card)
             }
         }

@@ -6,16 +6,24 @@
 //  Copyright © 2016 Justin Lawrence Hester. All rights reserved.
 //
 
-struct Round {
+class Round {
     var card: Card
     var rule: Rule
+
+    init(card: Card, rule: Rule) {
+        self.card = card
+        self.rule = rule
+    }
+    deinit {
+        print("Round being released from memory")
+    }
 
     func isDrinking(player: Player) -> Bool {
         switch (rule) {
             case .COLOR:
                 if (player.choice == PlayerChoices.RED && card.isRed()) {
                     return false
-                } else if (player.choice == PlayerChoices.BLACK && card.isBlack()) {
+                } else if (player.choice == PlayerChoices.BLACK && (card.isBlack())) {
                     return false
                 } else {
                     return true
