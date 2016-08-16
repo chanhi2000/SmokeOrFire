@@ -25,7 +25,6 @@ class GameViewController: UIViewController {
     private let SCREEN_HEIGHT_UNITS = 35.0 // Number of height units in design.
 
     // Instance variables
-    var ac: UIAlertController!
     var button: UIButton!
     var deck: Deck = Deck()
     var gameScene: GameScene!
@@ -300,50 +299,36 @@ extension GameViewController {
 extension GameViewController {
 
     func displayPyramidResults() {
-//        ac = UIAlertController(title: "Pyramid Round \(pyramidRoundIndex + 1)",
-//            message: "\(round.card.describe())", preferredStyle: .Alert)
-//
-//        // Shape the frame to fit behind the card.
-//        ac.view.layer.frame = CGRect(origin: ac.view.frame.origin,
-//            size: round.card.frontImage.size)
-//        ac.view.addConstraint(NSLayoutConstraint(item: ac.view, attribute: .Height,
-//            relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
-//            multiplier: 1.0, constant: round.card.frontImage.size.height))
+        let ac = UIAlertController(title: "Pyramid Round \(pyramidRoundIndex + 1)",
+            message: "\(round.card.describe())", preferredStyle: .Alert)
+
+        // Shape the frame to fit behind the card.
+        ac.view.layer.frame = CGRect(origin: ac.view.frame.origin,
+            size: round.card.frontImage.size)
+        ac.view.addConstraint(NSLayoutConstraint(item: ac.view, attribute: .Height,
+            relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
+            multiplier: 1.0, constant: round.card.frontImage.size.height))
 
         // Set card image.
-//        button = UIButton(frame: CGRect(x: CGFloat(0.25) * view.frame.width,
-//            y: CGFloat(0.25) * view.frame.height,
-//            width: round.card.frontImage.size.width,
-//            height: round.card.frontImage.size.height))
-//        button.setImage(pyramid.rounds[pyramidRoundIndex].card.frontImage, forState: .Normal)
-//        button.addTarget(self, action: #selector(pyramidTapped), forControlEvents: .TouchUpInside)
-//        view.addSubview(button)
+        button = UIButton(frame: CGRect(x: CGFloat(0.25) * view.frame.width,
+            y: CGFloat(0.25) * view.frame.height,
+            width: round.card.frontImage.size.width,
+            height: round.card.frontImage.size.height))
+        button.setImage(pyramid.rounds[pyramidRoundIndex].card.frontImage, forState: .Normal)
+        button.addTarget(self, action: #selector(pyramidTapped), forControlEvents: .TouchUpInside)
+        view.addSubview(button)
 
-//        let cardImage = UIImage(named: pyramid.rounds[pyramidRoundIndex].card.frontImage)
-//        var action = UIAlertAction(title: "", style: .Default, handler: nil)
-//        action.setValue(cardImage, forKey: "image")
-//        ac.addAction(action)
-
-//        for p in players {
-//            if p.hasCard(round.card) {
-//                // Add an action column for each losing player.
-//                // TODO: Design handler for UIAlertAction to remove itself.
-//                ac.addAction(UIAlertAction(
-//                    title: "Player \(p.number): \(p.displayHand())",
-//                    style: .Default, handler: nil))
-//            }
-//        }
+        for p in players {
+            if p.hasCard(round.card) {
+                // Add an action column for each losing player.
+                // TODO: Design handler for UIAlertAction to remove itself.
+                ac.addAction(UIAlertAction(
+                    title: "Player \(p.number): \(p.displayHand())",
+                    style: .Default, handler: nil))
+            }
+        }
         // TODO: Design handler to only dismiss once all players drink.
-//        presentViewController(, animated: true, completion: nil)//{ [unowned self] in
-//            guard let strongSelf = self else { return }
-//            self.pyramid.rounds[self.pyramidRoundIndex].isClicked = true
-//            self.pyramidRoundIndex += 1
-//            self.dismissViewControllerAnimated(true, completion: nil)
-//            self.ac = nil
-//            button = nil
-//        })
-        pyramid.rounds[pyramidRoundIndex].isClicked = true
-        pyramidRoundIndex += 1
+        presentViewController(ac, animated: true, completion: nil)
     }
 
     func displayQuestionResults() {
@@ -382,17 +367,9 @@ extension GameViewController {
     }
 
     func pyramidTapped(button: UIButton) {
-//        dismissViewControllerAnimated(true, completion: { [unowned self] in
-////            guard let strongSelf = self else { return }
-//            // Update pyramid round.
-//            self.pyramid.rounds[self.pyramidRoundIndex].isClicked = true
-//            self.pyramidRoundIndex += 1
-//        })
-//        self.button.removeFromSuperview()
-//        self.button = nil
         pyramid.rounds[pyramidRoundIndex].isClicked = true
         pyramidRoundIndex += 1
-//        dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
     func questionTapped(button: UIButton) {
