@@ -56,7 +56,7 @@ class GameScene: SKScene {
             rounds.filter{ $0.level == (rounds[index].level + 1) }]
         // Iterate through each list of pyramid rounds.
         for i in 0.stride(to: rows.count, by: 1) {
-            let xUnit = size.width / CGFloat(rows[i].count + 2) // + 2 includes ends of x-axis
+            let xUnit = size.width / CGFloat(rows[i].count + 1) // include trailing edge of x-axis
             // Loop through each pyramid round.
             for j in 0.stride(to: rows[i].count, by: 1) {
                 let round = rows[i][j]
