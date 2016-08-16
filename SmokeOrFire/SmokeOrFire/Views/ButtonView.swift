@@ -14,25 +14,24 @@ protocol ButtonViewDelegate: class {
 
 class ButtonView: UIView {
 
-    // MARK: - IBOutlets
+    // IBOutlets
     @IBOutlet weak var firstChoiceButton: UIButton!
     @IBOutlet weak var secondChoiceButton: UIButton!
     @IBOutlet weak var thirdChoiceButton: UIButton!
     @IBOutlet weak var fourthChoiceButton: UIButton!
 
-    // MARK: - Private variables
+    // Private variables
     private var viewsDictionary: [String: UIButton]! // Used to design Visual Format constraints.
 
-    // MARK: - Instance variables
+    // Instance variables
     weak var delegate: ButtonViewDelegate?
 
-    // MARK: - IBActions
-
+    // IBActions
     @IBAction func choiceTapped(sender: UIButton) {
         delegate?.buttonViewUpdatePlayerChoice(sender.titleLabel?.text)
     }
 
-    // MARK: - Custom
+    // Custom
 
     // TODO: - Figure out how to refactor this method that minimizes redundancy.
     // One idea is to separate the case code blocks into separate methods
