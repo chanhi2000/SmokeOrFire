@@ -75,19 +75,19 @@ class ButtonView: UIView {
             // Fit three buttons.
             buttons[0].layer.frame = CGRect(
                 x: margin,
-                y: (frame.height / 2.0) - (3 * margin), // margin,
+                y: (frame.height / 2.0) - (3 * margin),
                 width: (frame.width / 3.0) - (3 * margin),
-                height: (frame.width / 3.0) - (3 * margin)) //frame.height - (2 * margin))
+                height: (frame.width / 3.0) - (3 * margin))
             buttons[1].layer.frame = CGRect(
                 x: (0.333 * frame.width) + margin,
-                y: (frame.height / 2.0) - (3 * margin), // margin,
+                y: (frame.height / 2.0) - (3 * margin),
                 width: (frame.width / 3.0) - (3 * margin),
-                height: (frame.width / 3.0) - (3 * margin)) //frame.height - (2 * margin))
+                height: (frame.width / 3.0) - (3 * margin))
             buttons[2].layer.frame = CGRect(
                 x: (0.666 * frame.width) + margin,
-                y: (frame.height / 2.0) - (3 * margin), // margin,
+                y: (frame.height / 2.0) - (3 * margin),
                 width: (frame.width / 3.0) - (3 * margin),
-                height: (frame.width / 3.0) - (3 * margin)) //frame.height - (2 * margin))
+                height: (frame.width / 3.0) - (3 * margin))
             break
         case 4:
             // Fit four buttons.
@@ -103,12 +103,12 @@ class ButtonView: UIView {
              *
              */
             buttons[0].layer.frame = CGRect(
-                x: (frame.width / 4.0) - (buttonHeight / 2.0), // margin,
+                x: (frame.width / 4.0) - (buttonHeight / 2.0),
                 y: margin,
                 width: buttonHeight, height: buttonHeight)
             buttons[1].layer.frame = CGRect(
-                x: (frame.width / 4.0) - (buttonHeight / 2.0), // margin,
-                y: (0.5 * frame.height) + margin, // (frame.height / 2.0) + margin,
+                x: (frame.width / 4.0) - (buttonHeight / 2.0),
+                y: (0.5 * frame.height) + margin,
                 width: buttonHeight, height: buttonHeight)
             buttons[2].layer.frame = CGRect(
                 x: (0.75 * frame.width) - (buttonHeight / 2.0),
@@ -116,7 +116,7 @@ class ButtonView: UIView {
                 width: buttonHeight, height: buttonHeight)
             buttons[3].layer.frame = CGRect(
                 x: (0.75 * frame.width) - (buttonHeight / 2.0),
-                y: (0.5 * frame.height) + margin, // (frame.height / 2.0) + margin,
+                y: (0.5 * frame.height) + margin,
                 width: buttonHeight, height: buttonHeight)
             break
         default:
