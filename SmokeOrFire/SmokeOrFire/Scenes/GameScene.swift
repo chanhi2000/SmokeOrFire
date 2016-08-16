@@ -13,10 +13,6 @@ class GameScene: SKScene {
 
     var rowHeights: [CGFloat]!
 
-    deinit {
-        print("GameScene being released from memory")
-    }
-
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         rowHeights = [size.height / 2.0, size.height / 4.0]
