@@ -20,9 +20,6 @@ class ButtonView: UIView {
     @IBOutlet weak var thirdChoiceButton: UIButton!
     @IBOutlet weak var fourthChoiceButton: UIButton!
 
-    // Private variables
-    private var viewsDictionary: [String: UIButton]! // Used to design Visual Format constraints.
-
     // Instance variables
     weak var delegate: ButtonViewDelegate?
 
