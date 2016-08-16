@@ -122,7 +122,7 @@ class GameViewController: UIViewController {
         title = "Smoke or Fire"
 
         // Add tap gesture recognizer.
-        var tgr = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        let tgr = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         tgr.numberOfTapsRequired = 1
         tgr.numberOfTouchesRequired = 1
         view.addGestureRecognizer(tgr)
@@ -163,20 +163,27 @@ class GameViewController: UIViewController {
     }
 
     func handleTap() {
+        // Prevents any taps while unclicked button view exists.
+//        guard !buttonIsVisible() else { return }
         for subView in view.subviews {
             if let button = subView as? UIButton {
-                if subView.tag == 0 {
-                    // Call selector on unclicked button view.
-                    switch (rule as Rule) {
-                    case .GIVE, .TAKE:
-                        pyramidTapped(button)
-                        break
-                    default:
-                        questionTapped(button)
-                    }
+                if button.tag == 0 {
+                    questionTapped(button)
+                } else if button.tag == 1 {
+                    pyramidTapped(button)
                 }
             }
         }
+
+    }
+
+    func buttonIsVisible() -> Bool {
+        for subView in view.subviews {
+            if (subView as? UIButton) != nil {
+                return true
+            }
+        }
+        return false
     }
 
     func startGame() {
@@ -234,6 +241,11 @@ extension GameViewController: ADBannerViewDelegate {
 extension GameViewController: ButtonViewDelegate {
 
     func buttonViewUpdatePlayerChoice(text: String?) {
+        // Handle unclicked button.
+        if buttonIsVisible() {
+            handleTap()
+            return
+        }
         if let choiceText = text {
             // TODO: Figure out how to shrink this switch-case into something more clever.
             switch (choiceText) {
@@ -321,21 +333,22 @@ extension GameViewController {
 
     func displayPyramidResults() {
         // Get pyramid round card.
-//        let imageName = pyramid.rounds[pyramidRoundIndex].imageName
-//        let newSize = CGSize(width: 180, height: 250)
-//        let frontImage = UIImage(named: imageName)!.scaledToSize(newSize)
+        let imageName = pyramid.rounds[pyramidRoundIndex].imageName
+        let newSize = CGSize(width: 180, height: 250)
+        let frontImage = UIImage(named: imageName)!.scaledToSize(newSize)
         // Display updated pyramid.
         pyramid.rounds[pyramidRoundIndex].isClicked = true
         gameScene.displayPyramid(pyramid.rounds, index: pyramidRoundIndex)
         pyramidRoundIndex += 1
         // Set card image.
-//        let button = UIButton(frame: CGRect(x: CGFloat(0.25) * view.frame.width,
-//            y: CGFloat(0.25) * view.frame.height, width: frontImage.size.width, height: frontImage.size.height))
-//        button.setImage(frontImage, forState: .Normal)
-//        button.addTarget(self, action: #selector(pyramidTapped),
-//            forControlEvents: .TouchUpInside)
-//        // TODO: - Display player list and give/take distribution UI.
-//        view.addSubview(button)
+        let button = UIButton(frame: CGRect(x: CGFloat(0.25) * view.frame.width,
+            y: CGFloat(0.25) * view.frame.height, width: frontImage.size.width, height: frontImage.size.height))
+        button.tag = 1
+        button.setImage(frontImage, forState: .Normal)
+        button.addTarget(self, action: #selector(pyramidTapped),
+            forControlEvents: .TouchUpInside)
+        // TODO: - Display player list and give/take distribution UI.
+        view.addSubview(button)
     }
 
     func displayQuestionResults() {
