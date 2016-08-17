@@ -20,7 +20,7 @@ class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         backgroundColor = .blackColor()
-        rowHeights = [size.height / 2.0, size.height / 4.0]
+        rowHeights = [size.height, size.height / 2.0, 0] // Order: Top, middle, bottom
     }
 
     func clearCards() {
@@ -62,7 +62,7 @@ class GameScene: SKScene {
                 let hiddenCard = SKSpriteNode(texture: SKTexture(imageNamed: "back"),
                     size: cardSize)
                 applyNodeSettings(node: hiddenCard, settings:
-                    ["position": [xPos, rowHeights[0]],
+                    ["position": [xPos, rowHeights[1]],
                         "zPosition": CGFloat(i)])
                 addChild(hiddenCard)
             } else {
@@ -70,7 +70,7 @@ class GameScene: SKScene {
                 let card = SKSpriteNode(texture: SKTexture(imageNamed: hand[i].imageName),
                     color: .whiteColor(), size: cardSize)
                 applyNodeSettings(node: card, settings:
-                    ["position": [xPos, rowHeights[0]],
+                    ["position": [xPos, rowHeights[1]],
                         "zPosition": CGFloat(i)])
                 addChild(card)
             }
@@ -80,8 +80,9 @@ class GameScene: SKScene {
     func displayPyramid(rounds: [PyramidRound], index: Int) {
         clearCards()
         // Create a list where each element is a list of pyramid rounds.
-        let rows = [rounds.filter { $0.level == rounds[index].level },
-            rounds.filter{ $0.level == (rounds[index].level + 1) }]
+        let rows = [rounds.filter { $0.level == (rounds[index].level - 1) },
+            rounds.filter { $0.level == rounds[index].level },
+            rounds.filter { $0.level == (rounds[index].level + 1) }]
         // Iterate through each list of pyramid rounds.
         for i in 0.stride(to: rows.count, by: 1) {
             let xUnit = size.width / CGFloat(rows[i].count + 1) // include trailing edge of x-axis
