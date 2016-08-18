@@ -25,8 +25,18 @@ class GameScene: SKScene {
     }
 
     func clearCards() {
+        // Initialize the x component for where the cards fly off screen.
+        let xSeed = GKRandomSource.sharedRandom().nextIntWithUpperBound(Int(size.width))
+        let xOffPos = CGFloat(xSeed)
         for node in self.children {
-            node.removeFromParent()
+            // Animate the cards sliding towards the screen.
+            let path = UIBezierPath()
+            path.moveToPoint(CGPoint(x: 0, y: 0))
+            path.addLineToPoint(CGPoint(x: xOffPos - node.position.x, y: size.height))
+            let move = SKAction.followPath(path.CGPath,
+                asOffset: true, orientToPath: false, duration: 0.300)
+            let remove = SKAction.removeFromParent()
+            node.runAction(SKAction.sequence([move, remove]))
         }
     }
 

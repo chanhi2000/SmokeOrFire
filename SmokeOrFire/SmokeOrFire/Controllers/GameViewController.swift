@@ -236,7 +236,6 @@ class GameViewController: UIViewController {
     func startGame() {
         deck = Deck()
         createPyramid()
-        gameScene.displayHand(player.hand)
         nextRound()
     }
 
