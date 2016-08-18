@@ -143,6 +143,7 @@ class GameScene: SKScene {
     func shiftPyramid() {
         for node in self.children {
             if (node.name!.hasPrefix("pyramid")) {
+                node.name = "pyramidCard"
                 let wait = SKAction.waitForDuration(0.250)
                 let path = UIBezierPath()
                 path.moveToPoint(CGPoint(x: 0, y: 0))
