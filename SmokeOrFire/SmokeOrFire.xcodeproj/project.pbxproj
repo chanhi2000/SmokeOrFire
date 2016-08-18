@@ -33,6 +33,9 @@
 		74175B931D617DC5006A9AC7 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B911D617DC5006A9AC7 /* ButtonView.swift */; };
 		74175B941D617DC5006A9AC7 /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B921D617DC5006A9AC7 /* StatusView.swift */; };
 		74175B961D617DEF006A9AC7 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B951D617DEF006A9AC7 /* GameScene.swift */; };
+		742F6BEE1D6599F7007A1A78 /* FireParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 742F6BED1D6599F7007A1A78 /* FireParticles.sks */; };
+		742F6BF01D659B34007A1A78 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 742F6BEF1D659B34007A1A78 /* spark.png */; };
+		742F6BF21D659E62007A1A78 /* SmokeParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 742F6BF11D659E62007A1A78 /* SmokeParticle.sks */; };
 		743924D81D569C0000F1A17D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743924D71D569C0000F1A17D /* AppDelegate.swift */; };
 		743924DD1D569C0000F1A17D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743924DB1D569C0000F1A17D /* Main.storyboard */; };
 		743924DF1D569C0000F1A17D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 743924DE1D569C0000F1A17D /* Assets.xcassets */; };
@@ -80,6 +83,9 @@
 		74175B911D617DC5006A9AC7 /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonView.swift; path = Views/ButtonView.swift; sourceTree = "<group>"; };
 		74175B921D617DC5006A9AC7 /* StatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusView.swift; path = Views/StatusView.swift; sourceTree = "<group>"; };
 		74175B951D617DEF006A9AC7 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = Scenes/GameScene.swift; sourceTree = "<group>"; };
+		742F6BED1D6599F7007A1A78 /* FireParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = FireParticles.sks; path = Content/FireParticles.sks; sourceTree = "<group>"; };
+		742F6BEF1D659B34007A1A78 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = Content/spark.png; sourceTree = "<group>"; };
+		742F6BF11D659E62007A1A78 /* SmokeParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = SmokeParticle.sks; path = Content/SmokeParticle.sks; sourceTree = "<group>"; };
 		743924D41D569C0000F1A17D /* SmokeOrFire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmokeOrFire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		743924D71D569C0000F1A17D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		743924DC1D569C0000F1A17D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -164,6 +170,16 @@
 			name = Scenes;
 			sourceTree = "<group>";
 		};
+		742F6BEC1D6599E6007A1A78 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				742F6BEF1D659B34007A1A78 /* spark.png */,
+				742F6BED1D6599F7007A1A78 /* FireParticles.sks */,
+				742F6BF11D659E62007A1A78 /* SmokeParticle.sks */,
+			);
+			name = Content;
+			sourceTree = "<group>";
+		};
 		743924CB1D569C0000F1A17D = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +204,7 @@
 				743924E31D569C0000F1A17D /* Info.plist */,
 				743924D71D569C0000F1A17D /* AppDelegate.swift */,
 				743924DE1D569C0000F1A17D /* Assets.xcassets */,
+				742F6BEC1D6599E6007A1A78 /* Content */,
 				74175B641D6128B4006A9AC7 /* Controllers */,
 				74175B661D61293A006A9AC7 /* Enums */,
 				743925021D56DE8700F1A17D /* Extensions */,
@@ -309,7 +326,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				742F6BF01D659B34007A1A78 /* spark.png in Resources */,
+				742F6BF21D659E62007A1A78 /* SmokeParticle.sks in Resources */,
 				743924E21D569C0000F1A17D /* LaunchScreen.storyboard in Resources */,
+				742F6BEE1D6599F7007A1A78 /* FireParticles.sks in Resources */,
 				743924DF1D569C0000F1A17D /* Assets.xcassets in Resources */,
 				743924DD1D569C0000F1A17D /* Main.storyboard in Resources */,
 			);

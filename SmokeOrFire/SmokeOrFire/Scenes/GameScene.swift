@@ -14,7 +14,7 @@ class GameScene: SKScene {
 
     // Private variables
     // TODO: - Consider computing this based on SKView frame.
-    private let cardSize = CGSize(width: 80, height: 120)
+    private let cardSize = CGSize(width: 70, height: 113)
 
     var rowHeights: [CGFloat]!
 
@@ -31,6 +31,9 @@ class GameScene: SKScene {
         for node in self.children {
             if node.name!.hasPrefix("pyramid") {
                 // Remove pyramid cards with no animation.
+                node.removeFromParent()
+            } else if node.name == "emitterFireCard" {
+                // Remove fire emitter behind hidden pyramid card with no animation.
                 node.removeFromParent()
             } else {
                 // Animate the player's hand cards sliding towards the top screen.
@@ -52,14 +55,17 @@ class GameScene: SKScene {
         let xSeed = GKRandomSource.sharedRandom().nextIntWithUpperBound(Int(size.width))
         let xStartPos = CGFloat(xSeed)
         for i in 0.stride(to: hand.count + 1, by: 1) {
+
             // Set image texture for hidden or visible card, respectively.
             let imageName = (i == hand.count) ? "back" : hand[i].imageName
             let imageTexture = SKTexture(imageNamed: imageName)
             let xPos = CGFloat(i + 1) * xUnit // The x component of final position.
+
             // Create sprite for card.
             let card = SKSpriteNode(texture: imageTexture, size: cardSize)
             card.position = CGPoint(x: xStartPos, y: -cardSize.height)
             card.name = (i == hand.count) ? "hiddenCard" : "visibleCard"
+
             // Animate the card moving from below the bottom of the screen.
             let wait = SKAction.waitForDuration(0.500)
             let path = UIBezierPath()
@@ -68,8 +74,18 @@ class GameScene: SKScene {
                 y: rowHeights[1] + cardSize.height))
             let move = SKAction.followPath(path.CGPath,
                 asOffset: true, orientToPath: false, duration: 0.300)
-            card.runAction(SKAction.sequence([wait, move]))
+            let sequence = SKAction.sequence([wait, move])
+            card.runAction(sequence)
             addChild(card)
+
+            if (i == hand.count) {
+                // Add smoke particle emitter.
+                let smoke = SKEmitterNode(fileNamed: "SmokeParticle")!
+                smoke.name = "emitterSmokeCard"
+                smoke.position = card.position
+                smoke.runAction(sequence)
+                addChild(smoke)
+            }
         }
     }
 
@@ -110,6 +126,18 @@ class GameScene: SKScene {
                 let xPos = CGFloat(j + 1) * xUnit
                 card.position = CGPoint(x: xPos, y: rowHeights[i])
                 card.zPosition = CGFloat(i + j)
+                if (!round.isClicked && (i == 1) && (j == 0 || rows[i][j-1].isClicked)) {
+                    // Add emitter to hidden round card.
+                    let fire = SKEmitterNode(fileNamed: "FireParticles")!
+                    fire.name = "emitterFireCard"
+                    fire.position = card.position
+                    let hide = SKAction.hide()
+                    let wait = SKAction.waitForDuration(0.800)
+                    let unhide = SKAction.unhide()
+//                    let appear = SKAction.fadeInWithDuration(0.100)
+                    fire.runAction(SKAction.sequence([hide, wait, unhide]))
+                    addChild(fire)
+                }
                 if (index == 0) {
                     // Animate the card moving from below the bottom of the screen.
                     card.position = CGPoint(x: xStartPos, y: -frame.height)
@@ -120,7 +148,8 @@ class GameScene: SKScene {
                         y: rowHeights[i] + frame.height))
                     let move = SKAction.followPath(path.CGPath,
                         asOffset: true, orientToPath: false, duration: 0.300)
-                    card.runAction(SKAction.sequence([wait, move]))
+                    let sequence = SKAction.sequence([wait, move])
+                    card.runAction(sequence)
                 }
                 addChild(card)
             }
@@ -142,7 +171,7 @@ class GameScene: SKScene {
 
     func shiftPyramid(numCards: Int) {
         for node in self.children {
-            if (node.name!.hasPrefix("pyramid")) {
+            if (node.name!.hasPrefix("pyramid") || node.name == "emitterFireCard") {
                 node.name = "pyramidCard"
                 let wait = SKAction.waitForDuration(0.250)
                 let path = UIBezierPath()
