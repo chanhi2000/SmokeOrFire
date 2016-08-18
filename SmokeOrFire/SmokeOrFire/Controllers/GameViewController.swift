@@ -384,7 +384,7 @@ extension GameViewController {
             .scaledToSize(newSize).alpha(0.9)
         // Display updated pyramid.
         pyramid.rounds[pyramidRoundIndex].isClicked = true
-        gameScene.displayPyramid(pyramid.rounds, index: pyramidRoundIndex)
+        gameScene.revealHiddenPyramidCard(imageName)
         // Set card image.
         let button = UIButton(frame: CGRect(x: CGFloat(0.25) * view.frame.width,
             y: CGFloat(0.25) * view.frame.height, width: frontImage.size.width, height: frontImage.size.height))
@@ -401,7 +401,7 @@ extension GameViewController {
         let newSize = CGSize(width: 180, height: 250)
         // TODO: - Replace card image with positive/negative text.
         let frontImage = UIImage(named: round.card.imageName)!
-            .scaledToSize(newSize).alpha(0.9)
+            .scaledToSize(newSize).alpha(0.0)
         // Display updated player's hand.
         player.hand.append(round.card)
         gameScene.revealHiddenCard(round.card)

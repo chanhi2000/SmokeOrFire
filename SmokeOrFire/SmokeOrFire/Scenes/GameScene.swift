@@ -29,14 +29,19 @@ class GameScene: SKScene {
         let xSeed = GKRandomSource.sharedRandom().nextIntWithUpperBound(Int(size.width))
         let xOffPos = CGFloat(xSeed)
         for node in self.children {
-            // Animate the cards sliding towards the screen.
-            let path = UIBezierPath()
-            path.moveToPoint(CGPoint(x: 0, y: 0))
-            path.addLineToPoint(CGPoint(x: xOffPos - node.position.x, y: size.height))
-            let move = SKAction.followPath(path.CGPath,
-                asOffset: true, orientToPath: false, duration: 0.300)
-            let remove = SKAction.removeFromParent()
-            node.runAction(SKAction.sequence([move, remove]))
+            if node.name!.hasPrefix("pyramid") {
+                // Remove pyramid cards with no animation.
+                node.removeFromParent()
+            } else {
+                // Animate the player's hand cards sliding towards the top screen.
+                let path = UIBezierPath()
+                path.moveToPoint(CGPoint(x: 0, y: 0))
+                path.addLineToPoint(CGPoint(x: xOffPos - node.position.x, y: size.height))
+                let move = SKAction.followPath(path.CGPath,
+                    asOffset: true, orientToPath: false, duration: 0.300)
+                let remove = SKAction.removeFromParent()
+                node.runAction(SKAction.sequence([move, remove]))
+            }
         }
     }
 
@@ -97,9 +102,24 @@ class GameScene: SKScene {
                 // Draw pyramid card.
                 let card = SKSpriteNode(texture: SKTexture(imageNamed: imageName),
                     color: .whiteColor(), size: cardSize)
+                card.name = (round.imageName == rounds[index].imageName) ?
+                    "pyramidHiddenCard" : "pyramidCard"
                 card.position = CGPoint(x: CGFloat(j + 1) * xUnit, y: rowHeights[i])
                 card.zPosition = CGFloat(i + j)
                 addChild(card)
+            }
+        }
+    }
+
+    func revealHiddenPyramidCard(imageName: String) {
+        for node in self.children {
+            if (node.name == "pyramidHiddenCard") {
+                // Flip the card around as if revealing the face side.
+                let midFlip = SKAction.scaleXTo(0, duration: 0.150)
+                let texture = SKAction.setTexture(SKTexture(imageNamed: imageName))
+                let fullFlip = SKAction.scaleXTo(1, duration: 0.150)
+                let sequence = SKAction.sequence([midFlip, texture, fullFlip])
+                node.runAction(sequence)
             }
         }
     }
