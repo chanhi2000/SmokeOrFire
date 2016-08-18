@@ -95,6 +95,9 @@ class GameScene: SKScene {
         // Iterate through each list of pyramid rounds.
         for i in 0.stride(to: rows.count, by: 1) {
             let xUnit = size.width / CGFloat(rows[i].count + 1) // include trailing edge of x-axis
+            // Initialize the x component for where the cards fly in from off screen.
+            let xSeed = GKRandomSource.sharedRandom().nextIntWithUpperBound(Int(size.width))
+            let xStartPos = CGFloat(xSeed)
             // Loop through each pyramid round.
             for j in 0.stride(to: rows[i].count, by: 1) {
                 let round = rows[i][j]
@@ -104,8 +107,21 @@ class GameScene: SKScene {
                     color: .whiteColor(), size: cardSize)
                 card.name = (round.imageName == rounds[index].imageName) ?
                     "pyramidHiddenCard" : "pyramidCard"
-                card.position = CGPoint(x: CGFloat(j + 1) * xUnit, y: rowHeights[i])
+                let xPos = CGFloat(j + 1) * xUnit
+                card.position = CGPoint(x: xPos, y: rowHeights[i])
                 card.zPosition = CGFloat(i + j)
+                if (index == 0) {
+                    // Animate the card moving from below the bottom of the screen.
+                    card.position = CGPoint(x: xStartPos, y: -frame.height)
+                    let wait = SKAction.waitForDuration(0.500)
+                    let path = UIBezierPath()
+                    path.moveToPoint(CGPoint(x: 0, y: 0))
+                    path.addLineToPoint(CGPoint(x: xPos - xStartPos,
+                        y: rowHeights[i] + frame.height))
+                    let move = SKAction.followPath(path.CGPath,
+                                                   asOffset: true, orientToPath: false, duration: 0.300)
+                    card.runAction(SKAction.sequence([wait, move]))
+                }
                 addChild(card)
             }
         }
