@@ -13,7 +13,7 @@ class RuleTests: XCTestCase {
 
     func testTitle() {
         XCTAssertEqual(Rule.COLOR.title(), "Smoke or Fire?")
-        XCTAssertEqual(Rule.UP_DOWN.title(), "UP or DOWN?")
+        XCTAssertEqual(Rule.UP_DOWN.title(), "HIGHER or LOWER?")
         XCTAssertEqual(Rule.IN_OUT.title(), "INSIDE or OUTSIDE?")
         XCTAssertEqual(Rule.SUIT.title(), "What's the SUIT?")
         XCTAssertEqual(Rule.POKER.title(), "Texax Hold'em!")
