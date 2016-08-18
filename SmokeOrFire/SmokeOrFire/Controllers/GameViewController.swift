@@ -54,7 +54,7 @@ class GameViewController: UIViewController {
                 statusView?.statusButton.setTitle(
                     "P\(playerIndex + 1)", forState: .Normal)
                 // Display next player's hand.
-                gameScene.displayHand(player.hand, reveal: false)
+                gameScene.displayHand(player.hand)
                 if let card = deck.draw() {
                     // Update round user interface.
                     round = Round(card: card, rule: round.rule)
@@ -100,7 +100,7 @@ class GameViewController: UIViewController {
                     // Set text for a question round.
                     statusView.statusLabel.text = rule.title()
                     // Update game scene.
-                    gameScene.displayHand(player.hand, reveal: false)
+                    gameScene.displayHand(player.hand)
             }
         }
     }
@@ -236,7 +236,7 @@ class GameViewController: UIViewController {
     func startGame() {
         deck = Deck()
         createPyramid()
-        gameScene.displayHand(player.hand, reveal: false)
+        gameScene.displayHand(player.hand)
         nextRound()
     }
 
@@ -400,11 +400,12 @@ extension GameViewController {
     func displayQuestionResults() {
         // Get round card image.
         let newSize = CGSize(width: 180, height: 250)
+        // TODO: - Replace card image with positive/negative text.
         let frontImage = UIImage(named: round.card.imageName)!
             .scaledToSize(newSize).alpha(0.9)
         // Display updated player's hand.
         player.hand.append(round.card)
-        gameScene.displayHand(player.hand, reveal: true)
+        gameScene.revealHiddenCard(round.card)
         // Set card image.
         let button = UIButton(frame: view.frame)
         button.tag = 0

@@ -6,6 +6,7 @@
 //  Copyright © 2016 Justin Lawrence Hester. All rights reserved.
 //
 
+import GameplayKit
 import SpriteKit
 import UIKit
 
@@ -29,50 +30,43 @@ class GameScene: SKScene {
         }
     }
 
-    func applyNodeSettings(node card: SKSpriteNode, settings: [String: AnyObject]) {
-        // Find out if card is a reliable reference.
-        for (_, item) in settings.enumerate() {
-            let key = item.0
-            let value = settings[key]
-            switch (key) {
-                case "position":
-                    // Value is an array with (x, y) cartesian coordinates.
-                    let pos = value as! [CGFloat]
-                    card.position = CGPoint(x: pos[0], y: pos[1])
-                    break
-                case "zPosition":
-                    // Value is an integer.
-                    let zPos = value as! CGFloat
-                    card.zPosition = zPos
-                    break
-                default:
-                    break
-            }
+    func displayHand(hand: [Card]) {
+        clearCards()
+        let xUnit = size.width / CGFloat(hand.count + 2) // stride unit, include edges of x-axis
+        // Initialize the x component for where the cards fly in from off screen.
+        let xSeed = GKRandomSource.sharedRandom().nextIntWithUpperBound(Int(size.width))
+        let xStartPos = CGFloat(xSeed)
+        for i in 0.stride(to: hand.count + 1, by: 1) {
+            // Set image texture for hidden or visible card, respectively.
+            let imageName = (i == hand.count) ? "back" : hand[i].imageName
+            let imageTexture = SKTexture(imageNamed: imageName)
+            let xPos = CGFloat(i + 1) * xUnit // The x component of final position.
+            // Create sprite for card.
+            let card = SKSpriteNode(texture: imageTexture, size: cardSize)
+            card.position = CGPoint(x: xStartPos, y: -cardSize.height)
+            card.name = (i == hand.count) ? "hiddenCard" : "visibleCard"
+            // Animate the card moving from below the bottom of the screen.
+            let wait = SKAction.waitForDuration(0.500)
+            let path = UIBezierPath()
+            path.moveToPoint(CGPoint(x: 0, y: 0))
+            path.addLineToPoint(CGPoint(x: xPos - xStartPos,
+                y: rowHeights[1] + cardSize.height))
+            let move = SKAction.followPath(path.CGPath,
+                asOffset: true, orientToPath: false, duration: 0.300)
+            card.runAction(SKAction.sequence([wait, move]))
+            addChild(card)
         }
     }
 
-    func displayHand(hand: [Card], reveal: Bool) {
-        clearCards()
-        let xUnit = size.width / CGFloat(hand.count + (reveal ? 1 : 2)) // include edges of x-axis
-        // Iterate through card in hand.
-        for i in 0.stride(to: hand.count + (reveal ? 0 : 1), by: 1) {
-            let xPos = CGFloat(i + 1) * xUnit
-            if (i == hand.count) {
-                // Draw hidden card.
-                let hiddenCard = SKSpriteNode(texture: SKTexture(imageNamed: "back"),
-                    size: cardSize)
-                applyNodeSettings(node: hiddenCard, settings:
-                    ["position": [xPos, rowHeights[1]],
-                        "zPosition": CGFloat(i)])
-                addChild(hiddenCard)
-            } else {
-                // Draw card in player's hand.
-                let card = SKSpriteNode(texture: SKTexture(imageNamed: hand[i].imageName),
-                    color: .whiteColor(), size: cardSize)
-                applyNodeSettings(node: card, settings:
-                    ["position": [xPos, rowHeights[1]],
-                        "zPosition": CGFloat(i)])
-                addChild(card)
+    func revealHiddenCard(card: Card) {
+        for node in self.children {
+            if (node.name == "hiddenCard") {
+                // Flip the card around as if revealing the face side.
+                let midFlip = SKAction.scaleXTo(0, duration: 0.150)
+                let texture = SKAction.setTexture(SKTexture(imageNamed: card.imageName))
+                let fullFlip = SKAction.scaleXTo(1, duration: 0.150)
+                let sequence = SKAction.sequence([midFlip, texture, fullFlip])
+                node.runAction(sequence)
             }
         }
     }
@@ -95,9 +89,6 @@ class GameScene: SKScene {
                     color: .whiteColor(), size: cardSize)
                 card.position = CGPoint(x: CGFloat(j + 1) * xUnit, y: rowHeights[i])
                 card.zPosition = CGFloat(i + j)
-                applyNodeSettings(node: card, settings:
-                    ["position": [CGFloat(j + 1) * xUnit, rowHeights[i]],
-                    "zPosition": CGFloat(i + j)])
                 addChild(card)
             }
         }
