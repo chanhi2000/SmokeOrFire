@@ -26,7 +26,7 @@ class StatusView: UIView {
         // Setup status button.
         statusButton = UIButton(frame: CGRect(
             x: CGFloat(1.0 / WIDTH_UNITS) * frame.width,
-            y: CGFloat(1.5 / HEIGHT_UNITS) * frame.height,
+            y: CGFloat(1.0 / HEIGHT_UNITS) * frame.height,
             width: CGFloat(5.0 / WIDTH_UNITS) * frame.width,
             height: CGFloat(5.0 / WIDTH_UNITS) * frame.width))
         statusButton.enabled = false
