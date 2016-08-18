@@ -411,10 +411,10 @@ extension GameViewController {
 
     func displayQuestionResults() {
         // Get round card image.
-        let newSize = CGSize(width: 180, height: 250)
+        let newSize = CGSize(width: 140, height: 140)
         // TODO: - Replace card image with positive/negative text.
-        let frontImage = UIImage(named: round.card.imageName)!
-            .scaledToSize(newSize).alpha(0.0)
+        let frontImage = UIImage(named: round.isDrinking(player) ? "happy" : "sad")!
+            .scaledToSize(newSize).alpha(0.8)
         // Display updated player's hand.
         player.hand.append(round.card)
         gameScene.revealHiddenCard(round.card)
