@@ -55,7 +55,7 @@ class ButtonView: UIView {
         switch (total) {
         case 1:
             // Fit one button.
-            buttons[0].layer.frame = CGRect(x: margin, y: margin,
+            buttons[1].layer.frame = CGRect(x: margin, y: margin,
                 width: frame.width - (2 * margin),
                 height: frame.height - (2 * margin))
             break
@@ -93,9 +93,9 @@ class ButtonView: UIView {
             /*
              * SUIT BUTTONS LAYOUT
              *
-             * 1 | 3
+             * 1 | 4
              * - . -
-             * 2 | 4
+             * 2 | 3
              *
              */
             buttons[0].layer.frame = CGRect(
@@ -106,11 +106,11 @@ class ButtonView: UIView {
                 x: (frame.width / 4.0) - (buttonLength / 2.0),
                 y: (0.5 * frame.height) + margin,
                 width: buttonLength, height: buttonLength)
-            buttons[2].layer.frame = CGRect(
+            buttons[3].layer.frame = CGRect(
                 x: (0.75 * frame.width) - (buttonLength / 2.0),
                 y: margin,
                 width: buttonLength, height: buttonLength)
-            buttons[3].layer.frame = CGRect(
+            buttons[2].layer.frame = CGRect(
                 x: (0.75 * frame.width) - (buttonLength / 2.0),
                 y: (0.5 * frame.height) + margin,
                 width: buttonLength, height: buttonLength)
@@ -163,8 +163,8 @@ class ButtonView: UIView {
             case .SUIT:
                 // "Which suit?" choices: Club, Diamond, Heart, Spade
                 strongSelf.setButtonTitles(buttons,
-                    choices: [ChoicesText.CLUB.rawValue, ChoicesText.DIAMOND.rawValue,
-                        ChoicesText.HEART.rawValue, ChoicesText.SPADE.rawValue])
+                    choices: [ChoicesText.SPADE.rawValue, ChoicesText.HEART.rawValue,
+                        ChoicesText.CLUB.rawValue, ChoicesText.DIAMOND.rawValue])
                 strongSelf.setButtonFrames(buttons, total: 4)
                 break
             case .POKER:
@@ -173,7 +173,7 @@ class ButtonView: UIView {
             case .GIVE, .TAKE:
                 // "Smoke or Fire?" choices: Black, Red
                 strongSelf.setButtonTitles(buttons,
-                    choices: [ChoicesText.PYRAMID.rawValue, nil, nil, nil])
+                    choices: [nil, ChoicesText.PYRAMID.rawValue, nil, nil])
                 strongSelf.setButtonFrames(buttons, total: 1)
                 break
             }
