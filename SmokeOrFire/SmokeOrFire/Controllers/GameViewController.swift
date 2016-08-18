@@ -70,7 +70,19 @@ class GameViewController: UIViewController {
     var pyramidRoundIndex: Int = 0 {
         didSet {
             if pyramidRoundIndex < pyramid.rounds.count {
-                nextRound()
+                if (pyramid.rounds[oldValue].level != pyramid.rounds[pyramidRoundIndex].level) {
+                    // Shift up pyramid rows.
+                    gameScene.shiftPyramid()
+                    let delayTime = dispatch_time(DISPATCH_TIME_NOW,
+                        Int64(1.00 * Double(NSEC_PER_SEC)))
+                    dispatch_after(delayTime, dispatch_get_main_queue()) { [weak self] in
+                        guard let strongSelf = self else { return }
+                        // Display next round after delay.
+                        strongSelf.nextRound()
+                    }
+                } else {
+                    nextRound()
+                }
             } else {
                 // End of last pyramid round.
                 print ("End of last pyramid round in pyramidRoundIndex.didSet")

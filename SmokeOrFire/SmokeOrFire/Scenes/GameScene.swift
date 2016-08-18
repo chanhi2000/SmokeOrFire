@@ -119,7 +119,7 @@ class GameScene: SKScene {
                     path.addLineToPoint(CGPoint(x: xPos - xStartPos,
                         y: rowHeights[i] + frame.height))
                     let move = SKAction.followPath(path.CGPath,
-                                                   asOffset: true, orientToPath: false, duration: 0.300)
+                        asOffset: true, orientToPath: false, duration: 0.300)
                     card.runAction(SKAction.sequence([wait, move]))
                 }
                 addChild(card)
@@ -140,4 +140,17 @@ class GameScene: SKScene {
         }
     }
 
+    func shiftPyramid() {
+        for node in self.children {
+            if (node.name!.hasPrefix("pyramid")) {
+                let wait = SKAction.waitForDuration(0.250)
+                let path = UIBezierPath()
+                path.moveToPoint(CGPoint(x: 0, y: 0))
+                path.addLineToPoint(CGPoint(x: 0, y: rowHeights[1]))
+                let move = SKAction.followPath(path.CGPath,
+                    asOffset: true, orientToPath: false, duration: 0.750)
+                node.runAction(SKAction.sequence([wait, move]))
+            }
+        }
+    }
 }
