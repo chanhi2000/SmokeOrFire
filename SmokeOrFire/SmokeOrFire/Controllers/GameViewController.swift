@@ -87,7 +87,6 @@ class GameViewController: UIViewController {
                 }
             } else {
                 // End of last pyramid round.
-                print ("End of last pyramid round in pyramidRoundIndex.didSet")
                 gameOver()
             }
         }
@@ -395,7 +394,7 @@ extension GameViewController {
         let imageName = pyramid.rounds[pyramidRoundIndex].imageName
         let newSize = CGSize(width: 180, height: 250)
         let frontImage = UIImage(named: imageName)!
-            .scaledToSize(newSize).alpha(0.9)
+            .scaledToSize(newSize).alpha(0.0)
         // Display updated pyramid.
         pyramid.rounds[pyramidRoundIndex].isClicked = true
         gameScene.revealHiddenPyramidCard(imageName)
