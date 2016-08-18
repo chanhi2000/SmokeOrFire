@@ -72,7 +72,9 @@ class GameViewController: UIViewController {
             if pyramidRoundIndex < pyramid.rounds.count {
                 if (pyramid.rounds[oldValue].level != pyramid.rounds[pyramidRoundIndex].level) {
                     // Shift up pyramid rows.
-                    gameScene.shiftPyramid()
+                    let nextLevel = pyramid.rounds[pyramidRoundIndex].level
+                    let numCards = (nextLevel < levels.count) ? levels[nextLevel] : 0
+                    gameScene.shiftPyramid(numCards)
                     let delayTime = dispatch_time(DISPATCH_TIME_NOW,
                         Int64(1.00 * Double(NSEC_PER_SEC)))
                     dispatch_after(delayTime, dispatch_get_main_queue()) { [weak self] in

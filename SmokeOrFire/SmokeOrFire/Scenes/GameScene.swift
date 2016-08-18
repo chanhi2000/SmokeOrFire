@@ -140,7 +140,7 @@ class GameScene: SKScene {
         }
     }
 
-    func shiftPyramid() {
+    func shiftPyramid(numCards: Int) {
         for node in self.children {
             if (node.name!.hasPrefix("pyramid")) {
                 node.name = "pyramidCard"
@@ -152,6 +152,25 @@ class GameScene: SKScene {
                     asOffset: true, orientToPath: false, duration: 0.750)
                 node.runAction(SKAction.sequence([wait, move]))
             }
+        }
+        // Simulate bottom row.
+        let xUnit = size.width / CGFloat(numCards + 1) // include trailing edge of x-axis
+        for i in 0.stride(to: numCards, by: 1) {
+            let card = SKSpriteNode(texture: SKTexture(imageNamed: "back"),
+                color: .whiteColor(), size: cardSize)
+            card.name = "pyramidCard"
+            let xPos = CGFloat(i + 1) * xUnit
+            card.position = CGPoint(x: xPos, y: -rowHeights[1])
+            // Animate the card moving from below the bottom of the screen.
+            let wait = SKAction.waitForDuration(0.250)
+            let path = UIBezierPath()
+            path.moveToPoint(CGPoint(x: 0, y: 0))
+            path.addLineToPoint(CGPoint(x: 0, y: rowHeights[1]))
+            let move = SKAction.followPath(path.CGPath,
+                asOffset: true, orientToPath: false, duration: 0.750)
+//            let remove = SKAction.removeFromParent()
+            card.runAction(SKAction.sequence([wait, move]))
+            addChild(card)
         }
     }
 }
