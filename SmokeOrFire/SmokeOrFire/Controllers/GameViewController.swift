@@ -24,6 +24,10 @@ class GameViewController: UIViewController {
     private let SCREEN_WIDTH_UNITS = 20.0 // Number of width units in design.
     private let SCREEN_HEIGHT_UNITS = 35.0 // Number of height units in design.
     private let margin = CGFloat(8.0) // Add spacing to see the border.
+    private let playerColors: [UIColor] = [UIColor.blueColor(),
+        UIColor.redColor(), UIColor.orangeColor(), UIColor.yellowColor(),
+        UIColor.greenColor(), UIColor.cyanColor(), UIColor.magentaColor(),
+        UIColor.brownColor()]
 
     // Instance variables
     var deck: Deck!
@@ -41,18 +45,24 @@ class GameViewController: UIViewController {
 
     var playerIndex: Int = 0 {
         didSet {
-            statusView?.statusButton.setImage(nil, forState: .Normal)
-            statusView?.statusLabel.text = rule.title()
+            statusView.statusButton.setImage(nil, forState: .Normal)
+            statusView.statusLabel.text = rule.title()
             if playerIndex == players.count {
                 // All the players have played in the round.
                 playerIndex = 0
                 player = players[playerIndex]
-                statusView?.statusButton.setTitle("P1", forState: .Normal)
+                statusView.backgroundColor = playerColors[playerIndex]
+                statusView.statusButton.setTitleColor(playerColors[playerIndex],
+                    forState: .Normal)
+                statusView.statusButton.setTitle("P1", forState: .Normal)
                 nextRound()
             } else {
                 // Update everything for next player.
                 player = players[playerIndex]
-                statusView?.statusButton.setTitle("P\(playerIndex + 1)", forState: .Normal)
+                statusView.backgroundColor = playerColors[playerIndex]
+                statusView.statusButton.setTitle("P\(playerIndex + 1)", forState: .Normal)
+                statusView.statusButton.setTitleColor(playerColors[playerIndex],
+                    forState: .Normal)
                 // Display next player's hand.
                 gameScene.displayHand(player.hand)
                 if let card = deck.draw() {
@@ -157,6 +167,8 @@ class GameViewController: UIViewController {
                 ( CGFloat(1.0 / SCREEN_HEIGHT_UNITS) * view.frame.height ) + margin,
             width: ( CGFloat(20.0 / SCREEN_WIDTH_UNITS) * SCREEN_WIDTH ) - (2 * margin),
             height: ( CGFloat(8.0 / SCREEN_HEIGHT_UNITS) * view.frame.height ) - (2 * margin)))
+        statusView.backgroundColor = playerColors[0]
+        statusView.statusButton.setTitleColor(playerColors[0], forState: .Normal)
         statusView.layer.cornerRadius = 8
         statusView.layer.borderWidth = 4
         statusView.layer.borderColor = UIColor.whiteColor().CGColor

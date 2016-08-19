@@ -35,6 +35,8 @@ class StatusView: UIView {
         statusButton.setTitle("P1", forState: .Normal)
         statusButton.setTitleColor(.blackColor(), forState: .Normal)
         statusButton.titleLabel!.textAlignment = .Center
+        statusButton.titleLabel!.font = UIFont(name: "AmericanTypewriter-Bold", size: 28)
+        statusButton.titleLabel!.numberOfLines = 1
         addSubview(statusButton)
         // Apply status button constraints.
         addConstraint(NSLayoutConstraint(item: statusButton, attribute: .Width,
@@ -50,8 +52,11 @@ class StatusView: UIView {
             y: CGFloat(1.5 / HEIGHT_UNITS) * frame.height,
             width: CGFloat(10.0 / WIDTH_UNITS) * frame.width,
             height: CGFloat(5.5 / HEIGHT_UNITS) * frame.height))
+        statusLabel.font = UIFont(name: "AmericanTypewriter-Bold", size: 28)
+        statusLabel.numberOfLines = 0
         statusLabel.textAlignment = .Center
         statusLabel.text = Rule.COLOR.title()
+        statusLabel.textColor = .whiteColor()
         addSubview(statusLabel)
         // Apply status label constraints.
         addConstraint(NSLayoutConstraint(item: statusLabel, attribute: .Width,
