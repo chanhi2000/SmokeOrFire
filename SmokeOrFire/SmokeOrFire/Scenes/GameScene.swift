@@ -57,7 +57,7 @@ class GameScene: SKScene {
         for i in 0.stride(to: hand.count + 1, by: 1) {
 
             // Set image texture for hidden or visible card, respectively.
-            let imageName = (i == hand.count) ? "back" : hand[i].imageName
+            let imageName = (i == hand.count) ? "Bicyclebackside" : hand[i].imageName
             let imageTexture = SKTexture(imageNamed: imageName)
             let xPos = CGFloat(i + 1) * xUnit // The x component of final position.
 
@@ -117,7 +117,7 @@ class GameScene: SKScene {
             // Loop through each pyramid round.
             for j in 0.stride(to: rows[i].count, by: 1) {
                 let round = rows[i][j]
-                let imageName = round.isClicked ? round.imageName : "back"
+                let imageName = round.isClicked ? round.imageName : "Bicyclebackside"
                 // Draw pyramid card.
                 let card = SKSpriteNode(texture: SKTexture(imageNamed: imageName),
                     color: .whiteColor(), size: cardSize)
@@ -185,7 +185,7 @@ class GameScene: SKScene {
         // Simulate bottom row.
         let xUnit = size.width / CGFloat(numCards + 1) // include trailing edge of x-axis
         for i in 0.stride(to: numCards, by: 1) {
-            let card = SKSpriteNode(texture: SKTexture(imageNamed: "back"),
+            let card = SKSpriteNode(texture: SKTexture(imageNamed: "Bicyclebackside"),
                 color: .whiteColor(), size: cardSize)
             card.name = "pyramidCard"
             let xPos = CGFloat(i + 1) * xUnit

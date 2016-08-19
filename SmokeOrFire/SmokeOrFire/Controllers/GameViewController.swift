@@ -41,18 +41,18 @@ class GameViewController: UIViewController {
 
     var playerIndex: Int = 0 {
         didSet {
+            statusView?.statusButton.setImage(nil, forState: .Normal)
+            statusView?.statusLabel.text = rule.title()
             if playerIndex == players.count {
                 // All the players have played in the round.
                 playerIndex = 0
                 player = players[playerIndex]
-                statusView?.statusButton.setTitle(
-                    "P\(playerIndex + 1)", forState: .Normal)
+                statusView?.statusButton.setTitle("P1", forState: .Normal)
                 nextRound()
             } else {
                 // Update everything for next player.
                 player = players[playerIndex]
-                statusView?.statusButton.setTitle(
-                    "P\(playerIndex + 1)", forState: .Normal)
+                statusView?.statusButton.setTitle("P\(playerIndex + 1)", forState: .Normal)
                 // Display next player's hand.
                 gameScene.displayHand(player.hand)
                 if let card = deck.draw() {
@@ -399,8 +399,8 @@ extension GameViewController {
         pyramid.rounds[pyramidRoundIndex].isClicked = true
         gameScene.revealHiddenPyramidCard(imageName)
         // Set card image.
-        let button = UIButton(frame: CGRect(x: CGFloat(0.25) * view.frame.width,
-            y: CGFloat(0.25) * view.frame.height, width: frontImage.size.width, height: frontImage.size.height))
+        let button = UIButton(frame: CGRect(x: CGFloat(0.0) * view.frame.width,
+            y: CGFloat(0.50) * view.frame.height, width: frontImage.size.width, height: frontImage.size.height))
         button.tag = 1
         button.setImage(frontImage, forState: .Normal)
         button.addTarget(self, action: #selector(pyramidTapped),
@@ -410,22 +410,30 @@ extension GameViewController {
     }
 
     func displayQuestionResults() {
-        // Get round card image.
-        let newSize = CGSize(width: 140, height: 140)
+        let newSize = statusView.statusButton.frame.size
         // TODO: - Replace card image with positive/negative text.
-        let frontImage = UIImage(named: round.isDrinking(player) ? "happy" : "sad")!
-            .scaledToSize(newSize).alpha(0.8)
+        let frontImage = UIImage(named: "beer")!
+            .scaledToSize(newSize).alpha(round.isDrinking(player) ? 1.0 : 0.0)
+        // Create a UIButton subview to use a selector to control game flow.
+        let button = UIButton(frame: view.frame)
+        button.tag = 0
+        button.addTarget(self, action: #selector(questionTapped),
+            forControlEvents: .TouchUpInside)
+        // Update status window.
+        let statusLabelText = round.isDrinking(player) ? "TAKE \(rule.level())" : "TAKE 0"
         // Display updated player's hand.
         player.hand.append(round.card)
         gameScene.revealHiddenCard(round.card)
-        // Set card image.
-        let button = UIButton(frame: view.frame)
-        button.tag = 0
-        button.setImage(frontImage, forState: .Normal)
-        button.addTarget(self, action: #selector(questionTapped),
-            forControlEvents: .TouchUpInside)
-        // TODO: - Display somehow whether player drinks or not.
-        view.addSubview(button)
+        // After card flip animation completes, display visual feedback.
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.400 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) { [weak self] in
+            guard let strongSelf = self else { return }
+            UIView.animateWithDuration(0.100, animations: { [strongSelf] in
+                strongSelf.statusView.statusButton.setImage(frontImage, forState: .Normal)
+                strongSelf.statusView.statusLabel.text = statusLabelText
+                strongSelf.view.addSubview(button)
+            })
+        }
     }
 
     func pyramidTapped(button: UIButton) {

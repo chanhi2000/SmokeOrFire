@@ -21,4 +21,13 @@ class RuleTests: XCTestCase {
         XCTAssertEqual(Rule.TAKE.title(), "Take")
     }
 
+    func testLevel() {
+        XCTAssertEqual(Rule.COLOR.level(), 1)
+        XCTAssertEqual(Rule.UP_DOWN.level(), 2)
+        XCTAssertEqual(Rule.IN_OUT.level(), 3)
+        XCTAssertEqual(Rule.SUIT.level(), 4)
+        XCTAssertEqual(Rule.POKER.level(), 5)
+        XCTAssertEqual(Rule.GIVE.level(), 0)
+        XCTAssertEqual(Rule.TAKE.level(), 0)
+    }
 }

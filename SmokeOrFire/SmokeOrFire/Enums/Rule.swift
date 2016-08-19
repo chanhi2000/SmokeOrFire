@@ -28,4 +28,15 @@ enum Rule {
         case .TAKE:    return "Take"
         }
     }
+
+    func level() -> Int {
+        switch self {
+        case .COLOR: return 1
+        case .UP_DOWN: return 2
+        case .IN_OUT: return 3
+        case .SUIT: return 4
+        case .POKER: return 5
+        case .GIVE, .TAKE: return 0
+        }
+    }
 }
