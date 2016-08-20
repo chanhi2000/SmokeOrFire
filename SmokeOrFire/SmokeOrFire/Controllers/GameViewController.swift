@@ -25,7 +25,7 @@ class GameViewController: UIViewController {
     private let SCREEN_HEIGHT_UNITS = 35.0 // Number of height units in design.
     private let margin = CGFloat(8.0) // Add spacing to see the border.
     private let playerColors: [UIColor] = [UIColor.blueColor(),
-        UIColor.redColor(), UIColor.orangeColor(), UIColor.yellowColor(),
+        UIColor.redColor(), UIColor.orangeColor(), UIColor.purpleColor(),
         UIColor.greenColor(), UIColor.cyanColor(), UIColor.magentaColor(),
         UIColor.brownColor()]
 
