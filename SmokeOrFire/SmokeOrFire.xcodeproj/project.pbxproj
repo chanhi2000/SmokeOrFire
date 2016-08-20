@@ -13,7 +13,6 @@
 		740755B11D5B4380007F8225 /* PyramidTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740755B01D5B4380007F8225 /* PyramidTests.swift */; };
 		741668D51D571A090013437D /* RoundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741668D41D571A090013437D /* RoundTests.swift */; };
 		74175B701D617D02006A9AC7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B6D1D617D02006A9AC7 /* GameViewController.swift */; };
-		74175B711D617D02006A9AC7 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B6E1D617D02006A9AC7 /* OptionsViewController.swift */; };
 		74175B721D617D02006A9AC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B6F1D617D02006A9AC7 /* ViewController.swift */; };
 		74175B781D617D5F006A9AC7 /* ChoicesText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B731D617D5F006A9AC7 /* ChoicesText.swift */; };
 		74175B791D617D5F006A9AC7 /* PlayerChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B741D617D5F006A9AC7 /* PlayerChoices.swift */; };
@@ -63,7 +62,6 @@
 		740755B01D5B4380007F8225 /* PyramidTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PyramidTests.swift; sourceTree = "<group>"; };
 		741668D41D571A090013437D /* RoundTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTests.swift; sourceTree = "<group>"; };
 		74175B6D1D617D02006A9AC7 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = Controllers/GameViewController.swift; sourceTree = "<group>"; };
-		74175B6E1D617D02006A9AC7 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionsViewController.swift; path = Controllers/OptionsViewController.swift; sourceTree = "<group>"; };
 		74175B6F1D617D02006A9AC7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controllers/ViewController.swift; sourceTree = "<group>"; };
 		74175B731D617D5F006A9AC7 /* ChoicesText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChoicesText.swift; path = Enums/ChoicesText.swift; sourceTree = "<group>"; };
 		74175B741D617D5F006A9AC7 /* PlayerChoices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerChoices.swift; path = Enums/PlayerChoices.swift; sourceTree = "<group>"; };
@@ -122,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				74175B6D1D617D02006A9AC7 /* GameViewController.swift */,
-				74175B6E1D617D02006A9AC7 /* OptionsViewController.swift */,
 				74175B6F1D617D02006A9AC7 /* ViewController.swift */,
 			);
 			name = Controllers;
@@ -352,7 +349,6 @@
 				74175B721D617D02006A9AC7 /* ViewController.swift in Sources */,
 				74175B8E1D617DA9006A9AC7 /* Pyramid.swift in Sources */,
 				74175B941D617DC5006A9AC7 /* StatusView.swift in Sources */,
-				74175B711D617D02006A9AC7 /* OptionsViewController.swift in Sources */,
 				74175B831D617D80006A9AC7 /* Suit+successor.swift in Sources */,
 				74175B8F1D617DA9006A9AC7 /* PyramidRound.swift in Sources */,
 				74175B791D617D5F006A9AC7 /* PlayerChoices.swift in Sources */,

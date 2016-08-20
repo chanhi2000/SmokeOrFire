@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Game View Controller-->
@@ -160,13 +159,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smoke or Fire" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8K-8L-S4w">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Smoke or Fire" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8K-8L-S4w">
                                 <rect key="frame" x="122" y="99" width="357" height="212"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFO-iS-itl">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFO-iS-itl">
                                 <rect key="frame" x="129" y="297" width="350" height="100"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -181,90 +180,44 @@
                                     <segue destination="I2v-EI-8Bd" kind="show" identifier="gameSegue" id="ZEr-4D-y6A"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFf-D3-3hA">
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6rg-dI-zg3">
                                 <rect key="frame" x="129" y="450" width="350" height="100"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                <state key="normal" title="options">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <segue destination="FW5-6p-WHT" kind="show" identifier="optionSegue" id="m3l-93-NVd"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="dyA-2V-g3t"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="2I6-gZ-LDp"/>
                                 </connections>
-                            </button>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Players" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VqD-rh-Gjl">
+                                <rect key="frame" x="189" y="414" width="223" height="36"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="6rg-dI-zg3" firstAttribute="height" secondItem="BFO-iS-itl" secondAttribute="height" id="0wV-49-zC0"/>
+                            <constraint firstItem="6rg-dI-zg3" firstAttribute="centerX" secondItem="BFO-iS-itl" secondAttribute="centerX" id="47f-VJ-78E"/>
                             <constraint firstItem="BFO-iS-itl" firstAttribute="top" secondItem="D8K-8L-S4w" secondAttribute="bottom" constant="-14" id="Db4-0o-3hJ"/>
-                            <constraint firstItem="YFf-D3-3hA" firstAttribute="width" secondItem="BFO-iS-itl" secondAttribute="width" id="JQe-Dc-FA5"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="lessThanOrEqual" secondItem="YFf-D3-3hA" secondAttribute="bottom" constant="50" id="OOY-cb-eAD"/>
-                            <constraint firstItem="YFf-D3-3hA" firstAttribute="top" secondItem="BFO-iS-itl" secondAttribute="bottom" constant="53" id="RKW-Wk-v6B"/>
+                            <constraint firstItem="6rg-dI-zg3" firstAttribute="top" secondItem="BFO-iS-itl" secondAttribute="bottom" constant="53" id="EAn-tn-ukU"/>
+                            <constraint firstItem="6rg-dI-zg3" firstAttribute="top" secondItem="VqD-rh-Gjl" secondAttribute="bottom" id="GIV-kH-btG"/>
+                            <constraint firstItem="6rg-dI-zg3" firstAttribute="width" secondItem="BFO-iS-itl" secondAttribute="width" id="Mej-HV-OOL"/>
+                            <constraint firstItem="VqD-rh-Gjl" firstAttribute="centerX" secondItem="BFO-iS-itl" secondAttribute="centerX" id="ZsV-Oj-wYs"/>
                             <constraint firstItem="D8K-8L-S4w" firstAttribute="top" relation="lessThanOrEqual" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="35" id="lQt-ot-1Vb"/>
-                            <constraint firstItem="YFf-D3-3hA" firstAttribute="centerX" secondItem="BFO-iS-itl" secondAttribute="centerX" id="pbE-E8-Npr"/>
                             <constraint firstItem="D8K-8L-S4w" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q5Q-YG-oPg"/>
                             <constraint firstItem="BFO-iS-itl" firstAttribute="centerX" secondItem="D8K-8L-S4w" secondAttribute="centerX" constant="3.5" id="tIC-bq-iPs"/>
-                            <constraint firstItem="YFf-D3-3hA" firstAttribute="height" secondItem="BFO-iS-itl" secondAttribute="height" id="w0L-ZO-I8s"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="R54-lV-iDI"/>
                     <connections>
-                        <outlet property="optionButton" destination="YFf-D3-3hA" id="iZ7-ua-K1x"/>
+                        <outlet property="pickerView" destination="6rg-dI-zg3" id="Wge-YP-AcI"/>
                         <outlet property="playButton" destination="BFO-iS-itl" id="7rW-UJ-x8h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1025" y="110"/>
-        </scene>
-        <!--Options View Controller-->
-        <scene sceneID="gCb-j8-uB1">
-            <objects>
-                <viewController id="FW5-6p-WHT" customClass="OptionsViewController" customModule="SmokeOrFire" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xst-UN-u58"/>
-                        <viewControllerLayoutGuide type="bottom" id="LXh-OG-2Bu"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mpd-kQ-ke8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="2" maxValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="S0I-Rg-9iw">
-                                <rect key="frame" x="68" y="215" width="434" height="31"/>
-                                <connections>
-                                    <action selector="updatePlayerCount:" destination="FW5-6p-WHT" eventType="valueChanged" id="qMz-Eo-2If"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Players: 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmY-ds-lIh">
-                                <rect key="frame" x="70" y="107" width="195" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="195" id="LYG-NN-GdE"/>
-                                    <constraint firstAttribute="height" constant="80" id="vq2-lr-XCe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="S0I-Rg-9iw" firstAttribute="leading" secondItem="SmY-ds-lIh" secondAttribute="leading" id="OSD-ap-5BQ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="S0I-Rg-9iw" secondAttribute="trailing" constant="80" id="Pmy-6t-K5M"/>
-                            <constraint firstItem="SmY-ds-lIh" firstAttribute="leading" secondItem="mpd-kQ-ke8" secondAttribute="leadingMargin" constant="50" id="drD-dd-qnY"/>
-                            <constraint firstItem="SmY-ds-lIh" firstAttribute="top" secondItem="xst-UN-u58" secondAttribute="bottom" constant="43" id="gVM-oo-L85"/>
-                            <constraint firstItem="S0I-Rg-9iw" firstAttribute="top" secondItem="SmY-ds-lIh" secondAttribute="bottom" constant="28" id="ilr-Yk-vsD"/>
-                        </constraints>
-                    </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="600"/>
-                    <connections>
-                        <outlet property="playerLabel" destination="SmY-ds-lIh" id="f6c-68-CK6"/>
-                        <outlet property="playerSlider" destination="S0I-Rg-9iw" id="7Xc-TU-1rS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g11-2O-G0O" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1719" y="713"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fxK-Z9-R6a">
