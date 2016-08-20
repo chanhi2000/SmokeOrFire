@@ -29,7 +29,6 @@ class StatusView: UIView {
             y: CGFloat(1.0 / HEIGHT_UNITS) * frame.height,
             width: CGFloat(5.0 / WIDTH_UNITS) * frame.width,
             height: CGFloat(5.0 / WIDTH_UNITS) * frame.width))
-        statusButton.enabled = false
         statusButton.layer.cornerRadius = statusButton.frame.width / 2
         statusButton.backgroundColor = .whiteColor()
         statusButton.setTitle("P1", forState: .Normal)
@@ -49,9 +48,9 @@ class StatusView: UIView {
         // Setup status label.
         statusLabel = UILabel(frame: CGRect(
             x: CGFloat(7.0 / WIDTH_UNITS) * frame.width,
-            y: CGFloat(1.5 / HEIGHT_UNITS) * frame.height,
+            y: CGFloat(1.0 / HEIGHT_UNITS) * frame.height,
             width: CGFloat(10.0 / WIDTH_UNITS) * frame.width,
-            height: CGFloat(5.5 / HEIGHT_UNITS) * frame.height))
+            height: CGFloat(5.0 / HEIGHT_UNITS) * frame.height))
         statusLabel.font = UIFont(name: "AmericanTypewriter-Bold", size: 28)
         statusLabel.numberOfLines = 0
         statusLabel.textAlignment = .Center
