@@ -55,7 +55,12 @@ class GameViewController: UIViewController {
                 statusView.statusButton.setTitleColor(playerColors[playerIndex],
                     forState: .Normal)
                 statusView.statusButton.setTitle("P1", forState: .Normal)
-                nextRound()
+                if rule == Rule.SUIT {
+                    // Start first pyramid round.
+                    nextPyramidRound()
+                } else {
+                    nextRound()
+                }
             } else {
                 // Update everything for next player.
                 player = players[playerIndex]
@@ -90,10 +95,10 @@ class GameViewController: UIViewController {
                     dispatch_after(delayTime, dispatch_get_main_queue()) { [weak self] in
                         guard let strongSelf = self else { return }
                         // Display next round after delay.
-                        strongSelf.nextRound()
+                        strongSelf.nextPyramidRound()
                     }
                 } else {
-                    nextRound()
+                    nextPyramidRound()
                 }
             } else {
                 // End of last pyramid round.
@@ -275,6 +280,12 @@ class GameViewController: UIViewController {
         }
     }
 
+    func nextPyramidRound() {
+        rule = rules.removeFirst()
+        round = Round(card: deck.cardWithName(pyramid.rounds[pyramidRoundIndex].imageName),
+            rule: rule)
+    }
+
     func gameOver() {
         // TODO: Design game over that displays results.
         let ac = UIAlertController(title: "Game Over", message: "", preferredStyle: .Alert)
@@ -412,12 +423,26 @@ extension GameViewController {
         gameScene.revealHiddenPyramidCard(imageName)
         // Set card image.
         let button = UIButton(frame: CGRect(x: CGFloat(0.0) * view.frame.width,
-            y: CGFloat(0.50) * view.frame.height, width: frontImage.size.width, height: frontImage.size.height))
+            y: CGFloat(0.50) * view.frame.height,
+            width: frontImage.size.width, height: frontImage.size.height))
         button.tag = 1
         button.setImage(frontImage, forState: .Normal)
         button.addTarget(self, action: #selector(pyramidTapped),
             forControlEvents: .TouchUpInside)
         // TODO: - Display player list and give/take distribution UI.
+
+        // DEBUG
+        var lines = [String]()
+        for p in players {
+            if p.hasCardWith(pyramid.rounds[pyramidRoundIndex].imageName) {
+                print("P\(playerIndex + 1) \(rule.title()) \(pyramid.rounds[pyramidRoundIndex].level)")
+                lines.append("P\(playerIndex + 1) \(rule.title()) \(pyramid.rounds[pyramidRoundIndex].level)")
+            }
+        }
+        if lines.count > 0 {
+            buttonView.secondChoiceButton.setTitle(lines.joinWithSeparator("\n"), forState: .Normal)
+            button.setTitle(lines.joinWithSeparator("\n"), forState: .Normal)
+        }
         view.addSubview(button)
     }
 

@@ -31,4 +31,48 @@ class Deck {
         }
         return nil
     }
+
+    func cardWithName(imageName: String) -> Card {
+        var namePieces = imageName.characters.split{ $0 == "_" }.flatMap(String.init)
+        // Identify rank.
+        var rank: Rank!
+        switch (namePieces[0]) {
+        case "ace":
+            rank = .ACE
+            break
+        case "jack":
+            rank = .JACK
+            break
+        case "queen":
+            rank = .QUEEN
+            break
+        case "king":
+            rank = .KING
+            break
+        default:
+            let rawValue = UInt8(namePieces[0])!
+            rank = Rank(rawValue: rawValue)
+            break
+        }
+        // Identify suit.
+        var suit: Suit!
+        switch(namePieces[2]) {
+        case "clubs":
+            suit = .CLUB
+            break
+        case "diamonds":
+            suit = .DIAMOND
+            break
+        case "hearts":
+            suit = .HEART
+            break
+        case "spades":
+            suit = .SPADE
+            break
+        default:
+            print("Unknown string for suit \(namePieces[2])")
+            break
+        }
+        return Card(rank: rank, suit: suit)
+    }
 }

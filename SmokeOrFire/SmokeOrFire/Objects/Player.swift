@@ -40,6 +40,15 @@ class Player: NSObject {
         return false
     }
 
+    func hasCardWith(imageName: String) -> Bool {
+        for handCard in hand {
+            if handCard.imageName == imageName {
+                return true
+            }
+        }
+        return false
+    }
+
     func displayHand() -> String {
         var ans = ""
         for (index, card) in hand.enumerate() {

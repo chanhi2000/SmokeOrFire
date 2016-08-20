@@ -61,12 +61,8 @@ class Round {
             case .POKER:
                 print("POKER Under Construction")
                 return true
-            case .GIVE:
-                print("GIVE Under Construction")
-                return true
-            case .TAKE:
-                print("TAKE Under Construction")
-                return true
+            case .GIVE, .TAKE:
+                return player.hasCard(card)
         }
     }
 }
