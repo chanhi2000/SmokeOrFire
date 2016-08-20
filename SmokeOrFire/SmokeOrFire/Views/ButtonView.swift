@@ -25,6 +25,7 @@ class ButtonView: UIView {
 
     // IBActions
     @IBAction func choiceTapped(sender: UIButton) {
+        hideButtonsExcept(sender)
         delegate?.buttonViewUpdatePlayerChoice(sender.titleLabel?.text)
     }
 
@@ -46,6 +47,16 @@ class ButtonView: UIView {
                 buttons[i].setTitle(choices[i], forState: .Normal)
             } else {
                 buttons[i].hidden = true
+            }
+        }
+    }
+
+    func hideButtonsExcept(button: UIButton) {
+        let buttons = [firstChoiceButton, secondChoiceButton,
+            thirdChoiceButton, fourthChoiceButton]
+        for choiceButton in buttons {
+            if choiceButton != button {
+                choiceButton.hidden = true
             }
         }
     }
