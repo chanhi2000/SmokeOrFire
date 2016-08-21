@@ -419,6 +419,7 @@ extension GameViewController {
 extension GameViewController {
 
     func displayPyramidResults() {
+        buttonView.enabled = false
         // Get pyramid round card.
         let imageName = pyramid.rounds[pyramidRoundIndex].imageName
         // Display updated pyramid.
@@ -455,8 +456,8 @@ extension GameViewController {
     }
 
     func displayQuestionResults() {
+        buttonView.enabled = false
         let newSize = statusView.statusButton.frame.size
-        // TODO: - Replace card image with positive/negative text.
         let frontImage = UIImage(named: "beer")!
             .scaledToSize(newSize).alpha(round.isDrinking(player) ? 1.0 : 0.0)
         // Create a UIButton subview to use a selector to control game flow.
@@ -483,11 +484,13 @@ extension GameViewController {
 
     func pyramidTapped(button: UIButton) {
         button.removeFromSuperview()
+        buttonView.enabled = true
         pyramidRoundIndex += 1
     }
 
     func questionTapped(button: UIButton) {
         button.removeFromSuperview()
+        buttonView.enabled = true
         playerIndex += 1
     }
 

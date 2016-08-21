@@ -29,6 +29,15 @@ class ButtonView: UIView {
         delegate?.buttonViewUpdatePlayerChoice(sender.titleLabel?.text)
     }
 
+    var enabled = true {
+        didSet {
+            for button in [firstChoiceButton, secondChoiceButton,
+                thirdChoiceButton, fourthChoiceButton] {
+                    button.enabled = enabled
+            }
+        }
+    }
+
     // Custom
 
     func customizeButtons() {
@@ -62,7 +71,7 @@ class ButtonView: UIView {
     }
 
     func setButtonFrames(buttons: [UIButton!], total: Int) {
-        let margin = CGFloat(14.0) // Add margin to inset from border.
+        let margin = CGFloat(8.0) // Add margin to inset from border.
         switch (total) {
         case 1:
             // Fit one button.
@@ -99,7 +108,8 @@ class ButtonView: UIView {
             break
         case 4:
             // Fit four buttons.
-            let buttonLength = (frame.height / 2.0) - (2 * margin)
+            let buttonHeight = (frame.height / 2.0) - (2 * margin)
+            let buttonWidth = (frame.width / 2.0) - (4 * margin)
 
             /*
              * SUIT BUTTONS LAYOUT
@@ -110,21 +120,21 @@ class ButtonView: UIView {
              *
              */
             buttons[0].layer.frame = CGRect(
-                x: (frame.width / 4.0) - (buttonLength / 2.0),
+                x: (frame.width / 4.0) - (buttonWidth / 2.0),
                 y: margin,
-                width: buttonLength, height: buttonLength)
+                width: buttonWidth, height: buttonHeight)
             buttons[1].layer.frame = CGRect(
-                x: (frame.width / 4.0) - (buttonLength / 2.0),
+                x: (frame.width / 4.0) - (buttonWidth / 2.0),
                 y: (0.5 * frame.height) + margin,
-                width: buttonLength, height: buttonLength)
+                width: buttonWidth, height: buttonHeight)
             buttons[3].layer.frame = CGRect(
-                x: (0.75 * frame.width) - (buttonLength / 2.0),
+                x: (0.75 * frame.width) - (buttonWidth / 2.0),
                 y: margin,
-                width: buttonLength, height: buttonLength)
+                width: buttonWidth, height: buttonHeight)
             buttons[2].layer.frame = CGRect(
-                x: (0.75 * frame.width) - (buttonLength / 2.0),
+                x: (0.75 * frame.width) - (buttonWidth / 2.0),
                 y: (0.5 * frame.height) + margin,
-                width: buttonLength, height: buttonLength)
+                width: buttonWidth, height: buttonHeight)
             break
         default:
             break
