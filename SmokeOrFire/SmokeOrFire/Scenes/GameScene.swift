@@ -133,7 +133,7 @@ class GameScene: SKScene {
                     fire.name = "emitterFireCard"
                     fire.position = card.position
                     let hide = SKAction.hide()
-                    let wait = SKAction.waitForDuration(0.800)
+                    let wait = SKAction.waitForDuration(0.350)
                     let unhide = SKAction.unhide()
                     fire.runAction(SKAction.sequence([hide, wait, unhide]))
                     addChild(fire)
