@@ -51,7 +51,7 @@ class StatusView: UIView {
             y: CGFloat(1.0 / HEIGHT_UNITS) * frame.height,
             width: CGFloat(10.0 / WIDTH_UNITS) * frame.width,
             height: CGFloat(5.0 / HEIGHT_UNITS) * frame.height))
-        statusLabel.font = UIFont(name: "AmericanTypewriter-Bold", size: 28)
+        statusLabel.font = UIFont(name: "AmericanTypewriter-Bold", size: 25)
         statusLabel.numberOfLines = 0
         statusLabel.textAlignment = .Center
         statusLabel.text = Rule.COLOR.title()

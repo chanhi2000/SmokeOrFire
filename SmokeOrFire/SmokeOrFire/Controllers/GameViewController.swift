@@ -415,35 +415,37 @@ extension GameViewController {
     func displayPyramidResults() {
         // Get pyramid round card.
         let imageName = pyramid.rounds[pyramidRoundIndex].imageName
-        let newSize = CGSize(width: 180, height: 250)
-        let frontImage = UIImage(named: imageName)!
-            .scaledToSize(newSize).alpha(0.0)
         // Display updated pyramid.
         pyramid.rounds[pyramidRoundIndex].isClicked = true
         gameScene.revealHiddenPyramidCard(imageName)
         // Set card image.
-        let button = UIButton(frame: CGRect(x: CGFloat(0.0) * view.frame.width,
-            y: CGFloat(0.50) * view.frame.height,
-            width: frontImage.size.width, height: frontImage.size.height))
+        let button = UIButton(frame: view.frame)
         button.tag = 1
-        button.setImage(frontImage, forState: .Normal)
         button.addTarget(self, action: #selector(pyramidTapped),
             forControlEvents: .TouchUpInside)
-        // TODO: - Display player list and give/take distribution UI.
-
-        // DEBUG
+        // Display player list.
         var lines = [String]()
         for p in players {
-            if p.hasCardWith(pyramid.rounds[pyramidRoundIndex].imageName) {
-                print("P\(playerIndex + 1) \(rule.title()) \(pyramid.rounds[pyramidRoundIndex].level)")
-                lines.append("P\(playerIndex + 1) \(rule.title()) \(pyramid.rounds[pyramidRoundIndex].level)")
+            if p.hasCard(round.card) {
+                lines.append("P\(p.number): \(rule.title()) " +
+                    "\(pyramid.rounds[pyramidRoundIndex].level)")
             }
         }
-        if lines.count > 0 {
-            buttonView.secondChoiceButton.setTitle(lines.joinWithSeparator("\n"), forState: .Normal)
-            button.setTitle(lines.joinWithSeparator("\n"), forState: .Normal)
-        }
         view.addSubview(button)
+        // Display beer icon, if anyone has to drink.
+        let newSize = CGSize(width: 180, height: 250)
+        let frontImage = UIImage(named: "beer")!
+            .scaledToSize(newSize).alpha((lines.count > 0) ? 1.0 : 0.0)
+        let statusLabelText = (lines.count > 0) ? lines.joinWithSeparator("\n") : "PASS"
+        // After some delay, update the status view objects.
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.400 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) { [weak self] in
+            guard let strongSelf = self else { return }
+            UIView.animateWithDuration(0.100, animations: { [strongSelf] in
+                strongSelf.statusView.statusButton.setImage(frontImage, forState: .Normal)
+                strongSelf.statusView.statusLabel.text = statusLabelText
+            })
+        }
     }
 
     func displayQuestionResults() {
@@ -457,7 +459,7 @@ extension GameViewController {
         button.addTarget(self, action: #selector(questionTapped),
             forControlEvents: .TouchUpInside)
         // Update status window.
-        let statusLabelText = round.isDrinking(player) ? "TAKE \(rule.level())" : "TAKE 0"
+        let statusLabelText = round.isDrinking(player) ? "TAKE \(rule.level())" : "PASS"
         // Display updated player's hand.
         player.hand.append(round.card)
         gameScene.revealHiddenCard(round.card)
