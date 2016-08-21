@@ -13,8 +13,8 @@ import UIKit
 class GameScene: SKScene {
 
     // Private variables
-    // TODO: - Consider computing this based on SKView frame.
-    private let cardSize = CGSize(width: 70, height: 113)
+    private let goldenRatio = 1.618033988749894848
+    private var cardSize: CGSize!
 
     var rowHeights: [CGFloat]!
 
@@ -22,6 +22,9 @@ class GameScene: SKScene {
         super.didMoveToView(view)
         backgroundColor = .blackColor()
         rowHeights = [size.height, size.height / 2.0, 0, -size.height / 2.0] // Order: Top, middle, bottom, off-screen
+        cardSize = CGSize(
+            width: size.width / CGFloat(4 * goldenRatio),
+            height: size.height * CGFloat(2.0 / 5.0))
     }
 
     func clearCards() {
