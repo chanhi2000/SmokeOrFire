@@ -66,9 +66,9 @@ class ButtonView: UIView {
         switch (total) {
         case 1:
             // Fit one button.
-            buttons[1].layer.frame = CGRect(x: margin, y: margin,
+            buttons[1].layer.frame = CGRect(x: margin, y: 0,
                 width: frame.width - (2 * margin),
-                height: frame.height - (2 * margin))
+                height: frame.height - margin)
             break
         case 2:
             // Fit two buttons.
