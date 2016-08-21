@@ -169,7 +169,7 @@ class GameScene: SKScene {
         }
     }
 
-    func shiftPyramid(numCards: Int) {
+    func shiftPyramid() {
         for node in self.children {
             if (node.name!.hasPrefix("pyramid") || node.name == "emitterFireCard") {
                 node.name = "pyramidCard"
