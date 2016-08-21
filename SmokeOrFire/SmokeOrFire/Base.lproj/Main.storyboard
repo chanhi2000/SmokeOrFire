@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Game View Controller-->
@@ -159,31 +160,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Smoke or Fire" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8K-8L-S4w">
-                                <rect key="frame" x="88" y="64" width="425" height="233"/>
-                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="42"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Smoke or Fire" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="D8K-8L-S4w">
+                                <rect key="frame" x="150" y="64" width="350" height="233"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="35"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6rg-dI-zg3">
-                                <rect key="frame" x="129" y="450" width="350" height="100"/>
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6rg-dI-zg3">
+                                <rect key="frame" x="150" y="450" width="350" height="100"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="dyA-2V-g3t"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="2I6-gZ-LDp"/>
                                 </connections>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Players" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VqD-rh-Gjl">
-                                <rect key="frame" x="265" y="425" width="77" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Players" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VqD-rh-Gjl">
+                                <rect key="frame" x="286" y="425" width="77" height="25"/>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFO-iS-itl">
-                                <rect key="frame" x="129" y="297" width="350" height="100"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFO-iS-itl">
+                                <rect key="frame" x="150" y="297" width="350" height="100"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="350" id="0X1-Oh-cVG"/>
                                     <constraint firstAttribute="height" constant="100" id="bI0-Z0-9PE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="38"/>
@@ -203,11 +203,18 @@
                             <constraint firstItem="6rg-dI-zg3" firstAttribute="top" secondItem="BFO-iS-itl" secondAttribute="bottom" constant="53" id="EAn-tn-ukU"/>
                             <constraint firstItem="6rg-dI-zg3" firstAttribute="top" secondItem="VqD-rh-Gjl" secondAttribute="bottom" id="GIV-kH-btG"/>
                             <constraint firstItem="6rg-dI-zg3" firstAttribute="width" secondItem="BFO-iS-itl" secondAttribute="width" id="Mej-HV-OOL"/>
+                            <constraint firstItem="BFO-iS-itl" firstAttribute="trailing" secondItem="D8K-8L-S4w" secondAttribute="trailing" id="R3c-pp-8v8"/>
                             <constraint firstItem="VqD-rh-Gjl" firstAttribute="centerX" secondItem="BFO-iS-itl" secondAttribute="centerX" id="ZsV-Oj-wYs"/>
+                            <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="D8K-8L-S4w" secondAttribute="trailing" constant="80" id="kwh-SW-wzV"/>
                             <constraint firstItem="D8K-8L-S4w" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="lQt-ot-1Vb"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="D8K-8L-S4w" secondAttribute="trailing" constant="30" id="lSj-3i-RAN"/>
                             <constraint firstItem="D8K-8L-S4w" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q5Q-YG-oPg"/>
-                            <constraint firstItem="BFO-iS-itl" firstAttribute="centerX" secondItem="D8K-8L-S4w" secondAttribute="centerX" constant="3.5" id="tIC-bq-iPs"/>
+                            <constraint firstItem="6rg-dI-zg3" firstAttribute="top" secondItem="VqD-rh-Gjl" secondAttribute="bottom" id="qm8-Wp-dfp"/>
+                            <constraint firstItem="D8K-8L-S4w" firstAttribute="leading" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="80" id="sAb-NN-uVs"/>
+                            <constraint firstItem="BFO-iS-itl" firstAttribute="centerX" secondItem="D8K-8L-S4w" secondAttribute="centerX" id="tIC-bq-iPs"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6rg-dI-zg3" secondAttribute="bottom" constant="50" id="u5g-aB-9AP"/>
+                            <constraint firstItem="BFO-iS-itl" firstAttribute="leading" secondItem="D8K-8L-S4w" secondAttribute="leading" id="zaA-Xb-Ae0"/>
+                            <constraint firstItem="D8K-8L-S4w" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="zgQ-UX-bdN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="R54-lV-iDI"/>
