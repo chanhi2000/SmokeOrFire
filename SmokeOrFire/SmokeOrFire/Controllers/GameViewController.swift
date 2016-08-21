@@ -246,6 +246,8 @@ class GameViewController: UIViewController {
                     questionTapped(button)
                 } else if button.tag == 1 {
                     pyramidTapped(button)
+                } else if button.tag == 2 {
+                    gameOverTapped(button)
                 }
             }
         }
@@ -288,14 +290,18 @@ class GameViewController: UIViewController {
     }
 
     func gameOver() {
-        // TODO: Design game over that displays results.
-        let ac = UIAlertController(title: "Game Over", message: "", preferredStyle: .Alert)
-        ac.addAction(UIAlertAction(title: "Continue", style: .Cancel, handler: { [weak self] (_) -> Void in
-            guard let strongSelf = self else { return }
-            // Return to main menu.
-            strongSelf.navigationController!.popToRootViewControllerAnimated(true)
-        }))
-        presentViewController(ac, animated: true, completion: nil)
+        // Create a UIButton subview to use a selector to control game flow.
+        let button = UIButton(frame: view.frame)
+        button.tag = 3
+        button.addTarget(self, action: #selector(gameOverTapped),
+            forControlEvents: .TouchUpInside)
+        view.addSubview(button)
+        // Update status view objects.
+        statusView.statusButton.setImage(nil, forState: .Normal)
+        statusView.statusButton.setTitle("", forState: .Normal)
+        statusView.statusLabel.text = "Game Over"
+        // Hide choice buttons.
+        buttonView.hidden = true
     }
 
 }
@@ -484,6 +490,10 @@ extension GameViewController {
     func questionTapped(button: UIButton) {
         button.removeFromSuperview()
         playerIndex += 1
+    }
+
+    func gameOverTapped(button: UIButton) {
+        navigationController!.popToRootViewControllerAnimated(true)
     }
 
 }
