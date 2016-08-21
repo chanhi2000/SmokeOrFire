@@ -21,7 +21,7 @@ class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         backgroundColor = .blackColor()
-        rowHeights = [size.height, size.height / 2.0, 0] // Order: Top, middle, bottom
+        rowHeights = [size.height, size.height / 2.0, 0, -size.height / 2.0] // Order: Top, middle, bottom, off-screen
     }
 
     func clearCards() {
@@ -107,7 +107,8 @@ class GameScene: SKScene {
         // Create a list where each element is a list of pyramid rounds.
         let rows = [rounds.filter { $0.level == (rounds[index].level - 1) },
             rounds.filter { $0.level == rounds[index].level },
-            rounds.filter { $0.level == (rounds[index].level + 1) }]
+            rounds.filter { $0.level == (rounds[index].level + 1) },
+            rounds.filter { $0.level == (rounds[index].level + 2) }]
         // Iterate through each list of pyramid rounds.
         for i in 0.stride(to: rows.count, by: 1) {
             let xUnit = size.width / CGFloat(rows[i].count + 1) // include trailing edge of x-axis
@@ -134,7 +135,6 @@ class GameScene: SKScene {
                     let hide = SKAction.hide()
                     let wait = SKAction.waitForDuration(0.800)
                     let unhide = SKAction.unhide()
-//                    let appear = SKAction.fadeInWithDuration(0.100)
                     fire.runAction(SKAction.sequence([hide, wait, unhide]))
                     addChild(fire)
                 }
@@ -181,25 +181,6 @@ class GameScene: SKScene {
                     asOffset: true, orientToPath: false, duration: 0.750)
                 node.runAction(SKAction.sequence([wait, move]))
             }
-        }
-        // Simulate bottom row.
-        let xUnit = size.width / CGFloat(numCards + 1) // include trailing edge of x-axis
-        for i in 0.stride(to: numCards, by: 1) {
-            let card = SKSpriteNode(texture: SKTexture(imageNamed: "Bicyclebackside"),
-                color: .whiteColor(), size: cardSize)
-            card.name = "pyramidCard"
-            let xPos = CGFloat(i + 1) * xUnit
-            card.position = CGPoint(x: xPos, y: -rowHeights[1])
-            // Animate the card moving from below the bottom of the screen.
-            let wait = SKAction.waitForDuration(0.250)
-            let path = UIBezierPath()
-            path.moveToPoint(CGPoint(x: 0, y: 0))
-            path.addLineToPoint(CGPoint(x: 0, y: rowHeights[1]))
-            let move = SKAction.followPath(path.CGPath,
-                asOffset: true, orientToPath: false, duration: 0.750)
-//            let remove = SKAction.removeFromParent()
-            card.runAction(SKAction.sequence([wait, move]))
-            addChild(card)
         }
     }
 }

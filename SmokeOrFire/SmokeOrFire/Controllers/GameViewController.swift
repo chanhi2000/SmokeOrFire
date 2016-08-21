@@ -118,6 +118,7 @@ class GameViewController: UIViewController {
             switch (rule as Rule) {
                 case .GIVE, .TAKE:
                     // Set give and take display text.
+                    statusView?.statusButton.setImage(nil, forState: .Normal)
                     statusView?.statusButton.setTitle("\(rule.title())", forState: .Normal)
                     statusView.statusLabel.text = "\(rule.title()) " +
                         "\(pyramid.rounds[pyramidRoundIndex].level) if you have..."
