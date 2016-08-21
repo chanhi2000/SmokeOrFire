@@ -212,9 +212,9 @@ class GameViewController: UIViewController {
         buttonView.customizeButtons()
         buttonView.delegate = self // Notify on button press.
         buttonView.frame = CGRect(
-            x: 0, y: CGFloat(32.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
+            x: 0, y: CGFloat(22.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
             width: view.frame.width,
-            height: CGFloat(10.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
+            height: CGFloat(9.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
         // Add button view constraints.
         view.addConstraint(NSLayoutConstraint(item: buttonView,
             attribute: .Height, relatedBy: .Equal,
@@ -226,7 +226,7 @@ class GameViewController: UIViewController {
         bannerView.frame = CGRect(
             x: 0, y: CGFloat(32.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
             width: view.frame.width,
-            height: CGFloat(3.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
+            height: CGFloat(4.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
         // Add banner view constraints.
         view.addConstraint(NSLayoutConstraint(item: bannerView,
             attribute: .Height, relatedBy: .Equal,
