@@ -24,7 +24,7 @@ class GameScene: SKScene {
         rowHeights = [size.height, size.height / 2.0, 0, -size.height / 2.0] // Order: Top, middle, bottom, off-screen
         cardSize = CGSize(
             width: size.width / CGFloat(4 * goldenRatio),
-            height: size.height * CGFloat(2.0 / 5.0))
+            height: size.width / CGFloat(2.5 * goldenRatio))
     }
 
     func clearCards() {
@@ -129,12 +129,15 @@ class GameScene: SKScene {
                     "pyramidHiddenCard" : "pyramidCard"
                 let xPos = CGFloat(j + 1) * xUnit
                 card.position = CGPoint(x: xPos, y: rowHeights[i])
-                card.zPosition = CGFloat(i + j)
+                card.zPosition = CGFloat(round.level + i + j)
                 if (!round.isClicked && (i == 1) && (j == 0 || rows[i][j-1].isClicked)) {
                     // Add emitter to hidden round card.
                     let fire = SKEmitterNode(fileNamed: "FireParticles")!
                     fire.name = "emitterFireCard"
+                    fire.particlePositionRange = CGVector(
+                        dx: card.frame.width + 5.0, dy: card.frame.height + 5.0)
                     fire.position = card.position
+                    fire.zPosition = card.zPosition
                     let hide = SKAction.hide()
                     let wait = SKAction.waitForDuration(0.350)
                     let unhide = SKAction.unhide()

@@ -126,8 +126,8 @@
                                     <outlet property="thirdChoiceButton" destination="9QB-8m-lNy" id="B3r-SJ-Jgz"/>
                                 </connections>
                             </view>
-                            <adBannerView autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rYD-9k-JNK">
-                                <rect key="frame" x="140" y="535" width="320" height="50"/>
+                            <adBannerView autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rYD-9k-JNK">
+                                <rect key="frame" x="140" y="535" width="480" height="66"/>
                                 <color key="backgroundColor" red="0.2688647086" green="0.87874160239999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="I2v-EI-8Bd" id="tGK-9D-ZKz"/>
@@ -136,6 +136,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="BWJ-7V-qNp" firstAttribute="top" secondItem="rYD-9k-JNK" secondAttribute="bottom" id="AiH-Zf-Tce"/>
                             <constraint firstItem="Wru-pW-iju" firstAttribute="trailing" secondItem="rdS-xm-bkD" secondAttribute="trailing" id="BF7-8d-jUk"/>
                             <constraint firstItem="rYD-9k-JNK" firstAttribute="top" secondItem="qt7-xk-4CN" secondAttribute="bottom" id="D9u-So-umj"/>
                             <constraint firstItem="qt7-xk-4CN" firstAttribute="leading" secondItem="rdS-xm-bkD" secondAttribute="leading" id="DWO-8H-iOa"/>
@@ -144,7 +145,14 @@
                             <constraint firstItem="Wru-pW-iju" firstAttribute="bottom" secondItem="qt7-xk-4CN" secondAttribute="top" id="Omb-ir-fuP"/>
                             <constraint firstItem="qt7-xk-4CN" firstAttribute="trailing" secondItem="rdS-xm-bkD" secondAttribute="trailing" id="boK-IL-t6R"/>
                             <constraint firstItem="Wru-pW-iju" firstAttribute="leading" secondItem="rdS-xm-bkD" secondAttribute="leading" id="qjZ-2m-YEg"/>
+                            <constraint firstItem="BWJ-7V-qNp" firstAttribute="top" secondItem="rYD-9k-JNK" secondAttribute="bottom" id="tmU-et-Dsi"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="D9u-So-umj"/>
+                                <exclude reference="tmU-et-Dsi"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="bannerView" destination="rYD-9k-JNK" id="Chy-1b-1IB"/>
