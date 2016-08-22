@@ -38,6 +38,7 @@ class StatusView: UIView {
         statusButton.titleLabel!.textAlignment = .Center
         statusButton.titleLabel!.font = UIFont(name: "AmericanTypewriter-Bold", size: 28)
         statusButton.titleLabel!.numberOfLines = 1
+        statusButton.titleLabel!.adjustsFontSizeToFitWidth = true
         addSubview(statusButton)
         // Apply status button constraints.
         addConstraint(NSLayoutConstraint(item: statusButton, attribute: .Width,

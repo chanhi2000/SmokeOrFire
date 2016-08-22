@@ -14,7 +14,6 @@ import UIKit
 class GameViewController: UIViewController {
 
     // UI variables
-    @IBOutlet weak var bannerView: ADBannerView!
     @IBOutlet weak var buttonView: ButtonView!
     @IBOutlet weak var skView: SKView!
 
@@ -189,7 +188,7 @@ class GameViewController: UIViewController {
         skView.frame = CGRect(
             x: 0, y: CGFloat(9.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
             width: view.frame.width,
-            height: CGFloat(11.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
+            height: CGFloat(16.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
         skView.ignoresSiblingOrder = true // Improves rendering performance
         // Add skView constraints.
         view.addConstraint(NSLayoutConstraint(item: skView,
@@ -211,21 +210,14 @@ class GameViewController: UIViewController {
         buttonView.customizeButtons()
         buttonView.delegate = self // Notify on button press.
         buttonView.frame = CGRect(
-            x: 0, y: CGFloat(20.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
+            x: 0, y: CGFloat(25.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
             width: view.frame.width,
-            height: CGFloat(9.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
+            height: CGFloat(8.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
         // Add button view constraints.
         view.addConstraint(NSLayoutConstraint(item: buttonView,
             attribute: .Height, relatedBy: .Equal,
             toItem: nil, attribute: .NotAnAttribute,
             multiplier: 1.0, constant: buttonView.frame.height))
-
-        // Setup banner view.
-        bannerView.delegate = self
-        bannerView.frame = CGRect(
-            x: 0, y: CGFloat(29.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
-            width: view.frame.width,
-            height: CGFloat(6.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
 
         startGame()
 
@@ -295,25 +287,6 @@ class GameViewController: UIViewController {
         statusView.statusLabel.text = "Game Over"
         // Hide choice buttons.
         buttonView.hidden = true
-    }
-
-}
-
-// MARK: - ADBannerViewDelegate
-extension GameViewController: ADBannerViewDelegate {
-
-    func bannerViewDidLoadAd(banner: ADBannerView!) {
-        bannerView.hidden = false
-        /*
-         Note:
-         If you're using a table view, a scroll view, a collection view, a text view
-         or something else that scrolls, you should set its contentInset and scrollIndicatorInset
-         properties so that it doesn't scrolle under the advert when it's visible.
-         */
-    }
-
-    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
-        bannerView.hidden = false
     }
 
 }
