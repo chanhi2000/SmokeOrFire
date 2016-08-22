@@ -43,11 +43,19 @@
 		7439250E1D56F95500F1A17D /* DeckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7439250D1D56F95500F1A17D /* DeckTests.swift */; };
 		744875051D6328010012FB6B /* UIImage+alpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744875041D6328010012FB6B /* UIImage+alpha.swift */; };
 		74B8A2BC1D6A58E300D4E777 /* UIImage+rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8A2BB1D6A58E300D4E777 /* UIImage+rotate.swift */; };
+		74B8A2C91D6A834C00D4E777 /* SmokeOrFireUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8A2C81D6A834C00D4E777 /* SmokeOrFireUITests.swift */; };
 		B5644F9A1D56EB1800FB48BA /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5644F991D56EB1800FB48BA /* PlayerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		743924F61D56D98A00F1A17D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 743924CC1D569C0000F1A17D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 743924D31D569C0000F1A17D;
+			remoteInfo = SmokeOrFire;
+		};
+		74B8A2CB1D6A834C00D4E777 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 743924CC1D569C0000F1A17D /* Project object */;
 			proxyType = 1;
@@ -97,6 +105,9 @@
 		7439250D1D56F95500F1A17D /* DeckTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckTests.swift; sourceTree = "<group>"; };
 		744875041D6328010012FB6B /* UIImage+alpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+alpha.swift"; path = "Extensions/UIImage+alpha.swift"; sourceTree = "<group>"; };
 		74B8A2BB1D6A58E300D4E777 /* UIImage+rotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+rotate.swift"; path = "Extensions/UIImage+rotate.swift"; sourceTree = "<group>"; };
+		74B8A2C61D6A834C00D4E777 /* SmokeOrFireUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmokeOrFireUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		74B8A2C81D6A834C00D4E777 /* SmokeOrFireUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeOrFireUITests.swift; sourceTree = "<group>"; };
+		74B8A2CA1D6A834C00D4E777 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5644F991D56EB1800FB48BA /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +120,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		743924EE1D56D98A00F1A17D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74B8A2C31D6A834C00D4E777 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -184,6 +202,7 @@
 			children = (
 				743924D61D569C0000F1A17D /* SmokeOrFire */,
 				743924F21D56D98A00F1A17D /* SmokeOrFireTests */,
+				74B8A2C71D6A834C00D4E777 /* SmokeOrFireUITests */,
 				743924D51D569C0000F1A17D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -193,6 +212,7 @@
 			children = (
 				743924D41D569C0000F1A17D /* SmokeOrFire.app */,
 				743924F11D56D98A00F1A17D /* SmokeOrFireTests.xctest */,
+				74B8A2C61D6A834C00D4E777 /* SmokeOrFireUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -245,6 +265,15 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		74B8A2C71D6A834C00D4E777 /* SmokeOrFireUITests */ = {
+			isa = PBXGroup;
+			children = (
+				74B8A2C81D6A834C00D4E777 /* SmokeOrFireUITests.swift */,
+				74B8A2CA1D6A834C00D4E777 /* Info.plist */,
+			);
+			path = SmokeOrFireUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -283,6 +312,24 @@
 			productReference = 743924F11D56D98A00F1A17D /* SmokeOrFireTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		74B8A2C51D6A834C00D4E777 /* SmokeOrFireUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 74B8A2CD1D6A834C00D4E777 /* Build configuration list for PBXNativeTarget "SmokeOrFireUITests" */;
+			buildPhases = (
+				74B8A2C21D6A834C00D4E777 /* Sources */,
+				74B8A2C31D6A834C00D4E777 /* Frameworks */,
+				74B8A2C41D6A834C00D4E777 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				74B8A2CC1D6A834C00D4E777 /* PBXTargetDependency */,
+			);
+			name = SmokeOrFireUITests;
+			productName = SmokeOrFireUITests;
+			productReference = 74B8A2C61D6A834C00D4E777 /* SmokeOrFireUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -297,6 +344,10 @@
 						CreatedOnToolsVersion = 7.3.1;
 					};
 					743924F01D56D98A00F1A17D = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 743924D31D569C0000F1A17D;
+					};
+					74B8A2C51D6A834C00D4E777 = {
 						CreatedOnToolsVersion = 7.3.1;
 						TestTargetID = 743924D31D569C0000F1A17D;
 					};
@@ -317,6 +368,7 @@
 			targets = (
 				743924D31D569C0000F1A17D /* SmokeOrFire */,
 				743924F01D56D98A00F1A17D /* SmokeOrFireTests */,
+				74B8A2C51D6A834C00D4E777 /* SmokeOrFireUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -336,6 +388,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		743924EF1D56D98A00F1A17D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74B8A2C41D6A834C00D4E777 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -390,6 +449,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		74B8A2C21D6A834C00D4E777 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74B8A2C91D6A834C00D4E777 /* SmokeOrFireUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -397,6 +464,11 @@
 			isa = PBXTargetDependency;
 			target = 743924D31D569C0000F1A17D /* SmokeOrFire */;
 			targetProxy = 743924F61D56D98A00F1A17D /* PBXContainerItemProxy */;
+		};
+		74B8A2CC1D6A834C00D4E777 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 743924D31D569C0000F1A17D /* SmokeOrFire */;
+			targetProxy = 74B8A2CB1D6A834C00D4E777 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -551,6 +623,28 @@
 			};
 			name = Release;
 		};
+		74B8A2CE1D6A834C00D4E777 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SmokeOrFireUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.justinhester.SmokeOrFireUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SmokeOrFire;
+			};
+			name = Debug;
+		};
+		74B8A2CF1D6A834C00D4E777 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SmokeOrFireUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.justinhester.SmokeOrFireUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SmokeOrFire;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -580,6 +674,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		74B8A2CD1D6A834C00D4E777 /* Build configuration list for PBXNativeTarget "SmokeOrFireUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74B8A2CE1D6A834C00D4E777 /* Debug */,
+				74B8A2CF1D6A834C00D4E777 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
