@@ -213,7 +213,7 @@ class GameViewController: UIViewController {
         buttonView.frame = CGRect(
             x: 0, y: CGFloat(20.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
             width: view.frame.width,
-            height: CGFloat(10.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
+            height: CGFloat(9.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
         // Add button view constraints.
         view.addConstraint(NSLayoutConstraint(item: buttonView,
             attribute: .Height, relatedBy: .Equal,
@@ -223,14 +223,9 @@ class GameViewController: UIViewController {
         // Setup banner view.
         bannerView.delegate = self
         bannerView.frame = CGRect(
-            x: 0, y: CGFloat(30.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
+            x: 0, y: CGFloat(29.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
             width: view.frame.width,
-            height: CGFloat(5.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
-        // Add banner view constraints.
-        view.addConstraint(NSLayoutConstraint(item: bannerView,
-            attribute: .Height, relatedBy: .Equal,
-            toItem: nil, attribute: .NotAnAttribute,
-            multiplier: 1.0, constant: bannerView.frame.height))
+            height: CGFloat(6.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
 
         startGame()
 
