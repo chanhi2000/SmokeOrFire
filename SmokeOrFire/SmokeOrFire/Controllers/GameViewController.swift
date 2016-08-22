@@ -189,8 +189,6 @@ class GameViewController: UIViewController {
             x: 0, y: CGFloat(10.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
             width: view.frame.width,
             height: CGFloat(12.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
-        skView.showsFPS = true
-        skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true // Improves rendering performance
         // Add skView constraints.
         view.addConstraint(NSLayoutConstraint(item: skView,
