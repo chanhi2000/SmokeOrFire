@@ -24,12 +24,13 @@ class StatusView: UIView {
         backgroundColor = .lightGrayColor()
 
         // Setup status button.
+        let minDim = min(CGFloat(5.0 / WIDTH_UNITS) * frame.width,
+            CGFloat(5.0 / HEIGHT_UNITS) * frame.height)
         statusButton = UIButton(frame: CGRect(
             x: CGFloat(1.0 / WIDTH_UNITS) * frame.width,
             y: CGFloat(1.0 / HEIGHT_UNITS) * frame.height,
-            width: CGFloat(5.0 / WIDTH_UNITS) * frame.width,
-            height: CGFloat(5.0 / WIDTH_UNITS) * frame.width))
-        statusButton.layer.cornerRadius = statusButton.frame.width / 2
+            width: minDim, height: minDim))
+        statusButton.layer.cornerRadius = minDim / 2
         statusButton.backgroundColor = .whiteColor()
         statusButton.setTitle("P1", forState: .Normal)
         statusButton.setTitleColor(.blackColor(), forState: .Normal)
