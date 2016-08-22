@@ -153,7 +153,8 @@ class GameViewController: UIViewController {
         let backButton = UIButton(type: .Custom)
         backButton.addTarget(self, action: #selector(mainMenu), forControlEvents: .TouchUpInside)
         backButton.setTitle("reset", forState: .Normal)
-        backButton.titleLabel!.font = UIFont(name: "AmericanTypewriter-Bold", size: 18)
+        backButton.titleLabel!.font = UIFont(name: "AmericanTypewriter-Bold", size: 28)
+        backButton.titleLabel!.adjustsFontSizeToFitWidth = true
         backButton.setTitleColor(.whiteColor(), forState: .Normal)
         backButton.sizeToFit()
         navigationItem.leftBarButtonItem  = UIBarButtonItem(customView: backButton)
