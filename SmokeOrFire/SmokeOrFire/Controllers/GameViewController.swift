@@ -434,7 +434,7 @@ extension GameViewController {
         for p in players {
             if p.hasCard(round.card) {
                 lines.append("P\(p.number): \(rule.title()) " +
-                    "\(pyramid.rounds[pyramidRoundIndex].level)")
+                    "\(p.totalOf(round.card) * pyramid.rounds[pyramidRoundIndex].level)")
             }
         }
         view.addSubview(button)

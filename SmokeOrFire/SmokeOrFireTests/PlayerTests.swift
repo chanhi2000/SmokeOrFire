@@ -35,6 +35,27 @@ class PlayerTests: XCTestCase {
         XCTAssertEqual(player.choice, PlayerChoices.HEART)
     }
 
+    func testHasCard() {
+        let card = Card(rank: .ACE, suit: .SPADE)
+        player.addCard(card)
+        XCTAssertTrue(player.hasCard(card))
+        XCTAssertFalse(player.hasCard(Card(rank: .TWO, suit: .HEART)))
+    }
+
+    func testHasCardWith() {
+        let card = Card(rank: .QUEEN, suit: .DIAMOND)
+        player.addCard(card)
+        XCTAssertTrue(player.hasCardWith("queen_of_diamonds"))
+        XCTAssertFalse(player.hasCardWith("queen_of_hearts"))
+    }
+
+    func testTotalOf() {
+        let card = Card(rank: .THREE, suit: .CLUB)
+        player.addCard(card)
+        XCTAssertEqual(player.totalOf(card), 1)
+        XCTAssertEqual(player.totalOf(Card(rank: .FOUR, suit: .CLUB)), 0)
+    }
+
     func testPlayerChoices() {
         XCTAssertEqual(PlayerChoices.CLUB.rawValue, 1)
         XCTAssertEqual(PlayerChoices.DIAMOND.rawValue, 2)

@@ -59,4 +59,14 @@ class Player: NSObject {
         }
         return ans
     }
+
+    func totalOf(card: Card) -> Int {
+        var total = 0
+        for handCard in hand {
+            if handCard.rank == card.rank {
+                total += 1
+            }
+        }
+        return total
+    }
 }
