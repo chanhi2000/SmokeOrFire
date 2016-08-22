@@ -22,7 +22,6 @@
 		74175B811D617D80006A9AC7 /* Rank+successor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B7D1D617D80006A9AC7 /* Rank+successor.swift */; };
 		74175B821D617D80006A9AC7 /* String+subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B7E1D617D80006A9AC7 /* String+subscript.swift */; };
 		74175B831D617D80006A9AC7 /* Suit+successor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B7F1D617D80006A9AC7 /* Suit+successor.swift */; };
-		74175B841D617D80006A9AC7 /* UIImage+scaledToSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B801D617D80006A9AC7 /* UIImage+scaledToSize.swift */; };
 		74175B8B1D617DA9006A9AC7 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B851D617DA9006A9AC7 /* Card.swift */; };
 		74175B8C1D617DA9006A9AC7 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B861D617DA9006A9AC7 /* Deck.swift */; };
 		74175B8D1D617DA9006A9AC7 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175B871D617DA9006A9AC7 /* Player.swift */; };
@@ -41,8 +40,6 @@
 		743924E21D569C0000F1A17D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743924E01D569C0000F1A17D /* LaunchScreen.storyboard */; };
 		743924FC1D56D9D500F1A17D /* CardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743924FB1D56D9D500F1A17D /* CardTests.swift */; };
 		7439250E1D56F95500F1A17D /* DeckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7439250D1D56F95500F1A17D /* DeckTests.swift */; };
-		744875051D6328010012FB6B /* UIImage+alpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744875041D6328010012FB6B /* UIImage+alpha.swift */; };
-		74B8A2BC1D6A58E300D4E777 /* UIImage+rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8A2BB1D6A58E300D4E777 /* UIImage+rotate.swift */; };
 		74B8A2C91D6A834C00D4E777 /* SmokeOrFireUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8A2C81D6A834C00D4E777 /* SmokeOrFireUITests.swift */; };
 		B5644F9A1D56EB1800FB48BA /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5644F991D56EB1800FB48BA /* PlayerTests.swift */; };
 /* End PBXBuildFile section */
@@ -80,7 +77,6 @@
 		74175B7D1D617D80006A9AC7 /* Rank+successor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Rank+successor.swift"; path = "Extensions/Rank+successor.swift"; sourceTree = "<group>"; };
 		74175B7E1D617D80006A9AC7 /* String+subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+subscript.swift"; path = "Extensions/String+subscript.swift"; sourceTree = "<group>"; };
 		74175B7F1D617D80006A9AC7 /* Suit+successor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Suit+successor.swift"; path = "Extensions/Suit+successor.swift"; sourceTree = "<group>"; };
-		74175B801D617D80006A9AC7 /* UIImage+scaledToSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+scaledToSize.swift"; path = "Extensions/UIImage+scaledToSize.swift"; sourceTree = "<group>"; };
 		74175B851D617DA9006A9AC7 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Card.swift; path = Objects/Card.swift; sourceTree = "<group>"; };
 		74175B861D617DA9006A9AC7 /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Deck.swift; path = Objects/Deck.swift; sourceTree = "<group>"; };
 		74175B871D617DA9006A9AC7 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = Objects/Player.swift; sourceTree = "<group>"; };
@@ -103,8 +99,6 @@
 		743924F51D56D98A00F1A17D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		743924FB1D56D9D500F1A17D /* CardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTests.swift; sourceTree = "<group>"; };
 		7439250D1D56F95500F1A17D /* DeckTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckTests.swift; sourceTree = "<group>"; };
-		744875041D6328010012FB6B /* UIImage+alpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+alpha.swift"; path = "Extensions/UIImage+alpha.swift"; sourceTree = "<group>"; };
-		74B8A2BB1D6A58E300D4E777 /* UIImage+rotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+rotate.swift"; path = "Extensions/UIImage+rotate.swift"; sourceTree = "<group>"; };
 		74B8A2C61D6A834C00D4E777 /* SmokeOrFireUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmokeOrFireUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B8A2C81D6A834C00D4E777 /* SmokeOrFireUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeOrFireUITests.swift; sourceTree = "<group>"; };
 		74B8A2CA1D6A834C00D4E777 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -258,9 +252,6 @@
 				74175B7D1D617D80006A9AC7 /* Rank+successor.swift */,
 				74175B7E1D617D80006A9AC7 /* String+subscript.swift */,
 				74175B7F1D617D80006A9AC7 /* Suit+successor.swift */,
-				74175B801D617D80006A9AC7 /* UIImage+scaledToSize.swift */,
-				744875041D6328010012FB6B /* UIImage+alpha.swift */,
-				74B8A2BB1D6A58E300D4E777 /* UIImage+rotate.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -414,17 +405,14 @@
 				74175B831D617D80006A9AC7 /* Suit+successor.swift in Sources */,
 				74175B8F1D617DA9006A9AC7 /* PyramidRound.swift in Sources */,
 				74175B791D617D5F006A9AC7 /* PlayerChoices.swift in Sources */,
-				744875051D6328010012FB6B /* UIImage+alpha.swift in Sources */,
 				74175B931D617DC5006A9AC7 /* ButtonView.swift in Sources */,
 				74175B7A1D617D5F006A9AC7 /* Rank.swift in Sources */,
 				74175B811D617D80006A9AC7 /* Rank+successor.swift in Sources */,
 				74175B701D617D02006A9AC7 /* GameViewController.swift in Sources */,
 				74175B8C1D617DA9006A9AC7 /* Deck.swift in Sources */,
-				74B8A2BC1D6A58E300D4E777 /* UIImage+rotate.swift in Sources */,
 				74175B7C1D617D5F006A9AC7 /* Suit.swift in Sources */,
 				74175B821D617D80006A9AC7 /* String+subscript.swift in Sources */,
 				74175B8D1D617DA9006A9AC7 /* Player.swift in Sources */,
-				74175B841D617D80006A9AC7 /* UIImage+scaledToSize.swift in Sources */,
 				74175B961D617DEF006A9AC7 /* GameScene.swift in Sources */,
 				74175B8B1D617DA9006A9AC7 /* Card.swift in Sources */,
 				743924D81D569C0000F1A17D /* AppDelegate.swift in Sources */,
@@ -682,6 +670,7 @@
 				74B8A2CF1D6A834C00D4E777 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -30,6 +30,7 @@ class StatusView: UIView {
             x: CGFloat(1.0 / WIDTH_UNITS) * frame.width,
             y: CGFloat(1.0 / HEIGHT_UNITS) * frame.height,
             width: minDim, height: minDim))
+        statusButton.contentMode = .ScaleAspectFit
         statusButton.layer.cornerRadius = minDim / 2
         statusButton.backgroundColor = .whiteColor()
         statusButton.setTitle("P1", forState: .Normal)

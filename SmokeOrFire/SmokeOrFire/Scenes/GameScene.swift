@@ -34,9 +34,11 @@ class GameScene: SKScene {
         for node in self.children {
             if node.name!.hasPrefix("pyramid") {
                 // Remove pyramid cards with no animation.
+                node.removeAllActions()
                 node.removeFromParent()
             } else if node.name == "emitterFireCard" {
                 // Remove fire emitter behind hidden pyramid card with no animation.
+                node.removeAllActions()
                 node.removeFromParent()
             } else {
                 // Animate the player's hand cards sliding towards the top screen.
@@ -61,11 +63,10 @@ class GameScene: SKScene {
 
             // Set image texture for hidden or visible card, respectively.
             let imageName = (i == hand.count) ? "Bicyclebackside" : hand[i].imageName
-            let imageTexture = SKTexture(imageNamed: imageName)
             let xPos = CGFloat(i + 1) * xUnit // The x component of final position.
 
             // Create sprite for card.
-            let card = SKSpriteNode(texture: imageTexture, size: cardSize)
+            let card = SKSpriteNode(texture: SKTexture(imageNamed: imageName), size: cardSize)
             card.position = CGPoint(x: xStartPos, y: -cardSize.height)
             card.name = (i == hand.count) ? "hiddenCard" : "visibleCard"
 

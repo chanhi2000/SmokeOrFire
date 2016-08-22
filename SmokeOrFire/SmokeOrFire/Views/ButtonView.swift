@@ -41,9 +41,8 @@ class ButtonView: UIView {
     // Custom
 
     func customizeButtons() {
-        let buttons = [firstChoiceButton, secondChoiceButton,
-            thirdChoiceButton, fourthChoiceButton]
-        for button in buttons {
+        for button in [firstChoiceButton, secondChoiceButton,
+                thirdChoiceButton, fourthChoiceButton] {
             button.layer.borderWidth = 4
             button.layer.borderColor = UIColor.whiteColor().CGColor
             button.layer.cornerRadius = 10
@@ -59,10 +58,12 @@ class ButtonView: UIView {
         }
     }
 
-    func setButtonImages(buttons: [UIButton!], choices: [UIImage?]) {
+    func setButtonImages(buttons: [UIButton!], choices: [String?]) {
         for i in 0.stride(to: choices.count, by: 1) {
-            buttons[i].setImage(choices[i], forState: .Normal)
-            buttons[i].setImage(choices[i], forState: .Disabled)
+            buttons[i].setImage((choices[i] != nil) ?
+                UIImage(named: choices[i]!) : nil, forState: .Normal)
+            buttons[i].setImage((choices[i] != nil) ?
+                UIImage(named: choices[i]!) : nil, forState: .Disabled)
             buttons[i].imageView!.contentMode = .ScaleAspectFit
         }
     }
@@ -167,8 +168,7 @@ class ButtonView: UIView {
             switch (round.rule) {
             case .COLOR:
                 // Set smoke or fire images.
-                strongSelf.setButtonImages(buttons, choices:
-                    [UIImage(named: "smoke")!, UIImage(named: "fire")!, nil, nil])
+                strongSelf.setButtonImages(buttons, choices: ["smoke", "fire", nil, nil])
                 // "Smoke or Fire?" choices: Black, Red
                 strongSelf.setButtonTitles(buttons,
                     choices: [ChoicesText.BLACK.rawValue,
@@ -177,9 +177,7 @@ class ButtonView: UIView {
                 break
             case .UP_DOWN:
                 // Set higher or lower images.
-                strongSelf.setButtonImages(buttons, choices:
-                    [UIImage(named: "arrow")!, UIImage(named: "equal")!,
-                    UIImage(named: "arrow")!.rotate(.Down), nil])
+                strongSelf.setButtonImages(buttons, choices: ["up", "equal", "down", nil])
                 // "Higher or lower?" choices: Higher, Same, Lower
                 strongSelf.setButtonTitles(buttons,
                     choices: [ChoicesText.HIGHER.rawValue,
@@ -189,9 +187,7 @@ class ButtonView: UIView {
                 break
             case .IN_OUT:
                 // Set inside or outside images.
-                strongSelf.setButtonImages(buttons, choices:
-                    [UIImage(named: "inside")!, UIImage(named: "equal")!,
-                    UIImage(named: "outside")!, nil])
+                strongSelf.setButtonImages(buttons, choices: ["inside", "equal", "outside"])
                 // "Inside or outside?" choices: Inside, Same, Outside
                 strongSelf.setButtonTitles(buttons,
                     choices: [ChoicesText.INSIDE.rawValue, ChoicesText.SAME.rawValue,
@@ -201,9 +197,7 @@ class ButtonView: UIView {
                 break
             case .SUIT:
                 // Set suit images.
-                strongSelf.setButtonImages(buttons, choices:
-                    [UIImage(named: "spade")!, UIImage(named: "heart")!,
-                        UIImage(named: "club")!, UIImage(named: "diamond")!])
+                strongSelf.setButtonImages(buttons, choices: ["spade", "heart", "club", "diamond"])
                 // "Which suit?" choices: Club, Diamond, Heart, Spade
                 strongSelf.setButtonTitles(buttons,
                     choices: [ChoicesText.SPADE.rawValue, ChoicesText.HEART.rawValue,
@@ -215,8 +209,7 @@ class ButtonView: UIView {
                 break
             case .GIVE, .TAKE:
                 // Set pyramid image.
-                strongSelf.setButtonImages(buttons, choices:
-                    [nil, UIImage(named: "flip")!, nil, nil])
+                strongSelf.setButtonImages(buttons, choices: [nil, "flip", nil, nil])
                 // "Smoke or Fire?" choices: Black, Red
                 strongSelf.setButtonTitles(buttons,
                     choices: [nil, ChoicesText.PYRAMID.rawValue, nil, nil])

@@ -439,16 +439,13 @@ extension GameViewController {
         }
         view.addSubview(button)
         // Display beer icon, if anyone has to drink.
-        let newSize = CGSize(width: 180, height: 250)
-        let frontImage = UIImage(named: "beer")!
-            .scaledToSize(newSize).alpha((lines.count > 0) ? 1.0 : 0.0)
         let statusLabelText = (lines.count > 0) ? lines.joinWithSeparator("\n") : "PASS"
         // After some delay, update the status view objects.
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.400 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) { [weak self] in
             guard let strongSelf = self else { return }
             UIView.animateWithDuration(0.100, animations: { [strongSelf] in
-                strongSelf.statusView.statusButton.setImage(frontImage, forState: .Normal)
+                strongSelf.statusView.statusButton.setImage((lines.count > 0) ? UIImage(named: "beer") : nil, forState: .Normal)
                 strongSelf.statusView.statusLabel.text = statusLabelText
             })
         }
@@ -456,9 +453,6 @@ extension GameViewController {
 
     func displayQuestionResults() {
         buttonView.enabled = false
-        let newSize = statusView.statusButton.frame.size
-        let frontImage = UIImage(named: "beer")!
-            .scaledToSize(newSize).alpha(round.isDrinking(player) ? 1.0 : 0.0)
         // Create a UIButton subview to use a selector to control game flow.
         let button = UIButton(frame: view.frame)
         button.tag = 0
@@ -474,7 +468,10 @@ extension GameViewController {
         dispatch_after(delayTime, dispatch_get_main_queue()) { [weak self] in
             guard let strongSelf = self else { return }
             UIView.animateWithDuration(0.100, animations: { [strongSelf] in
-                strongSelf.statusView.statusButton.setImage(frontImage, forState: .Normal)
+                strongSelf.statusView.statusButton.setImage(
+                    strongSelf.round.isDrinking(strongSelf.player) ?
+                        UIImage(named: "beer")! : nil,
+                    forState: .Normal)
                 strongSelf.statusView.statusLabel.text = statusLabelText
                 strongSelf.view.addSubview(button)
             })
