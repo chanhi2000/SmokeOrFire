@@ -42,6 +42,7 @@
 		743924FC1D56D9D500F1A17D /* CardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743924FB1D56D9D500F1A17D /* CardTests.swift */; };
 		7439250E1D56F95500F1A17D /* DeckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7439250D1D56F95500F1A17D /* DeckTests.swift */; };
 		744875051D6328010012FB6B /* UIImage+alpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744875041D6328010012FB6B /* UIImage+alpha.swift */; };
+		74B8A2BC1D6A58E300D4E777 /* UIImage+rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8A2BB1D6A58E300D4E777 /* UIImage+rotate.swift */; };
 		B5644F9A1D56EB1800FB48BA /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5644F991D56EB1800FB48BA /* PlayerTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,7 @@
 		743924FB1D56D9D500F1A17D /* CardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTests.swift; sourceTree = "<group>"; };
 		7439250D1D56F95500F1A17D /* DeckTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckTests.swift; sourceTree = "<group>"; };
 		744875041D6328010012FB6B /* UIImage+alpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+alpha.swift"; path = "Extensions/UIImage+alpha.swift"; sourceTree = "<group>"; };
+		74B8A2BB1D6A58E300D4E777 /* UIImage+rotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+rotate.swift"; path = "Extensions/UIImage+rotate.swift"; sourceTree = "<group>"; };
 		B5644F991D56EB1800FB48BA /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -238,6 +240,7 @@
 				74175B7F1D617D80006A9AC7 /* Suit+successor.swift */,
 				74175B801D617D80006A9AC7 /* UIImage+scaledToSize.swift */,
 				744875041D6328010012FB6B /* UIImage+alpha.swift */,
+				74B8A2BB1D6A58E300D4E777 /* UIImage+rotate.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				74175B811D617D80006A9AC7 /* Rank+successor.swift in Sources */,
 				74175B701D617D02006A9AC7 /* GameViewController.swift in Sources */,
 				74175B8C1D617DA9006A9AC7 /* Deck.swift in Sources */,
+				74B8A2BC1D6A58E300D4E777 /* UIImage+rotate.swift in Sources */,
 				74175B7C1D617D5F006A9AC7 /* Suit.swift in Sources */,
 				74175B821D617D80006A9AC7 /* String+subscript.swift in Sources */,
 				74175B8D1D617DA9006A9AC7 /* Player.swift in Sources */,

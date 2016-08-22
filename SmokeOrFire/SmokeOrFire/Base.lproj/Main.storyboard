@@ -33,6 +33,7 @@
                                             <constraint firstAttribute="height" priority="999" constant="210" placeholder="YES" id="Zfw-aV-Rzf"/>
                                             <constraint firstAttribute="width" priority="999" constant="300" placeholder="YES" id="d07-gt-JuC"/>
                                         </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -54,6 +55,7 @@
                                             <constraint firstAttribute="height" priority="999" constant="210" placeholder="YES" id="0Um-ip-vNF"/>
                                             <constraint firstAttribute="width" priority="999" constant="300" placeholder="YES" id="Z8K-H6-yS1"/>
                                         </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -75,6 +77,7 @@
                                             <constraint firstAttribute="width" priority="999" constant="300" placeholder="YES" id="D79-Yb-WKw"/>
                                             <constraint firstAttribute="height" priority="999" constant="210" placeholder="YES" id="wvQ-Vj-Dcx"/>
                                         </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -96,6 +99,7 @@
                                             <constraint firstAttribute="width" priority="999" constant="300" placeholder="YES" id="vGl-GH-Ewi"/>
                                             <constraint firstAttribute="height" priority="999" constant="210" placeholder="YES" id="yz2-4g-kIi"/>
                                         </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>

@@ -50,22 +50,29 @@ class ButtonView: UIView {
         }
     }
 
+    func hideButtonsExcept(button: UIButton) {
+        for choiceButton in [firstChoiceButton, secondChoiceButton,
+                thirdChoiceButton, fourthChoiceButton] {
+            if choiceButton != button {
+                choiceButton.hidden = true
+            }
+        }
+    }
+
+    func setButtonImages(buttons: [UIButton!], choices: [UIImage?]) {
+        for i in 0.stride(to: choices.count, by: 1) {
+            buttons[i].setImage(choices[i], forState: .Normal)
+            buttons[i].setImage(choices[i], forState: .Disabled)
+            buttons[i].imageView!.contentMode = .ScaleAspectFit
+        }
+    }
+
     func setButtonTitles(buttons: [UIButton!], choices: [String?]) {
         for i in 0.stride(to: choices.count, by: 1) {
             if (choices[i] != nil) {
                 buttons[i].setTitle(choices[i], forState: .Normal)
             } else {
                 buttons[i].hidden = true
-            }
-        }
-    }
-
-    func hideButtonsExcept(button: UIButton) {
-        let buttons = [firstChoiceButton, secondChoiceButton,
-            thirdChoiceButton, fourthChoiceButton]
-        for choiceButton in buttons {
-            if choiceButton != button {
-                choiceButton.hidden = true
             }
         }
     }
@@ -159,6 +166,9 @@ class ButtonView: UIView {
             // Set button titles based on round rule.
             switch (round.rule) {
             case .COLOR:
+                // Set smoke or fire images.
+                strongSelf.setButtonImages(buttons, choices:
+                    [UIImage(named: "smoke")!, UIImage(named: "fire")!, nil, nil])
                 // "Smoke or Fire?" choices: Black, Red
                 strongSelf.setButtonTitles(buttons,
                     choices: [ChoicesText.BLACK.rawValue,
@@ -166,6 +176,10 @@ class ButtonView: UIView {
                 strongSelf.setButtonFrames(buttons, total: 2)
                 break
             case .UP_DOWN:
+                // Set higher or lower images.
+                strongSelf.setButtonImages(buttons, choices:
+                    [UIImage(named: "arrow")!, UIImage(named: "equal")!,
+                    UIImage(named: "arrow")!.rotate(.Down), nil])
                 // "Higher or lower?" choices: Higher, Same, Lower
                 strongSelf.setButtonTitles(buttons,
                     choices: [ChoicesText.HIGHER.rawValue,
@@ -174,6 +188,10 @@ class ButtonView: UIView {
                 strongSelf.setButtonFrames(buttons, total: 3)
                 break
             case .IN_OUT:
+                // Set inside or outside images.
+                strongSelf.setButtonImages(buttons, choices:
+                    [UIImage(named: "inside")!, UIImage(named: "equal")!,
+                    UIImage(named: "outside")!, nil])
                 // "Inside or outside?" choices: Inside, Same, Outside
                 strongSelf.setButtonTitles(buttons,
                     choices: [ChoicesText.INSIDE.rawValue, ChoicesText.SAME.rawValue,
@@ -182,6 +200,10 @@ class ButtonView: UIView {
 
                 break
             case .SUIT:
+                // Set suit images.
+                strongSelf.setButtonImages(buttons, choices:
+                    [UIImage(named: "spade")!, UIImage(named: "heart")!,
+                        UIImage(named: "club")!, UIImage(named: "diamond")!])
                 // "Which suit?" choices: Club, Diamond, Heart, Spade
                 strongSelf.setButtonTitles(buttons,
                     choices: [ChoicesText.SPADE.rawValue, ChoicesText.HEART.rawValue,
@@ -192,6 +214,9 @@ class ButtonView: UIView {
                 // TODO - develop poker hand evaluator and poker results user interface.
                 break
             case .GIVE, .TAKE:
+                // Set pyramid image.
+                strongSelf.setButtonImages(buttons, choices:
+                    [nil, UIImage(named: "flip")!, nil, nil])
                 // "Smoke or Fire?" choices: Black, Red
                 strongSelf.setButtonTitles(buttons,
                     choices: [nil, ChoicesText.PYRAMID.rawValue, nil, nil])
