@@ -17,10 +17,6 @@ class PlayerTests: XCTestCase {
         player = Player(number: 1)
     }
 
-    func testGetNumber() {
-        XCTAssertEqual(player.getNumber(), 1)
-    }
-
     func testAddCard() {
         let card = Card(rank: .KING, suit: .HEART)
         player.addCard(card)

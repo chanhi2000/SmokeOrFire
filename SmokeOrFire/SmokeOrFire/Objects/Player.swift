@@ -19,10 +19,6 @@ class Player: NSObject {
         self.hand = [Card]()
     }
 
-    func getNumber() -> Int {
-        return self.number
-    }
-
     func addCard(card: Card) {
         hand.append(card)
     }
