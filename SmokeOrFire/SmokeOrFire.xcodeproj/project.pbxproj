@@ -89,7 +89,7 @@
 		742F6BED1D6599F7007A1A78 /* FireParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = FireParticles.sks; path = Content/FireParticles.sks; sourceTree = "<group>"; };
 		742F6BEF1D659B34007A1A78 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = Content/spark.png; sourceTree = "<group>"; };
 		742F6BF11D659E62007A1A78 /* SmokeParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = SmokeParticle.sks; path = Content/SmokeParticle.sks; sourceTree = "<group>"; };
-		743924D41D569C0000F1A17D /* SmokeOrFire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmokeOrFire.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		743924D41D569C0000F1A17D /* Smoke or Fire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smoke or Fire.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		743924D71D569C0000F1A17D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		743924DC1D569C0000F1A17D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		743924DE1D569C0000F1A17D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -204,7 +204,7 @@
 		743924D51D569C0000F1A17D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				743924D41D569C0000F1A17D /* SmokeOrFire.app */,
+				743924D41D569C0000F1A17D /* Smoke or Fire.app */,
 				743924F11D56D98A00F1A17D /* SmokeOrFireTests.xctest */,
 				74B8A2C61D6A834C00D4E777 /* SmokeOrFireUITests.xctest */,
 			);
@@ -282,7 +282,7 @@
 			);
 			name = SmokeOrFire;
 			productName = SmokeOrFire;
-			productReference = 743924D41D569C0000F1A17D /* SmokeOrFire.app */;
+			productReference = 743924D41D569C0000F1A17D /* Smoke or Fire.app */;
 			productType = "com.apple.product-type.application";
 		};
 		743924F01D56D98A00F1A17D /* SmokeOrFireTests */ = {
@@ -572,7 +572,7 @@
 				INFOPLIST_FILE = SmokeOrFire/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.justinhester.SmokeOrFire;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Smoke or Fire";
 			};
 			name = Debug;
 		};
@@ -583,7 +583,7 @@
 				INFOPLIST_FILE = SmokeOrFire/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.justinhester.SmokeOrFire;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Smoke or Fire";
 			};
 			name = Release;
 		};
