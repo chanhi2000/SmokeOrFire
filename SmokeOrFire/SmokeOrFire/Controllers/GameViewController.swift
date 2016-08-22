@@ -6,7 +6,6 @@
 //  Copyright © 2016 Justin Lawrence Hester. All rights reserved.
 //
 
-import iAd
 import GameplayKit
 import SpriteKit
 import UIKit
