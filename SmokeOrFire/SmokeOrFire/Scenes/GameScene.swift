@@ -86,6 +86,8 @@ class GameScene: SKScene {
                 // Add smoke particle emitter.
                 let smoke = SKEmitterNode(fileNamed: "SmokeParticle")!
                 smoke.name = "emitterSmokeCard"
+                smoke.particlePositionRange = CGVector(
+                    dx: card.frame.width + 5.0, dy: card.frame.height + 5.0)
                 smoke.position = card.position
                 smoke.runAction(sequence)
                 addChild(smoke)
