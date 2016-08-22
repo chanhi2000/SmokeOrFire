@@ -434,13 +434,17 @@ extension GameViewController {
         }
         view.addSubview(button)
         // Display beer icon, if anyone has to drink.
-        let statusLabelText = (lines.count > 0) ? lines.joinWithSeparator("\n") : "PASS"
+        let isAnyoneDrinking = lines.count > 0
+        let statusLabelText = isAnyoneDrinking ? lines.joinWithSeparator("\n") : "PASS"
         // After some delay, update the status view objects.
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.400 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) { [weak self] in
             guard let strongSelf = self else { return }
             UIView.animateWithDuration(0.100, animations: { [strongSelf] in
-                strongSelf.statusView.statusButton.setImage((lines.count > 0) ? UIImage(named: "beer") : nil, forState: .Normal)
+                strongSelf.statusView.statusButton.setImage(isAnyoneDrinking ?
+                    UIImage(named: "beer")! : nil, forState: .Normal)
+                strongSelf.statusView.statusButton.setImage(isAnyoneDrinking ?
+                    UIImage(named: "beer")! : nil, forState: .Disabled)
                 strongSelf.statusView.statusLabel.text = statusLabelText
             })
         }
@@ -454,6 +458,7 @@ extension GameViewController {
         button.addTarget(self, action: #selector(questionTapped),
             forControlEvents: .TouchUpInside)
         // Update status window.
+        let isDrinking = round.isDrinking(player)
         let statusLabelText = round.isDrinking(player) ? "Take \(rule.level())" : "PASS"
         // Display updated player's hand.
         player.hand.append(round.card)
@@ -463,10 +468,10 @@ extension GameViewController {
         dispatch_after(delayTime, dispatch_get_main_queue()) { [weak self] in
             guard let strongSelf = self else { return }
             UIView.animateWithDuration(0.100, animations: { [strongSelf] in
-                strongSelf.statusView.statusButton.setImage(
-                    strongSelf.round.isDrinking(strongSelf.player) ?
-                        UIImage(named: "beer")! : nil,
-                    forState: .Normal)
+                strongSelf.statusView.statusButton.setImage(isDrinking ?
+                    UIImage(named: "beer")! : nil, forState: .Normal)
+                strongSelf.statusView.statusButton.setImage(isDrinking ?
+                    UIImage(named: "beer")! : nil, forState: .Disabled)
                 strongSelf.statusView.statusLabel.text = statusLabelText
                 strongSelf.view.addSubview(button)
             })
