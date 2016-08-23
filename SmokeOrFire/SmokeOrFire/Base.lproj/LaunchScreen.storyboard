@@ -18,10 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © Justin Lawrence Hester. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ula-De-wrS">
-                                <rect key="frame" x="56" y="559" width="489" height="21"/>
-                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Copyright © Justin Lawrence Hester. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="ula-De-wrS">
+                                <rect key="frame" x="56" y="559" width="488" height="21"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Give me six hours to chop down a tree and I will spend the first four sharpening the axe.&quot; ~Abraham Lincoln" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmN-Jy-ax6">
@@ -38,6 +38,8 @@
                             <constraint firstItem="xmN-Jy-ax6" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="Wda-ca-18f"/>
                             <constraint firstItem="xmN-Jy-ax6" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Y5A-yF-FfV"/>
                             <constraint firstAttribute="bottom" secondItem="ula-De-wrS" secondAttribute="bottom" constant="20" symbolic="YES" id="cRx-7i-hx5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ula-De-wrS" secondAttribute="trailing" constant="36" id="oDp-u0-C7j"/>
+                            <constraint firstItem="ula-De-wrS" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="36" id="u50-fQ-4b7"/>
                         </constraints>
                     </view>
                 </viewController>

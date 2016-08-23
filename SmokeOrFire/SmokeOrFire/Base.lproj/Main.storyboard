@@ -9,7 +9,7 @@
         <!--Game View Controller-->
         <scene sceneID="ybn-NH-uOY">
             <objects>
-                <viewController id="I2v-EI-8Bd" customClass="GameViewController" customModule="SmokeOrFire" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="I2v-EI-8Bd" customClass="GameViewController" customModule="Smoke_or_Fire" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="va0-ve-KGo"/>
                         <viewControllerLayoutGuide type="bottom" id="BWJ-7V-qNp"/>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="199" width="600" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qt7-xk-4CN" customClass="ButtonView" customModule="SmokeOrFire" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qt7-xk-4CN" customClass="ButtonView" customModule="Smoke_or_Fire" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="390" width="600" height="210"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8AV-RK-Fbo">
@@ -156,7 +156,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SmokeOrFire" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Smoke_or_Fire" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
