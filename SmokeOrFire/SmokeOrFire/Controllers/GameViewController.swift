@@ -431,7 +431,7 @@ extension GameViewController {
             forControlEvents: .TouchUpInside)
         // Update status window.
         let isDrinking = round.isDrinking(player)
-        let statusLabelText = round.isDrinking(player) ? "Take \(rule.level())" : "PASS"
+        let statusLabelText = round.isDrinking(player) ? "Take \(rule.level())" : "Give \(rule.level())"
         // Display updated player's hand.
         player.hand.append(round.card)
         gameScene.revealHiddenCard(round.card)
