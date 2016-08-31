@@ -187,7 +187,7 @@ class GameViewController: UIViewController {
         skView.frame = CGRect(
             x: 0, y: CGFloat(9.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
             width: view.frame.width,
-            height: CGFloat(16.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
+            height: CGFloat(12.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
         skView.ignoresSiblingOrder = true // Improves rendering performance
         // Add skView constraints.
         view.addConstraint(NSLayoutConstraint(item: skView,
@@ -209,14 +209,14 @@ class GameViewController: UIViewController {
         buttonView.customizeButtons()
         buttonView.delegate = self // Notify on button press.
         buttonView.frame = CGRect(
-            x: 0, y: CGFloat(25.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
+            x: 0, y: CGFloat(21.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
             width: view.frame.width,
-            height: CGFloat(8.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
+            height: CGFloat(12.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
         // Add button view constraints.
-        view.addConstraint(NSLayoutConstraint(item: buttonView,
-            attribute: .Height, relatedBy: .Equal,
-            toItem: nil, attribute: .NotAnAttribute,
-            multiplier: 1.0, constant: buttonView.frame.height))
+//        view.addConstraint(NSLayoutConstraint(item: buttonView,
+//            attribute: .Height, relatedBy: .Equal,
+//            toItem: nil, attribute: .NotAnAttribute,
+//            multiplier: 1.0, constant: buttonView.frame.height))
 
         startGame()
 
