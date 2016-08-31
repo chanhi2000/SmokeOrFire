@@ -71,5 +71,7 @@ class PlayerTests: XCTestCase {
         XCTAssertEqual(ChoicesText.INSIDE.rawValue, "INSIDE")
         XCTAssertEqual(ChoicesText.OUTSIDE.rawValue, "OUTSIDE")
         XCTAssertEqual(ChoicesText.SAME.rawValue, "SAME")
+        XCTAssertEqual(ChoicesText.PYRAMID.rawValue, "?")
+        XCTAssertEqual(ChoicesText.GUESS.rawValue, "guess the card")
     }
 }

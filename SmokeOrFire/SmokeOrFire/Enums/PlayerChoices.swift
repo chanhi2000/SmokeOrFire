@@ -22,4 +22,5 @@ enum PlayerChoices: UInt8 {
     case SAME
     // Pyramid, no actual choice.
     case PYRAMID
+    case GUESS
 }

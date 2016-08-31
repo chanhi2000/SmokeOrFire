@@ -294,6 +294,7 @@ extension GameViewController: ButtonViewDelegate {
             handleTap()
             return
         }
+        print("text: \(text)")
         if let choiceText = text {
             // TODO: Figure out how to shrink this switch-case into something more clever.
             switch (choiceText) {
@@ -333,8 +334,55 @@ extension GameViewController: ButtonViewDelegate {
             case ChoicesText.PYRAMID.rawValue:
                 player.choice = PlayerChoices.PYRAMID
                 break
+            case ChoicesText.GUESS.rawValue:
+                player.choice = PlayerChoices.GUESS
             default:
                 player.choice = PlayerChoices.SAME
+            }
+
+            if (player.choice == .GUESS) {
+                // Open up alert controller with picker view to guess card.
+                let ac = UIAlertController(title: "",
+                    message: "\n\n\n\n\n\n\n\n\n\n\n", preferredStyle: .ActionSheet)
+                ac.view.layer.frame = CGRect(x: 0, y: 0,
+                    width: SCREEN_WIDTH,
+                    height: SCREEN_HEIGHT)
+                ac.modalInPopover = true
+
+                // Create the toolbar view - the view witch will hold our 2 buttons
+                let toolFrameHeight = 0.15 * SCREEN_HEIGHT
+                let toolFrame = CGRect(x: 0, y: 0,
+                     width: SCREEN_WIDTH, height: toolFrameHeight)
+                let toolView = UIView(frame: toolFrame)
+
+                // Add ok button.
+                let okButtonFrame = CGRect(x: 0, y: 0,
+                    width: 0.5 * toolView.frame.width, height: toolView.frame.height)
+                let okButton = UIButton(frame: okButtonFrame)
+                okButton.setTitle("OK", forState: .Normal)
+                okButton.setTitleColor(.blueColor(), forState: .Normal)
+                toolView.addSubview(okButton)
+
+                // Add cancel button.
+                let cancelButtonFrame = CGRect(x: 0.5 * toolView.frame.width, y: 0,
+                    width: 0.5 * SCREEN_WIDTH, height: toolView.frame.height)
+                let cancelButton = UIButton(frame: cancelButtonFrame)
+                cancelButton.setTitle("Cancel", forState: .Normal)
+                cancelButton.setTitleColor(.blueColor(), forState: .Normal)
+                cancelButton.addTarget(self, action: #selector(cancelSelection), forControlEvents: .TouchUpInside)
+                toolView.addSubview(cancelButton)
+
+                let picker = UIPickerView(frame: CGRect(x: 0, y: 30,
+                    width: 370, //SCREEN_WIDTH,
+                    height: 200))//SCREEN_HEIGHT - toolFrameHeight))
+                picker.delegate = self
+                picker.dataSource = self
+                ac.view.addSubview(picker)
+                
+                // Add the toolbar to the alert controller.
+                ac.view.addSubview(toolView)
+                
+                presentViewController(ac, animated: true, completion: nil)
             }
 
             if (player.choice == .PYRAMID) {
@@ -347,6 +395,16 @@ extension GameViewController: ButtonViewDelegate {
             }
 
         }
+    }
+
+    func okSelection(sender: UIButton) {
+        
+    }
+    
+    func cancelSelection(sender: UIButton) {
+        print("Cancel")
+        self.dismissViewControllerAnimated(true, completion: nil);
+        // We dismiss the alert. Here you can add your additional code to execute when cancel is pressed
     }
 }
 
@@ -461,4 +519,37 @@ extension GameViewController {
         navigationController!.popToRootViewControllerAnimated(true)
     }
 
+}
+
+// MARK: - UIPickerViewDelegate
+extension GameViewController: UIPickerViewDelegate {
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component:Int) -> String? {
+        switch (component) {
+        case 0:
+            return Rank.allValues[row].describe()
+        case 1:
+            return Suit.allValues[row].describe()
+        default:
+            return nil
+        }
+    }
+}
+
+// MARK: - UIPickerViewDataSource
+extension GameViewController: UIPickerViewDataSource {
+
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 2
+    }
+
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        switch (component) {
+        case 0:
+            return Rank.allValues.count
+        case 1:
+            return Suit.allValues.count
+        default:
+            return 0
+        }
+    }
 }

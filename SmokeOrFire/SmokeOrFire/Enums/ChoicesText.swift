@@ -19,4 +19,6 @@ enum ChoicesText: String {
     case OUTSIDE = "OUTSIDE"
     case SAME = "SAME"
     case PYRAMID = "?"
+    case GUESS = "guess the card"
+
 }

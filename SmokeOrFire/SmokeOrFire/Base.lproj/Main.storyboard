@@ -84,6 +84,9 @@
                                         <state key="normal" title="guess the card">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="choiceTapped:" destination="qt7-xk-4CN" eventType="touchUpInside" id="QJm-WZ-AVB"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
