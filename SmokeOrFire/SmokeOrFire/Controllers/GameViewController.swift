@@ -212,11 +212,6 @@ class GameViewController: UIViewController {
             x: 0, y: CGFloat(21.0 / SCREEN_HEIGHT_UNITS) * view.frame.height,
             width: view.frame.width,
             height: CGFloat(12.0 / SCREEN_HEIGHT_UNITS) * view.frame.height)
-        // Add button view constraints.
-//        view.addConstraint(NSLayoutConstraint(item: buttonView,
-//            attribute: .Height, relatedBy: .Equal,
-//            toItem: nil, attribute: .NotAnAttribute,
-//            multiplier: 1.0, constant: buttonView.frame.height))
 
         startGame()
 

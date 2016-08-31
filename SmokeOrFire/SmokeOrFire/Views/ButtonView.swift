@@ -59,10 +59,6 @@ class ButtonView: UIView {
             height: buttonHeight)
         guessTheCardChoiceButton.translatesAutoresizingMaskIntoConstraints = false
         guessTheCardChoiceButton.titleLabel!.adjustsFontSizeToFitWidth = true
-        addConstraint(NSLayoutConstraint(item: guessTheCardChoiceButton,
-            attribute: .Height, relatedBy: .Equal,
-            toItem: nil, attribute: .NotAnAttribute,
-            multiplier: 1.0, constant: guessTheCardChoiceButton.frame.height))
     }
 
     func hideButtonsExcept(button: UIButton) {

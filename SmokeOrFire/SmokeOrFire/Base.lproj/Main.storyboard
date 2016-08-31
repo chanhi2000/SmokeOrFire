@@ -77,7 +77,7 @@
                                             <action selector="choiceTapped:" destination="qt7-xk-4CN" eventType="touchUpInside" id="xZy-V2-WPc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rac-hd-tdA">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rac-hd-tdA">
                                         <rect key="frame" x="0.0" y="208" width="600" height="57"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="15"/>
@@ -87,12 +87,6 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="Rac-hd-tdA" firstAttribute="leading" secondItem="qt7-xk-4CN" secondAttribute="leading" id="B6S-ed-FgR"/>
-                                    <constraint firstAttribute="trailing" secondItem="Rac-hd-tdA" secondAttribute="trailing" id="J9j-Xp-geG"/>
-                                    <constraint firstItem="Rac-hd-tdA" firstAttribute="centerX" secondItem="qt7-xk-4CN" secondAttribute="centerX" id="OQN-RE-vt0"/>
-                                    <constraint firstAttribute="bottom" secondItem="Rac-hd-tdA" secondAttribute="bottom" id="kfu-iO-1zp"/>
-                                </constraints>
                                 <connections>
                                     <outlet property="firstChoiceButton" destination="8AV-RK-Fbo" id="m98-I4-Qk9"/>
                                     <outlet property="fourthChoiceButton" destination="D0u-fj-Z9Q" id="yJr-WD-dun"/>
