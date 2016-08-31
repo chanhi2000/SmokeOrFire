@@ -51,14 +51,18 @@ class ButtonView: UIView {
         }
         // Customize the guess button.
         let margin = CGFloat(8.0)
-        let buttonHeight = (frame.height * (2.0 / 5.0)) - (2 * margin)
+        let buttonHeight = (frame.height * (3.0 / 8.0)) - (2 * margin)
         let buttonWidth = frame.width - (2 * margin)
         guessTheCardChoiceButton.layer.frame = CGRect(x: margin,
-            y: frame.height - buttonHeight,
+            y: frame.height + margin - buttonHeight,
             width: buttonWidth,
             height: buttonHeight)
         guessTheCardChoiceButton.translatesAutoresizingMaskIntoConstraints = false
         guessTheCardChoiceButton.titleLabel!.adjustsFontSizeToFitWidth = true
+        addConstraint(NSLayoutConstraint(item: guessTheCardChoiceButton,
+            attribute: .Height, relatedBy: .Equal,
+            toItem: nil, attribute: .NotAnAttribute,
+            multiplier: 1.0, constant: guessTheCardChoiceButton.frame.height))
     }
 
     func hideButtonsExcept(button: UIButton) {
@@ -93,11 +97,17 @@ class ButtonView: UIView {
         let margin = CGFloat(8.0) // Add margin to inset from border.
         switch (total) {
         case 1:
+            let buttonHeight = (frame.height * (2.0 / 3.0)) - (2 * margin)
+            let buttonWidth = frame.width - (2 * margin)
             // Fit one button.
             buttons[1].layer.frame = CGRect(x: margin,
                 y: margin,
+                width: buttonWidth,
+                height: buttonHeight)
+            buttons[4].layer.frame = CGRect(x: margin,
+                y: buttonHeight + margin,
                 width: frame.width - (2 * margin),
-                height: frame.height - margin - guessTheCardChoiceButton.layer.frame.height)
+                height: frame.height - buttonHeight - (2 * margin))
             break
         case 2:
             let buttonHeight = frame.height - (2 * margin) - guessTheCardChoiceButton.layer.frame.height
@@ -109,9 +119,12 @@ class ButtonView: UIView {
             buttons[1].layer.frame = CGRect(x: (frame.width / 2) + margin, y: margin,
                 width: buttonWidth,
                 height: buttonHeight)
+            buttons[4].layer.frame = CGRect(x: margin, y: frame.height - buttons[4].layer.frame.height + margin,
+                width: buttons[4].layer.frame.width - (2 * margin),
+                height: buttons[4].layer.frame.height - (2 * margin))
             break
         case 3:
-            let buttonHeight = frame.height - margin - guessTheCardChoiceButton.layer.frame.height
+            let buttonHeight = frame.height * (6.0 / 8.0)
             let buttonWidth = (frame.width / 3.0) - (3 * margin)
             // Fit three buttons.
             buttons[0].layer.frame = CGRect(
@@ -129,10 +142,16 @@ class ButtonView: UIView {
                 y: 0,
                 width: buttonWidth,
                 height: buttonHeight)
+            buttons[4].layer.frame = CGRect(x: margin,
+                y: buttonHeight + margin,
+                width: buttons[0].layer.frame.width +
+                    buttons[1].layer.frame.width + buttons[2].layer.frame.width +
+                    (6 * margin),
+                height: frame.height - buttonHeight - (2 * margin))
             break
         case 4:
             // Fit four buttons.
-            let buttonHeight = (frame.height / 2.0) - (guessTheCardChoiceButton.layer.frame.height / 2.0)
+            let buttonHeight = frame.height * (3.0 / 8.0)
             let buttonWidth = (frame.width / 2.0) - (4 * margin)
 
             /*
@@ -149,7 +168,7 @@ class ButtonView: UIView {
                 width: buttonWidth, height: buttonHeight)
             buttons[1].layer.frame = CGRect(
                 x: (frame.width / 4.0) - (buttonWidth / 2.0),
-                y: (0.333 * frame.height), // + margin,
+                y: (0.333 * frame.height) + margin,
                 width: buttonWidth, height: buttonHeight)
             buttons[3].layer.frame = CGRect(
                 x: (0.75 * frame.width) - (buttonWidth / 2.0),
@@ -157,13 +176,13 @@ class ButtonView: UIView {
                 width: buttonWidth, height: buttonHeight)
             buttons[2].layer.frame = CGRect(
                 x: (0.75 * frame.width) - (buttonWidth / 2.0),
-                y: (0.333 * frame.height), // + margin,
+                y: (0.333 * frame.height) + margin,
                 width: buttonWidth, height: buttonHeight)
-            guessTheCardChoiceButton.layer.frame = CGRect(
-                x: guessTheCardChoiceButton.layer.frame.origin.x,
-                y: guessTheCardChoiceButton.layer.frame.origin.y + margin,
-                width: guessTheCardChoiceButton.layer.frame.width,
-                height: (0.333 * frame.height))
+            buttons[4].layer.frame = CGRect(
+                x: (frame.width / 4.0) - (buttonWidth / 2.0),
+                y: (2 * buttonHeight) + margin,
+                width: (2 * buttonWidth) + (4 * margin),
+                height: frame.height - (2 * buttonHeight) - (2 * margin))
             break
         default:
             break
