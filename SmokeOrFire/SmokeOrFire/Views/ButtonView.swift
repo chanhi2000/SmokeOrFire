@@ -50,13 +50,7 @@ class ButtonView: UIView {
             button.layer.cornerRadius = 10
         }
         // Customize the guess button.
-        let margin = CGFloat(8.0)
-        let buttonHeight = (frame.height * (3.0 / 8.0)) - (2 * margin)
-        let buttonWidth = frame.width - (2 * margin)
-        guessTheCardChoiceButton.layer.frame = CGRect(x: margin,
-            y: frame.height + margin - buttonHeight,
-            width: buttonWidth,
-            height: buttonHeight)
+        guessTheCardChoiceButton.titleLabel!.numberOfLines = 1
         guessTheCardChoiceButton.translatesAutoresizingMaskIntoConstraints = false
         guessTheCardChoiceButton.titleLabel!.adjustsFontSizeToFitWidth = true
     }
