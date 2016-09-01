@@ -6,7 +6,7 @@
 //  Copyright © 2016 Justin Lawrence Hester. All rights reserved.
 //
 
-enum Suit: UInt8 {
+enum Suit: Int {
     case CLUB = 1, DIAMOND, HEART, SPADE, __EXHAUST
 
     static let allValues = [CLUB, DIAMOND, HEART, SPADE]

@@ -50,7 +50,7 @@ class Deck {
             rank = .KING
             break
         default:
-            let rawValue = UInt8(namePieces[0])!
+            let rawValue = Int(namePieces[0])!
             rank = Rank(rawValue: rawValue)
             break
         }

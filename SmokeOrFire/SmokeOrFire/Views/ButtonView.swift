@@ -87,52 +87,39 @@ class ButtonView: UIView {
         let margin = CGFloat(8.0) // Add margin to inset from border.
         switch (total) {
         case 1:
-            let buttonHeight = (frame.height * (2.0 / 3.0)) - (2 * margin)
+            let buttonHeight = frame.height - margin
             let buttonWidth = frame.width - (2 * margin)
             // Fit one button.
             buttons[1].layer.frame = CGRect(x: margin,
-                y: margin,
+                y: 0,
                 width: buttonWidth,
                 height: buttonHeight)
-            buttons[4].layer.frame = CGRect(x: margin,
-                y: buttonHeight + (2 * margin),
-                width: frame.width - (2 * margin),
-                height: frame.height - buttonHeight - (3 * margin))
+            buttons[4].hidden = true
             break
         case 2:
             let buttonHeight = (frame.height * (2.0 / 3.0)) - (2 * margin)
             let buttonWidth = (0.5 * frame.width) - (2 * margin)
             // Fit two buttons.
             buttons[0].layer.frame = CGRect(x: margin, y: margin,
-                width: buttonWidth,
-                height: buttonHeight)
-            buttons[1].layer.frame = CGRect(x: (frame.width / 2) + margin, y: margin,
-                width: buttonWidth,
-                height: buttonHeight)
+                width: buttonWidth, height: buttonHeight)
+            buttons[1].layer.frame = CGRect(x: (frame.width / 2) + margin,
+                y: margin, width: buttonWidth, height: buttonHeight)
             buttons[4].layer.frame = CGRect(x: margin,
                 y: buttonHeight + (2 * margin),
                 width: (2 * buttonWidth) + (2 * margin),
                 height: frame.height - buttonHeight - (3 * margin))
             break
         case 3:
-            let buttonHeight = frame.height * (6.0 / 8.0)
+            let buttonHeight = frame.height * (5.0 / 8.0)
             let buttonWidth = (frame.width / 3.0) - (3 * margin)
             // Fit three buttons.
-            buttons[0].layer.frame = CGRect(
-                x: margin,
-                y: 0,
-                width: buttonWidth,
-                height: buttonHeight)
-            buttons[1].layer.frame = CGRect(
-                x: (0.333 * frame.width) + margin,
-                y: 0,
-                width: buttonWidth,
-                height: buttonHeight)
+            buttons[0].layer.frame = CGRect(x: margin, y: 0,
+                width: buttonWidth, height: buttonHeight)
+            buttons[1].layer.frame = CGRect(x: (0.333 * frame.width) + margin,
+                y: 0, width: buttonWidth, height: buttonHeight)
             buttons[2].layer.frame = CGRect(
-                x: (0.666 * frame.width) + margin,
-                y: 0,
-                width: buttonWidth,
-                height: buttonHeight)
+                x: (0.666 * frame.width) + margin, y: 0,
+                width: buttonWidth, height: buttonHeight)
             buttons[4].layer.frame = CGRect(x: margin,
                 y: buttonHeight + margin,
                 width: buttons[0].layer.frame.width +
@@ -154,16 +141,14 @@ class ButtonView: UIView {
              *
              */
             buttons[0].layer.frame = CGRect(
-                x: (frame.width / 4.0) - (buttonWidth / 2.0),
-                y: 0,
+                x: (frame.width / 4.0) - (buttonWidth / 2.0), y: 0,
                 width: buttonWidth, height: buttonHeight)
             buttons[1].layer.frame = CGRect(
                 x: (frame.width / 4.0) - (buttonWidth / 2.0),
                 y: (0.333 * frame.height) + (2 * margin),
                 width: buttonWidth, height: buttonHeight)
             buttons[3].layer.frame = CGRect(
-                x: (0.75 * frame.width) - (buttonWidth / 2.0),
-                y: 0,
+                x: (0.75 * frame.width) - (buttonWidth / 2.0), y: 0,
                 width: buttonWidth, height: buttonHeight)
             buttons[2].layer.frame = CGRect(
                 x: (0.75 * frame.width) - (buttonWidth / 2.0),
@@ -183,10 +168,6 @@ class ButtonView: UIView {
     func setButtonsFor(round: Round) {
         dispatch_async(dispatch_get_main_queue()) { [weak self] in
             guard let strongSelf = self else { return }
-
-//            let buttons = [strongSelf.firstChoiceButton,
-//                strongSelf.secondChoiceButton, strongSelf.thirdChoiceButton,
-//                strongSelf.fourthChoiceButton, strongSelf.guessTheCardChoiceButton]
 
             for button in strongSelf.buttons {
                 // Make all buttons visible.

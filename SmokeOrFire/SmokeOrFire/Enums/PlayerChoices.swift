@@ -6,7 +6,7 @@
 //  Copyright © 2016 Justin Lawrence Hester. All rights reserved.
 //
 
-enum PlayerChoices: UInt8 {
+enum PlayerChoices: Int {
     // Suit?
     case CLUB = 1, DIAMOND, HEART, SPADE
     // Smoke or fire?
