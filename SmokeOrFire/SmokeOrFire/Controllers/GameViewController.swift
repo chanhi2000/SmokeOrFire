@@ -33,6 +33,7 @@ class GameViewController: UIViewController {
     var gameScene: GameScene!
     var guessView: UIView!
     var levels: [Int] = [4, 4, 3, 3, 2, 1]
+    var losingView: UIView!
     var picker: UIPickerView!
     weak var player: Player!
     var players: [Player]!
@@ -230,6 +231,8 @@ class GameViewController: UIViewController {
                 } else if button.tag == 2 {
                     gameOverTapped(button)
                 }
+            } else if subView.tag == 3 {
+                pyramidTapped(subView)
             }
         }
     }
@@ -529,26 +532,89 @@ extension GameViewController {
         let imageName = pyramid.rounds[pyramidRoundIndex].imageName
         gameScene.revealHiddenPyramidCard(imageName)
 
-        // Create new status button.
-        let button = UIButton(frame: view.frame)
-        button.tag = 1
-        button.addTarget(self, action: #selector(pyramidTapped),
-            forControlEvents: .TouchUpInside)
-        var lines = [String]()
-        for p in players {
-            if p.hasCard(round.card) {
-                // Add player line to status label.
-                lines.append("P\(p.number): \(rule.title()) " +
-                    "\(p.totalOf(round.card) * pyramid.rounds[pyramidRoundIndex].level)")
+        displayPlayerViews()
+    }
+
+    func displayPlayerViews() {
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.400 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) { [weak self] in
+            guard let strongSelf = self else { return }
+
+            // Hide distracting views.
+            strongSelf.statusView.hidden = true
+            strongSelf.buttonView.hidden = true
+
+            strongSelf.losingView = UIView(frame: strongSelf.view.frame)
+            strongSelf.losingView.tag = 3
+
+            let playerHeight = strongSelf.losingView.frame.height / CGFloat(8.0)
+
+            var lines = [String]()
+            for p in strongSelf.players {
+                if p.hasCard(strongSelf.round.card) {
+                    // Add player line to status label.
+                    lines.append("P\(p.number): \(strongSelf.rule.title()) " +
+                        "\(p.totalOf(strongSelf.round.card) * strongSelf.pyramid.rounds[strongSelf.pyramidRoundIndex].level)")
+                }
             }
+
+            for i in 0.stride(to: strongSelf.players.count, by: 1) {
+                // Initialize player view.
+                let playerView = UIView(frame: CGRect(x: 0,
+                    y: ((CGFloat(i + 1) / CGFloat(strongSelf.players.count + 1)) *
+                        strongSelf.losingView.layer.frame.height), // - (playerHeight / 2.0),
+                    width: strongSelf.losingView.layer.frame.width, height: playerHeight))
+                playerView.backgroundColor = strongSelf.playerColors[i]
+                playerView.layer.borderWidth = 2
+                playerView.layer.borderColor = UIColor.whiteColor().CGColor
+                playerView.layer.cornerRadius = 4
+
+                // Add player label.
+                let label = UILabel(frame: CGRect(x: 0, y: 0,
+                    width: strongSelf.losingView.layer.frame.width,
+                    height: 0.35 * playerHeight))
+                label.font = strongSelf.font
+                label.numberOfLines = 1
+                label.adjustsFontSizeToFitWidth = true
+                label.textColor = .whiteColor()
+                label.textAlignment = .Center
+                let totalMatchedCards = strongSelf.players[i].totalOf(strongSelf.round.card) *
+                    strongSelf.pyramid.rounds[strongSelf.pyramidRoundIndex].level
+                label.text = "P\(strongSelf.players[i].number): " +
+                    (totalMatchedCards > 0 ?
+                        "\(strongSelf.rule.title()) \(totalMatchedCards)" :
+                        "PASS")
+                playerView.addSubview(label)
+
+                // Add player cards.
+                let cardWidth = (0.55 * playerHeight) / 1.5
+                let cardMargin = (strongSelf.losingView.layer.frame.width -
+                    (CGFloat(strongSelf.players[i].hand.count) * cardWidth)) /
+                    CGFloat(strongSelf.players[i].hand.count + 1)
+                for j in 0.stride(to: strongSelf.players[i].hand.count, by: 1) {
+                    let handCard = strongSelf.players[i].hand[j]
+                    let cardView = UIImageView(frame: CGRect(
+                        x: (CGFloat(j + 1) * cardMargin) + (CGFloat(j) * cardWidth),
+                        y: label.frame.height,
+                        width: cardWidth,
+                        height: 0.55 * playerHeight))
+                    cardView.image = UIImage(named: handCard.imageName)!
+                    if (handCard.rank == strongSelf.round.card.rank) {
+                        cardView.layer.borderColor = UIColor.yellowColor().CGColor
+                        cardView.layer.borderWidth = 1.5
+                        cardView.layer.cornerRadius = 3
+                    }
+                    playerView.addSubview(cardView)
+                }
+                strongSelf.losingView.addSubview(playerView)
+            }
+
+            // Create variables for updateStatusView() args.
+            let isAnyoneDrinking = strongSelf.losingView.subviews.count > 0//lines.count > 0
+            let statusLabelText = ""//isAnyoneDrinking ? lines.joinWithSeparator("\n") : "PASS"
+
+            strongSelf.updateStatusView(strongSelf.losingView, text: statusLabelText, drinking: isAnyoneDrinking)
         }
-        view.addSubview(button)
-
-        // Create variables for updateStatusView() args.
-        let isAnyoneDrinking = lines.count > 0
-        let statusLabelText = isAnyoneDrinking ? lines.joinWithSeparator("\n") : "PASS"
-
-        updateStatusView(button, text: statusLabelText, drinking: isAnyoneDrinking)
     }
 
     func displayQuestionResults() {
@@ -570,8 +636,8 @@ extension GameViewController {
         updateStatusView(button, text: statusLabelText, drinking: isDrinking)
     }
 
-    func updateStatusView(button: UIButton, text: String, drinking: Bool) {
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.400 * Double(NSEC_PER_SEC)))
+    func updateStatusView(object: UIView, text: String, drinking: Bool) {
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.500 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) { [weak self] in
             guard let strongSelf = self else { return }
             UIView.animateWithDuration(0.100, animations: { [strongSelf] in
@@ -579,19 +645,21 @@ extension GameViewController {
                 strongSelf.statusView.statusButton.setImage(image, forState: .Normal)
                 strongSelf.statusView.statusButton.setImage(image, forState: .Disabled)
                 strongSelf.statusView.statusLabel.text = text
-                strongSelf.view.addSubview(button)
+                strongSelf.view.addSubview(object)
             })
         }
     }
 
-    func pyramidTapped(button: UIButton) {
-        button.removeFromSuperview()
+    func pyramidTapped(sender: AnyObject) {
+        sender.removeFromSuperview()
+        statusView.hidden = false
+        buttonView.hidden = false
         buttonView.enabled = true
         pyramidRoundIndex += 1
     }
 
-    func questionTapped(button: UIButton) {
-        button.removeFromSuperview()
+    func questionTapped(sender: AnyObject) {
+        sender.removeFromSuperview()
         buttonView.enabled = true
         playerIndex += 1
     }
