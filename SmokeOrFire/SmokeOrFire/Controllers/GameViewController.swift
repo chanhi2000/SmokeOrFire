@@ -87,6 +87,8 @@ class GameViewController: UIViewController {
         didSet {
             if pyramidRoundIndex < pyramid.rounds.count {
                 if (pyramid.rounds[oldValue].level != pyramid.rounds[pyramidRoundIndex].level) {
+                    // Clear status view.
+                    statusView.clear()
                     // Shift up pyramid rows.
                     gameScene.shiftPyramid()
                     let delayTime = dispatch_time(DISPATCH_TIME_NOW,
@@ -467,13 +469,13 @@ extension GameViewController {
         pickerToolbar.barStyle = .Black
         let fixedSpace = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: self, action: nil)
         fixedSpace.width = 15
-        let okItem = UIBarButtonItem(barButtonSystemItem: .Done,
+        let okItem = UIBarButtonItem(title: "guess", style: .Plain,
             target: self, action: #selector(okSelected))
         okItem.setTitleTextAttributes([NSFontAttributeName: font,
             NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace,
             target: self, action: nil)
-        let cancelItem = UIBarButtonItem(title: "Cancel",
+        let cancelItem = UIBarButtonItem(title: "cancel",
             style: .Plain, target: self, action: #selector(cancelSelected))
         cancelItem.setTitleTextAttributes([NSFontAttributeName: font,
             NSForegroundColorAttributeName: UIColor.redColor()], forState: .Normal)
@@ -506,7 +508,7 @@ extension GameViewController {
         player.hand.append(round.card)
         gameScene.revealHiddenCard(round.card)
 
-        updateStatusView(button, text: statusLabelText, drinking: isPlayerDrinking)
+        updateStatusView(button, text: statusLabelText)
 
         guessView.removeFromSuperview()
     }
@@ -536,7 +538,7 @@ extension GameViewController {
     }
 
     func displayPlayerViews() {
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.400 * Double(NSEC_PER_SEC)))
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.800 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) { [weak self] in
             guard let strongSelf = self else { return }
 
@@ -580,11 +582,26 @@ extension GameViewController {
                 label.textAlignment = .Center
                 let totalMatchedCards = strongSelf.players[i].totalOf(strongSelf.round.card) *
                     strongSelf.pyramid.rounds[strongSelf.pyramidRoundIndex].level
-                label.text = "P\(strongSelf.players[i].number): " +
+                label.text = "P\(strongSelf.players[i].number)" +
                     (totalMatchedCards > 0 ?
-                        "\(strongSelf.rule.title()) \(totalMatchedCards)" :
-                        "PASS")
+                        ": \(strongSelf.rule.title()) \(totalMatchedCards)" : "")
                 playerView.addSubview(label)
+
+                if (totalMatchedCards > 0) {
+                    // Add side beer images.
+                    let leftBeerView = UIImageView(frame: CGRect(
+                        x: -0.10 * playerView.layer.frame.width,
+                        y: 0, width: 0.20 * playerView.layer.frame.width,
+                        height: playerView.layer.frame.height))
+                    leftBeerView.image = UIImage(named: "beer")!
+                    playerView.addSubview(leftBeerView)
+                    let rightBeerView = UIImageView(frame: CGRect(
+                        x: 0.90 * playerView.layer.frame.width,
+                        y: 0, width: 0.20 * playerView.layer.frame.width,
+                        height: playerView.layer.frame.height))
+                    rightBeerView.image = UIImage(named: "beer")!
+                    playerView.addSubview(rightBeerView)
+                }
 
                 // Add player cards.
                 let cardWidth = (0.55 * playerHeight) / 1.5
@@ -600,20 +617,22 @@ extension GameViewController {
                         height: 0.55 * playerHeight))
                     cardView.image = UIImage(named: handCard.imageName)!
                     if (handCard.rank == strongSelf.round.card.rank) {
-                        cardView.layer.borderColor = UIColor.yellowColor().CGColor
-                        cardView.layer.borderWidth = 1.5
-                        cardView.layer.cornerRadius = 3
+                        // Add beer image behind card.
+                        let beerView = UIImageView(frame: CGRect(
+                            x: cardView.frame.minX + (cardView.frame.maxX - cardView.frame.minX) / 2.0,
+                            y: cardView.frame.minY,
+                            width: cardView.frame.width,
+                            height: cardView.frame.height))
+                        beerView.image = UIImage(named: "beer")!
+                        playerView.addSubview(beerView)
                     }
                     playerView.addSubview(cardView)
                 }
                 strongSelf.losingView.addSubview(playerView)
             }
 
-            // Create variables for updateStatusView() args.
-            let isAnyoneDrinking = strongSelf.losingView.subviews.count > 0//lines.count > 0
-            let statusLabelText = ""//isAnyoneDrinking ? lines.joinWithSeparator("\n") : "PASS"
-
-            strongSelf.updateStatusView(strongSelf.losingView, text: statusLabelText, drinking: isAnyoneDrinking)
+            let statusLabelText = lines.count > 0 ? lines.joinWithSeparator("\n") : ""
+            strongSelf.updateStatusView(strongSelf.losingView, text: statusLabelText)
         }
     }
 
@@ -625,25 +644,23 @@ extension GameViewController {
         button.addTarget(self, action: #selector(questionTapped),
             forControlEvents: .TouchUpInside)
 
-        // Create variables for updateStatusView() args.
-        let isDrinking = round.isDrinking(player)
-        let statusLabelText = round.isDrinking(player) ? "Take \(rule.level())" : "Give \(rule.level())"
-
         // Display updated player's hand.
         player.hand.append(round.card)
         gameScene.revealHiddenCard(round.card)
 
-        updateStatusView(button, text: statusLabelText, drinking: isDrinking)
+        let statusLabelText = round.isDrinking(player) ?
+            "Take \(rule.level())" : "Give \(rule.level())"
+        updateStatusView(button, text: statusLabelText)
     }
 
-    func updateStatusView(object: UIView, text: String, drinking: Bool) {
+    func updateStatusView(object: UIView, text: String) {
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.500 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) { [weak self] in
             guard let strongSelf = self else { return }
             UIView.animateWithDuration(0.100, animations: { [strongSelf] in
-                let image: UIImage? = drinking ? UIImage(named: "beer")! : nil
-                strongSelf.statusView.statusButton.setImage(image, forState: .Normal)
-                strongSelf.statusView.statusButton.setImage(image, forState: .Disabled)
+                let beerImage = UIImage(named: "beer")!
+                strongSelf.statusView.statusButton.setImage(beerImage, forState: .Normal)
+                strongSelf.statusView.statusButton.setImage(beerImage, forState: .Disabled)
                 strongSelf.statusView.statusLabel.text = text
                 strongSelf.view.addSubview(object)
             })
@@ -652,10 +669,10 @@ extension GameViewController {
 
     func pyramidTapped(sender: AnyObject) {
         sender.removeFromSuperview()
-        statusView.hidden = false
-        buttonView.hidden = false
         buttonView.enabled = true
         pyramidRoundIndex += 1
+        statusView.hidden = false
+        buttonView.hidden = false
     }
 
     func questionTapped(sender: AnyObject) {

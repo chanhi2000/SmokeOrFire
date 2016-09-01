@@ -74,4 +74,11 @@ class StatusView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+
+    func clear() {
+        statusButton.setImage(nil, forState: .Normal)
+        statusButton.setTitle("", forState: .Normal)
+        statusLabel.text = ""
+    }
+
 }
