@@ -39,10 +39,10 @@ class Round {
                     return true
                 }
             case .IN_OUT:
-                var sortedCards = player.hand
+                var sortedCards = player.hand[0 ... player.hand.count-2]
                 sortedCards.sortInPlace({ $0.rank.rawValue < $1.rank.rawValue })
                 if (player.choice == PlayerChoices.INSIDE &&
-                        (card.rank.rawValue > sortedCards[0].rank.rawValue &&
+                        (card.rank.rawValue > sortedCards[0].rank.rawValue ||
                         card.rank.rawValue < sortedCards[1].rank.rawValue)) {
                     return false
                 } else if (player.choice == PlayerChoices.OUTSIDE &&
